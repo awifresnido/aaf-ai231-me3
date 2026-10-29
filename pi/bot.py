@@ -22,11 +22,16 @@ Env (chmod 600 file outside the repo; never commit):
 import os
 
 from dotenv import load_dotenv
+
+# Optional secure env file on the Pi (chmod 600, outside the repo). The bot runs
+# the no-LLM audio smoke test when the key is absent.
+load_dotenv("/home/aldwinrpi4/.voice-agent-env", override=False)
+
 from loguru import logger
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
-from pipecat.frames.frames import LLMRunFrame, TTSSpeakFrame
+from pipecat.frames.frames import LLMRunFrame, TTSSpeakFrame, TranscriptionFrame
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.worker import PipelineParams, PipelineWorker
 from pipecat.processors.aggregators.llm_context import LLMContext
@@ -34,6 +39,7 @@ from pipecat.processors.aggregators.llm_response_universal import (
     LLMContextAggregatorPair,
     LLMUserAggregatorParams,
 )
+from pipecat.processors.frame_processor import FrameProcessor
 from pipecat.runner.types import RunnerArguments
 from pipecat.runner.utils import create_transport
 from pipecat.services.nvidia.stt import NvidiaSTTService
@@ -41,6 +47,14 @@ from pipecat.services.nvidia.tts import NvidiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
+
+# Speech backend switch: "local" (Jetson Riva, default) or "dgx" (vLLM HTTP).
+SPEECH_BACKEND = os.getenv("SPEECH_BACKEND", "local")
+
+if SPEECH_BACKEND == "dgx":
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from dgx_services import DGXSTTService, DGXTTSService
 
 load_dotenv(override=True)
 
@@ -56,40 +70,56 @@ SYSTEM_PROMPT = (
     "If you don't know something, say so plainly."
 )
 
-# Pi-local VAD policy: 0.7 s silence ends the turn (see Phase 0 memo 0.5).
-# The Jetson ASR final remains the backstop.
-VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.7"))
+# Pi-local VAD policy: with the Jetson ASR container at stop_history_eou_ms=320,
+# finals arrive ~0.6s after speech end (verified via direct gRPC probe).
+# 0.8s VAD silence lets the final land inside the turn.
+VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
 
 
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
     logger.info("Starting aaf-ai231-me3 voice agent")
 
-    stt = NvidiaSTTService(
-        server=ASR_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=16000,
-        audio_channel_count=1,
-        stop_history=-1,
-        stop_history_eou=-1,
-    )
+    ollama_key = os.getenv("OLLAMA_API_KEY")
+    if ollama_key:
+        llm = OpenAILLMService(
+            api_key=ollama_key,
+            base_url=OLLAMA_BASE_URL,
+            settings=OpenAILLMService.Settings(
+                model=OLLAMA_MODEL,
+                system_instruction=(
+                    "You are a friendly voice assistant. Keep replies short "
+                    "(1-3 spoken sentences), no lists or emojis, and speak "
+                    "naturally. Never read out code or URLs."
+                ),
+            ),
+        )
+    else:
+        llm = None
+        logger.warning("OLLAMA_API_KEY not set — running audio smoke test mode (no LLM)")
 
-    tts = NvidiaTTSService(
-        server=TTS_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=22050,
-        voice_id=TTS_VOICE,
-    )
-
-    llm = OpenAILLMService(
-        api_key=os.getenv("OLLAMA_API_KEY"),
-        base_url=OLLAMA_BASE_URL,
-        settings=OpenAILLMService.Settings(
-            model=OLLAMA_MODEL,
-            system_instruction=SYSTEM_PROMPT,
-        ),
-    )
+    if SPEECH_BACKEND == "dgx":
+        logger.info("Speech backend: DGX (vLLM Qwen2-Audio + Qwen3-TTS)")
+        stt = DGXSTTService()
+        tts = DGXTTSService()
+    else:
+        logger.info("Speech backend: local (Jetson Nemotron ASR + Magpie TTS)")
+        stt = NvidiaSTTService(
+            server=ASR_SERVER,
+            use_ssl=False,
+            model_function_map={},
+            sample_rate=16000,
+            audio_channel_count=1,
+            # Blueprint default (320): client-side endpointing so ASR finals
+            # arrive during the session (see Phase 0 memo 0.5).
+            stop_history=320,
+        )
+        tts = NvidiaTTSService(
+            server=TTS_SERVER,
+            use_ssl=False,
+            model_function_map={},
+            sample_rate=22050,
+            voice_id=TTS_VOICE,
+        )
 
     context = LLMContext()
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
@@ -99,17 +129,42 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         ),
     )
 
-    pipeline = Pipeline(
-        [
-            transport.input(),
-            stt,
-            user_aggregator,
-            llm,
-            tts,
-            transport.output(),
-            assistant_aggregator,
-        ]
-    )
+    if llm:
+        # Order mirrors pipecat's official quickstart bot: the assistant
+        # aggregator sits AFTER transport.output() — the TTS service consumes
+        # LLM text frames directly; the aggregator only records context.
+        pipeline = Pipeline(
+            [
+                transport.input(),
+                stt,
+                user_aggregator,
+                llm,
+                tts,
+                transport.output(),
+                assistant_aggregator,
+            ]
+        )
+    else:
+        # No-LLM smoke mode: the ASR transcript is spoken straight back so you can
+        # verify mic → Pi → Jetson ASR → Jetson TTS → browser speaker end to end.
+        class EchoProcessor(FrameProcessor):
+            async def process_frame(self, frame, direction):
+                await super().process_frame(frame, direction)
+                if isinstance(frame, TranscriptionFrame) and frame.text.strip():
+                    await self.push_frame(TTSSpeakFrame(frame.text.strip()), direction)
+                    return
+                await self.push_frame(frame, direction)
+
+        pipeline = Pipeline(
+            [
+                transport.input(),
+                stt,
+                user_aggregator,
+                EchoProcessor(),
+                tts,
+                transport.output(),
+            ]
+        )
 
     worker = PipelineWorker(
         pipeline,
@@ -122,21 +177,18 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
 
     @worker.rtvi.event_handler("on_client_ready")
     async def on_client_ready(rtvi):
-        if os.getenv("OLLAMA_API_KEY"):
-            context.add_message(
-                {"role": "developer", "content": "Greet the user briefly, then wait."}
-            )
-            await worker.queue_frames([LLMRunFrame()])
-        else:
-            # Milestone 1 (audio-path) smoke test: fixed speech out, no LLM needed.
-            await worker.queue_frames(
-                [
-                    TTSSpeakFrame(
-                        text="Hello. This is the Raspberry Pi voice agent. "
-                        "Speech out is working. Please say something after the tone."
-                    )
-                ]
-            )
+        # Fixed spoken greeting: gemma4:31b on Ollama Cloud returns empty
+        # content for a developer-only turn (no user message), so we don't
+        # LLM-greet. The system prompt still instructs it to greet when the
+        # user actually speaks.
+        await worker.queue_frames(
+            [
+                TTSSpeakFrame(
+                    text="Hello. This is the Raspberry Pi voice agent, "
+                    "connected to Ollama Cloud. Say something and I will answer."
+                )
+            ]
+        )
 
     @transport.event_handler("on_client_connected")
     async def on_client_connected(transport, client):
