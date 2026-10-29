@@ -60,12 +60,36 @@ VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
 
 
 def build_speech_services():
-    """Return (stt, tts) for the configured SPEECH_MODE."""
+    """Return (stt, tts) for the configured SPEECH_MODE.
+
+    Modes:
+      direct — Jetson Nemotron ASR + Magpie TTS over gRPC (streaming).
+      mcp    — same Jetson endpoints through local MCP servers (offline,
+               per-utterance/per-sentence; smoother onsets, higher latency).
+      deepgram — Deepgram cloud STT + TTS over WebSockets (streaming, needs
+               DEEPGRAM_API_KEY).
+    """
     if SPEECH_MODE == "mcp":
         from mcp_pipeline import MCPSTTService, MCPTTSService
         logger.info("Speech mode: MCP (per-utterance ASR, per-sentence TTS via MCP servers)")
         stt = MCPSTTService()
         tts = MCPTTSService(sample_rate=22050)
+        return stt, tts
+
+    if SPEECH_MODE == "deepgram":
+        from pipecat.services.deepgram.stt import DeepgramSTTService
+        from pipecat.services.deepgram.tts import DeepgramTTSService
+        api_key = os.getenv("DEEPGRAM_API_KEY", "")
+        if not api_key:
+            raise RuntimeError("SPEECH_MODE=deepgram requires DEEPGRAM_API_KEY in ~/.voice-agent-env")
+        logger.info("Speech mode: Deepgram (cloud streaming STT+TTS)")
+        stt = DeepgramSTTService(api_key=api_key, sample_rate=16000)
+        tts = DeepgramTTSService(
+            api_key=api_key,
+            settings=DeepgramTTSService.Settings(
+                voice=os.getenv("DEEPGRAM_TTS_VOICE", "aura-2-thalia-en"),
+            ),
+        )
         return stt, tts
 
     logger.info("Speech mode: direct (Jetson Riva gRPC streaming)")
@@ -97,16 +121,34 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         settings=OpenAILLMService.Settings(
             model=OLLAMA_MODEL,
             system_instruction=(
-                "You are a friendly voice assistant. Keep replies short "
-                "(1-3 spoken sentences), no lists or emojis, and speak "
-                "naturally. Never read out code or URLs."
+                "You are a friendly voice assistant running on a Raspberry "
+                "Pi. Keep replies short (1-3 spoken sentences), no lists or "
+                "emojis, and speak naturally. You have tools available: when "
+                "the user asks for weather, time, timers, alarms, reminders, "
+                "music, radio, lights, thermostat, or messaging, call the "
+                "matching tool and then briefly speak its result. Never read "
+                "out code or URLs."
             ),
         ),
     )
 
+    # LLM tools via MCP: the voice-agent command tools server (M5). The
+    # connection lives for the bot's lifetime; Pipecat closes it at teardown.
+    from pipecat.services.mcp_service import MCPClient
+    from mcp import StdioServerParameters
+
+    tools_mcp = MCPClient(
+        server_params=StdioServerParameters(
+            command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
+            args=[os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_servers", "voice_tools_mcp_server.py")],
+        )
+    )
+    voice_tools = await tools_mcp.tools()
+    logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
+
     stt, tts = build_speech_services()
 
-    context = LLMContext()
+    context = LLMContext(tools=voice_tools)
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
         context,
         user_params=LLMUserAggregatorParams(
