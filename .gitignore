@@ -1,0 +1,20 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.key
+secrets/
+
+# audio / recordings
+*.wav
+*.pcm
+!fixtures/*.wav
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+
+# node
+node_modules/
