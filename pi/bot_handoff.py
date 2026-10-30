@@ -149,6 +149,11 @@ class PersonaPlexClient:
         self._skip_headers = 2   # OpusHead + OpusTags packets
         self._stream_ref = None  # av stream bound to raw packets
         self._pkt_buf = b""      # spans a packet across page boundaries
+        # libopus decodes at its native 48 kHz regardless of ctx.sample_rate,
+        # so downmix 48k -> 24k here (PP_SAMPLE_RATE) to avoid half-speed audio.
+        self._resampler = av.AudioResampler(
+            format="s16", layout="mono", rate=PP_SAMPLE_RATE
+        )
 
     async def start(self):
         self._session = aiohttp.ClientSession()
@@ -273,10 +278,11 @@ class PersonaPlexClient:
                     frames = self._decoder.decode(packet)
                 except Exception:
                     continue
-                for frame in frames:
-                    plane = frame.planes[0]
-                    arr = np.frombuffer(bytes(plane), dtype=np.int16)
-                    yield arr
+                for frame in frames:  # frame is 48 kHz (libopus native)
+                    for out_frame in self._resampler.resample(frame):
+                        plane = out_frame.planes[0]
+                        arr = np.frombuffer(bytes(plane), dtype=np.int16)
+                        yield arr
 
     async def _emit_pcm(self, arr: np.ndarray):
         await self.on_audio(arr)
