@@ -57,7 +57,16 @@ from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.worker import PipelineParams, PipelineWorker
 from pipecat.processors.aggregators.llm_context import LLMContext
 from pipecat.processors.frame_processor import FrameProcessor
-from pipecat.frames.frames import InputAudioRawFrame, TTSSpeakFrame, Frame
+from pipecat.frames.frames import (
+    AggregatedTextFrame,
+    Frame,
+    InputAudioRawFrame,
+    LLMFullResponseEndFrame,
+    LLMFullResponseStartFrame,
+    LLMTextFrame,
+    TextFrame,
+    TTSSpeakFrame,
+)
 from pipecat.processors.frame_processor import FrameDirection
 from pipecat.processors.aggregators.llm_response_universal import (
     LLMContextAggregatorPair,
@@ -363,11 +372,23 @@ class MicTee(FrameProcessor):
 
 
 class CascadeTTSGate(FrameProcessor):
-    """Drop cascade speech (TTSSpeakFrame) while PP owns the turn.
+    """Drop ALL cascade speech frames while PP owns the turn.
 
-    Keeps the shadow ASR/LLM path running (transcription still shown) but
-    prevents the cascade from audibly double-answering in FRONTDESK mode.
+    The cascade TTS synthesizes not only from TTSSpeakFrame but also from the
+    LLM's streaming response frames (LLMFullResponseStartFrame, LLMTextFrame,
+    LLMFullResponseEndFrame, TextFrame, AggregatedTextFrame). We swallow every
+    one of those (downstream only) unless the cascade owns the turn, so the
+    shadow STT/LLM path still runs silently without audibly double-answering.
     """
+
+    _TTS_TRIGGER = (
+        TTSSpeakFrame,
+        LLMFullResponseStartFrame,
+        LLMTextFrame,
+        LLMFullResponseEndFrame,
+        AggregatedTextFrame,
+        TextFrame,
+    )
 
     def __init__(self, state: HandoffState):
         super().__init__()
@@ -375,7 +396,11 @@ class CascadeTTSGate(FrameProcessor):
 
     async def process_frame(self, frame: Frame, direction: FrameDirection):
         await super().process_frame(frame, direction)
-        if isinstance(frame, TTSSpeakFrame) and self._state.owner != Owner.CASCADE:
+        if (
+            direction == FrameDirection.DOWNSTREAM
+            and self._state.owner != Owner.CASCADE
+            and isinstance(frame, self._TTS_TRIGGER)
+        ):
             return  # swallow: PP owns the turn
         await self.push_frame(frame, direction)
 
