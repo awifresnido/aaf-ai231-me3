@@ -1,0 +1,9 @@
+artifacts/
+.venv/
+__pycache__/
+*.log
+*.wav
+*.pcm
+access/
+.env
+.env.*

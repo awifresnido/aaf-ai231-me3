@@ -1,0 +1,5 @@
+# Minimal harness environment. No model-service credentials or GPU are needed.
+pipecat-ai[webrtc]==1.13.0
+aiortc==1.15.0
+av==17.1.0
+numpy==2.5.4
