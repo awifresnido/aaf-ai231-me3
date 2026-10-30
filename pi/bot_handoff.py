@@ -90,8 +90,10 @@ load_dotenv(override=True)
 ASR_SERVER = os.getenv("ASR_SERVER", "192.168.5.11:50051")
 TTS_SERVER = os.getenv("TTS_SERVER", "192.168.5.11:50052")
 TTS_VOICE = os.getenv("TTS_VOICE", "0")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
+# Cascade LLM — OpenRouter glm-5.3-flash (fast, token-efficient). Falls back
+# to the legacy Ollama Cloud env vars only if LLM_* are unset.
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1")
+LLM_MODEL = os.getenv("LLM_MODEL", "z-ai/glm-5.3-flash")
 VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
 
 PP_WS_URL = os.getenv(
@@ -409,13 +411,13 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
     logger.info("Starting ME3 handoff bot (PP + cascade, port 7861)")
 
     state = HandoffState()
-    ollama_key = os.getenv("OLLAMA_API_KEY")
+    llm_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OLLAMA_API_KEY")
 
     llm = OpenAILLMService(
-        api_key=ollama_key,
-        base_url=OLLAMA_BASE_URL,
+        api_key=llm_key,
+        base_url=LLM_BASE_URL,
         settings=OpenAILLMService.Settings(
-            model=OLLAMA_MODEL,
+            model=LLM_MODEL,
             system_instruction=(
                 "You are a task assistant. Keep replies to 1-3 short spoken "
                 "sentences, no lists or emojis. You have tools for weather, "
