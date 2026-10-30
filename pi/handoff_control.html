@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ME3 handoff control</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 16px; }
+  button { font-size: 18px; padding: 14px 22px; margin: 8px 6px; border-radius: 8px; border: 1px solid #888; cursor: pointer; }
+  #takeover { background: #ffe9c9; }
+  #return { background: #d8f5d8; }
+  pre { background: #f4f4f4; padding: 12px; border-radius: 8px; min-height: 120px; white-space: pre-wrap; }
+  .note { color: #555; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h2>PersonaPlex ↔ Cascade handoff control</h2>
+  <p class="note">Open the voice UI at <b>http://192.168.5.12:7861/client/</b> (or via your localhost tunnel) FIRST, then use these buttons in this tab. Messages ride the same WebRTC data channel from this page's connection — if you connected via the voice UI, this page sends the control through a second lightweight data connection.</p>
+
+  <button id="takeover">⏩ Takeover → Cascade</button>
+  <button id="return">⏪ Return → PersonaPlex</button>
+
+  <h3>Event log</h3>
+  <pre id="log">No actions yet.</pre>
+
+<script>
+const logEl = document.getElementById("log");
+function log(msg) {
+  logEl.textContent = new Date().toLocaleTimeString() + "  " + msg + "\n" + logEl.textContent;
+}
+
+// The handoff bot listens for app-messages over its WebRTC data channel.
+// The stock /client/ UI doesn't send pp-control messages, so this page
+// makes a minimal WebSocket-based signalling client to the same runner and
+// delivers the control JSON via the runner's app-message path.
+//
+// Simpler robust path: POST to the bot's HTTP server (same origin) which the
+// bot HandoffControl exposes as a REST bridge — see bot_handoff.py control
+// endpoint on port 7861 (path /control).
+async function sendControl(action) {
+  log("→ sending " + action + " ...");
+  try {
+    const r = await fetch("/control", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({type: "pp-control", action}),
+    });
+    const j = await r.json();
+    log("← " + JSON.stringify(j));
+  } catch (e) {
+    log("✗ " + e.message + " (is the bot's control bridge running?)");
+  }
+}
+document.getElementById("takeover").onclick = () => sendControl("takeover");
+document.getElementById("return").onclick = () => sendControl("return");
+</script>
+</body>
+</html>
