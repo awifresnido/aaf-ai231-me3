@@ -141,11 +141,14 @@ class PersonaPlexClient:
         self.session_id = f"pp-{int(time.time()*1000)}"
         self.greeting_text = ""
         # Persistent ogg page assembler: PP splits the ogg stream across ws
-        # frames; each frame is a FRAGMENT, not a standalone ogg file. Buffer
-        # bytes, split complete pages on the "OggS" magic, decode each page
-        # against ONE continuous codec context (opus headers in first pages).
+        # frames. We buffer bytes, split exact pages (RFC 3533), extract raw
+        # opus packets from each page, and decode with ONE persistent libopus
+        # codec context (skipping the OpusHead/OpusTags header packets).
         self._ogg_buf = b""
-        self._hdr_cache = None  # OpusHead+OpusTags pages (first two)
+        self._full_ogg = b""     # headers + pages (used once for stream ref)
+        self._skip_headers = 2   # OpusHead + OpusTags packets
+        self._stream_ref = None  # av stream bound to raw packets
+        self._pkt_buf = b""      # spans a packet across page boundaries
 
     async def start(self):
         self._session = aiohttp.ClientSession()
@@ -159,29 +162,31 @@ class PersonaPlexClient:
         ]
 
     async def send_pcm(self, pcm: np.ndarray):
-        """Send user PCM (int16 mono 24k) as ogg/opus stream chunk."""
+        """Send user PCM (int16 mono 24k) as a continuous ogg/opus stream.
+
+        Maintains ONE ogg muxer writing to a growing BytesIO; each call sends
+        only the newly-written bytes (tracked by offset), so PP's sphn reader
+        receives a single continuous ogg stream with headers sent exactly once.
+        """
         if self.ws is None or self.ws.closed:
             return
-        # Build ogg container per chunk is wasteful; instead keep a persistent
-        # encoder + ogg muxer writing to a pipe buffer, flush per chunk.
-        # Simplification: encode 20ms frames, wrap each ogg page set —
-        # sphn accepts a continuous ogg byte stream, so we maintain one muxer.
         if not hasattr(self, "_ogg_muxer") or self._ogg_muxer is None:
             self._tx_ogg = io.BytesIO()
             self._ogg_muxer = av.open(self._tx_ogg, mode="w", format="ogg")
-            self._ogg_stream = self._ogg_muxer.add_stream("libopus", rate=PP_SAMPLE_RATE)
+            self._ogg_stream = self._ogg_muxer.add_stream(
+                "libopus", rate=PP_SAMPLE_RATE
+            )
             self._ogg_stream.layout = "mono"
+            self._tx_sent = 0
         frame = av.AudioFrame.from_ndarray(pcm.reshape(1, -1), format="s16", layout="mono")
         frame.sample_rate = PP_SAMPLE_RATE
         for p in self._ogg_stream.encode(frame):
             self._ogg_muxer.mux(p)
-        data = self._tx_ogg.getvalue()
-        if data:
-            await self.ws.send_bytes(b"\x01" + data)
-            self._tx_ogg = io.BytesIO()
-            self._ogg_muxer._io = self._tx_ogg  # keep muxer writing to fresh buffer
-        else:
-            return
+        buf = self._tx_ogg.getvalue()
+        new = buf[self._tx_sent:]
+        self._tx_sent = len(buf)
+        if new:
+            await self.ws.send_bytes(b"\x01" + new)
 
     async def _recv_loop(self):
         try:
@@ -193,17 +198,9 @@ class PersonaPlexClient:
                 if kind == 1:  # ogg/opus audio fragments
                     self._ogg_buf += msg.data[1:]
                     for page in self._split_pages():
-                        nseg = page[26] if len(page) > 27 else 0
-                        payload = page[27 + nseg:27 + nseg + 8]
-                        if len(page) > 27 and payload[:8] == b"OpusHead" \
-                                and self._hdr_cache is None:
-                            self._hdr_cache = page  # hold for OpusTags
-                            continue
-                        if len(page) > 27 and payload[:8] == b"OpusTags":
-                            self._hdr_cache = (self._hdr_cache or b"") + page
-                            continue
-                        for packet in self._decode_page(page):
-                            await self._emit_pcm(packet)
+                        self._full_ogg += page
+                        for arr in self._decode_page_packets(page):
+                            await self._emit_pcm(arr)
                 elif kind == 2:
                     text = msg.data[1:].decode("utf8", "ignore")
                     self.greeting_text += text
@@ -243,32 +240,43 @@ class PersonaPlexClient:
         self._ogg_buf = self._ogg_buf[consumed:]
         return pages
 
-    def _decode_page(self, page: bytes):
-        """Decode one complete ogg page to int16 PCM.
+    def _decode_page_packets(self, page: bytes):
+        """Extract raw opus packets from one ogg page and decode to int16 PCM.
 
-        Persistent decoder + header-prepend trick: PyAV cannot demux a bare
-        mid-stream page, so we prepend the cached OpusHead/OpusTags header
-        pages and skip their (re-emitted) packets.
+        Skips the first two packets (OpusHead/OpusTags). Packets may span page
+        boundaries (segments of 255), handled via self._pkt_buf. Binds each raw
+        packet to a stream reference (grabbed once from the accumulated ogg)
+        and decodes with the persistent libopus context.
         """
-        if self._hdr_cache is None:
-            return
-        try:
-            container = av.open(io.BytesIO(self._hdr_cache + page), format="ogg")
-        except Exception:
-            return
-        try:
-            packets = list(container.demux())
-        except Exception:
-            return
-        for packet in packets[2:]:  # first 2 packets are the re-emitted headers
-            try:
-                frames = self._decoder.decode(packet)
-            except Exception:
-                continue
-            for frame in frames:
-                plane = frame.planes[0]
-                arr = np.frombuffer(bytes(plane), dtype=np.int16)
-                yield arr
+        nseg = page[26]
+        seg_table = page[27:27 + nseg]
+        payload = page[27 + nseg:]
+        pos = 0
+        for seg_len in seg_table:
+            self._pkt_buf += payload[pos:pos + seg_len]
+            pos += seg_len
+            if seg_len < 255:  # packet complete
+                pkt_bytes = self._pkt_buf
+                self._pkt_buf = b""
+                if self._skip_headers > 0:
+                    self._skip_headers -= 1
+                    continue
+                if self._stream_ref is None:
+                    try:
+                        ref = av.open(io.BytesIO(self._full_ogg), format="ogg")
+                        self._stream_ref = ref.streams.audio[0]
+                    except Exception:
+                        return
+                packet = av.Packet(pkt_bytes)
+                packet.stream = self._stream_ref
+                try:
+                    frames = self._decoder.decode(packet)
+                except Exception:
+                    continue
+                for frame in frames:
+                    plane = frame.planes[0]
+                    arr = np.frombuffer(bytes(plane), dtype=np.int16)
+                    yield arr
 
     async def _emit_pcm(self, arr: np.ndarray):
         await self.on_audio(arr)
