@@ -56,6 +56,9 @@ from pipecat.frames.frames import (
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.worker import PipelineParams, PipelineWorker
 from pipecat.processors.aggregators.llm_context import LLMContext
+from pipecat.processors.frame_processor import FrameProcessor
+from pipecat.frames.frames import InputAudioRawFrame, TTSSpeakFrame, Frame
+from pipecat.processors.frame_processor import FrameDirection
 from pipecat.processors.aggregators.llm_response_universal import (
     LLMContextAggregatorPair,
     LLMUserAggregatorParams,
@@ -306,6 +309,63 @@ class PPOutputGate:
             logger.warning(f"send_audio failed: {e}")
 
 
+class MicTee(FrameProcessor):
+    """Tees user mic audio into PersonaPlex when PP owns the turn.
+
+    Passthrough for everything; additionally forwards InputAudioRawFrame
+    (resampled to 24 kHz int16 mono) into the PP websocket.
+    """
+
+    def __init__(self, state: HandoffState, pp_getter):
+        super().__init__()
+        self._state = state
+        self._pp_getter = pp_getter  # callable -> Optional[PersonaPlexClient]
+        self._resampler = av.AudioResampler(format="s16", layout="mono", rate=PP_SAMPLE_RATE)
+
+    async def process_frame(self, frame: Frame, direction: FrameDirection):
+        await super().process_frame(frame, direction)
+        if isinstance(frame, InputAudioRawFrame):
+            if self._state.owner != Owner.PERSONAPLEX:
+                await self.push_frame(frame, direction)
+                return
+            pp = self._pp_getter()
+            if pp is None:
+                await self.push_frame(frame, direction)
+                return
+            try:
+                arr = np.frombuffer(frame.audio, dtype=np.int16)
+                if arr.size == 0:
+                    await self.push_frame(frame, direction)
+                    return
+                arr2d = arr.reshape(1, -1)
+                f = av.AudioFrame.from_ndarray(arr2d, format="s16", layout="mono")
+                f.sample_rate = frame.sample_rate
+                for rf in self._resampler.resample(f):
+                    pcm = np.frombuffer(bytes(rf.planes[0]), dtype=np.int16)
+                    await pp.send_pcm(pcm)
+            except Exception as e:
+                logger.warning(f"[MicTee] forward to PP failed: {e}")
+        await self.push_frame(frame, direction)
+
+
+class CascadeTTSGate(FrameProcessor):
+    """Drop cascade speech (TTSSpeakFrame) while PP owns the turn.
+
+    Keeps the shadow ASR/LLM path running (transcription still shown) but
+    prevents the cascade from audibly double-answering in FRONTDESK mode.
+    """
+
+    def __init__(self, state: HandoffState):
+        super().__init__()
+        self._state = state
+
+    async def process_frame(self, frame: Frame, direction: FrameDirection):
+        await super().process_frame(frame, direction)
+        if isinstance(frame, TTSSpeakFrame) and self._state.owner != Owner.CASCADE:
+            return  # swallow: PP owns the turn
+        await self.push_frame(frame, direction)
+
+
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
     logger.info("Starting ME3 handoff bot (PP + cascade, port 7861)")
 
@@ -372,11 +432,16 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments):
         ),
     )
 
+    mic_tee = MicTee(state, lambda: pp_client)
+    tts_gate = CascadeTTSGate(state)
+
     pipeline = Pipeline([
         transport.input(),
+        mic_tee,
         stt,
         user_aggregator,
         llm,
+        tts_gate,
         tts,
         transport.output(),
         assistant_aggregator,
