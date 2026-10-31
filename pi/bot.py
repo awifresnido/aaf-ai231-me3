@@ -53,6 +53,7 @@ from pipecat.runner.utils import create_transport
 from pipecat.services.nvidia.stt import NvidiaSTTService
 from pipecat.services.nvidia.tts import NvidiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
+from pipecat.transports.base_output import BaseOutputTransport
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
 
@@ -76,6 +77,16 @@ VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
 TRANSPORT_MODE = os.getenv("TRANSPORT_MODE", "webrtc").strip().lower()
 AUDIO_INPUT_DEVICE = os.getenv("AUDIO_INPUT_DEVICE", "pulse")
 AUDIO_OUTPUT_DEVICE = os.getenv("AUDIO_OUTPUT_DEVICE", "pulse")
+
+# Backend used for Pi-local playback:
+#   pacat   (default) — stream PCM to the OS player; it owns buffering and
+#                       plays cleanly on USB speakerphones.
+#   pyaudio — Pipecat's built-in PyAudio writer. On the lab Pi this starves
+#             the sink (audible stutter / near-silence) even though the same
+#             bytes play fine through paplay, hence not the default.
+AUDIO_OUTPUT_IMPL = os.getenv("AUDIO_OUTPUT_IMPL", "pacat").strip().lower()
+# pacat target buffer; absorbs pipeline jitter on a Pi 4.
+PACAT_LATENCY_MS = int(os.getenv("PACAT_LATENCY_MS", "150"))
 
 GREETING_TEXT = (
     "Hello. This is the Raspberry Pi voice agent, "
@@ -167,6 +178,72 @@ def _resolve_audio_device(py_audio, spec: str, want_input: bool) -> int:
     )
 
 
+class PacatAudioOutput(BaseOutputTransport):
+    """Playbot output that pipes PCM to `pacat` instead of PyAudio.
+
+    Pipecat's LocalAudioOutputTransport writes 10ms chunks from the event loop
+    through PyAudio; on this Pi that leaves the sink starved (measured: the
+    same audio played through paplay is continuous, through PyAudio it is
+    fragmented). Handing the bytes to pacat puts buffering in the OS player,
+    which is exactly the path that is verified audible on the JV801P.
+    """
+
+    _params: "LocalAudioTransportParams"
+
+    def __init__(self, py_audio, params):
+        super().__init__(params)
+        self._proc = None
+
+    async def setup(self, setup):
+        # Run BaseOutputTransport.setup for resampler/chunking init, but do NOT
+        # open a PyAudio stream: pacat owns playback.
+        await BaseOutputTransport.setup(self, setup)
+        self._proc = await asyncio.create_subprocess_exec(
+            "pacat",
+            "--playback",
+            "--raw",
+            f"--format=s16le",
+            f"--rate={self.sample_rate}",
+            f"--channels={self._params.audio_out_channels}",
+            f"--latency-msec={PACAT_LATENCY_MS}",
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.DEVNULL,
+        )
+        logger.info(
+            f"Local audio output via pacat: {self.sample_rate} Hz, "
+            f"{self._params.audio_out_channels} ch, latency {PACAT_LATENCY_MS} ms"
+        )
+
+    async def start(self, frame):
+        await BaseOutputTransport.start(self, frame)
+        await self.set_transport_ready(frame)
+
+    async def write_audio_frame(self, frame) -> bool:
+        if self._proc is None or self._proc.stdin is None:
+            return False
+        try:
+            self._proc.stdin.write(frame.audio)
+            await self._proc.stdin.drain()
+            return True
+        except (BrokenPipeError, ConnectionResetError):
+            logger.error("pacat pipe closed; playback stopped")
+            self._proc = None
+            return False
+
+    async def cleanup(self):
+        try:
+            await BaseOutputTransport.cleanup(self)
+        finally:
+            if self._proc is not None:
+                try:
+                    self._proc.stdin.close()
+                    await self._proc.wait()
+                except Exception:
+                    pass
+                self._proc = None
+
+
 def build_local_transport() -> BaseTransport:
     """Build a LocalAudioTransport bound to the Pi's own sound card."""
     import pyaudio
@@ -174,6 +251,21 @@ def build_local_transport() -> BaseTransport:
         LocalAudioTransport,
         LocalAudioTransportParams,
     )
+
+    if AUDIO_OUTPUT_IMPL == "pacat":
+        # Defined here because the local transport classes import pyaudio,
+        # which only exists on the Pi (and only after our hand-built install).
+        class LocalPacatTransport(LocalAudioTransport):
+            """LocalAudioTransport with the PyAudio writer swapped for pacat."""
+
+            def output(self):
+                if not self._output:
+                    self._output = PacatAudioOutput(self._pyaudio, self._params)
+                return self._output
+
+        cls = LocalPacatTransport
+    else:
+        cls = LocalAudioTransport
 
     probe = pyaudio.PyAudio()
     try:
@@ -184,7 +276,7 @@ def build_local_transport() -> BaseTransport:
     finally:
         probe.terminate()
 
-    return LocalAudioTransport(
+    return cls(
         LocalAudioTransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
