@@ -4,6 +4,14 @@ Cascaded pipeline on the Raspberry Pi:
   browser (ThinkPad) --WebRTC--> Pi: Silero VAD -> Nemotron ASR (Jetson)
   -> Ollama Cloud LLM -> Magpie TTS (Jetson) -> browser speaker
 
+Audio transports (TRANSPORT_MODE):
+  webrtc (default) — the ThinkPad browser carries mic + speaker over WebRTC.
+  local — the Pi's own audio hardware. Mic and speaker attach to the Pi, so
+    no browser is involved. Defaults to the PulseAudio "pulse" device, i.e.
+    whatever the system default sink/source is (on the lab Pi that is the
+    JOUNIVO JV801P USB speakerphone). Pin a specific device with
+    AUDIO_INPUT_DEVICE / AUDIO_OUTPUT_DEVICE (name substring or "index:N").
+
 Speech backends:
   SPEECH_MODE=direct (default) — NvidiaSTTService/NvidiaTTSService talk to
     the Jetson gRPC containers straight. Streaming ASR partials, TTS TTFA
@@ -14,9 +22,13 @@ Speech backends:
     the Option A benchmark path.
 
 Run on the Pi:
+  # browser (ThinkPad) mic + speaker
   ~/pipecat-quickstart/server/.venv/bin/python bot.py -t webrtc --host 0.0.0.0 --port 7860
+  # Pi-local mic + speaker (USB speakerphone)
+  TRANSPORT_MODE=local ~/pipecat-quickstart/server/.venv/bin/python bot.py
 Env: OLLAMA_API_KEY etc. in ~/.voice-agent-env (chmod 600, outside the repo).
 """
+import asyncio
 import os
 
 from dotenv import load_dotenv
@@ -57,6 +69,18 @@ OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
 # finals arrive ~0.6s after speech end. 0.8s VAD silence lets the final land
 # inside the turn.
 VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
+
+# Audio transport: "webrtc" (browser on the ThinkPad) or "local" (the Pi's own
+# sound card). Device specs are matched against PyAudio device names; use
+# "index:N" to pin a raw PyAudio index, or a substring such as "JOUNIVO".
+TRANSPORT_MODE = os.getenv("TRANSPORT_MODE", "webrtc").strip().lower()
+AUDIO_INPUT_DEVICE = os.getenv("AUDIO_INPUT_DEVICE", "pulse")
+AUDIO_OUTPUT_DEVICE = os.getenv("AUDIO_OUTPUT_DEVICE", "pulse")
+
+GREETING_TEXT = (
+    "Hello. This is the Raspberry Pi voice agent, "
+    "connected to Ollama Cloud. Say something and I will answer."
+)
 
 
 def build_speech_services():
@@ -109,6 +133,65 @@ def build_speech_services():
         voice_id=TTS_VOICE,
     )
     return stt, tts
+
+
+def _resolve_audio_device(py_audio, spec: str, want_input: bool) -> int:
+    """Resolve a device spec ("index:N" or a name substring) to a PyAudio index.
+
+    PyAudio/ALSA indices shift when USB devices are replugged or cards
+    renumber, so a name match is preferred over a hard-coded index. The
+    "pulse" device is the PulseAudio bridge: it always exists while the daemon
+    runs and follows the system default sink/source, which is what routes
+    audio to the USB speakerphone.
+    """
+    spec = str(spec).strip()
+    if spec.lower().startswith("index:"):
+        return int(spec.split(":", 1)[1])
+    if spec.isdigit():
+        return int(spec)
+
+    want = spec.lower()
+    candidates = []
+    for i in range(py_audio.get_device_count()):
+        info = py_audio.get_device_info_by_index(i)
+        usable = (
+            info["maxInputChannels"] > 0 if want_input else info["maxOutputChannels"] > 0
+        )
+        candidates.append(f"{i}:{info['name']}")
+        if usable and want in info["name"].lower():
+            return i
+
+    raise RuntimeError(
+        f"No {'input' if want_input else 'output'} audio device matches {spec!r}. "
+        f"Available: {', '.join(candidates)}"
+    )
+
+
+def build_local_transport() -> BaseTransport:
+    """Build a LocalAudioTransport bound to the Pi's own sound card."""
+    import pyaudio
+    from pipecat.transports.local.audio import (
+        LocalAudioTransport,
+        LocalAudioTransportParams,
+    )
+
+    probe = pyaudio.PyAudio()
+    try:
+        in_idx = _resolve_audio_device(probe, AUDIO_INPUT_DEVICE, want_input=True)
+        out_idx = _resolve_audio_device(probe, AUDIO_OUTPUT_DEVICE, want_input=False)
+        logger.info(f"Local audio input  [{in_idx}] {probe.get_device_info_by_index(in_idx)['name']}")
+        logger.info(f"Local audio output [{out_idx}] {probe.get_device_info_by_index(out_idx)['name']}")
+    finally:
+        probe.terminate()
+
+    return LocalAudioTransport(
+        LocalAudioTransportParams(
+            audio_in_enabled=True,
+            audio_out_enabled=True,
+            input_device_index=in_idx,
+            output_device_index=out_idx,
+        )
+    )
 
 
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
@@ -177,12 +260,21 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
 
     @worker.rtvi.event_handler("on_client_ready")
     async def on_client_ready(rtvi):
-        await worker.queue_frames([
-            TTSSpeakFrame(
-                text="Hello. This is the Raspberry Pi voice agent, "
-                     "connected to Ollama Cloud. Say something and I will answer."
-            )
-        ])
+        await worker.queue_frames([TTSSpeakFrame(text=GREETING_TEXT)])
+
+    if TRANSPORT_MODE == "local":
+        # Local audio has no RTVI client, so on_client_ready never fires.
+        # Queue the greeting ourselves once the output stream is actually open.
+        async def _local_greeting():
+            out = transport.output()
+            for _ in range(75):
+                if getattr(out, "_out_stream", None) is not None:
+                    break
+                await asyncio.sleep(0.2)
+            await asyncio.sleep(0.3)
+            await worker.queue_frames([TTSSpeakFrame(text=GREETING_TEXT)])
+
+        asyncio.create_task(_local_greeting())
 
     @transport.event_handler("on_client_connected")
     async def on_client_connected(transport, client):
@@ -197,19 +289,30 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
 
 
 async def bot(runner_args: RunnerArguments):
-    transport = await create_transport(
-        runner_args,
-        {
-            "webrtc": lambda: TransportParams(
-                audio_in_enabled=True,
-                audio_out_enabled=True,
-            ),
-        },
-    )
+    if TRANSPORT_MODE == "local":
+        # Pi-local hardware: no browser, no signalling, no WebRTC peer.
+        transport = build_local_transport()
+    else:
+        transport = await create_transport(
+            runner_args,
+            {
+                "webrtc": lambda: TransportParams(
+                    audio_in_enabled=True,
+                    audio_out_enabled=True,
+                ),
+            },
+        )
     await run_bot(transport, runner_args)
 
 
 if __name__ == "__main__":
-    from pipecat.runner.run import main
+    if TRANSPORT_MODE == "local":
+        # Bypass the development runner: it exists to serve a browser client,
+        # and local audio needs neither the HTTP port nor the signalling layer.
+        local_args = RunnerArguments()
+        local_args.handle_sigint = True
+        asyncio.run(bot(local_args))
+    else:
+        from pipecat.runner.run import main
 
-    main()
+        main()

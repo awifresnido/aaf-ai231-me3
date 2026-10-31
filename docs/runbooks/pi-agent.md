@@ -57,3 +57,40 @@ docker ps --format '{{.Names}} | {{.Status}}'
 
 Copy `pi/env.example` to `~/.config/voice-agent/env`, fill in the Ollama key,
 `chmod 600` it, and export before starting the bot. Never commit it.
+
+## Local audio (Pi mic + USB speakerphone)
+
+By default the agent runs the `webrtc` transport and the ThinkPad browser owns
+mic and speaker. To move audio onto the Pi's own hardware — e.g. the JOUNIVO
+JV801P USB speakerphone — run the `local` transport instead:
+
+```bash
+cd ~/voice-agent
+TRANSPORT_MODE=local \
+  ~/pipecat-quickstart/server/.venv/bin/python bot.py
+```
+
+No browser and no HTTP port are involved: the development runner is bypassed
+and the pipeline reads/writes the sound card directly through PyAudio.
+
+Device selection defaults to the PulseAudio bridge device (`pulse`), which
+follows the system default sink/source, so whatever `pactl get-default-sink`
+reports is what you hear. Pin a device explicitly when needed:
+
+```bash
+TRANSPORT_MODE=local AUDIO_INPUT_DEVICE=JOUNIVO AUDIO_OUTPUT_DEVICE=JOUNIVO \
+  ~/pipecat-quickstart/server/.venv/bin/python bot.py
+# or pin raw PyAudio indices:
+TRANSPORT_MODE=local AUDIO_INPUT_DEVICE=index:6 AUDIO_OUTPUT_DEVICE=index:6 ...
+```
+
+Name substrings are preferred over indices because ALSA indices shift when USB
+devices are replugged. Confirm what exists with:
+
+```bash
+python -c "import pyaudio;p=pyaudio.PyAudio();[print(i,p.get_device_info_by_index(i)[\"name\"]) for i in range(p.get_device_count())]"
+```
+
+Requires the `pyaudio` module (`pipecat-ai[local]`). On a Pi without
+`portaudio19-dev` it can be built from the PyAudio sdist against the extracted
+dev headers — see the install note in `bot.py`.
