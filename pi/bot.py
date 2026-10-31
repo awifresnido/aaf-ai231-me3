@@ -2,7 +2,7 @@
 
 Cascaded pipeline on the Raspberry Pi:
   browser (ThinkPad) --WebRTC--> Pi: Silero VAD -> Nemotron ASR (Jetson)
-  -> Ollama Cloud LLM -> Magpie TTS (Jetson) -> browser speaker
+  -> Llama 3.2 LLM (VPS llama.cpp) -> Magpie TTS (Jetson) -> browser speaker
 
 Speech backends:
   SPEECH_MODE=direct (default) — NvidiaSTTService/NvidiaTTSService talk to
@@ -50,8 +50,9 @@ SPEECH_MODE = os.getenv("SPEECH_MODE", "direct")
 ASR_SERVER = os.getenv("ASR_SERVER", "192.168.5.11:50051")
 TTS_SERVER = os.getenv("TTS_SERVER", "192.168.5.11:50052")
 TTS_VOICE = os.getenv("TTS_VOICE", "0")
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", os.getenv("OLLAMA_BASE_URL", "http://72.62.76.173:8010/v1"))
+LLM_MODEL = os.getenv("LLM_MODEL", os.getenv("OLLAMA_MODEL", "llama3.2-3b"))
+LLM_API_KEY = os.getenv("LLM_API_KEY", os.getenv("OLLAMA_API_KEY", "none"))
 
 # Pi-local VAD policy: with the Jetson ASR container at stop_history_eou_ms=320,
 # finals arrive ~0.6s after speech end. 0.8s VAD silence lets the final land
@@ -114,12 +115,11 @@ def build_speech_services():
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
 
-    ollama_key = os.getenv("OLLAMA_API_KEY")
     llm = OpenAILLMService(
-        api_key=ollama_key,
-        base_url=OLLAMA_BASE_URL,
+        api_key=LLM_API_KEY,
+        base_url=LLM_BASE_URL,
         settings=OpenAILLMService.Settings(
-            model=OLLAMA_MODEL,
+            model=LLM_MODEL,
             system_instruction=(
                 "You are a friendly voice assistant running on a Raspberry "
                 "Pi. Keep replies short (1-3 spoken sentences), no lists or "
@@ -180,7 +180,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         await worker.queue_frames([
             TTSSpeakFrame(
                 text="Hello. This is the Raspberry Pi voice agent, "
-                     "connected to Ollama Cloud. Say something and I will answer."
+                     "connected to a Llama 3.2 LLM on the VPS. Say something and I will answer."
             )
         ])
 
