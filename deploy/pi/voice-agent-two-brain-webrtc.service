@@ -1,0 +1,19 @@
+[Unit]
+Description=Voice agent two-brain WebRTC bot
+After=network-online.target
+Conflicts=me3-local-audio.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/aldwinrpi4/voice-agent
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python bot.py -t webrtc --host 0.0.0.0 --port 7860
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+UMask=0077
+StandardOutput=append:/home/aldwinrpi4/voice-agent/two-brain-webrtc.log
+StandardError=append:/home/aldwinrpi4/voice-agent/two-brain-webrtc.log
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=Voice agent Llama 3.2 3B fallback server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/llama.cpp
+ExecStartPre=/usr/bin/test -s /root/models/Llama-3.2-3B-Instruct-Q4_K_M.gguf
+ExecStartPre=/usr/bin/test -s /etc/voice-agent/llama-api-key
+ExecStart=/root/llama.cpp/build/bin/llama-server -m /root/models/Llama-3.2-3B-Instruct-Q4_K_M.gguf --host 127.0.0.1 --port 8010 --ctx-size 4096 --threads 2 --alias llama3.2-3b --jinja --cache-reuse 256 --parallel 1 --api-key-file /etc/voice-agent/llama-api-key
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

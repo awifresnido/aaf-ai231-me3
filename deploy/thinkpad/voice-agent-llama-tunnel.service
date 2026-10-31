@@ -1,0 +1,13 @@
+[Unit]
+Description=Pi access tunnel for ThinkPad Llama model
+Requires=voice-agent-llama.service
+After=voice-agent-llama.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh -F /dev/null -i /home/aldlinux/.ssh/id_ed25519_pihost -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/aldlinux/.ssh/known_hosts_pihost -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -N -R 127.0.0.1:18080:192.168.5.10:8080 aldwinrpi4@192.168.5.12
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

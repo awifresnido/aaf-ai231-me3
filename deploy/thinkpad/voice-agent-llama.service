@@ -1,0 +1,13 @@
+[Unit]
+Description=Voice agent Llama 3.2 3B model server
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/aldlinux/ai/llama.cpp/build/bin/llama-server --model /home/aldlinux/.cache/huggingface/hub/models--unsloth--Llama-3.2-3B-Instruct-GGUF/snapshots/e7d0997e49c9cb00d88b4c1a6a16aa894b0bbc31/Llama-3.2-3B-Instruct-Q4_K_M.gguf --alias llama3.2:3b --host 192.168.5.10 --port 8080 --ctx-size 4096 --threads 6 --gpu-layers 0 --no-webui
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=180
+
+[Install]
+WantedBy=default.target

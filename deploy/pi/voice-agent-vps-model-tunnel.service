@@ -1,0 +1,12 @@
+[Unit]
+Description=Private Pi tunnel to VPS fallback model
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ssh -F /dev/null -i /home/aldwinrpi4/.ssh/id_ed25519_vps_model -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=/home/aldwinrpi4/.ssh/known_hosts -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 -N -L 127.0.0.1:18081:127.0.0.1:8010 root@72.62.76.173
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

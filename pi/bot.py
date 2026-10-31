@@ -65,6 +65,7 @@ TTS_SERVER = os.getenv("TTS_SERVER", "192.168.5.11:50052")
 TTS_VOICE = os.getenv("TTS_VOICE", "0")
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
+ORCHESTRATION_MODE = os.getenv("ORCHESTRATION_MODE", "single").strip().lower()
 
 # Pi-local VAD policy: with the Jetson ASR container at stop_history_eou_ms=320,
 # finals arrive ~0.6s after speech end. 0.8s VAD silence lets the final land
@@ -89,8 +90,8 @@ AUDIO_OUTPUT_IMPL = os.getenv("AUDIO_OUTPUT_IMPL", "pacat").strip().lower()
 PACAT_LATENCY_MS = int(os.getenv("PACAT_LATENCY_MS", "150"))
 
 GREETING_TEXT = (
-    "Hello. This is the Raspberry Pi voice agent, "
-    "connected to Ollama Cloud. Say something and I will answer."
+    "Hello. This is your Raspberry Pi voice agent. "
+    "Say something and I will answer."
 )
 
 
@@ -331,11 +332,19 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         ),
     )
 
+    if ORCHESTRATION_MODE not in {"single", "two_brain_plusjev"}:
+        raise ValueError(f"Unknown ORCHESTRATION_MODE: {ORCHESTRATION_MODE}")
+    llm_stages = [llm]
+    if ORCHESTRATION_MODE == "two_brain_plusjev":
+        from orchestration import TwoBrainRouter
+        llm_stages.insert(0, TwoBrainRouter(tools_mcp))
+        logger.info("Two-brain-plus-Jev routing enabled")
+
     pipeline = Pipeline([
         transport.input(),
         stt,
         user_aggregator,
-        llm,
+        *llm_stages,
         tts,
         transport.output(),
         assistant_aggregator,
