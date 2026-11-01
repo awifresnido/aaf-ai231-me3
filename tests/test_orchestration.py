@@ -11,7 +11,7 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pi"))
 
-from orchestration import SmallModelClient, TwoBrainRouter, accepted_route, direct_arguments, latest_user_text, validate_arguments
+from orchestration import SmallModelClient, TwoBrainRouter, accepted_route, direct_arguments, explicit_route_hint, latest_user_text, validate_arguments
 from pipecat.frames.frames import LLMContextFrame, TTSSpeakFrame
 from pipecat.processors.frame_processor import FrameDirection
 
@@ -58,6 +58,8 @@ class RouteTests(unittest.TestCase):
         self.assertIsNone(direct_arguments("get_weather", "what is the weather tomorrow"))
         self.assertIsNone(direct_arguments("set_alarm", "alarm for nine or ten PM"))
         self.assertIsNone(direct_arguments("playback_control", "stop"))
+        self.assertEqual(explicit_route_hint("Great a reminder to study"), "add_reminder")
+        self.assertIsNone(explicit_route_hint("Great, thanks"))
 
     def test_latest_user_turn(self):
         context = SimpleNamespace(get_messages=lambda: [
@@ -157,6 +159,18 @@ class ProcessorTests(unittest.IsolatedAsyncioTestCase):
         self.assertIs(router.push_frame.call_args.args[0], original)
         classifier.choice.assert_not_awaited()
         mcp._call_tool_text.assert_not_awaited()
+
+    async def test_asr_filler_does_not_send_explicit_reminder_to_glm(self):
+        classifier = SimpleNamespace(choice=AsyncMock())
+        extractor = SimpleNamespace(extract=AsyncMock())
+        mcp = SimpleNamespace(_call_tool_text=AsyncMock(return_value='{"ok":true,"spoken":"Reminder added: study"}'))
+        router = TwoBrainRouter(mcp, classifier=classifier, extractor=extractor)
+        router.push_frame = AsyncMock()
+        frame = LLMContextFrame(context=SimpleNamespace(get_messages=lambda: [{"role": "user", "content": "Great a reminder to study"}]))
+        await router.process_frame(frame, FrameDirection.DOWNSTREAM)
+        classifier.choice.assert_not_awaited()
+        self.assertEqual(mcp._call_tool_text.await_args.args, ("add_reminder", {"text": "study"}))
+        self.assertIsInstance(router.push_frame.call_args.args[0], TTSSpeakFrame)
 
     async def test_small_talk_uses_small_brain(self):
         result = SimpleNamespace(choice="small_talk", probabilities={"small_talk": 0.97, "other": 0.03})

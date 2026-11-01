@@ -354,6 +354,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         pipeline,
         params=PipelineParams(enable_metrics=True, enable_usage_metrics=True),
         observers=[],
+        idle_timeout_secs=None if TRANSPORT_MODE == "local" else 300,
     )
 
     runner = WorkerRunner(handle_sigint=runner_args.handle_sigint)

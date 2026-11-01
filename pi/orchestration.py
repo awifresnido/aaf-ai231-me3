@@ -72,6 +72,13 @@ def _multiple_actions(text):
     return bool(re.search(r"\b(?:and|then|also)\b.{0,70}\b(?:set|add|create|play|stop|turn|remind|call|send|pause|skip)\b", text, re.I))
 
 
+def explicit_route_hint(text):
+    """Recover an explicit reminder request when ASR prefixes it with filler."""
+    if re.search(r"\b(?:remind me to|(?:add|create|set|make|great) (?:a )?reminder (?:to|for|that))\b", text, re.I):
+        return "add_reminder"
+    return None
+
+
 def latest_user_text(context):
     for message in reversed(context.get_messages()):
         if isinstance(message, dict) and message.get("role") == "user":
@@ -335,12 +342,16 @@ class TwoBrainRouter(FrameProcessor):
             return
         started = time.monotonic()
         try:
-            result = (await asyncio.wait_for(self.classifier.choice(
-                {"utterance": text},
-                {"intent": ChoiceQuestion(instructions="Select one supported command only when explicit and singular; otherwise other", options=OPTIONS)},
-            ), timeout=float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000))["intent"]
-            jev_s = time.monotonic() - started
-            tool = accepted_route(result)
+            tool = explicit_route_hint(text)
+            result = None
+            jev_s = 0.0
+            if not tool:
+                result = (await asyncio.wait_for(self.classifier.choice(
+                    {"utterance": text},
+                    {"intent": ChoiceQuestion(instructions="Select one supported command only when explicit and singular; otherwise other", options=OPTIONS)},
+                ), timeout=float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000))["intent"]
+                jev_s = time.monotonic() - started
+                tool = accepted_route(result)
             if tool == "small_talk":
                 answer = await self.extractor.answer(text)
                 if answer:
@@ -377,7 +388,7 @@ class TwoBrainRouter(FrameProcessor):
                         self._inflight.discard(receipt)
                 logger.info("Fast route {} lacked validated arguments; GLM after {:.3f}s", tool, time.monotonic() - started)
             else:
-                logger.info("Route {} sent to GLM after {:.3f}s", result.choice, time.monotonic() - started)
+                logger.info("Route {} sent to GLM after {:.3f}s", result.choice if result else "other", time.monotonic() - started)
         except Exception as exc:
             logger.warning("Fast route fell back to GLM: {}", type(exc).__name__)
         await self.push_frame(frame, direction)
