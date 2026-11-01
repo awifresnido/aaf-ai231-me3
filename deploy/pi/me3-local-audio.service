@@ -1,7 +1,8 @@
 [Unit]
 Description=ME3 voice agent - Pi-local audio (JOUNIVO USB speakerphone)
 Documentation=https://github.com/awifresnido/aaf-ai231-me3
-After=sound.target
+After=sound.target pulseaudio.service
+Wants=pulseaudio.service
 Conflicts=voice-agent-two-brain-webrtc.service
 # The transport opens the PulseAudio bridge device, so the daemon must be up.
 
@@ -10,12 +11,15 @@ Type=simple
 WorkingDirectory=/home/aldwinrpi4/voice-agent
 Environment=TRANSPORT_MODE=local
 Environment=PYTHONUNBUFFERED=1
+Environment=PULSE_SOURCE=voice_agent_aec_source
+Environment=PULSE_SINK=voice_agent_aec_sink
 # The JV801P keeps its level in a USB ALSA control, and alsa-restore does not
 # persist our change (/var/lib/alsa/asound.state predates it). At 0% the device
 # is silent while everything else looks healthy, so force it on every start.
 ExecStartPre=/usr/bin/amixer -c JV801P sset PCM 100% unmute
 # Let the USB speakerphone enumerate as ALSA card 1 before we open it.
 ExecStartPre=/bin/sleep 3
+ExecStartPre=/usr/bin/python3 /home/aldwinrpi4/voice-agent/ensure_echo_cancel.py
 ExecStart=/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python bot.py
 # This Pi has no persistent user journal, so log to a file instead.
 StandardOutput=append:/home/aldwinrpi4/voice-agent/me3-local-audio.log

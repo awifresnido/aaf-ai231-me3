@@ -160,6 +160,21 @@ class ProcessorTests(unittest.IsolatedAsyncioTestCase):
         classifier.choice.assert_not_awaited()
         mcp._call_tool_text.assert_not_awaited()
 
+    async def test_leading_connective_keeps_single_thermostat_command_fast(self):
+        result = SimpleNamespace(choice="set_thermostat", probabilities={"set_thermostat": 0.99, "other": 0.01})
+        classifier = SimpleNamespace(choice=AsyncMock(return_value={"intent": result}))
+        extractor = SimpleNamespace(extract=AsyncMock())
+        mcp = SimpleNamespace(_call_tool_text=AsyncMock(return_value='{"ok":true,"spoken":"Temperature set to 20 degrees."}'))
+        router = TwoBrainRouter(mcp, classifier=classifier, extractor=extractor)
+        router.push_frame = AsyncMock()
+        for prefix in ("Also,", "And", "And then,"):
+            with self.subTest(prefix=prefix):
+                text = prefix + " set the temperature to twenty degrees"
+                frame = LLMContextFrame(context=SimpleNamespace(get_messages=lambda t=text: [{"role": "user", "content": t}]))
+                await router.process_frame(frame, FrameDirection.DOWNSTREAM)
+                self.assertEqual(mcp._call_tool_text.await_args.args, ("set_thermostat", {"degrees": 20}))
+                self.assertIsInstance(router.push_frame.call_args.args[0], TTSSpeakFrame)
+
     async def test_asr_filler_does_not_send_explicit_reminder_to_glm(self):
         classifier = SimpleNamespace(choice=AsyncMock())
         extractor = SimpleNamespace(extract=AsyncMock())

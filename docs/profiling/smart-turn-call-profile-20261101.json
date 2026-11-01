@@ -1,0 +1,301 @@
+{
+  "wav": "/tmp/smart-turn-profile.wav",
+  "audio_seconds": 2.875,
+  "note": "Synthetic/offline prediction timing while the live agent remains running",
+  "env": {
+    "OPENBLAS_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  },
+  "threadpools": "threadpoolctl unavailable",
+  "results": [
+    {
+      "threads": 1,
+      "warmups": 2,
+      "samples": [
+        {
+          "resample_ms": 0.002241000402136706,
+          "features_ms": 21.423774999675516,
+          "onnx_ms": 600.2068080006211,
+          "predict_ms": 622.2695430005842,
+          "executor_queue_ms": 0.10523999935685424,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 622.7351149991591,
+          "other_ms": 0.6367189998854883
+        },
+        {
+          "resample_ms": 0.0016670001059537753,
+          "features_ms": 34.059606000482745,
+          "onnx_ms": 598.8621100004821,
+          "predict_ms": 633.4825849999106,
+          "executor_queue_ms": 0.11123999956907937,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 634.0375270001459,
+          "other_ms": 0.5592019988398533
+        },
+        {
+          "resample_ms": 0.00199999976757681,
+          "features_ms": 21.63525500054675,
+          "onnx_ms": 602.0615959996576,
+          "predict_ms": 624.2909969996617,
+          "executor_queue_ms": 0.10886900054174475,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 624.7297529998832,
+          "other_ms": 0.5921459996898193
+        },
+        {
+          "resample_ms": 0.001889000486698933,
+          "features_ms": 27.909763000025123,
+          "onnx_ms": 599.2827189993477,
+          "predict_ms": 627.7911839997614,
+          "executor_queue_ms": 0.10675900011847261,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 628.2515339999009,
+          "other_ms": 0.5968129999018856
+        },
+        {
+          "resample_ms": 0.0017030006347340532,
+          "features_ms": 21.110128000145778,
+          "onnx_ms": 599.1592009995657,
+          "predict_ms": 620.8388809991447,
+          "executor_queue_ms": 0.1294250005230424,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 621.2976939996224,
+          "other_ms": 0.5678489987985813
+        },
+        {
+          "resample_ms": 0.001907000296341721,
+          "features_ms": 20.71646199965471,
+          "onnx_ms": 600.3421579998758,
+          "predict_ms": 621.6137110004638,
+          "executor_queue_ms": 0.10431499958940549,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 621.999264999431,
+          "other_ms": 0.5531840006369748
+        },
+        {
+          "resample_ms": 0.001907000296341721,
+          "features_ms": 21.624125000016647,
+          "onnx_ms": 597.6370400003361,
+          "predict_ms": 619.868736999706,
+          "executor_queue_ms": 0.1042220001181704,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 620.398846000171,
+          "other_ms": 0.6056649990568985
+        }
+      ],
+      "median": {
+        "resample_ms": 0.001907000296341721,
+        "features_ms": 21.624125000016647,
+        "onnx_ms": 599.2827189993477,
+        "predict_ms": 622.2695430005842,
+        "executor_queue_ms": 0.10675900011847261,
+        "probability": 0.9859892129898071,
+        "caller_elapsed_ms": 622.7351149991591,
+        "other_ms": 0.5921459996898193
+      },
+      "min_predict_ms": 619.868736999706,
+      "max_predict_ms": 633.4825849999106,
+      "cprofile": "         466 function calls in 1.970 seconds\n\n   Ordered by: cumulative time\n   List reduced from 75 to 18 due to restriction <18>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    1.970    0.657 /tmp/profile_smart_turn.py:27(run)\n        3    1.892    0.631    1.892    0.631 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:278(run)\n        3    0.000    0.000    0.076    0.025 /tmp/profile_smart_turn.py:40(features)\n        3    0.023    0.008    0.076    0.025 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:134(compute_whisper_log_mel_features)\n        3    0.022    0.007    0.048    0.016 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:107(_power_spectrogram)\n        3    0.000    0.000    0.018    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:324(rfft)\n        3    0.018    0.006    0.018    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:58(_raw_fft)\n        6    0.001    0.000    0.006    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:546(pad)\n        6    0.004    0.001    0.004    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:87(_pad_simple)\n       15    0.003    0.000    0.003    0.000 {method 'astype' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.003    0.001 {method 'var' of 'numpy.ndarray' objects}\n        3    0.002    0.001    0.003    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:148(_var)\n       15    0.003    0.000    0.003    0.000 {method 'reduce' of 'numpy.ufunc' objects}\n        3    0.000    0.000    0.002    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/local_smart_turn_v3.py:141(truncate_audio_to_last_n_seconds)\n        3    0.000    0.000    0.001    0.000 {method 'mean' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:115(_mean)\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_stride_tricks_impl.py:177(sliding_window_view)\n        3    0.000    0.000    0.001    0.000 {method 'max' of 'numpy.ndarray' objects}\n\n\n"
+    },
+    {
+      "threads": 2,
+      "warmups": 2,
+      "samples": [
+        {
+          "resample_ms": 0.001776999852154404,
+          "features_ms": 25.38551500038011,
+          "onnx_ms": 374.19157899967104,
+          "predict_ms": 400.29057299943815,
+          "executor_queue_ms": 0.1504440006101504,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 400.84342200043466,
+          "other_ms": 0.7117019995348528
+        },
+        {
+          "resample_ms": 0.0015929999790387228,
+          "features_ms": 26.0202350000327,
+          "onnx_ms": 395.989204000216,
+          "predict_ms": 422.6093059996856,
+          "executor_queue_ms": 0.12327700005698716,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 423.05132199999207,
+          "other_ms": 0.5982739994578878
+        },
+        {
+          "resample_ms": 0.0015369996617664583,
+          "features_ms": 22.533750000548025,
+          "onnx_ms": 385.3160660000867,
+          "predict_ms": 408.4077770003205,
+          "executor_queue_ms": 0.10742500035121338,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 408.7848120007038,
+          "other_ms": 0.5564240000239806
+        },
+        {
+          "resample_ms": 0.0019629997041192837,
+          "features_ms": 23.00006299992674,
+          "onnx_ms": 385.3037509998103,
+          "predict_ms": 408.950736999941,
+          "executor_queue_ms": 0.14753699997527292,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 409.4638649994522,
+          "other_ms": 0.6449600004998501
+        },
+        {
+          "resample_ms": 0.001647999852139037,
+          "features_ms": 21.97684600014327,
+          "onnx_ms": 395.6209640000452,
+          "predict_ms": 418.1889180008511,
+          "executor_queue_ms": 0.10162899980059592,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 418.6023980000755,
+          "other_ms": 0.5894600008105044
+        },
+        {
+          "resample_ms": 0.002017999577219598,
+          "features_ms": 23.18054400075198,
+          "onnx_ms": 386.47256000058405,
+          "predict_ms": 410.2130090004721,
+          "executor_queue_ms": 0.1488879997850745,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 410.675283999808,
+          "other_ms": 0.557886999558832
+        },
+        {
+          "resample_ms": 0.0017040001694113016,
+          "features_ms": 27.012452999770176,
+          "onnx_ms": 393.8353419998748,
+          "predict_ms": 421.5401239998755,
+          "executor_queue_ms": 0.10625899994920474,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 422.05047399966134,
+          "other_ms": 0.690625000061118
+        }
+      ],
+      "median": {
+        "resample_ms": 0.0017040001694113016,
+        "features_ms": 23.18054400075198,
+        "onnx_ms": 386.47256000058405,
+        "predict_ms": 410.2130090004721,
+        "executor_queue_ms": 0.12327700005698716,
+        "probability": 0.9859892129898071,
+        "caller_elapsed_ms": 410.675283999808,
+        "other_ms": 0.5982739994578878
+      },
+      "min_predict_ms": 400.29057299943815,
+      "max_predict_ms": 422.6093059996856,
+      "cprofile": "         466 function calls in 1.212 seconds\n\n   Ordered by: cumulative time\n   List reduced from 75 to 18 due to restriction <18>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    1.211    0.404 /tmp/profile_smart_turn.py:27(run)\n        3    1.117    0.372    1.117    0.372 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:278(run)\n        3    0.000    0.000    0.092    0.031 /tmp/profile_smart_turn.py:40(features)\n        3    0.042    0.014    0.092    0.031 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:134(compute_whisper_log_mel_features)\n        3    0.021    0.007    0.046    0.015 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:107(_power_spectrogram)\n        3    0.000    0.000    0.018    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:324(rfft)\n        3    0.018    0.006    0.018    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:58(_raw_fft)\n        6    0.000    0.000    0.006    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:546(pad)\n        6    0.004    0.001    0.004    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:87(_pad_simple)\n       15    0.002    0.000    0.002    0.000 {method 'astype' of 'numpy.ndarray' objects}\n       15    0.002    0.000    0.002    0.000 {method 'reduce' of 'numpy.ufunc' objects}\n        3    0.000    0.000    0.002    0.001 {method 'var' of 'numpy.ndarray' objects}\n        3    0.001    0.000    0.002    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:148(_var)\n        3    0.000    0.000    0.002    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/local_smart_turn_v3.py:141(truncate_audio_to_last_n_seconds)\n        3    0.000    0.000    0.001    0.000 {method 'max' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.001    0.000 {method 'mean' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:115(_mean)\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:39(_amax)\n\n\n"
+    },
+    {
+      "threads": 3,
+      "warmups": 2,
+      "samples": [
+        {
+          "resample_ms": 0.0017410002328688279,
+          "features_ms": 38.67995600012364,
+          "onnx_ms": 311.6801359992678,
+          "predict_ms": 350.95768199971644,
+          "executor_queue_ms": 0.13522100016416516,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 351.40804999991815,
+          "other_ms": 0.5958490000921302
+        },
+        {
+          "resample_ms": 0.0016849999155965634,
+          "features_ms": 32.86761099934665,
+          "onnx_ms": 331.4689170001657,
+          "predict_ms": 364.96352599988313,
+          "executor_queue_ms": 0.12909199995192466,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 365.4041910003798,
+          "other_ms": 0.6253130004552077
+        },
+        {
+          "resample_ms": 0.002369999492657371,
+          "features_ms": 41.66468299990811,
+          "onnx_ms": 308.89187100001436,
+          "predict_ms": 351.2118290000217,
+          "executor_queue_ms": 0.17107300027419114,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 351.6834749998452,
+          "other_ms": 0.6529050006065518
+        },
+        {
+          "resample_ms": 0.0017219999790540896,
+          "features_ms": 21.624940000037896,
+          "onnx_ms": 315.2725460004149,
+          "predict_ms": 337.5299819999782,
+          "executor_queue_ms": 0.12946300012117717,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 337.93248100027995,
+          "other_ms": 0.6307739995463635
+        },
+        {
+          "resample_ms": 0.0020930001483066007,
+          "features_ms": 36.47552100028406,
+          "onnx_ms": 340.26354499928857,
+          "predict_ms": 377.4843029996191,
+          "executor_queue_ms": 0.18211000042356318,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 378.0373370000234,
+          "other_ms": 0.7431439998981659
+        },
+        {
+          "resample_ms": 0.0018150003597838804,
+          "features_ms": 38.27284699946176,
+          "onnx_ms": 320.6075590005639,
+          "predict_ms": 359.5338459999766,
+          "executor_queue_ms": 0.8995329999379464,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 360.74947100041754,
+          "other_ms": 0.6516249995911494
+        },
+        {
+          "resample_ms": 0.002017999577219598,
+          "features_ms": 23.636652999812213,
+          "onnx_ms": 322.4849569996877,
+          "predict_ms": 346.69021799982147,
+          "executor_queue_ms": 0.11157400058436906,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 347.1795129999009,
+          "other_ms": 0.566590000744327
+        }
+      ],
+      "median": {
+        "resample_ms": 0.0018150003597838804,
+        "features_ms": 36.47552100028406,
+        "onnx_ms": 320.6075590005639,
+        "predict_ms": 351.2118290000217,
+        "executor_queue_ms": 0.13522100016416516,
+        "probability": 0.9859892129898071,
+        "caller_elapsed_ms": 351.6834749998452,
+        "other_ms": 0.6307739995463635
+      },
+      "min_predict_ms": 337.5299819999782,
+      "max_predict_ms": 377.4843029996191,
+      "cprofile": "         466 function calls in 1.371 seconds\n\n   Ordered by: cumulative time\n   List reduced from 75 to 18 due to restriction <18>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        3    0.000    0.000    1.371    0.457 /tmp/profile_smart_turn.py:27(run)\n        3    1.288    0.429    1.288    0.429 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/onnxruntime/capi/onnxruntime_inference_collection.py:278(run)\n        3    0.000    0.000    0.081    0.027 /tmp/profile_smart_turn.py:40(features)\n        3    0.026    0.009    0.081    0.027 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:134(compute_whisper_log_mel_features)\n        3    0.022    0.007    0.049    0.016 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/_whisper_features.py:107(_power_spectrogram)\n        3    0.000    0.000    0.019    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:324(rfft)\n        3    0.019    0.006    0.019    0.006 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/fft/_pocketfft.py:58(_raw_fft)\n        6    0.000    0.000    0.005    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:546(pad)\n       15    0.004    0.000    0.004    0.000 {method 'astype' of 'numpy.ndarray' objects}\n        6    0.003    0.001    0.003    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/lib/_arraypad_impl.py:87(_pad_simple)\n       15    0.003    0.000    0.003    0.000 {method 'reduce' of 'numpy.ufunc' objects}\n        3    0.000    0.000    0.003    0.001 {method 'var' of 'numpy.ndarray' objects}\n        3    0.002    0.001    0.003    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:148(_var)\n        3    0.000    0.000    0.002    0.001 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/pipecat/audio/turn/smart_turn/local_smart_turn_v3.py:141(truncate_audio_to_last_n_seconds)\n        3    0.000    0.000    0.001    0.000 {method 'max' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:39(_amax)\n        3    0.000    0.000    0.001    0.000 {method 'mean' of 'numpy.ndarray' objects}\n        3    0.000    0.000    0.001    0.000 /home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:115(_mean)\n\n\n"
+    }
+  ]
+}

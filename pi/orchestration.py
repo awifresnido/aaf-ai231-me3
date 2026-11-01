@@ -69,6 +69,8 @@ def _number(value):
 
 
 def _multiple_actions(text):
+    # A leading connective continues the conversation without adding an action.
+    text = re.sub(r"^\s*(?:(?:also|and|then)\b[\s,]*)+", "", text, flags=re.I)
     return bool(re.search(r"\b(?:and|then|also)\b.{0,70}\b(?:set|add|create|play|stop|turn|remind|call|send|pause|skip)\b", text, re.I))
 
 
@@ -302,8 +304,9 @@ class SmallModelClient:
 class TwoBrainRouter(FrameProcessor):
     """Handle confident routine commands and pass every other turn to GLM."""
 
-    def __init__(self, mcp_client, *, classifier=None, extractor=None, **kwargs):
+    def __init__(self, mcp_client, *, classifier=None, extractor=None, timing_observer=None, **kwargs):
         super().__init__(**kwargs)
+        self.timing_observer = timing_observer
         self.mcp_client = mcp_client
         self.classifier = classifier or JevClassifier(
             api_key=os.environ["TYPESAFE_API_KEY"],
@@ -336,7 +339,10 @@ class TwoBrainRouter(FrameProcessor):
         if not text:
             await self.push_frame(frame, direction)
             return
+        route_turn = self.timing_observer.turn if self.timing_observer else None
         if _multiple_actions(text):
+            if self.timing_observer:
+                self.timing_observer.record("route_glm", turn=route_turn, reason="multiple_actions", router_s=0.0)
             logger.info("Multiple actions routed to GLM")
             await self.push_frame(frame, direction)
             return
@@ -355,6 +361,9 @@ class TwoBrainRouter(FrameProcessor):
             if tool == "small_talk":
                 answer = await self.extractor.answer(text)
                 if answer:
+                    if self.timing_observer:
+                        self.timing_observer.record("route_smalltalk", turn=route_turn, jev_s=jev_s,
+                                                    llama_s=time.monotonic() - started - jev_s)
                     await self.push_frame(TTSSpeakFrame(text=answer))
                     logger.info("Small-brain conversation: jev={:.3f}s llama={:.3f}s total={:.3f}s",
                                 jev_s, time.monotonic() - started - jev_s, time.monotonic() - started)
@@ -380,6 +389,10 @@ class TwoBrainRouter(FrameProcessor):
                         except (TypeError, ValueError):
                             payload = {"spoken": "I couldn't confirm that action. Please check its state before trying again."}
                         spoken = payload.get("spoken") or "I couldn't confirm that action. Please check its state before trying again."
+                        if self.timing_observer:
+                            self.timing_observer.record("route_tool", turn=route_turn, tool=tool, jev_s=jev_s,
+                                                        extraction=extraction, extraction_s=parse_s, mcp_s=mcp_s,
+                                                        router_s=time.monotonic() - started)
                         await self.push_frame(TTSSpeakFrame(text=spoken))
                         logger.info("Fast route {}: jev={:.3f}s {}={:.3f}s mcp={:.3f}s total={:.3f}s",
                                     tool, jev_s, extraction, parse_s, mcp_s, time.monotonic() - started)
@@ -388,7 +401,11 @@ class TwoBrainRouter(FrameProcessor):
                         self._inflight.discard(receipt)
                 logger.info("Fast route {} lacked validated arguments; GLM after {:.3f}s", tool, time.monotonic() - started)
             else:
-                logger.info("Route {} sent to GLM after {:.3f}s", result.choice if result else "other", time.monotonic() - started)
+                logger.info("Route {} sent to GLM after {:.3f}s confidence={:.3f}",
+                            result.choice if result else "other", time.monotonic() - started,
+                            result.probabilities.get(result.choice, 0.0) if result else 0.0)
         except Exception as exc:
             logger.warning("Fast route fell back to GLM: {}", type(exc).__name__)
+        if self.timing_observer:
+            self.timing_observer.record("route_glm", turn=route_turn, router_s=time.monotonic() - started)
         await self.push_frame(frame, direction)

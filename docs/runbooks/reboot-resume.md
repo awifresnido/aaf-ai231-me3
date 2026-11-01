@@ -3,7 +3,11 @@
 The project is on GitHub branch `two-brain-plusjev` in
 `awifresnido/aaf-ai231-me3`. Reopen this conversation and say: “Resume from
 `two-brain-plusjev`; continue the two-brain routing and latency work.” The
-current findings and tuning queue are in
+active experiment and echo-feedback repair are documented in
+`docs/runbooks/vad-03-threads2-results-20261101.md`.
+The latest user test is assessed in `docs/runbooks/aec-trial-results-20261101.md`.
+Current findings and the tuning queue are in
+`docs/runbooks/live-latency-20261101.md`, with the earlier baseline in
 `docs/runbooks/live-latency-20261031.md`.
 
 ## Restore the workspace
@@ -42,6 +46,14 @@ Expected audio devices are the JOUNIVO JV801P for both PulseAudio source and
 sink, with PCM at 100%. The local service uses `pacat` playback. It is enabled
 at boot and has no idle timeout; the WebRTC service is disabled and conflicts
 with it.
+
+The local bot's own streams now use `voice_agent_aec_source` and
+`voice_agent_aec_sink`, a paired WebRTC echo canceller over the JV801P.
+`ensure_echo_cancel.py` loads/verifies the pair in the unit's startup steps.
+Check `pactl list source-outputs short` and `pactl list sink-inputs short` as
+well as hardware defaults: the recording and playback streams must use the
+virtual pair for echo cancellation to work. Current endpointing settings are
+0.3 s VAD stop silence and two Smart Turn inference threads.
 
 On the Jetson, Docker starts at boot and both containers use `unless-stopped`:
 

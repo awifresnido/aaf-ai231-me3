@@ -30,6 +30,7 @@ Env: OLLAMA_API_KEY etc. in ~/.voice-agent-env (chmod 600, outside the repo).
 """
 import asyncio
 import os
+import time
 
 from dotenv import load_dotenv
 
@@ -40,6 +41,7 @@ from loguru import logger
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
 from pipecat.frames.frames import TTSSpeakFrame
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.worker import PipelineParams, PipelineWorker
@@ -56,6 +58,10 @@ from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_output import BaseOutputTransport
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+from pipecat.observers.user_bot_latency_observer import UserBotLatencyObserver
+from turn_timing import TurnTimingObserver
 
 load_dotenv(override=True)
 
@@ -67,10 +73,11 @@ OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
 ORCHESTRATION_MODE = os.getenv("ORCHESTRATION_MODE", "single").strip().lower()
 
-# Pi-local VAD policy: with the Jetson ASR container at stop_history_eou_ms=320,
-# finals arrive ~0.6s after speech end. 0.8s VAD silence lets the final land
-# inside the turn.
+# The private environment selects the active endpointing experiment.
 VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
+SMART_TURN_CPU_COUNT = int(os.getenv("SMART_TURN_CPU_COUNT", "1"))
+if SMART_TURN_CPU_COUNT < 1:
+    raise ValueError("SMART_TURN_CPU_COUNT must be at least 1")
 
 # Audio transport: "webrtc" (browser on the ThinkPad) or "local" (the Pi's own
 # sound card). Device specs are matched against PyAudio device names; use
@@ -194,6 +201,9 @@ class PacatAudioOutput(BaseOutputTransport):
     def __init__(self, py_audio, params):
         super().__init__(params)
         self._proc = None
+        self.timing_observer = None
+        self._last_playback_context = None
+        self._last_write_at = float("-inf")
 
     async def setup(self, setup):
         # Run BaseOutputTransport.setup for resampler/chunking init, but do NOT
@@ -226,6 +236,13 @@ class PacatAudioOutput(BaseOutputTransport):
         try:
             self._proc.stdin.write(frame.audio)
             await self._proc.stdin.drain()
+            now = time.monotonic()
+            context_id = getattr(frame, "context_id", None)
+            first = (context_id is not None and context_id != self._last_playback_context) or (context_id is None and now - self._last_write_at > 0.5)
+            self._last_write_at = now
+            self._last_playback_context = context_id
+            if first and self.timing_observer:
+                self.timing_observer.playback_write(context_id)
             return True
         except (BrokenPipeError, ConnectionResetError):
             logger.error("pacat pipe closed; playback stopped")
@@ -289,6 +306,19 @@ def build_local_transport() -> BaseTransport:
 
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
+    experiment = os.getenv("VAD_EXPERIMENT", f"vad-{VAD_STOP_SECS}")
+    timing = TurnTimingObserver(experiment=experiment)
+    timing.record("configuration", vad_stop_secs=VAD_STOP_SECS, transport=TRANSPORT_MODE,
+                  smart_turn_cpu_count=SMART_TURN_CPU_COUNT,
+                  pulse_source=os.getenv("PULSE_SOURCE"), pulse_sink=os.getenv("PULSE_SINK"),
+                  pacat_latency_ms=PACAT_LATENCY_MS if TRANSPORT_MODE == "local" else None)
+    if isinstance(transport.output(), PacatAudioOutput):
+        transport.output().timing_observer = timing
+    latency = UserBotLatencyObserver()
+
+    @latency.event_handler("on_latency_measured")
+    async def on_latency_measured(observer, seconds):
+        timing.record("native_user_bot_latency", seconds=seconds)
 
     ollama_key = os.getenv("OLLAMA_API_KEY")
     llm = OpenAILLMService(
@@ -328,7 +358,12 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
         context,
         user_params=LLMUserAggregatorParams(
-            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=VAD_STOP_SECS))
+            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=VAD_STOP_SECS)),
+            user_turn_strategies=UserTurnStrategies(stop=[
+                TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3(cpu_count=SMART_TURN_CPU_COUNT)
+                )
+            ]),
         ),
     )
 
@@ -337,7 +372,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     llm_stages = [llm]
     if ORCHESTRATION_MODE == "two_brain_plusjev":
         from orchestration import TwoBrainRouter
-        llm_stages.insert(0, TwoBrainRouter(tools_mcp))
+        llm_stages.insert(0, TwoBrainRouter(tools_mcp, timing_observer=timing))
         logger.info("Two-brain-plus-Jev routing enabled")
 
     pipeline = Pipeline([
@@ -353,7 +388,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     worker = PipelineWorker(
         pipeline,
         params=PipelineParams(enable_metrics=True, enable_usage_metrics=True),
-        observers=[],
+        observers=[timing, latency],
         idle_timeout_secs=None if TRANSPORT_MODE == "local" else 300,
     )
 
