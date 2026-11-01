@@ -26,6 +26,7 @@ class RouteTests(unittest.TestCase):
             SimpleNamespace(choice="control_lights", probabilities={"control_lights": 0.88, "other": 0.12}),
             SimpleNamespace(choice="control_lights", probabilities={"control_lights": 0.91, "other": 0.75}),
             SimpleNamespace(choice="other", probabilities={"other": 0.99}),
+            SimpleNamespace(choice="play_radio", probabilities={"play_radio": 0.99}),
         ):
             self.assertIsNone(accepted_route(result))
 
@@ -54,6 +55,8 @@ class RouteTests(unittest.TestCase):
         self.assertEqual(direct_arguments("playback_control", "lower the volume of the music"), {"action": "volume_down"})
         self.assertEqual(direct_arguments("playback_control", "stop the music"), {"action": "stop"})
         self.assertEqual(direct_arguments("play_music", "play some jazz music"), {"query": "jazz"})
+        self.assertIsNone(direct_arguments("play_music", "play jazz radio"))
+        self.assertEqual(direct_arguments("play_music", "play Radiohead"), {"query": "Radiohead"})
         self.assertEqual(direct_arguments("get_weather", "what is the weather today"), {})
         self.assertIsNone(direct_arguments("get_weather", "what is the weather tomorrow"))
         self.assertIsNone(direct_arguments("set_alarm", "alarm for nine or ten PM"))

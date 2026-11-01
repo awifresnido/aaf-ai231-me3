@@ -7,7 +7,6 @@ same commands become free-form (e.g. "Play some chill jazz" -> play_music).
 
 Command -> tool map (from me2 configs/ontology.json):
   PLAY_MUSIC            -> play_music (ME2: local mpv; here: open music APIs)
-  (new)                 -> play_radio (new: Radio Browser API)
   WEATHER               -> get_weather (Open-Meteo, no key, same as ME2)
   TIME                  -> get_time (local tz, no network)
   TIMER / ALARM         -> set_timer / set_alarm (me2 parse_duration_s/next_alarm logic)
@@ -24,8 +23,6 @@ Command -> tool map (from me2 configs/ontology.json):
 Open-source APIs used (all free, no vendor lock-in):
   Music   : Jamendo Client API (open-licensed, needs a free client id) with
             Internet Archive as the no-key fallback.
-  Radio   : Radio Browser API (https://api.radio-browser.info) — community,
-            open-source, no key.
   Weather : Open-Meteo (no key).
   Time    : local time via zoneinfo (no network).
   Messages: Telegram Bot API (open HTTP API, free bot token).
@@ -76,7 +73,7 @@ server = MCPServer(
     name="voice-agent-tools",
     version="0.1.0",
     instructions=(
-        "Tools for the voice agent: media playback (music/radio), weather, "
+        "Tools for the voice agent: music playback, weather, "
         "time, timer, alarm, reminders, thermostat, lights, and messaging. "
         "Call one tool per user command; all return a short dict that is "
         "safe to speak back to the user."
@@ -171,20 +168,6 @@ def _archive_search(query: str, limit: int = 5) -> dict | None:
         return None
 
 
-def _radio_search(query: str, limit: int = 5) -> list[dict]:
-    try:
-        url = (
-            "https://de1.api.radio-browser.info/json/stations/search?"
-            + urllib.parse.urlencode(
-                {"name": query, "limit": limit, "hidebroken": "true", "order": "votes"}
-            )
-        )
-        data = _http_json(url)
-        return data if isinstance(data, list) else []
-    except Exception:
-        return []
-
-
 @server.tool(
     name="play_music",
     description=(
@@ -220,31 +203,9 @@ def play_music(query: str) -> dict:
 
 
 @server.tool(
-    name="play_radio",
-    description=(
-        "Play a radio station by name (e.g. 'Love Radio', 'news radio', "
-        "'jazz'). Uses the open Radio Browser API. Returns station name and "
-        "stream URL."
-    ),
-)
-def play_radio(query: str) -> dict:
-    stations = _radio_search(query, limit=3)
-    if not stations:
-        return {"ok": False, "spoken": f"I could not find a radio station named {query}."}
-    s = stations[0]
-    station = {
-        "name": s.get("name", "unknown"),
-        "url": s.get("url_resolved") or s.get("url", ""),
-        "source": "radio-browser",
-    }
-    _set_state("media", {"mode": "radio", "title": station["name"], "url": station["url"]})
-    return {"ok": True, "spoken": f"Tuning to {station['name']}.", "station": station}
-
-
-@server.tool(
     name="playback_control",
     description=(
-        "Control the currently playing music or radio: pause, stop, resume, "
+        "Control the currently playing music: pause, stop, resume, "
         "next, volume_up, volume_down. These are the ME2 PAUSE/STOP/NEXT/"
         "VOLUME_UP/VOLUME_DOWN commands."
     ),

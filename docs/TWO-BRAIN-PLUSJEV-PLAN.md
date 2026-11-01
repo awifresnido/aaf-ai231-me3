@@ -1,8 +1,13 @@
 # Two brains plus Jev: orchestration plan
 
-Status: pilot running on the Pi-local speakerphone bot; uncommitted.
+Status: pilot running on the Pi-local speakerphone bot; checkpoint committed.
 Date: 2026-10-31. Branch: `two-brain-plusjev`.
 Base: `main`, `187604fdf353ebe5e6f42edaf6a9d651e435abc7`.
+
+The 2026-11-01 ownership clarification and next refactor are described in
+[Tool ownership](TWO-BRAIN-TOOL-OWNERSHIP.md). That refactor is not yet
+implemented: GLM still receives the remaining MCP catalog. Radio has been
+removed from the server, router, and future tool allocation.
 
 ## Objective
 
@@ -150,7 +155,7 @@ questions can use templates. Use Llama for short conversation where useful.
 | Lights, thermostat, timer | Deterministic parser, Llama if needed | Enforce actual enums/ranges, including thermostat 16–32 C |
 | Alarm, reminder creation | Llama extraction with deterministic time validation | Clarify ambiguous times; preserve exact reminder text |
 | Weather | Fast path with resolved/default location | Resolve place names explicitly; do not invent coordinates from ASR noise |
-| Music, radio | Llama query extraction, existing search tool | Current tools return metadata/state; actual playback is a separate missing capability |
+| Music | Llama query extraction, existing search tool | Current tools return metadata/state; actual playback is a separate missing capability |
 | Playback controls | Fast path only when supported | Current implementation stores state; do not claim a real player changed |
 | Messages, email, calls | Initially GLM or explicit clarification workflow | Preserve exact recipient/content and existing authorization behavior |
 | Explanation, comparison, multi-step task | GLM directly | Give only relevant tools and bounded state |

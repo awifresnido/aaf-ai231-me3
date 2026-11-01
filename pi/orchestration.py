@@ -30,7 +30,6 @@ FAST_TOOLS = {
     "set_alarm": {"time_str": str},
     "playback_control": {"action": str},
     "play_music": {"query": str},
-    "play_radio": {"query": str},
 }
 OPTIONS = {
     "get_time": "Ask for the current local clock time",
@@ -41,13 +40,12 @@ OPTIONS = {
     "control_lights": "Turn lights on or off, set one light color, or set light brightness",
     "set_timer": "Start one countdown with an explicit duration",
     "set_alarm": "Set one alarm with an explicit clock time and AM or PM",
-    "playback_control": "Pause, stop, resume, skip, or change volume of current music or radio",
+    "playback_control": "Pause, stop, resume, skip, or change volume of current music",
     "play_music": "Start playing music using a stated genre, mood, artist, or title",
-    "play_radio": "Start a radio station by stated name or genre",
     "small_talk": "A brief greeting, thanks, or simple conversational reply that needs no tool or factual research",
-    "other": "Complex or multiple actions, forecasts, ambiguous follow-ups, factual questions, messaging, calls, or any other tool",
+    "other": "Complex or multiple actions, forecasts, ambiguous follow-ups, factual questions, messaging, calls, unsupported radio requests, or any other tool",
 }
-DIRECT_ONLY_TOOLS = {"get_weather", "set_alarm", "add_reminder", "playback_control", "play_music", "play_radio"}
+DIRECT_ONLY_TOOLS = {"get_weather", "set_alarm", "add_reminder", "playback_control", "play_music"}
 
 _UNITS = {"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
           "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
@@ -153,7 +151,7 @@ def direct_arguments(tool, text):
             if note and not _multiple_actions(note):
                 return {"text": note}
     if tool == "playback_control":
-        if not re.search(r"\b(music|radio|song|track|playback|volume)\b", lowered):
+        if not re.search(r"\b(music|song|track|playback|volume)\b", lowered):
             return None
         actions = {
             "stop": r"\b(stop|stup)\b",
@@ -166,16 +164,13 @@ def direct_arguments(tool, text):
         found = [action for action, pattern in actions.items() if re.search(pattern, lowered)]
         if len(found) == 1:
             return {"action": found[0]}
-    if tool in ("play_music", "play_radio"):
+    if tool == "play_music":
+        if re.search(r"\bradio\b", lowered):
+            return None
         match = re.search(r"\b(?:play|put on|listen to)\s+(?:some\s+)?(.+)$", text, re.I)
         if match:
             query = match[1].strip(" .?!")
-            if tool == "play_music":
-                query = re.sub(r"\b(?:music|songs?|tracks?)$", "", query, flags=re.I).strip() or "music"
-            else:
-                query = re.sub(r"^radio\s*", "", query, flags=re.I).strip()
-                if not query:
-                    return None
+            query = re.sub(r"\b(?:music|songs?|tracks?)$", "", query, flags=re.I).strip() or "music"
             return {"query": query}
     return None
 
@@ -199,7 +194,7 @@ def validate_arguments(tool, arguments):
         return 1 <= len(arguments["text"].strip()) <= 160 and "\n" not in arguments["text"]
     if tool == "playback_control":
         return arguments["action"] in {"pause", "stop", "resume", "next", "volume_up", "volume_down"}
-    if tool in ("play_music", "play_radio"):
+    if tool == "play_music":
         return 1 <= len(arguments["query"].strip()) <= 80 and "\n" not in arguments["query"]
     return True
 

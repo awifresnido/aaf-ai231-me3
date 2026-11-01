@@ -331,9 +331,9 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
                 "Pi. Keep replies short (1-3 spoken sentences), no lists or "
                 "emojis, and speak naturally. You have tools available: when "
                 "the user asks for weather, time, timers, alarms, reminders, "
-                "music, radio, lights, thermostat, or messaging, call the "
+                "music, lights, thermostat, or messaging, call the "
                 "matching tool and then briefly speak its result. Never read "
-                "out code or URLs."
+                "out code or URLs. Radio playback is not supported."
             ),
         ),
     )
