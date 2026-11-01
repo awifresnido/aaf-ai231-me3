@@ -1,0 +1,18 @@
+{
+  "run": "597aabcb5a",
+  "experiment": "vcm-thinkpad-queued-log-20261101",
+  "capture_date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "voice_windows": [
+    "15:51\u201315:54",
+    "15:55\u201315:58"
+  ],
+  "source": "Pi RAM trace snapshot fetched after both tests",
+  "main_log_included": false,
+  "sha256": {
+    "pi-29743.jsonl": "79bbaff5e440851643c428fe5128c84851cf3bc085fe12ea8b4b13be2dd619b7",
+    "mcp-29783.jsonl": "fdb096ec056893909c4117246e373ced07bab22b04f369b3e99875b177010918",
+    "summary.json": "e7ef77144418e2af83678aa913dfdeb0c71857e30d99da53ab6d1e8186a195a8",
+    "passes.json": "f7f092e51b2bc321c922aeac7ed8f6e1c8e93353d5b959bc4a57cdd1098183cb"
+  }
+}

@@ -31,6 +31,7 @@ Env: OLLAMA_API_KEY etc. in ~/.voice-agent-env (chmod 600, outside the repo).
 import asyncio
 import os
 import time
+from contextlib import suppress
 
 from dotenv import load_dotenv
 
@@ -64,6 +65,10 @@ from pipecat.observers.user_bot_latency_observer import UserBotLatencyObserver
 from turn_timing import TurnTimingObserver
 
 load_dotenv(override=True)
+
+from queued_logging import configure_queued_logging
+
+QUEUED_LOGGING = configure_queued_logging()
 
 SPEECH_MODE = os.getenv("SPEECH_MODE", "direct")
 ASR_SERVER = os.getenv("ASR_SERVER", "192.168.5.11:50051")
@@ -100,6 +105,10 @@ GREETING_TEXT = (
     "Hello. This is your Raspberry Pi voice agent. "
     "Say something and I will answer."
 )
+if ORCHESTRATION_MODE == "local_vcm":
+    from local_vcm import VOICE_OF_PI_GREETING
+    GREETING_TEXT = VOICE_OF_PI_GREETING
+
 
 
 def build_speech_services():
@@ -308,8 +317,14 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
     experiment = os.getenv("VAD_EXPERIMENT", f"vad-{VAD_STOP_SECS}")
     timing = TurnTimingObserver(experiment=experiment)
+    from stall_diagnostics import Diagnostics
+    diagnostics = Diagnostics.from_env("pi", run=timing.run)
+    timing.diagnostics = diagnostics
     timing.record("configuration", vad_stop_secs=VAD_STOP_SECS, transport=TRANSPORT_MODE,
-                  smart_turn_cpu_count=SMART_TURN_CPU_COUNT,
+                  smart_turn_cpu_count=SMART_TURN_CPU_COUNT, orchestration_mode=ORCHESTRATION_MODE,
+                  vcm_model_host=os.getenv("LOCAL_VCM_MODEL_HOST", "thinkpad") if ORCHESTRATION_MODE == "local_vcm" else None,
+                  diagnostics_dir=str(diagnostics.path.parent) if diagnostics else None,
+                  queued_logging=QUEUED_LOGGING,
                   pulse_source=os.getenv("PULSE_SOURCE"), pulse_sink=os.getenv("PULSE_SINK"),
                   pacat_latency_ms=PACAT_LATENCY_MS if TRANSPORT_MODE == "local" else None)
     if isinstance(transport.output(), PacatAudioOutput):
@@ -320,36 +335,31 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     async def on_latency_measured(observer, seconds):
         timing.record("native_user_bot_latency", seconds=seconds)
 
-    ollama_key = os.getenv("OLLAMA_API_KEY")
-    llm = OpenAILLMService(
-        api_key=ollama_key,
-        base_url=OLLAMA_BASE_URL,
-        settings=OpenAILLMService.Settings(
-            model=OLLAMA_MODEL,
-            system_instruction=(
-                "You are a friendly voice assistant running on a Raspberry "
-                "Pi. Keep replies short (1-3 spoken sentences), no lists or "
-                "emojis, and speak naturally. You have tools available: when "
-                "the user asks for weather, time, timers, alarms, reminders, "
-                "music, lights, thermostat, or messaging, call the "
-                "matching tool and then briefly speak its result. Never read "
-                "out code or URLs. Radio playback is not supported."
-            ),
-        ),
-    )
-
     # LLM tools via MCP: the voice-agent command tools server (M5). The
     # connection lives for the bot's lifetime; Pipecat closes it at teardown.
     from pipecat.services.mcp_service import MCPClient
     from mcp import StdioServerParameters
 
-    tools_mcp = MCPClient(
+    client_class = MCPClient
+    client_options = {}
+    if diagnostics:
+        from profiled_mcp import ProfiledMCPClient
+        client_class = ProfiledMCPClient
+        client_options["diagnostics"] = diagnostics
+
+    tools_mcp = client_class(
         server_params=StdioServerParameters(
             command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
             args=[os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_servers", "voice_tools_mcp_server.py")],
-        )
+            env=diagnostics.server_env() if diagnostics else None,
+        ),
+        **client_options,
     )
     voice_tools = await tools_mcp.tools()
+    if ORCHESTRATION_MODE == "local_vcm":
+        from pipecat.adapters.schemas.tools_schema import ToolsSchema
+        from orchestration import FAST_TOOLS
+        voice_tools = ToolsSchema([tool for tool in voice_tools.standard_tools if tool.name in FAST_TOOLS])
     logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
 
     stt, tts = build_speech_services()
@@ -367,13 +377,37 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         ),
     )
 
-    if ORCHESTRATION_MODE not in {"single", "two_brain_plusjev"}:
+    if ORCHESTRATION_MODE not in {"single", "two_brain_plusjev", "local_vcm"}:
         raise ValueError(f"Unknown ORCHESTRATION_MODE: {ORCHESTRATION_MODE}")
-    llm_stages = [llm]
-    if ORCHESTRATION_MODE == "two_brain_plusjev":
-        from orchestration import TwoBrainRouter
-        llm_stages.insert(0, TwoBrainRouter(tools_mcp, timing_observer=timing))
-        logger.info("Two-brain-plus-Jev routing enabled")
+    if ORCHESTRATION_MODE == "local_vcm":
+        from local_vcm import LocalVCMProcessor
+        llm_stages = [LocalVCMProcessor(tools_mcp, timing_observer=timing)]
+        logger.info("Single-host VCM trial: host={}; Jev, other model hosts, and GLM disabled",
+                    llm_stages[0].model_host)
+    else:
+        ollama_key = os.getenv("OLLAMA_API_KEY")
+        llm = OpenAILLMService(
+            api_key=ollama_key,
+            base_url=OLLAMA_BASE_URL,
+            settings=OpenAILLMService.Settings(
+                model=OLLAMA_MODEL,
+                system_instruction=(
+                    "You are a friendly voice assistant running on a Raspberry "
+                    "Pi. Keep replies short (1-3 spoken sentences), no lists or "
+                    "emojis, and speak naturally. You have tools available: when "
+                    "the user asks for weather, time, timers, alarms, reminders, "
+                    "music, lights, thermostat, or messaging, call the "
+                    "matching tool and then briefly speak its result. Never read "
+                    "out code or URLs. Radio playback is not supported."
+                ),
+            ),
+        )
+
+        llm_stages = [llm]
+        if ORCHESTRATION_MODE == "two_brain_plusjev":
+            from orchestration import TwoBrainRouter
+            llm_stages.insert(0, TwoBrainRouter(tools_mcp, timing_observer=timing))
+            logger.info("Two-brain-plus-Jev routing enabled")
 
     pipeline = Pipeline([
         transport.input(),
@@ -422,7 +456,18 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         logger.info("Client disconnected")
         await runner.cancel()
 
-    await runner.run()
+    monitor = asyncio.create_task(diagnostics.monitor_loop(lambda: timing.turn)) if diagnostics else None
+    try:
+        await runner.run()
+    finally:
+        if monitor:
+            monitor.cancel()
+            with suppress(asyncio.CancelledError):
+                await monitor
+        if QUEUED_LOGGING:
+            await logger.complete()
+        if diagnostics:
+            diagnostics.close()
 
 
 async def bot(runner_args: RunnerArguments):

@@ -1,0 +1,14 @@
+{
+  "run": "52be8da4d9",
+  "experiment": "vcm-thinkpad-mcp-profile-20261101",
+  "capture_date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "voice_window": "15:33\u201315:35",
+  "source": "Pi RAM diagnostic snapshot fetched after the test",
+  "main_log_included": false,
+  "sha256": {
+    "pi-27915.jsonl": "41e1dbf15717e6fca61c069923e925871134771d807fa44af98eb21d4ba5d6fc",
+    "mcp-27946.jsonl": "46007eb577375b0a20042e7b6c2fe230925768ce734eb4a4f6e4c389ca7b9bdd",
+    "summary.json": "76c1870e1b53c75e7b9c9f75501f9c8bc312df2d0e3a46f68a375df2af313a4e"
+  }
+}

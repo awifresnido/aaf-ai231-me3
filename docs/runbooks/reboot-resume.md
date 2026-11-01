@@ -1,14 +1,27 @@
 # Resume the voice agent work after a reboot
 
-The project is on GitHub branch `two-brain-plusjev` in
-`awifresnido/aaf-ai231-me3`. Reopen this conversation and say: “Resume from
-`two-brain-plusjev`; continue the two-brain routing and latency work.” The
-active experiment and echo-feedback repair are documented in
-`docs/runbooks/vad-03-threads2-results-20261101.md`.
-The latest user test is assessed in `docs/runbooks/aec-trial-results-20261101.md`.
-Current findings and the tuning queue are in
-`docs/runbooks/live-latency-20261101.md`, with the earlier baseline in
-`docs/runbooks/live-latency-20261031.md`.
+Latest requested experiment (2026-11-01): ThinkPad-only VCM with queued
+logging and Pi/MCP tracing; Jev, VPS fallback, and GLM disabled. See
+[Queued logging trial](queued-logging-trial-20261101.md) for the test,
+end-to-end latency comparison, RAM traces, and rollback. Confirm
+`ORCHESTRATION_MODE`, `LOCAL_VCM_MODEL_HOST`, `VOICE_DIAGNOSTICS`, and
+`VOICE_QUEUED_LOGGING` before using older setup instructions below.
+The preceding diagnosis is in
+[Pi/MCP profiling results](thinkpad-mcp-profile-results-20261101.md).
+Prior comparisons are recorded in
+[VPS results](vps-vcm-results-20261101.md),
+[ThinkPad results](local-vcm-results-20261101.md), and
+[Pre-refactor retest](pre-refactor-retest-20261101.md).
+
+The workspace branch is `two-brain-plusjev` in
+`awifresnido/aaf-ai231-me3`. The latest checkpoint is committed locally;
+publication to GitHub is a separate step, so the remote may be behind.
+Reopen this conversation and say: “Resume from `two-brain-plusjev`; inspect
+the ThinkPad-only queued-logging checkpoint and continue SQLite latency
+profiling.” The latest two voice tests are assessed in
+[Queued logging results](queued-logging-results-20261101.md). The earlier
+echo-feedback work remains in `vad-03-threads2-results-20261101.md` and
+`aec-trial-results-20261101.md`.
 
 ## Restore the workspace
 
@@ -17,8 +30,8 @@ Open the ThinkPad's WSL distribution, then run:
 ```bash
 cd /home/aldlinux/ai/voice-agent-cluster/aaf-ai231-me3
 git switch two-brain-plusjev
-git pull --ff-only
 git status --short
+git log -5 --oneline
 ```
 
 The GitHub token was used for a one-time push and was not stored. If a future
@@ -75,21 +88,27 @@ The latest deployed Pi files should match the branch files. Compare them with
 The branch has unit coverage for routing and argument validation. The Pi's
 local bot logs to `me3-local-audio.log`.
 
-Work next on the issues measured in the live report:
+Work next on the issues measured in the latest reports:
 
-1. Collect another set of spoken turns through the JV801P and compare fast
-   routes with GLM routes.
-2. Reduce the variable MCP wait on local state calls and record Jev, Llama,
-   MCP, and Magpie stages separately.
-3. Fix duplicate late ASR finals that can interrupt a fast answer and cause a
-   second GLM request.
-4. Review Jev decisions for reminders, alarms, playback controls, current
-   weather, and lights; keep multi-action requests on GLM.
-5. Investigate long GLM tails and Jev timeouts without changing the GLM
-   fallback for complex requests.
+1. Isolate SQLite durability-flush versus commit-lock waits. Eleven of
+   thirteen writes in the queued tests spent over one second in commit,
+   reaching 14.714 s. Keep current durability while diagnosing.
+2. Retain queued logging and the independent RAM traces. Logging caller
+   stalls fell from 1.807 s to at most 10.963 ms, with no sampled loop lag
+   above 50 ms in the two queued tests.
+3. Strengthen intent/argument grounding: garbled speech triggered an
+   unintended thermostat value, and compound requests can execute partially.
+4. Investigate Smart Turn's roughly three-second silence tails and preserve
+   interrupted-turn execution receipts before larger routing changes.
+5. Keep Jev optional/off for this checkpoint. The full small/large-worker
+   ownership refactor remains a design; do not restore automatic timeout
+   escalation while measuring the local path.
 
-The router changes in this branch have been committed and pushed. The live
-latency assessment is in `docs/runbooks/live-latency-20261031.md`.
+The original routing commits were pushed earlier; newer checkpoint commits
+are local until explicitly pushed. Main voice logs and private environment
+remain on the Pi. Saved metadata traces from both profiling trials are in
+`docs/profiling/`, so those captures survive Pi reboot even though live
+`/dev/shm` traces do not.
 
 After the 2026-11-01 reboot, the ThinkPad model/tunnel services, Pi speakerphone
 and model tunnel, Jetson Docker services, and VPS model service all returned.

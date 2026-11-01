@@ -212,20 +212,23 @@ class SmallModelClient:
         self.timeout = timeout
         self.client = httpx.AsyncClient(timeout=timeout)
 
-    async def _complete(self, messages, schema=None):
+    async def _complete(self, messages, schema=None, max_tokens=96):
         for url, protocol, endpoint_model, api_key_file in self.endpoints[:2]:
             if protocol == "ollama":
                 path = "/api/chat"
                 body = {"model": endpoint_model, "stream": False, "messages": messages,
-                        "options": {"temperature": 0, "num_predict": 96}}
+                        "options": {"temperature": 0, "num_predict": max_tokens}}
                 if schema:
                     body["format"] = schema
             elif protocol == "openai":
                 path = "/v1/chat/completions"
                 body = {"model": endpoint_model, "stream": False, "messages": messages,
-                        "temperature": 0, "max_tokens": 96}
+                        "temperature": 0, "max_tokens": max_tokens}
                 if schema:
-                    body["response_format"] = {"type": "json_schema", "schema": schema}
+                    body["response_format"] = {
+                        "type": "json_schema",
+                        "json_schema": {"name": "voice_agent_decision", "schema": schema},
+                    }
             else:
                 logger.warning("Unknown small-model protocol {}", protocol)
                 return None

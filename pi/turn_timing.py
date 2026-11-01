@@ -3,6 +3,7 @@
 import json
 import time
 import uuid
+from contextlib import nullcontext
 
 from loguru import logger
 from pipecat.frames.frames import (
@@ -23,6 +24,7 @@ class TurnTimingObserver(BaseObserver):
         self._clock = clock
         self._emit = emit
         self._speech_end = None
+        self.diagnostics = None
 
     def record(self, event, *, turn=None, **fields):
         item = dict(run=self.run, experiment=self.experiment, turn=self.turn if turn is None else turn,
@@ -30,7 +32,12 @@ class TurnTimingObserver(BaseObserver):
         if self._emit:
             self._emit(item)
         else:
-            logger.info("TURN_TIMING {}", json.dumps(item, separators=(",", ":")))
+            if self.diagnostics:
+                self.diagnostics.emit("turn_event", timing_event=event,
+                                      timing_at=item["at"], turn=item["turn"], fields=fields)
+            scope = self.diagnostics.span("timing_log", timing_event=event, turn=item["turn"]) if self.diagnostics else nullcontext()
+            with scope:
+                logger.info("TURN_TIMING {}", json.dumps(item, separators=(",", ":")))
 
     def _since_speech_end(self):
         return None if self._speech_end is None else round((self._clock() - self._speech_end) * 1000, 2)

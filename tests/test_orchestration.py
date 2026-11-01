@@ -87,6 +87,7 @@ class ProcessorTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(await client.extract("set_thermostat", "set to 26 degrees"), {"degrees": 26})
         self.assertEqual(seen[0][0], "/v1/chat/completions")
         self.assertEqual(seen[0][1]["response_format"]["type"], "json_schema")
+        self.assertIn("properties", seen[0][1]["response_format"]["json_schema"]["schema"])
         await client.close()
 
     async def test_fallback_uses_vps_model_id(self):

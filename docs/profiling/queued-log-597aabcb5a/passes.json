@@ -1,0 +1,42 @@
+{
+  "boundary_method": "Inferred from pause and restart of the repeated command sequence; no explicit test marker.",
+  "warmup_turn_excluded": 1,
+  "passes": {
+    "pass1": {
+      "turn_bounds": [
+        2,
+        13
+      ],
+      "native_latency_s": {
+        "count": 12,
+        "median": 7.0136659145355225,
+        "min": 4.78132176399231,
+        "max": 15.320160627365112
+      },
+      "completed_model_s": {
+        "count": 12,
+        "median": 4.156795603499631,
+        "min": 2.0090507580025587,
+        "max": 4.896975914001814
+      }
+    },
+    "pass2": {
+      "turn_bounds": [
+        14,
+        27
+      ],
+      "native_latency_s": {
+        "count": 12,
+        "median": 6.930702328681946,
+        "min": 4.677318572998047,
+        "max": 20.991985321044922
+      },
+      "completed_model_s": {
+        "count": 12,
+        "median": 3.333037720500215,
+        "min": 2.564189434000582,
+        "max": 4.961214866998489
+      }
+    }
+  }
+}

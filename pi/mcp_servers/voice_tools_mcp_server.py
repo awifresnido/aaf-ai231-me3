@@ -37,19 +37,66 @@ Env: see env.example block in docs/runbooks/milestone-5.md.
 from __future__ import annotations
 
 import base64
+import asyncio
 import json
 import os
 import re
 import sqlite3
 import subprocess
+import sys
 import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
+from contextlib import nullcontext, suppress
+from functools import partial, wraps
 from pathlib import Path
 from zoneinfo import ZoneInfo
+import uuid
 
 from mcp.server.mcpserver import MCPServer
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from stall_diagnostics import Diagnostics, META_KEY, ProfiledConnection
+
+diagnostics = Diagnostics.from_env("mcp")
+
+
+class ProfiledToolServer(MCPServer):
+    async def call_tool(self, name, arguments, context=None):
+        if diagnostics is None:
+            return await super().call_tool(name, arguments, context)
+        ctx = context if context is not None else self.get_context()
+        try:
+            meta = ctx.request_context.meta or {}
+            call_id = meta.get(META_KEY, "")
+        except (ValueError, AttributeError):
+            call_id = ""
+        if not isinstance(call_id, str) or not re.fullmatch(r"[0-9a-f]{32}", call_id):
+            call_id = uuid.uuid4().hex
+        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name):
+            return await super().call_tool(name, arguments, ctx)
+
+    async def run_stdio_async(self):
+        if diagnostics is None:
+            return await super().run_stdio_async()
+        task = asyncio.create_task(diagnostics.monitor_loop())
+        try:
+            return await super().run_stdio_async()
+        finally:
+            task.cancel()
+            with suppress(asyncio.CancelledError):
+                await task
+
+
+def trace_tool(fn):
+    if diagnostics is None:
+        return fn
+    @wraps(fn)
+    def measured(*args, **kwargs):
+        with diagnostics.span("tool_execute", tool=fn.__name__):
+            return fn(*args, **kwargs)
+    return measured
 
 # ---------------------------------------------------------------- config ----
 DATA_DIR = Path(os.getenv("VOICE_TOOLS_DATA", Path.home() / "voice-agent-tools"))
@@ -69,7 +116,7 @@ DEFAULT_LON = float(os.getenv("WEATHER_LON", "124.97"))
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-server = MCPServer(
+server = ProfiledToolServer(
     name="voice-agent-tools",
     version="0.1.0",
     instructions=(
@@ -83,13 +130,16 @@ server = MCPServer(
 
 # ---------------------------------------------------------------- helpers ---
 def _http_json(url: str, timeout: float = 6.0) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "me3-voice-agent/0.1"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
+    scope = diagnostics.span("http_request", host=urllib.parse.urlparse(url).hostname) if diagnostics else nullcontext()
+    with scope:
+        req = urllib.request.Request(url, headers={"User-Agent": "me3-voice-agent/0.1"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8"))
 
 
 def _db() -> sqlite3.Connection:
-    db = sqlite3.connect(str(DB_PATH), check_same_thread=False)
+    options = {"factory": partial(ProfiledConnection, diagnostics=diagnostics)} if diagnostics else {}
+    db = sqlite3.connect(str(DB_PATH), check_same_thread=False, **options)
     db.execute(
         "CREATE TABLE IF NOT EXISTS reminders ("
         " id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT NOT NULL,"
@@ -176,6 +226,7 @@ def _archive_search(query: str, limit: int = 5) -> dict | None:
         "(genre, mood, artist, or title). Returns track title and stream URL."
     ),
 )
+@trace_tool
 def play_music(query: str) -> dict:
     j = _jamendo_search(query)
     if j:
@@ -210,6 +261,7 @@ def play_music(query: str) -> dict:
         "VOLUME_UP/VOLUME_DOWN commands."
     ),
 )
+@trace_tool
 def playback_control(action: str) -> dict:
     media = _get_state("media") or {}
     if not media:
@@ -237,6 +289,7 @@ def playback_control(action: str) -> dict:
         "as the ME2 weather service. Optionally pass place latitude/longitude."
     ),
 )
+@trace_tool
 def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -> dict:
     try:
         url = (
@@ -271,6 +324,7 @@ def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -
     name="get_time",
     description="Current time (local timezone). No network needed.",
 )
+@trace_tool
 def get_time() -> dict:
     now = datetime.now(ZoneInfo(TIMEZONE))
     return {"ok": True, "spoken": now.strftime("It's %I:%M %p."), "iso": now.isoformat()}
@@ -290,6 +344,7 @@ _UNIT_S = {"second": 1, "minute": 60, "hour": 3600}
         "(e.g. '30 seconds' -> 30). Returns when the timer ends."
     ),
 )
+@trace_tool
 def set_timer(duration_s: int) -> dict:
     if not (1 <= duration_s <= 86400):
         return {"ok": False, "spoken": "Timers must be between 1 second and 1 day."}
@@ -314,6 +369,7 @@ def set_timer(duration_s: int) -> dict:
         "when it will ring."
     ),
 )
+@trace_tool
 def set_alarm(time_str: str) -> dict:
     try:
         t = datetime.strptime(time_str.strip().upper(), "%I:%M %p").time()
@@ -336,6 +392,7 @@ def set_alarm(time_str: str) -> dict:
     name="add_reminder",
     description="Create a reminder (e.g. 'Drink water'). Persistent.",
 )
+@trace_tool
 def add_reminder(text: str) -> dict:
     db = _db()
     db.execute(
@@ -351,6 +408,7 @@ def add_reminder(text: str) -> dict:
     name="list_reminders",
     description="List outstanding reminders.",
 )
+@trace_tool
 def list_reminders() -> dict:
     db = _db()
     rows = db.execute(
@@ -371,6 +429,7 @@ def list_reminders() -> dict:
         "State is stored for the later dashboard UI."
     ),
 )
+@trace_tool
 def set_thermostat(degrees: int) -> dict:
     if not (16 <= degrees <= 32):
         return {"ok": False, "spoken": "Temperature must be between 16 and 32 degrees."}
@@ -385,6 +444,7 @@ def set_thermostat(degrees: int) -> dict:
         "'color'. value: 0-100 for brightness, or Red/Blue/Green for color."
     ),
 )
+@trace_tool
 def control_lights(action: str, value: str = "") -> dict:
     state = _get_state("lights") or {"power": False, "brightness": "100", "color": None}
     if action == "on":
@@ -423,6 +483,7 @@ def control_lights(action: str, value: str = "") -> dict:
         "Telegram message id."
     ),
 )
+@trace_tool
 def send_message(text: str) -> dict:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return {"ok": False, "spoken": "Messaging is not configured yet.",
@@ -452,6 +513,7 @@ def send_message(text: str) -> dict:
         "via Telegram if SMTP is not configured."
     ),
 )
+@trace_tool
 def send_email(to: str, subject: str, body: str) -> dict:
     if not SMTP_HOST or not SMTP_USER:
         return {"ok": False,
@@ -481,6 +543,7 @@ def send_email(to: str, subject: str, body: str) -> dict:
         "webhook-based carrier. This mirrors the ME2 simulated CALL."
     ),
 )
+@trace_tool
 def place_call(to: str = "") -> dict:
     _set_state("call", {"status": "calling", "to": to or "default", "at": time.time()})
     return {"ok": True, "spoken": f"Calling {to or 'your default contact'}.",
@@ -488,4 +551,8 @@ def place_call(to: str = "") -> dict:
 
 
 if __name__ == "__main__":
-    server.run("stdio")
+    try:
+        server.run("stdio")
+    finally:
+        if diagnostics:
+            diagnostics.close()
