@@ -1,5 +1,9 @@
 # Resume the voice agent work after a reboot
 
+Next-session context for the local fine-tuned decision router is in
+[Laya integration handoff](laya-integration-handoff-20261101.md). Configuration
+checkpoint `dda6ddc` has been pushed to GitHub on `two-brain-plusjev`.
+
 Current experiment (2026-11-01):
 [Pi-hosted VCM MCP with Jetson/NVMe persistence](pi-mcp-jetson-state-trial-20261101.md).
 `VCM_TOOL_SERVER_HOST=pi` and `VCM_STATE_BACKEND=jetson_sqlite` keep every
@@ -50,10 +54,9 @@ Prior comparisons are recorded in
 [Pre-refactor retest](pre-refactor-retest-20261101.md).
 
 The workspace branch is `two-brain-plusjev` in
-`awifresnido/aaf-ai231-me3`. The latest checkpoint is committed locally;
-publication to GitHub is a separate step, so the remote may be behind.
-Identify the current configuration with `git log -1`: its subject is
-`feat(pi): keep MCP on Pi with Jetson SQLite persistence`. The commit includes
+`awifresnido/aaf-ai231-me3`. Configuration checkpoint `dda6ddc`,
+`feat(pi): keep MCP on Pi with Jetson SQLite persistence`, is published
+there. A following documentation commit adds the Laya handoff. The configuration commit includes
 the implementation, 57-test validation, storage investigations, two voice
 comparisons, and resumption instructions. Private keys, environment files,
 and live databases remain outside Git; the runbooks record the selected
@@ -151,8 +154,8 @@ Work next on the issues measured in the latest reports:
    ownership refactor remains a design; do not restore automatic timeout
    escalation while measuring the local path.
 
-The original routing commits were pushed earlier; newer checkpoint commits
-are local until explicitly pushed. Main voice logs and private environment
+The routing and current configuration commits are published on the branch.
+Main voice logs and private environment
 remain on the Pi. Saved metadata traces from both profiling trials are in
 `docs/profiling/`, so those captures survive Pi reboot even though live
 `/dev/shm` traces do not.
