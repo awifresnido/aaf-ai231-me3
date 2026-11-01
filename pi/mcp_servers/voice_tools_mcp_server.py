@@ -49,7 +49,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
 from contextlib import nullcontext, suppress
-from functools import partial, wraps
+from functools import wraps
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import uuid
@@ -57,7 +57,8 @@ import uuid
 from mcp.server.mcpserver import MCPServer
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from stall_diagnostics import Diagnostics, META_KEY, ProfiledConnection
+from stall_diagnostics import Diagnostics, META_KEY
+from vcm_state import state_store_from_env
 
 diagnostics = Diagnostics.from_env("mcp")
 
@@ -99,8 +100,12 @@ def trace_tool(fn):
     return measured
 
 # ---------------------------------------------------------------- config ----
-DATA_DIR = Path(os.getenv("VOICE_TOOLS_DATA", Path.home() / "voice-agent-tools"))
-DB_PATH = DATA_DIR / "state.db"
+STATE_BACKEND = os.getenv("VCM_STATE_BACKEND", "jetson_sqlite").strip().lower()
+STATE_STORE = state_store_from_env(diagnostics=diagnostics)
+if diagnostics:
+    diagnostics.emit("vcm_server_configuration", tool_server_host=os.getenv("VCM_TOOL_SERVER_HOST", "pi"),
+                     state_backend=STATE_BACKEND,
+                     sqlite_version=sqlite3.sqlite_version if STATE_BACKEND == "local_sqlite" else None)
 TIMEZONE = os.getenv("VOICE_TOOLS_TZ", "Asia/Manila")
 JAMENDO_CLIENT_ID = os.getenv("JAMENDO_CLIENT_ID", "")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -113,8 +118,6 @@ SMTP_FROM = os.getenv("SMTP_FROM", SMTP_USER)
 
 DEFAULT_LAT = float(os.getenv("WEATHER_LAT", "10.7"))       # default: Leyte, PH
 DEFAULT_LON = float(os.getenv("WEATHER_LON", "124.97"))
-
-DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 server = ProfiledToolServer(
     name="voice-agent-tools",
@@ -137,48 +140,12 @@ def _http_json(url: str, timeout: float = 6.0) -> dict:
             return json.loads(r.read().decode("utf-8"))
 
 
-def _db() -> sqlite3.Connection:
-    options = {"factory": partial(ProfiledConnection, diagnostics=diagnostics)} if diagnostics else {}
-    db = sqlite3.connect(str(DB_PATH), check_same_thread=False, **options)
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS reminders ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT NOT NULL,"
-        " created_ms REAL NOT NULL, done INTEGER NOT NULL DEFAULT 0)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS device_state ("
-        " key TEXT PRIMARY KEY, value TEXT NOT NULL)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS timers ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, label TEXT NOT NULL,"
-        " ends_at REAL NOT NULL, fired INTEGER NOT NULL DEFAULT 0)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS alarms ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, time TEXT NOT NULL,"
-        " enabled INTEGER NOT NULL DEFAULT 1)"
-    )
-    db.commit()
-    return db
-
-
 def _set_state(key: str, value: dict) -> None:
-    db = _db()
-    db.execute(
-        "INSERT INTO device_state(key, value) VALUES (?, ?) "
-        "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
-        (key, json.dumps(value)),
-    )
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("set_state", {"key": key, "value": value})
 
 
 def _get_state(key: str) -> dict | None:
-    db = _db()
-    row = db.execute("SELECT value FROM device_state WHERE key=?", (key,)).fetchone()
-    db.close()
-    return json.loads(row[0]) if row else None
+    return STATE_STORE.dispatch("get_state", {"key": key})
 
 
 # ------------------------------------------------------------------ media ---
@@ -263,9 +230,6 @@ def play_music(query: str) -> dict:
 )
 @trace_tool
 def playback_control(action: str) -> dict:
-    media = _get_state("media") or {}
-    if not media:
-        return {"ok": False, "spoken": "Nothing is playing right now."}
     spoken = {
         "pause": "Paused.",
         "stop": "Stopped.",
@@ -276,8 +240,10 @@ def playback_control(action: str) -> dict:
     }.get(action)
     if spoken is None:
         return {"ok": False, "spoken": f"Unknown playback action: {action}"}
-    media["status"] = action
-    _set_state("media", media)
+    media = STATE_STORE.dispatch("patch_state", {"key": "media", "changes": {"status": action},
+                                                "defaults": {}, "require_existing": True})
+    if media is None:
+        return {"ok": False, "spoken": "Nothing is playing right now."}
     return {"ok": True, "spoken": spoken, "media": media}
 
 
@@ -349,10 +315,7 @@ def set_timer(duration_s: int) -> dict:
     if not (1 <= duration_s <= 86400):
         return {"ok": False, "spoken": "Timers must be between 1 second and 1 day."}
     ends = time.time() + duration_s
-    db = _db()
-    db.execute("INSERT INTO timers(label, ends_at) VALUES (?, ?)", (f"{duration_s}s", ends))
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_timer", {"label": f"{duration_s}s", "ends_at": ends})
     mins = duration_s // 60
     secs = duration_s % 60
     spoken = f"Timer set for {mins} minute{'s' if mins != 1 else ''}" if secs == 0 else \
@@ -379,10 +342,7 @@ def set_alarm(time_str: str) -> dict:
     cand = now.replace(hour=t.hour, minute=t.minute, second=0, microsecond=0)
     if cand <= now:
         cand += timedelta(days=1)
-    db = _db()
-    db.execute("INSERT INTO alarms(time, enabled) VALUES (?, 1)", (time_str, ))
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_alarm", {"time_str": time_str})
     return {"ok": True, "spoken": f"Alarm set for {time_str}.",
             "next_ring": cand.isoformat()}
 
@@ -394,13 +354,7 @@ def set_alarm(time_str: str) -> dict:
 )
 @trace_tool
 def add_reminder(text: str) -> dict:
-    db = _db()
-    db.execute(
-        "INSERT INTO reminders(text, created_ms) VALUES (?, ?)",
-        (text.strip(), time.time() * 1000),
-    )
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_reminder", {"text": text.strip(), "created_ms": time.time() * 1000})
     return {"ok": True, "spoken": f"Reminder added: {text}"}
 
 
@@ -410,11 +364,7 @@ def add_reminder(text: str) -> dict:
 )
 @trace_tool
 def list_reminders() -> dict:
-    db = _db()
-    rows = db.execute(
-        "SELECT id, text FROM reminders WHERE done=0 ORDER BY id DESC"
-    ).fetchall()
-    db.close()
+    rows = STATE_STORE.dispatch("list_reminders", {})
     if not rows:
         return {"ok": True, "spoken": "You have no reminders.", "reminders": []}
     texts = [r[1] for r in rows]
@@ -446,12 +396,11 @@ def set_thermostat(degrees: int) -> dict:
 )
 @trace_tool
 def control_lights(action: str, value: str = "") -> dict:
-    state = _get_state("lights") or {"power": False, "brightness": "100", "color": None}
     if action == "on":
-        state["power"] = True
+        changes = {"power": True}
         spoken = "Lights on."
     elif action == "off":
-        state["power"] = False
+        changes = {"power": False}
         spoken = "Lights off."
     elif action == "brightness":
         try:
@@ -460,17 +409,18 @@ def control_lights(action: str, value: str = "") -> dict:
             return {"ok": False, "spoken": "Brightness must be a number like 60."}
         if not (0 <= pct <= 100):
             return {"ok": False, "spoken": "Brightness must be between 0 and 100."}
-        state["brightness"], state["power"] = str(pct), True
+        changes = {"brightness": str(pct), "power": True}
         spoken = f"Brightness set to {pct} percent."
     elif action == "color":
         color = value.strip().capitalize()
         if color not in {"Red", "Blue", "Green"}:
             return {"ok": False, "spoken": f"Color must be Red, Blue, or Green."}
-        state["color"], state["power"] = color, True
+        changes = {"color": color, "power": True}
         spoken = f"Lights set to {color}."
     else:
         return {"ok": False, "spoken": f"Unknown light action: {action}"}
-    _set_state("lights", state)
+    state = STATE_STORE.dispatch("patch_state", {"key": "lights", "changes": changes,
+        "defaults": {"power": False, "brightness": "100", "color": None}})
     return {"ok": True, "spoken": spoken, "lights": state}
 
 
@@ -552,7 +502,10 @@ def place_call(to: str = "") -> dict:
 
 if __name__ == "__main__":
     try:
+        if hasattr(STATE_STORE, "start"):
+            STATE_STORE.start()
         server.run("stdio")
     finally:
+        STATE_STORE.close()
         if diagnostics:
             diagnostics.close()

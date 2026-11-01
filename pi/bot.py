@@ -320,11 +320,15 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     from stall_diagnostics import Diagnostics
     diagnostics = Diagnostics.from_env("pi", run=timing.run)
     timing.diagnostics = diagnostics
+    from vcm_server_location import build_vcm_server
+    vcm_server = build_vcm_server(os.path.dirname(os.path.abspath(__file__)), diagnostics=diagnostics)
     timing.record("configuration", vad_stop_secs=VAD_STOP_SECS, transport=TRANSPORT_MODE,
                   smart_turn_cpu_count=SMART_TURN_CPU_COUNT, orchestration_mode=ORCHESTRATION_MODE,
                   vcm_model_host=os.getenv("LOCAL_VCM_MODEL_HOST", "thinkpad") if ORCHESTRATION_MODE == "local_vcm" else None,
                   diagnostics_dir=str(diagnostics.path.parent) if diagnostics else None,
                   queued_logging=QUEUED_LOGGING,
+                  vcm_tool_server_host=vcm_server.host, vcm_tool_transport=vcm_server.transport,
+                  vcm_state_backend=vcm_server.state_backend,
                   pulse_source=os.getenv("PULSE_SOURCE"), pulse_sink=os.getenv("PULSE_SINK"),
                   pacat_latency_ms=PACAT_LATENCY_MS if TRANSPORT_MODE == "local" else None)
     if isinstance(transport.output(), PacatAudioOutput):
@@ -338,7 +342,6 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     # LLM tools via MCP: the voice-agent command tools server (M5). The
     # connection lives for the bot's lifetime; Pipecat closes it at teardown.
     from pipecat.services.mcp_service import MCPClient
-    from mcp import StdioServerParameters
 
     client_class = MCPClient
     client_options = {}
@@ -348,14 +351,11 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         client_options["diagnostics"] = diagnostics
 
     tools_mcp = client_class(
-        server_params=StdioServerParameters(
-            command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
-            args=[os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_servers", "voice_tools_mcp_server.py")],
-            env=diagnostics.server_env() if diagnostics else None,
-        ),
+        server_params=vcm_server.server_params(),
         **client_options,
     )
     voice_tools = await tools_mcp.tools()
+    logger.info("VCM tool server: host={}, transport={}", vcm_server.host, vcm_server.transport)
     if ORCHESTRATION_MODE == "local_vcm":
         from pipecat.adapters.schemas.tools_schema import ToolsSchema
         from orchestration import FAST_TOOLS

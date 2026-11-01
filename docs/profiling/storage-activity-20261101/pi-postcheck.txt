@@ -1,0 +1,7 @@
+{"sqlite_version": "3.46.1", "settings": {"journal_mode": "delete", "synchronous": 2, "page_size": 4096, "busy_timeout": 5000}, "temporary_probe_directories_remaining": ["/dev/shm/voice-sqlite-probe-20261101-crosslock", "/dev/shm/voice-sqlite-probe-20261101-spaced", "/dev/shm/voice-sqlite-probe-20261101-1702"]}
+MainPID=29743
+ActiveState=active
+throttled=0x0
+temp=51.6'C
+bec5dbb1748c0e3f8bfd8de49c90205c07c94d28dc8b278b65e9f47bc1e17012  /tmp/diagnose_sqlite_storage.py
+8ab246a405a7dfea496979634454986964212da1b7a4ca58228206bfcaab0395  /tmp/profile_storage_activity.py

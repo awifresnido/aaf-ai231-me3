@@ -83,7 +83,7 @@ class AsyncDiagnosticsTests(unittest.IsolatedAsyncioTestCase):
         with tempfile.TemporaryDirectory() as folder:
             trace = Diagnostics("pi", run="rpc-test", directory=folder)
             server = Path(__file__).resolve().parents[1] / "pi" / "mcp_servers" / "voice_tools_mcp_server.py"
-            env = {**trace.server_env(), "VOICE_TOOLS_DATA": str(Path(folder) / "state")}
+            env = {**trace.server_env(), "VOICE_TOOLS_DATA": str(Path(folder) / "state"), "VCM_STATE_BACKEND": "local_sqlite"}
             async with ProfiledMCPClient(diagnostics=trace,
                 server_params=StdioServerParameters(command=sys.executable, args=[str(server)], env=env)) as client:
                 schema = await client.tools()

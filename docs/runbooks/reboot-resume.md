@@ -1,13 +1,49 @@
 # Resume the voice agent work after a reboot
 
-Latest requested experiment (2026-11-01): ThinkPad-only VCM with queued
-logging and Pi/MCP tracing; Jev, VPS fallback, and GLM disabled. See
-[Queued logging trial](queued-logging-trial-20261101.md) for the test,
-end-to-end latency comparison, RAM traces, and rollback. Confirm
+Current experiment (2026-11-01):
+[Pi-hosted VCM MCP with Jetson/NVMe persistence](pi-mcp-jetson-state-trial-20261101.md).
+`VCM_TOOL_SERVER_HOST=pi` and `VCM_STATE_BACKEND=jetson_sqlite` keep every
+MCP server on Pi; only a non-MCP SQLite worker runs on Jetson. This is now
+the default Pi-option behavior. Current run `afe7b8b933`, experiment
+`vcm-pi-mcp-nvme-worker-20261101`, has completed two voice passes; see
+[the results](pi-mcp-worker-results-20261101.md).
+The current state file is the same NVMe trial file used previously; all
+existing rows were preserved and the original Pi database was unchanged.
+Fifty-seven tests passed. Actual split preflights measured median complete
+MCP calls of 25.044 ms and SQLite commit spans of 2.192 ms. The live voice
+test measured median response 5.468 s over 22 replies, median commits
+2.651 ms, and non-HTTP MCP calls 20.760 ms. This retains the storage benefit;
+model time was 3.517 s and external APIs explain the longest replies.
+
+The model remains ThinkPad-only Llama 3.2 3B; Jev, VPS fallback, and GLM are
+disabled. VAD is 0.3 s, Smart Turn uses two threads, and queued logging/RAM
+tracing are enabled. Confirm `VCM_TOOL_SERVER_HOST`, `VCM_STATE_BACKEND`,
 `ORCHESTRATION_MODE`, `LOCAL_VCM_MODEL_HOST`, `VOICE_DIAGNOSTICS`, and
-`VOICE_QUEUED_LOGGING` before using older setup instructions below.
+`VOICE_QUEUED_LOGGING` before using older instructions below.
+
+The preceding [full-VCM-on-Jetson two-test results](vcm-nvme-results-20261101.md)
+for run `625b1e52a7` measured median response 5.185 s (25 replies), versus
+the Pi-local storage run's 6.931 s, and commit median 2.456 ms. The model
+then dominated at 3.355 s: prompt evaluation 1.846 s and generation 1.352 s.
+Startup self-hearing, validation failures, and compound partial actions
+remain. Switching MCP host now retains NVMe state by default; selecting
+`local_sqlite` explicitly uses the separate original Pi state history.
 The preceding diagnosis is in
 [Pi/MCP profiling results](thinkpad-mcp-profile-results-20261101.md).
+The preceding controlled tests are in
+[SQLite storage diagnosis](sqlite-storage-diagnosis-20261101.md): a temporary
+MCP database reproduced a 3.10 s journal fdatasync, with separate raw-file
+flush spikes and positive reader-lock controls. Live data/settings stayed
+unchanged. New harnesses/results follow checkpoint `81cbbb8` locally.
+The [DELETE/FULL versus WAL/FULL comparison](sqlite-wal-comparison-20261101.md)
+found that reusable WAL reduces median commit time but retains 1.1–1.8 s
+flush stalls. Fresh WAL also incurred slow shared-memory file creation;
+DELETE had slow tiny journal writes. The
+[storage activity diagnosis](storage-activity-diagnosis-20261101.md)
+correlates tiny-write stalls with ext4 journal waits and unfinished USB
+commands, despite little dirty memory. The same untraced probe measured
+median commits of 792.73 ms on Pi USB versus 2.43 ms on Jetson NVMe,
+motivating the subsequent full-server trial and current persistence split.
 Prior comparisons are recorded in
 [VPS results](vps-vcm-results-20261101.md),
 [ThinkPad results](local-vcm-results-20261101.md), and
@@ -16,9 +52,15 @@ Prior comparisons are recorded in
 The workspace branch is `two-brain-plusjev` in
 `awifresnido/aaf-ai231-me3`. The latest checkpoint is committed locally;
 publication to GitHub is a separate step, so the remote may be behind.
+Identify the current configuration with `git log -1`: its subject is
+`feat(pi): keep MCP on Pi with Jetson SQLite persistence`. The commit includes
+the implementation, 57-test validation, storage investigations, two voice
+comparisons, and resumption instructions. Private keys, environment files,
+and live databases remain outside Git; the runbooks record the selected
+non-secret settings and data locations.
 Reopen this conversation and say: “Resume from `two-brain-plusjev`; inspect
-the ThinkPad-only queued-logging checkpoint and continue SQLite latency
-profiling.” The latest two voice tests are assessed in
+the Pi-MCP/Jetson-storage trial and analyze the matching Pi/MCP/state-worker
+traces.” The previous Pi-local storage voice tests are assessed in
 [Queued logging results](queued-logging-results-20261101.md). The earlier
 echo-feedback work remains in `vad-03-threads2-results-20261101.md` and
 `aec-trial-results-20261101.md`.
@@ -90,9 +132,14 @@ local bot logs to `me3-local-audio.log`.
 
 Work next on the issues measured in the latest reports:
 
-1. Isolate SQLite durability-flush versus commit-lock waits. Eleven of
-   thirteen writes in the queued tests spent over one second in commit,
-   reaching 14.714 s. Keep current durability while diagnosing.
+1. Keep the assessed Pi-MCP/Jetson-storage checkpoint; its three-component
+   traces are saved locally. Next isolate ThinkPad prompt/history/cache
+   and generation costs with a fixed command sequence. The hearing-check
+   question was misrouted to time, and two decisions failed validation;
+   strengthen intent/argument correctness alongside latency tuning. Address
+   startup self-hearing and compound actions separately. Keep DELETE/FULL and preserve the
+   separate original Pi database until an explicit state handover is chosen.
+   Earlier voice commits reached 14.714 s.
 2. Retain queued logging and the independent RAM traces. Logging caller
    stalls fell from 1.807 s to at most 10.963 ms, with no sampled loop lag
    above 50 ms in the two queued tests.

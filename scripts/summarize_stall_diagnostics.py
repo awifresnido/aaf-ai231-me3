@@ -36,6 +36,14 @@ def summarize(folder):
                       "tool_execute", "sqlite_connect", "sqlite_execute", "sqlite_fetchone",
                       "sqlite_fetchall", "sqlite_commit", "sqlite_close", "http_request"]:
             row[phase + "_ms"] = round(sum(e["elapsed_ms"] for e in phases[phase]), 3) if phases[phase] else None
+        if phases["state_rpc"] or phases["state_worker_call"]:
+            for phase in ["state_rpc", "state_worker_call"]:
+                row[phase + "_ms"] = round(sum(e["elapsed_ms"] for e in phases[phase]), 3) if phases[phase] else None
+            row["state_request_count"] = len(phases["state_rpc"])
+            row["sqlite_components"] = sorted({e["component"] for e in spans if e["phase"].startswith("sqlite_")})
+            if phases["state_rpc"] and phases["state_worker_call"]:
+                row["state_rpc_outside_worker_ms"] = round(sum(e["elapsed_ms"] for e in phases["state_rpc"])
+                    - sum(e["elapsed_ms"] for e in phases["state_worker_call"]), 3)
         if phases["mcp_rpc"]:
             rpc = phases["mcp_rpc"][0]
             total_start, rpc_start = starts.get(total["span_id"]), starts.get(rpc["span_id"])
@@ -45,9 +53,14 @@ def summarize(folder):
             if phases["mcp_server_call"]:
                 server = phases["mcp_server_call"][0]
                 server_start = starts.get(server["span_id"])
-                if rpc_start and server_start:
+                same_clock = rpc.get("clock_domain") == server.get("clock_domain")
+                if rpc_start and server_start and same_clock:
                     row["rpc_to_server_entry_ms"] = round((server_start["mono_ns"] - rpc_start["mono_ns"]) / 1e6, 3)
-                row["server_exit_to_rpc_return_ms"] = round((rpc["mono_ns"] - server["mono_ns"]) / 1e6, 3)
+                if same_clock:
+                    row["server_exit_to_rpc_return_ms"] = round((rpc["mono_ns"] - server["mono_ns"]) / 1e6, 3)
+                if "clock_domain" in rpc or "clock_domain" in server:
+                    row["same_clock_domain"] = same_clock
+                    row["rpc_outside_server_ms"] = round(rpc["elapsed_ms"] - server["elapsed_ms"], 3)
         calls.append(row)
     loops = {}
     for component in {e["component"] for e in events}:

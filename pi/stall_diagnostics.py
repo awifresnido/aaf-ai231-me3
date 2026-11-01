@@ -26,6 +26,10 @@ class Diagnostics:
             raise ValueError("Invalid diagnostic run ID")
         self.run = run
         self.component = component
+        try:
+            self.clock_domain = Path("/proc/sys/kernel/random/boot_id").read_text().strip()
+        except OSError:
+            self.clock_domain = uuid.uuid4().hex
         self.directory = Path(directory)
         self.directory.mkdir(mode=0o700, parents=True, exist_ok=True)
         folder = self.directory / run
@@ -57,7 +61,8 @@ class Diagnostics:
         if self._closed:
             return
         item = {"event": event, "run": self.run, "component": self.component,
-                "pid": os.getpid(), "at": time.time(), "mono_ns": time.monotonic_ns(),
+                "pid": os.getpid(), "clock_domain": self.clock_domain,
+                "at": time.time(), "mono_ns": time.monotonic_ns(),
                 "call_id": CALL_ID.get(), **fields}
         try:
             self._queue.put_nowait(item)
@@ -97,7 +102,7 @@ class Diagnostics:
 
     @contextmanager
     def span(self, phase, **fields):
-        span_id = f"{os.getpid()}-{next(self._ids)}"
+        span_id = f"{self.clock_domain}:{os.getpid()}-{next(self._ids)}"
         started = time.monotonic_ns()
         usage = resource.getrusage(resource.RUSAGE_SELF)
         self.emit("span_start", phase=phase, span_id=span_id, **fields)

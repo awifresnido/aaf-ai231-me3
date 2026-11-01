@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "base_commit": "81cbbb8",
+  "branch": "two-brain-plusjev",
+  "purpose": "Compare actual VCM MCP placement with disposable state; prepare NVMe voice trial",
+  "default_location": "pi",
+  "active_trial_location": "jetson",
+  "voice_run_id": "625b1e52a7",
+  "state_snapshot_contents_in_repository": false,
+  "trial_state_seed": "Consistent read-only-source SQLite backup from Pi, verified mode 600 and identical hash on Jetson",
+  "preflight_calls_per_host": 4,
+  "interval_secs": 5,
+  "regression_tests_passed": 46,
+  "voice_results_status": "Awaiting completion; not an end-to-end voice assessment",
+  "sha256": {
+    "deployment-verification.json": "39639068419dd5e8fceb44ec03d836dc657f22d095b3d5fca7118f0d1b5a90d9",
+    "jetson/mcp-962028.jsonl": "1f2a5539b1e3dc346952213bae3a0b5ab2f0ee94d044b9278117e0e1de7f4f6e",
+    "jetson/pi-40980.jsonl": "377c9ccc2ecb273c84fe3683728a659e8f9c1f7986a2e0bb6f146ad3302911ce",
+    "jetson/summary.json": "f223eac7d129ddc8b02a83c497e928abe39ef2a3a84f13cb36b4295d2da3785a",
+    "pi/mcp-41098.jsonl": "23ce06f78ec66a1f32ea396f625cc7cf2b364e2c5f6665cc485238d8f38b7ef1",
+    "pi/pi-41092.jsonl": "e0af525a017acbffa442a91efff7157856809c8faaa113dbf45fe58aac680df0",
+    "pi/summary.json": "986b055c0ec8c5ada5d3a46a289ac01e94d114fc541703c7b9146b1b0dccf203",
+    "regression.log": "8002b144590cfd5dedbafc290014d251e84e1c4ca4b9c6c74f53328fe9084560"
+  },
+  "source_sha256": {
+    "pi/bot.py": "1a503ea5930c9e8480c7bc3ef05adfbffe71c98b327a71d13ab8bf38c5e8d590",
+    "pi/stall_diagnostics.py": "ddb66dd9cfeeb99621605bbe80befb262b7de758c585107f1f4a82a9a18b32a0",
+    "pi/vcm_server_location.py": "17bdeafce4b41693508506346a64546a211677fdc789a0a4b43e47c7b6b30076",
+    "pi/mcp_servers/voice_tools_mcp_server.py": "98b1544d07be8fa737ea17466fa6c2ef24841464499d1d5b4528a0d011209509",
+    "scripts/summarize_stall_diagnostics.py": "125573ac52d2e83210c41355a7afe2850e5efb8def930ce75c88082123a304f7",
+    "scripts/probe_vcm_location.py": "f8091c6e5a7e881cc5e1f134b4a7acf986bb97effb55544b40af164a174c45be",
+    "tests/test_vcm_server_location.py": "69a2adb38469b14a88fa7ca8d499159577583f526e46a15d919d22b546ae6595"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "usb_tree": {
+    "returncode": 0,
+    "stdout": "/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/1p, 480M\n    |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/4p, 480M\n        |__ Port 003: Dev 003, If 0, Class=Audio, Driver=snd-usb-audio, 12M\n        |__ Port 003: Dev 003, If 1, Class=Audio, Driver=snd-usb-audio, 12M\n        |__ Port 003: Dev 003, If 2, Class=Audio, Driver=snd-usb-audio, 12M\n        |__ Port 003: Dev 003, If 3, Class=Human Interface Device, Driver=usbhid, 12M\n/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 5000M\n    |__ Port 001: Dev 002, If 0, Class=Mass Storage, Driver=usb-storage, 5000M",
+    "stderr": ""
+  },
+  "block_devices": {
+    "returncode": 0,
+    "stdout": "NAME    SIZE MODEL         TRAN FSTYPE MOUNTPOINTS    ROTA\nloop0     2G                    swap                     1\nsda    57.7G Storage Media usb                           1\n\u251c\u2500sda1  512M                    vfat   /boot/firmware    1\n\u2514\u2500sda2 57.2G                    ext4   /                 1\nzram0     2G                    swap   [SWAP]            0",
+    "stderr": ""
+  },
+  "throttled": {
+    "returncode": 0,
+    "stdout": "throttled=0x0",
+    "stderr": ""
+  },
+  "temperature": {
+    "returncode": 0,
+    "stdout": "temp=54.0'C",
+    "stderr": ""
+  },
+  "kernel_storage_messages": {
+    "returncode": 0,
+    "lines": [
+      "[    1.089657] usbcore: registered new interface driver uas",
+      "[    1.089695] usbcore: registered new interface driver usb-storage",
+      "[    1.622758] usb-storage 2-1:1.0: USB Mass Storage device detected",
+      "[    1.623079] scsi host0: usb-storage 2-1:1.0",
+      "[    2.703010] sd 0:0:0:0: [sda] 121012224 512-byte logical blocks: (62.0 GB/57.7 GiB)",
+      "[    2.703336] sd 0:0:0:0: [sda] Write Protect is off",
+      "[    2.703346] sd 0:0:0:0: [sda] Mode Sense: 45 00 00 00",
+      "[    2.703587] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA",
+      "[    2.731596]  sda: sda1 sda2",
+      "[    2.731904] sd 0:0:0:0: [sda] Attached SCSI removable disk",
+      "[    3.000751] EXT4-fs (sda2): orphan cleanup on readonly fs",
+      "[    3.001247] EXT4-fs (sda2): mounted filesystem a7857f95-5305-411f-917d-93d06ca53dea ro with ordered data mode. Quota mode: none.",
+      "[    7.105455] EXT4-fs (sda2): re-mounted a7857f95-5305-411f-917d-93d06ca53dea r/w."
+    ],
+    "stderr": ""
+  },
+  "cgroup_names": [
+    "sys-fs-fuse-connections.mount",
+    "sys-kernel-config.mount",
+    "sys-kernel-debug.mount",
+    "dev-mqueue.mount",
+    "user.slice",
+    "sys-kernel-tracing.mount",
+    "init.scope",
+    "system.slice",
+    "proc-sys-fs-binfmt_misc.mount"
+  ]
+}
