@@ -1,0 +1,82 @@
+{
+  "model": "jev-1.14.0",
+  "gate_results": {
+    "paraphrase_holdout": {
+      "items": 200,
+      "accuracy_overall": 0.935,
+      "gates": {
+        "tau0.9_gap0.2": {
+          "accept_rate": 0.905,
+          "correct_fastpath": 0.885,
+          "safe_other": 0.0,
+          "unsafe_of_accepted": 0.022099,
+          "unsafe_rate": 0.02
+        },
+        "tau0.5_gap0.05": {
+          "accept_rate": 0.98,
+          "correct_fastpath": 0.93,
+          "safe_other": 0.03,
+          "unsafe_of_accepted": 0.020408,
+          "unsafe_rate": 0.02
+        }
+      }
+    },
+    "test": {
+      "items": 200,
+      "accuracy_overall": 0.99,
+      "gates": {
+        "tau0.9_gap0.2": {
+          "accept_rate": 0.89,
+          "correct_fastpath": 0.89,
+          "safe_other": 0.0,
+          "unsafe_of_accepted": 0.0,
+          "unsafe_rate": 0.0
+        },
+        "tau0.5_gap0.05": {
+          "accept_rate": 0.99,
+          "correct_fastpath": 0.99,
+          "safe_other": 0.0,
+          "unsafe_of_accepted": 0.0,
+          "unsafe_rate": 0.0
+        }
+      }
+    },
+    "personal_awi": {
+      "items": 200,
+      "accuracy_overall": 0.995,
+      "gates": {
+        "tau0.9_gap0.2": {
+          "accept_rate": 0.88,
+          "correct_fastpath": 0.88,
+          "safe_other": 0.0,
+          "unsafe_of_accepted": 0.0,
+          "unsafe_rate": 0.0
+        },
+        "tau0.5_gap0.05": {
+          "accept_rate": 0.98,
+          "correct_fastpath": 0.98,
+          "safe_other": 0.0,
+          "unsafe_of_accepted": 0.0,
+          "unsafe_rate": 0.0
+        }
+      }
+    }
+  },
+  "latency_ms": {
+    "paraphrase_holdout": {
+      "p50": 320.8,
+      "p95": 372.7,
+      "mean": 329.7
+    },
+    "test": {
+      "p50": 319.9,
+      "p95": 369.9,
+      "mean": 325.4
+    },
+    "personal_awi": {
+      "p50": 320.7,
+      "p95": 369.1,
+      "mean": 323.8
+    }
+  }
+}

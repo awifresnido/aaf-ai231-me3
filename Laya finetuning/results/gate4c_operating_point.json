@@ -1,0 +1,57 @@
+{
+  "chosen": {
+    "tau": 0.5,
+    "gap": 0.05,
+    "accept_rate": 0.9851598173515982,
+    "correct_fastpath": 0.9257990867579908,
+    "safe_other": 0.05707762557077625,
+    "unsafe_of_accepted": 0.002317497103128621,
+    "unsafe_rate": 0.00228310502283105
+  },
+  "per_slice": {
+    "paraphrase_holdout": {
+      "accept_rate": 0.9823489477257298,
+      "correct_fastpath": 0.911744738628649,
+      "safe_other": 0.06788866259334692,
+      "unsafe_of_accepted": 0.0027643400138217,
+      "unsafe_rate": 0.0027155465037338763
+    },
+    "test": {
+      "accept_rate": 1.0,
+      "correct_fastpath": 1.0,
+      "safe_other": 0.0,
+      "unsafe_of_accepted": 0.0,
+      "unsafe_rate": 0.0
+    },
+    "personal_awi": {
+      "accept_rate": 1.0,
+      "correct_fastpath": 1.0,
+      "safe_other": 0.0,
+      "unsafe_of_accepted": 0.0,
+      "unsafe_rate": 0.0
+    }
+  },
+  "jev_gate": {
+    "paraphrase_holdout": {
+      "accept_rate": 0.8038017651052274,
+      "correct_fastpath": 0.7963340122199593,
+      "safe_other": 0.006788866259334691,
+      "unsafe_of_accepted": 0.0008445945945945946,
+      "unsafe_rate": 0.0006788866259334691
+    },
+    "test": {
+      "accept_rate": 0.996415770609319,
+      "correct_fastpath": 0.996415770609319,
+      "safe_other": 0.0,
+      "unsafe_of_accepted": 0.0,
+      "unsafe_rate": 0.0
+    },
+    "personal_awi": {
+      "accept_rate": 1.0,
+      "correct_fastpath": 1.0,
+      "safe_other": 0.0,
+      "unsafe_of_accepted": 0.0,
+      "unsafe_rate": 0.0
+    }
+  }
+}
