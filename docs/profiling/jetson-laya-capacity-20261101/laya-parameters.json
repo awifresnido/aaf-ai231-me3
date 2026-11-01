@@ -1,0 +1,13 @@
+{
+  "parameter_count": 421293827,
+  "parameter_elements_by_dtype": {
+    "torch.float32": 421293827
+  },
+  "parameter_bytes": 1685175308,
+  "parameter_mib": 1607.1084098815918,
+  "half_precision_parameter_mib": 803.5542049407959,
+  "agent_device": "cpu",
+  "agent_amp_dtype": "torch.float32",
+  "amp_enabled": false,
+  "checkpoint_file_bytes": 842609220
+}

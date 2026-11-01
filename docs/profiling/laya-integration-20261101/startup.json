@@ -1,0 +1,16 @@
+{
+  "ready": true,
+  "contract": {
+    "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+    "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+    "tau": 0.5,
+    "gap": 0.05
+  },
+  "device": "cpu",
+  "threads": 2,
+  "load_s": 2.3131765270081814,
+  "warmup_s": 0.788351932016667,
+  "model_sha256": "89948232efe015ca9ac260ef2160829b2d7b715005e5ed4115d9ae68d59649e6",
+  "process_start_to_ready_s": 4.827049732004525,
+  "note": "Fresh process with existing filesystem cache; resident comparison service also loaded, neither model generating concurrently."
+}

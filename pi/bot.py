@@ -325,6 +325,10 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     timing.record("configuration", vad_stop_secs=VAD_STOP_SECS, transport=TRANSPORT_MODE,
                   smart_turn_cpu_count=SMART_TURN_CPU_COUNT, orchestration_mode=ORCHESTRATION_MODE,
                   vcm_model_host=os.getenv("LOCAL_VCM_MODEL_HOST", "thinkpad") if ORCHESTRATION_MODE == "local_vcm" else None,
+                  router_model=os.getenv("ROUTER_MODEL", "llama" if ORCHESTRATION_MODE == "local_vcm" else "jev") if ORCHESTRATION_MODE in {"local_vcm", "two_brain_plusjev"} else None,
+                  laya_fallback_policy=os.getenv("LAYA_FALLBACK_POLICY", "clarify") if ORCHESTRATION_MODE == "local_vcm" and os.getenv("ROUTER_MODEL") == "laya" else None,
+                  classifier_timeout_s=float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2")) if os.getenv("ROUTER_MODEL") == "laya" else None,
+                  cloud_escalation=ORCHESTRATION_MODE == "two_brain_plusjev",
                   diagnostics_dir=str(diagnostics.path.parent) if diagnostics else None,
                   queued_logging=QUEUED_LOGGING,
                   vcm_tool_server_host=vcm_server.host, vcm_tool_transport=vcm_server.transport,
@@ -382,7 +386,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     if ORCHESTRATION_MODE == "local_vcm":
         from local_vcm import LocalVCMProcessor
         llm_stages = [LocalVCMProcessor(tools_mcp, timing_observer=timing)]
-        logger.info("Single-host VCM trial: host={}; Jev, other model hosts, and GLM disabled",
+        logger.info("Local VCM trial: host={}; Jev, other model hosts, and GLM disabled",
                     llm_stages[0].model_host)
     else:
         ollama_key = os.getenv("OLLAMA_API_KEY")
@@ -407,7 +411,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         if ORCHESTRATION_MODE == "two_brain_plusjev":
             from orchestration import TwoBrainRouter
             llm_stages.insert(0, TwoBrainRouter(tools_mcp, timing_observer=timing))
-            logger.info("Two-brain-plus-Jev routing enabled")
+            logger.info("Two-brain routing enabled: classifier={}, GLM={}", llm_stages[0].router_model, OLLAMA_MODEL)
 
     pipeline = Pipeline([
         transport.input(),

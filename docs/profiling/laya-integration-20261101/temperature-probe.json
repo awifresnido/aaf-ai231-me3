@@ -1,0 +1,302 @@
+[
+  {
+    "text": "Set the thermostat to 26 degrees",
+    "seconds": 0.7238739729800727,
+    "route": "set_thermostat",
+    "accepted": true,
+    "raw_choice": "set_thermostat",
+    "top_prob": 0.9801,
+    "gap": 0.966,
+    "probabilities": {
+      "get_time": 0.0005,
+      "get_weather": 0.0005,
+      "list_reminders": 0.0005,
+      "add_reminder": 0.0005,
+      "set_thermostat": 0.9801,
+      "control_lights": 0.0005,
+      "set_timer": 0.0006,
+      "set_alarm": 0.0007,
+      "playback_control": 0.0005,
+      "play_music": 0.0005,
+      "small_talk": 0.0007,
+      "other": 0.0141
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.7103906419943087
+  },
+  {
+    "text": "Set the thermostat to twenty six degrees",
+    "seconds": 0.724874417996034,
+    "route": "other",
+    "accepted": true,
+    "raw_choice": "other",
+    "top_prob": 0.9407,
+    "gap": 0.9347,
+    "probabilities": {
+      "get_time": 0.0052,
+      "get_weather": 0.0053,
+      "list_reminders": 0.005,
+      "add_reminder": 0.0053,
+      "set_thermostat": 0.0056,
+      "control_lights": 0.0051,
+      "set_timer": 0.0057,
+      "set_alarm": 0.0055,
+      "playback_control": 0.0054,
+      "play_music": 0.0052,
+      "small_talk": 0.006,
+      "other": 0.9407
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.7227241870132275
+  },
+  {
+    "text": "Set the thermostat to twenty-six degrees Celsius",
+    "seconds": 0.7327172569930553,
+    "route": "set_thermostat",
+    "accepted": true,
+    "raw_choice": "set_thermostat",
+    "top_prob": 0.9456,
+    "gap": 0.9026,
+    "probabilities": {
+      "get_time": 0.0011,
+      "get_weather": 0.0011,
+      "list_reminders": 0.001,
+      "add_reminder": 0.0011,
+      "set_thermostat": 0.9456,
+      "control_lights": 0.001,
+      "set_timer": 0.0012,
+      "set_alarm": 0.0014,
+      "playback_control": 0.0011,
+      "play_music": 0.0011,
+      "small_talk": 0.0014,
+      "other": 0.043
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.7302193499926943
+  },
+  {
+    "text": "Set the room temperature to 28 degrees Celsius",
+    "seconds": 0.8248958719777875,
+    "route": "set_thermostat",
+    "accepted": true,
+    "raw_choice": "set_thermostat",
+    "top_prob": 0.9637,
+    "gap": 0.9364,
+    "probabilities": {
+      "get_time": 0.0008,
+      "get_weather": 0.0008,
+      "list_reminders": 0.0008,
+      "add_reminder": 0.0008,
+      "set_thermostat": 0.9637,
+      "control_lights": 0.0011,
+      "set_timer": 0.0009,
+      "set_alarm": 0.0012,
+      "playback_control": 0.0008,
+      "play_music": 0.0008,
+      "small_talk": 0.001,
+      "other": 0.0273
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8223795599769801
+  },
+  {
+    "text": "Set the room temperature to twenty eight degrees",
+    "seconds": 0.8146740459778812,
+    "route": "other",
+    "accepted": true,
+    "raw_choice": "other",
+    "top_prob": 0.804,
+    "gap": 0.6879000000000001,
+    "probabilities": {
+      "get_time": 0.0076,
+      "get_weather": 0.0074,
+      "list_reminders": 0.0072,
+      "add_reminder": 0.0075,
+      "set_thermostat": 0.009,
+      "control_lights": 0.1161,
+      "set_timer": 0.0081,
+      "set_alarm": 0.0093,
+      "playback_control": 0.0075,
+      "play_music": 0.0075,
+      "small_talk": 0.0089,
+      "other": 0.804
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8122621260117739
+  },
+  {
+    "text": "Set the thermostat to 22 degrees Celsius",
+    "seconds": 0.818188700999599,
+    "route": "set_thermostat",
+    "accepted": true,
+    "raw_choice": "set_thermostat",
+    "top_prob": 0.9883,
+    "gap": 0.9803999999999999,
+    "probabilities": {
+      "get_time": 0.0004,
+      "get_weather": 0.0003,
+      "list_reminders": 0.0003,
+      "add_reminder": 0.0004,
+      "set_thermostat": 0.9883,
+      "control_lights": 0.0003,
+      "set_timer": 0.0004,
+      "set_alarm": 0.0005,
+      "playback_control": 0.0003,
+      "play_music": 0.0003,
+      "small_talk": 0.0005,
+      "other": 0.0079
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8155676299938932
+  },
+  {
+    "text": "Set temperature to twenty five degrees",
+    "seconds": 0.8323381019872613,
+    "route": "other",
+    "accepted": true,
+    "raw_choice": "other",
+    "top_prob": 0.9384,
+    "gap": 0.9322,
+    "probabilities": {
+      "get_time": 0.0054,
+      "get_weather": 0.0054,
+      "list_reminders": 0.0052,
+      "add_reminder": 0.0054,
+      "set_thermostat": 0.006,
+      "control_lights": 0.0055,
+      "set_timer": 0.0059,
+      "set_alarm": 0.0058,
+      "playback_control": 0.0055,
+      "play_music": 0.0054,
+      "small_talk": 0.0062,
+      "other": 0.9384
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8299379890086129
+  },
+  {
+    "text": "Set the thermostat to 26 Celsius",
+    "seconds": 0.814713344007032,
+    "route": "set_thermostat",
+    "accepted": true,
+    "raw_choice": "set_thermostat",
+    "top_prob": 0.9853,
+    "gap": 0.975,
+    "probabilities": {
+      "get_time": 0.0004,
+      "get_weather": 0.0004,
+      "list_reminders": 0.0004,
+      "add_reminder": 0.0004,
+      "set_thermostat": 0.9853,
+      "control_lights": 0.0004,
+      "set_timer": 0.0004,
+      "set_alarm": 0.0005,
+      "playback_control": 0.0004,
+      "play_music": 0.0004,
+      "small_talk": 0.0006,
+      "other": 0.0103
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8117056659830268
+  },
+  {
+    "text": "Can you hear my voice?",
+    "seconds": 0.8287419090047479,
+    "route": "other",
+    "accepted": true,
+    "raw_choice": "other",
+    "top_prob": 0.8071,
+    "gap": 0.7403000000000001,
+    "probabilities": {
+      "get_time": 0.0119,
+      "get_weather": 0.0145,
+      "list_reminders": 0.0117,
+      "add_reminder": 0.0116,
+      "set_thermostat": 0.0105,
+      "control_lights": 0.0109,
+      "set_timer": 0.0118,
+      "set_alarm": 0.0117,
+      "playback_control": 0.0194,
+      "play_music": 0.0121,
+      "small_talk": 0.0668,
+      "other": 0.8071
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.8261944919941016
+  },
+  {
+    "text": "What time is it?",
+    "seconds": 0.9855172440002207,
+    "route": "get_time",
+    "accepted": true,
+    "raw_choice": "get_time",
+    "top_prob": 0.9876,
+    "gap": 0.98,
+    "probabilities": {
+      "get_time": 0.9876,
+      "get_weather": 0.0011,
+      "list_reminders": 0.0004,
+      "add_reminder": 0.0004,
+      "set_thermostat": 0.0003,
+      "control_lights": 0.0003,
+      "set_timer": 0.0004,
+      "set_alarm": 0.0008,
+      "playback_control": 0.0003,
+      "play_music": 0.0004,
+      "small_talk": 0.0006,
+      "other": 0.0076
+    },
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "classifier_s": 0.982691752986284
+  }
+]

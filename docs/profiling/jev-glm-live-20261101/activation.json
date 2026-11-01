@@ -1,0 +1,43 @@
+{
+  "activated_at": "2026-11-01T22:05:26.997856+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/jev-glm-live-20261101-220526",
+  "source_sha256": {
+    "bot.py": "850122b25205a592eb732fb18289aae3422232619d36cb5a51f808cd5aec9b31",
+    "orchestration.py": "2915e0b5d84026da9f07510be2fd868e1f0a761d76ef04685870ccefd2b7c4bc",
+    "local_vcm.py": "66ebebeb5111a63e973f52ef531b9e295a734a748c9e014c5cade5df27c3a659"
+  },
+  "changed_settings": {
+    "ORCHESTRATION_MODE": "two_brain_plusjev",
+    "VAD_EXPERIMENT": "jev-glm-pi-mcp-nvme-20261101",
+    "SMALL_LLM_SECONDARY_URL": ""
+  },
+  "glm_model": "z-ai/glm-5.3-flash",
+  "jev_model": "jev-1.14.0",
+  "jev_deadline_ms": "1200",
+  "log_start_bytes": 3312364,
+  "state_directory": "/home/aldwin/voice-agent-vcm/state/trials/nvme-20261101",
+  "run": "2a664e268a",
+  "pi_pid": 56818,
+  "jetson_worker_pid": 1530341,
+  "pipeline_ready_at": "2026-11-01T22:05:40+08:00",
+  "first_greeting_playback_at": "2026-11-01T22:05:56+08:00",
+  "preflight": {
+    "jev_http_status": 200,
+    "jev_choice": "get_time",
+    "jev_seconds": 0.901,
+    "glm_http_status": 200,
+    "glm_nonempty_completion": true,
+    "glm_seconds": 2.146
+  },
+  "live_voice_trial": "Initial and contextual windows assessed; 25 timed replies, missing-ASR segments and interrupted cloud waits retained separately.",
+  "assessment": "../../runbooks/jev-glm-live-results-20261101.md",
+  "contextual_assessment": "../../runbooks/jev-glm-context-results-20261101.md",
+  "assessed_initial_turns": [
+    1,
+    20
+  ],
+  "assessed_contextual_turns": [
+    21,
+    35
+  ]
+}

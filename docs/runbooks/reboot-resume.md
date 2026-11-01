@@ -1,5 +1,39 @@
 # Resume the voice agent work after a reboot
 
+Latest completed work: [Laya direct/contextual benchmark](laya-glm-results-20261101.md),
+run `26c376b1c3`. Twenty classifications completed without timeout; Laya server
+p50 **0.704 s**, Pi wait p50 **0.723 s**. End-to-end medians: direct **4.807 s**,
+context **6.131 s**, with two missing-ASR segments and one interrupted fragment.
+Guard phrasing/spacing coverage and pending affirmative follow-ups need fixes;
+the Manila time request was misheard and answered as weather (user confirmed).
+The [Jetson capacity check](jetson-laya-capacity-20261101.md) found inadequate
+headroom for the stock FP32-parameter loader beside speech services. Laya
+remains on ThinkPad CPU; no Jetson Laya installation or CUDA inference occurred.
+The user requested committing progress on `laya-integration`.
+
+Latest selection, 2026-11-01 22:47: user-requested **Laya + GLM** contextual
+test, run `26c376b1c3`, `ROUTER_MODEL=laya` within `two_brain_plusjev`.
+Jev is disabled; GLM remains enabled. Eighty-four tests passed. Pi MCP, Jetson
+storage and speakerphone settings are preserved. Laya client/server inference
+and end-to-end voice timings are recorded separately. See the
+[active trial, capture and rollback](laya-glm-live-trial-20261101.md).
+The following Jev + GLM selection describes the preceding comparison.
+
+Latest live selection (2026-11-01 22:05 Asia/Manila): the user requested
+Jev + GLM reactivation on `laya-integration`. Run `2a664e268a` selects
+`ORCHESTRATION_MODE=two_brain_plusjev`, Jev 1.14.0 and GLM 5.3 Flash;
+VPS small-model fallback is explicitly off. Pi MCP, Jetson storage and
+speakerphone settings are preserved. The completed [live results](jev-glm-live-results-20261101.md)
+measured median 4.761 s over 14 replies, but five speech segments lacked final
+ASR and the user confirmed needing to repeat commands. Prioritize that upstream
+audio/ASR failure, then GLM completion tails and weather API failure.
+The later [contextual tool test](jev-glm-context-results-20261101.md), turns
+21–35, shows sensible GLM tool inference and a multi-turn thermostat decision,
+but three cloud waits were interrupted by repetition and two Jev calls timed
+out. Combined timed replies: 25, median 5.093 s; silent waits are not included.
+See [activation, capture and rollback](jev-glm-live-trial-20261101.md).
+The Llama-only configuration described below is the preceding baseline.
+
 Next-session context for the local fine-tuned decision router is in
 [Laya integration handoff](laya-integration-handoff-20261101.md). Configuration
 checkpoint `dda6ddc` has been pushed to GitHub on `two-brain-plusjev`.

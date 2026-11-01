@@ -1,6 +1,7 @@
 """Single-host VCM trial: one structured model decision, then a tool receipt.
 
-Choose ThinkPad or VPS explicitly. No classifier or model fallback is used.
+Choose ThinkPad or VPS explicitly. ROUTER_MODEL=laya opts into the local
+classifier with separate deterministic argument validation and reply policy.
 """
 
 import asyncio
@@ -9,6 +10,7 @@ import os
 import re
 import time
 from contextlib import nullcontext
+from collections import deque
 
 from loguru import logger
 from pipecat.frames.frames import LLMContextFrame, TTSSpeakFrame
@@ -124,6 +126,14 @@ class LocalVCMClient(SmallModelClient):
 class LocalVCMProcessor(FrameProcessor):
     def __init__(self, mcp_client, *, model=None, timing_observer=None, **kwargs):
         super().__init__(**kwargs)
+        engine = os.getenv("ROUTER_MODEL", "llama").strip().lower()
+        if engine not in {"llama", "laya"}:
+            raise ValueError("local_vcm ROUTER_MODEL must be llama or laya")
+        self.router_model = engine
+        self._laya_consumed = deque(maxlen=64)
+        if model is None and engine == "laya":
+            from laya_router import LayaDecisionClient
+            model = LayaDecisionClient(timing_observer=timing_observer)
         self.model = model if model is not None else LocalVCMClient()
         self.model_host = getattr(self.model, "model_host", "test")
         self.mcp_client = mcp_client
@@ -158,6 +168,13 @@ class LocalVCMProcessor(FrameProcessor):
         text = messages[-1].get("content", "")
         if not isinstance(text, str) or not text.strip():
             return
+        if self.router_model == "laya":
+            # Consume a user-message object before awaiting classification or a
+            # write. Replayed context after timeout/cancellation cannot retry it.
+            # A newly spoken request has a new message object, even if identical.
+            if any(messages[-1] is previous for previous in self._laya_consumed):
+                return
+            self._laya_consumed.append(messages[-1])
         turn = self.timing.turn if self.timing else None
         started = time.monotonic()
         tool_issued = False

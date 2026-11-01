@@ -1,0 +1,73 @@
+{
+  "device": "Jetson Orin Nano class 8GB; measured 7485 MiB system total",
+  "l4t": "R39.2.0",
+  "cuda_driver_report": "13.2",
+  "power_mode": "15W",
+  "initial_containers_gib": {
+    "nemotron_asr": 1.155,
+    "magpie_tts": 3.752
+  },
+  "after_probe_containers_gib": {
+    "nemotron_asr": 2.19,
+    "magpie_tts": 3.733
+  },
+  "phases": {
+    "before_probe": {
+      "samples": 6,
+      "available_mib_min": 1664.5859375,
+      "available_mib_median": 1665.0234375,
+      "available_mib_max": 1667.05078125,
+      "gpu_active_percent_median": 6.0,
+      "gpu_active_percent_max": 99,
+      "swap_used_mib_max": 3.0
+    },
+    "tts_with_existing_live_asr_stream": {
+      "samples": 17,
+      "available_mib_min": 1647.64453125,
+      "available_mib_median": 1649.609375,
+      "available_mib_max": 1661.06640625,
+      "gpu_active_percent_median": 99,
+      "gpu_active_percent_max": 99,
+      "swap_used_mib_max": 3.0
+    },
+    "extra_offline_asr_plus_tts": {
+      "samples": 83,
+      "available_mib_min": 940.61328125,
+      "available_mib_median": 962.73828125,
+      "available_mib_max": 1013.85546875,
+      "gpu_active_percent_median": 99,
+      "gpu_active_percent_max": 99,
+      "swap_used_mib_max": 539.0
+    },
+    "after_probe": {
+      "samples": 30,
+      "available_mib_min": 943.96484375,
+      "available_mib_median": 948.25390625,
+      "available_mib_max": 954.33984375,
+      "gpu_active_percent_median": 5.0,
+      "gpu_active_percent_max": 99,
+      "swap_used_mib_max": 539.0
+    }
+  },
+  "laya_parameters": {
+    "parameter_count": 421293827,
+    "parameter_elements_by_dtype": {
+      "torch.float32": 421293827
+    },
+    "parameter_bytes": 1685175308,
+    "parameter_mib": 1607.1084098815918,
+    "half_precision_parameter_mib": 803.5542049407959,
+    "agent_device": "cpu",
+    "agent_amp_dtype": "torch.float32",
+    "amp_enabled": false,
+    "checkpoint_file_bytes": 842609220
+  },
+  "conclusion": "Stock FP32-parameter CUDA loader has inadequate operational headroom with speech services. A memory-optimized FP16 deployment is only a candidate for an isolated peak-memory and latency test; not validated to fit.",
+  "limitations": [
+    "No Laya CUDA model was loaded or timed on Jetson.",
+    "Offline ASR stress requests were additional to the live streaming ASR session; this overstates the normal single-stream sequential path and is not a matched end-to-end voice run.",
+    "Post-probe ASR allocations remained resident and swap increased; speech containers were not restarted or caches flushed.",
+    "GPU utilization percentage does not measure free GPU memory.",
+    "PyTorch/Transformers/Laya were absent from the inspected host Python3; existing speech containers had no python3 executable."
+  ]
+}

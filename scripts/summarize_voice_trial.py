@@ -37,12 +37,18 @@ def summarize(folder, bounds):
         complete = [e for e in matching("turn_analysis") if e["fields"]["is_complete"]
                     and decision and e["at"] < decision[0]["at"]]
         outcomes = [e for e in items if e["timing_event"] in {"route_local_tool", "route_local_reply", "route_local_failure"}]
+        classifier = matching("laya_classification") or matching("laya_classification_failure")
+        arguments = matching("laya_arguments")
+        fallback = matching("laya_local_reply")
         assert len(native) <= 1 and len(decision) <= 1 and len(outcomes) <= 1
         row = {"turn": turn, "start_at": min(e["at"] for e in items),
                "transcript_frames": len(matching("asr_transcript")),
                "native_latency_s": native[0]["fields"]["seconds"] if native else None,
                "first_playback_ms": playback[0]["fields"].get("since_speech_end_ms") if playback else None,
                "model_s": decision[0]["fields"]["model_s"] if decision else None,
+               "classifier_s": classifier[0]["fields"].get("classifier_s") if classifier else None,
+               "argument_extraction_s": arguments[0]["fields"].get("extraction_s") if arguments else None,
+               "model_fallback_s": fallback[0]["fields"].get("fallback_s") if fallback else None,
                "tool_decision": decision[0]["fields"]["tool"] if decision else None,
                "endpoint_context_ms": ready[0]["fields"]["since_speech_end_ms"] if ready else None,
                "smart_turn_ms": complete[-1]["fields"]["e2e_processing_time_ms"] if complete else None,
@@ -56,7 +62,8 @@ def summarize(folder, bounds):
         measured = [row for row in selected if row["native_latency_s"] is not None]
         stages = {field: stats([row[field] for row in measured if row[field] is not None])
                   for field in ["native_latency_s", "first_playback_ms", "model_s", "endpoint_context_ms",
-                                "smart_turn_ms", "tts_ttfb_s"]}
+                                "smart_turn_ms", "tts_ttfb_s", "classifier_s",
+                                "argument_extraction_s", "model_fallback_s"]}
         stages["outcomes"] = dict(Counter(row["outcome"] for row in selected if row["outcome"]))
         stages["unmeasured_turns"] = [row["turn"] for row in selected if row["native_latency_s"] is None]
         stages["model_server"] = {field: stats([row["model_server"][field] for row in measured if row["model_server"]])

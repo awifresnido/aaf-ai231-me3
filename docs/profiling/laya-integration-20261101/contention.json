@@ -1,0 +1,145 @@
+{
+  "kind": "model_only_not_voice",
+  "rows": [
+    {
+      "engine": "laya",
+      "phase": "sequential",
+      "case": 0,
+      "route": "get_time",
+      "seconds": 0.9745430979965022
+    },
+    {
+      "engine": "llama",
+      "phase": "sequential",
+      "case": 0,
+      "route": "get_time",
+      "seconds": 3.306754566998279
+    },
+    {
+      "engine": "laya",
+      "phase": "sequential",
+      "case": 1,
+      "route": "control_lights",
+      "seconds": 0.8501331189982011
+    },
+    {
+      "engine": "llama",
+      "phase": "sequential",
+      "case": 1,
+      "route": "control_lights",
+      "seconds": 1.4490968839963898
+    },
+    {
+      "engine": "laya",
+      "phase": "sequential",
+      "case": 2,
+      "route": "control_lights",
+      "seconds": 1.1647387919947505
+    },
+    {
+      "engine": "llama",
+      "phase": "sequential",
+      "case": 2,
+      "route": "control_lights",
+      "seconds": 2.696367773998645
+    },
+    {
+      "engine": "laya",
+      "phase": "sequential",
+      "case": 3,
+      "route": "other",
+      "seconds": 1.3163036609985284
+    },
+    {
+      "engine": "llama",
+      "phase": "sequential",
+      "case": 3,
+      "route": "set_thermostat",
+      "seconds": 2.323803022998618
+    },
+    {
+      "engine": "laya",
+      "phase": "sequential",
+      "case": 4,
+      "route": "add_reminder",
+      "seconds": 1.3550102549997973
+    },
+    {
+      "engine": "llama",
+      "phase": "sequential",
+      "case": 4,
+      "route": "add_reminder",
+      "seconds": 2.939713339001173
+    },
+    {
+      "engine": "llama",
+      "phase": "concurrent",
+      "case": 0,
+      "route": "get_time",
+      "seconds": 2.7936336630009464
+    },
+    {
+      "engine": "laya",
+      "phase": "concurrent",
+      "case": 0,
+      "route": "get_time",
+      "seconds": 3.4886501130022225
+    },
+    {
+      "engine": "llama",
+      "phase": "concurrent",
+      "case": 1,
+      "route": "control_lights",
+      "seconds": 3.3231318410034874
+    },
+    {
+      "engine": "laya",
+      "phase": "concurrent",
+      "case": 1,
+      "route": "control_lights",
+      "seconds": 3.80035066200071
+    },
+    {
+      "engine": "llama",
+      "phase": "concurrent",
+      "case": 2,
+      "route": "control_lights",
+      "seconds": 2.9952109250007197
+    },
+    {
+      "engine": "laya",
+      "phase": "concurrent",
+      "case": 2,
+      "route": "control_lights",
+      "seconds": 3.45059171399771
+    },
+    {
+      "engine": "llama",
+      "phase": "concurrent",
+      "case": 3,
+      "route": "set_thermostat",
+      "seconds": 2.516770648995589
+    },
+    {
+      "engine": "laya",
+      "phase": "concurrent",
+      "case": 3,
+      "route": "other",
+      "seconds": 3.0983921560036833
+    },
+    {
+      "engine": "llama",
+      "phase": "concurrent",
+      "case": 4,
+      "route": "add_reminder",
+      "seconds": 3.104695542002446
+    },
+    {
+      "engine": "laya",
+      "phase": "concurrent",
+      "case": 4,
+      "route": "add_reminder",
+      "seconds": 3.546332538004208
+    }
+  ]
+}

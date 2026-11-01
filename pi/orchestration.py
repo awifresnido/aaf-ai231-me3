@@ -9,6 +9,8 @@ import json
 import os
 import re
 import time
+from contextlib import nullcontext
+from collections import deque
 from pathlib import Path
 
 import httpx
@@ -305,12 +307,19 @@ class TwoBrainRouter(FrameProcessor):
     def __init__(self, mcp_client, *, classifier=None, extractor=None, timing_observer=None, **kwargs):
         super().__init__(**kwargs)
         self.timing_observer = timing_observer
+        self.diagnostics = getattr(timing_observer, "diagnostics", None)
         self.mcp_client = mcp_client
+        self.router_model = os.getenv("ROUTER_MODEL", "jev").strip().lower()
+        if self.router_model not in {"jev", "laya"}:
+            raise ValueError("two_brain_plusjev ROUTER_MODEL must be jev or laya")
+        self.classifier_timeout = (float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2"))
+            if self.router_model == "laya" else float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000)
+        if classifier is None and self.router_model == "laya":
+            from laya_classifier import LayaClassifier
+            classifier = LayaClassifier()
         self.classifier = classifier or JevClassifier(
-            api_key=os.environ["TYPESAFE_API_KEY"],
-            model=os.getenv("JEV_MODEL", "jev-1.14.0"),
-            timeout=float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000,
-        )
+            api_key=os.environ["TYPESAFE_API_KEY"], model=os.getenv("JEV_MODEL", "jev-1.14.0"),
+            timeout=self.classifier_timeout)
         self.extractor = extractor or SmallModelClient(
             [(os.getenv("SMALL_LLM_PRIMARY_URL", ""), os.getenv("SMALL_LLM_PRIMARY_PROTOCOL", "openai"), os.getenv("SMALL_LLM_PRIMARY_MODEL", os.getenv("SMALL_LLM_MODEL", "llama3.2:3b")), os.getenv("SMALL_LLM_PRIMARY_API_KEY_FILE", "")),
              (os.getenv("SMALL_LLM_SECONDARY_URL", ""), os.getenv("SMALL_LLM_SECONDARY_PROTOCOL", "openai"), os.getenv("SMALL_LLM_SECONDARY_MODEL", "llama3.2-3b"), os.getenv("SMALL_LLM_SECONDARY_API_KEY_FILE", ""))],
@@ -318,6 +327,14 @@ class TwoBrainRouter(FrameProcessor):
             timeout=float(os.getenv("SMALL_LLM_DEADLINE_MS", "2500")) / 1000,
         )
         self._inflight = set()
+        self._laya_owners = deque(maxlen=64)
+
+    def record(self, event, turn, **fields):
+        if self.timing_observer:
+            self.timing_observer.record(event, turn=turn, router_model=self.router_model, **fields)
+
+    def span(self, phase, turn):
+        return self.diagnostics.span(phase, turn=turn, router_model=self.router_model) if self.diagnostics else nullcontext()
 
     async def setup(self, setup):
         await super().setup(setup)
@@ -338,41 +355,86 @@ class TwoBrainRouter(FrameProcessor):
             await self.push_frame(frame, direction)
             return
         route_turn = self.timing_observer.turn if self.timing_observer else None
+        owner = None
+        if self.router_model == "laya":
+            message = next(m for m in reversed(frame.context.get_messages())
+                           if isinstance(m, dict) and m.get("role") == "user"
+                           and isinstance(m.get("content"), str))
+            owner = next((entry for entry in self._laya_owners if entry["message"] is message), None)
+            if owner is not None:
+                if owner["owner"] == "glm":
+                    # Tool-result continuations retain cloud ownership and history.
+                    await self.push_frame(frame, direction)
+                return
+            owner = {"message": message, "owner": "routing"}
+            self._laya_owners.append(owner)
         if _multiple_actions(text):
-            if self.timing_observer:
-                self.timing_observer.record("route_glm", turn=route_turn, reason="multiple_actions", router_s=0.0)
+            self.record("route_glm", route_turn, reason="multiple_actions", router_s=0.0, classifier_s=0.0)
             logger.info("Multiple actions routed to GLM")
+            if owner is not None:
+                owner["owner"] = "glm"
             await self.push_frame(frame, direction)
             return
         started = time.monotonic()
+        classifier_s = 0.0
+        classifier_started = None
+        classification_recorded = False
+        tool_issued = False
         try:
             tool = explicit_route_hint(text)
             result = None
-            jev_s = 0.0
             if not tool:
-                result = (await asyncio.wait_for(self.classifier.choice(
-                    {"utterance": text},
-                    {"intent": ChoiceQuestion(instructions="Select one supported command only when explicit and singular; otherwise other", options=OPTIONS)},
-                ), timeout=float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000))["intent"]
-                jev_s = time.monotonic() - started
-                tool = accepted_route(result)
+                classifier_started = time.monotonic()
+                with self.span("classifier_client", route_turn):
+                    result = (await asyncio.wait_for(self.classifier.choice(
+                        {"utterance": text},
+                        {"intent": ChoiceQuestion(instructions="Select one supported command only when explicit and singular; otherwise other", options=OPTIONS)},
+                    ), timeout=self.classifier_timeout))["intent"]
+                classifier_s = time.monotonic() - classifier_started
+                if self.router_model == "laya":
+                    from laya_contract import TAU, GAP
+                    tool = accepted_route(result, minimum=TAU, gap=GAP)
+                else:
+                    tool = accepted_route(result)
+                top = float(result.probabilities.get(result.choice, 0))
+                next_best = max((float(v) for k, v in result.probabilities.items() if k != result.choice), default=0)
+                server_s = getattr(result, "server_classifier_s", None)
+                self.record("classifier_result", route_turn, classifier_s=classifier_s,
+                            server_classifier_s=server_s,
+                            client_outside_server_s=classifier_s-server_s if server_s is not None else None,
+                            raw_choice=result.choice, top_prob=top, gap=top-next_best,
+                            fast_route=tool, status="ok", input_scope="latest_utterance")
+                classification_recorded = True
+            else:
+                self.record("classifier_bypass", route_turn, reason="explicit_reminder", classifier_s=0.0)
+            classifier_fields = {"classifier_s": classifier_s, self.router_model + "_s": classifier_s}
             if tool == "small_talk":
-                answer = await self.extractor.answer(text)
+                reply_started = time.monotonic()
+                with self.span("small_model_reply", route_turn):
+                    answer = await self.extractor.answer(text)
                 if answer:
-                    if self.timing_observer:
-                        self.timing_observer.record("route_smalltalk", turn=route_turn, jev_s=jev_s,
-                                                    llama_s=time.monotonic() - started - jev_s)
+                    self.record("route_smalltalk", route_turn, **classifier_fields,
+                                llama_s=time.monotonic() - reply_started)
+                    if owner is not None:
+                        owner["owner"] = "handled"
                     await self.push_frame(TTSSpeakFrame(text=answer))
-                    logger.info("Small-brain conversation: jev={:.3f}s llama={:.3f}s total={:.3f}s",
-                                jev_s, time.monotonic() - started - jev_s, time.monotonic() - started)
+                    logger.info("Small-brain conversation: {}={:.3f}s llama={:.3f}s total={:.3f}s",
+                                self.router_model, classifier_s, time.monotonic() - reply_started, time.monotonic() - started)
                     return
             if tool in FAST_TOOLS:
-                args = direct_arguments(tool, text)
                 extraction = "direct"
-                if args is None and tool not in DIRECT_ONLY_TOOLS:
-                    args = await self.extractor.extract(tool, text)
-                    extraction = "llama"
-                parse_s = time.monotonic() - started - jev_s
+                parse_started = time.monotonic()
+                with self.span("argument_extraction", route_turn):
+                    args = direct_arguments(tool, text)
+                    if self.router_model == "laya":
+                        from laya_router import grounded_arguments
+                        args = grounded_arguments(tool, text)
+                    elif args is None and tool not in DIRECT_ONLY_TOOLS:
+                        args = await self.extractor.extract(tool, text)
+                        extraction = "llama"
+                parse_s = time.monotonic() - parse_started
+                self.record("argument_result", route_turn, tool=tool, extraction=extraction,
+                            extraction_s=parse_s, valid=args is not None and validate_arguments(tool, args))
                 if args is not None and validate_arguments(tool, args):
                     receipt = (tool, json.dumps(args, sort_keys=True), text)
                     if receipt in self._inflight:
@@ -380,6 +442,7 @@ class TwoBrainRouter(FrameProcessor):
                     self._inflight.add(receipt)
                     try:
                         mcp_started = time.monotonic()
+                        tool_issued = True
                         raw = await self.mcp_client._call_tool_text(tool, args)
                         mcp_s = time.monotonic() - mcp_started
                         try:
@@ -387,13 +450,16 @@ class TwoBrainRouter(FrameProcessor):
                         except (TypeError, ValueError):
                             payload = {"spoken": "I couldn't confirm that action. Please check its state before trying again."}
                         spoken = payload.get("spoken") or "I couldn't confirm that action. Please check its state before trying again."
-                        if self.timing_observer:
-                            self.timing_observer.record("route_tool", turn=route_turn, tool=tool, jev_s=jev_s,
-                                                        extraction=extraction, extraction_s=parse_s, mcp_s=mcp_s,
-                                                        router_s=time.monotonic() - started)
+                        if self.router_model == "laya" and not isinstance(spoken, str):
+                            raise ValueError("Invalid tool receipt")
+                        self.record("route_tool", route_turn, tool=tool, **classifier_fields,
+                                    extraction=extraction, extraction_s=parse_s, mcp_s=mcp_s,
+                                    router_s=time.monotonic() - started)
+                        if owner is not None:
+                            owner["owner"] = "handled"
                         await self.push_frame(TTSSpeakFrame(text=spoken))
-                        logger.info("Fast route {}: jev={:.3f}s {}={:.3f}s mcp={:.3f}s total={:.3f}s",
-                                    tool, jev_s, extraction, parse_s, mcp_s, time.monotonic() - started)
+                        logger.info("Fast route {}: {}={:.3f}s {}={:.3f}s mcp={:.3f}s total={:.3f}s",
+                                    tool, self.router_model, classifier_s, extraction, parse_s, mcp_s, time.monotonic() - started)
                         return
                     finally:
                         self._inflight.discard(receipt)
@@ -403,7 +469,26 @@ class TwoBrainRouter(FrameProcessor):
                             result.choice if result else "other", time.monotonic() - started,
                             result.probabilities.get(result.choice, 0.0) if result else 0.0)
         except Exception as exc:
+            if self.router_model == "laya" and tool_issued:
+                owner["owner"] = "handled"
+                self.record("route_tool_uncertain", route_turn, tool=tool,
+                            classifier_s=classifier_s, error=type(exc).__name__,
+                            router_s=time.monotonic()-started)
+                await self.push_frame(TTSSpeakFrame(text="I couldn't confirm that command's outcome. Please check its state before repeating it."))
+                return
+            if classifier_started is not None and not classification_recorded:
+                classifier_s = time.monotonic() - classifier_started
+                self.record("classifier_failure", route_turn, classifier_s=classifier_s,
+                            status="timeout" if isinstance(exc, TimeoutError) else "error", error=type(exc).__name__)
             logger.warning("Fast route fell back to GLM: {}", type(exc).__name__)
-        if self.timing_observer:
-            self.timing_observer.record("route_glm", turn=route_turn, router_s=time.monotonic() - started)
+        except asyncio.CancelledError:
+            if owner is not None:
+                owner["owner"] = "cancelled"
+            self.record("router_cancelled", route_turn, classifier_s=(time.monotonic()-classifier_started)
+                        if classifier_started is not None and not classification_recorded else classifier_s,
+                        stage="classifier" if classifier_started is not None and not classification_recorded else "after_classifier")
+            raise
+        self.record("route_glm", route_turn, classifier_s=classifier_s, router_s=time.monotonic() - started)
+        if owner is not None:
+            owner["owner"] = "glm"
         await self.push_frame(frame, direction)
