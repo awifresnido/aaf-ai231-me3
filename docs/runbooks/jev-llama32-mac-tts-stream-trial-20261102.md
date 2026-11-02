@@ -66,6 +66,55 @@ Two startup quirks observed: the first request after a server restart took
 54.7 s once (Metal kernel/page-in warmup) and 2.0–2.3 s on every repeat — the
 preflight above is the steady-state figure.
 
+
+## Results (human trial completed 19:39 Manila, 29 measured replies)
+
+| Measurement | whole WAV `9c5da96c89` | **streaming `23dff71cba`** |
+|---|---:|---:|
+| End-to-end median | 5.478 s | **3.669 s** |
+| End-to-end p95 | 13.758 s | 6.903 s |
+| End-to-end maximum | 18.277 s | 7.551 s |
+| TTS first audio median | 1.725 s | **0.327 s** |
+| TTS first audio p95 / max | 4.200 / 6.010 s | 0.637 / 0.791 s |
+| TTS request completion median | 1.731 s | 3.292 s |
+| ASR speech-end→transcript median | 0.486 s | 0.441 s |
+| Jev classification median | 0.285 s | 0.283 s |
+| Routes GLM / tool / smalltalk | 22 / 7 / 1 | 23 / 6 / 0 |
+| TTS failures / cancellations | 0 / 1 | 0 / 0 |
+
+Streaming removed **1.81 s** of median end-to-end onset and cut the tail hard
+(p95 13.758 → 6.903 s; max 18.277 → 7.551 s). All 123 TTS requests in the run
+completed without failure or cancellation; classifier failures remained 0.
+
+### Perceptual finding: responsive but not smooth
+
+The user reported the streamed voice sounds less smooth than DGX despite
+feeling faster — consistent with the measurements. Mac MLX 4-bit generated at
+a median **0.91× realtime** (59 % of the 41 requests were slower than
+realtime, worst 0.71×), while DGX vLLM ran at **3.80×** realtime with no
+request below 1.25×. Playback consumes 1.0×, so the Mac under-runs the
+playback buffer between flushes: first audio is fast (0.327 s) but the stream
+starves intermittently.
+
+Deficit per reply (request time − audio duration): median 0.39 s, p90 0.94 s;
+3 of 41 utterances exceed 1 s. A ~1.0 s prebuffer before playback starts would
+remove nearly all under-runs at ≈ +0.7 s onset (≈4.4 s end-to-end), still well
+ahead of the whole-WAV run. Alternatives: the 0.6B CustomVoice model (~2.5×
+faster), or keeping the Mac off other CPU work during trials.
+
+Full three-way comparison and generation-rate table:
+[`docs/profiling/jev-llama32-tts-comparison-20261102/comparison.md`](../profiling/jev-llama32-tts-comparison-20261102/comparison.md).
+Ranking against every recorded run:
+[`docs/profiling/RUN-RANKING.md`](../profiling/RUN-RANKING.md) — this run is
+4th overall and the best MacBook result on record.
+
+### Records for this run
+
+* Summariser: `python3 scripts/summarize_tts_trial.py /dev/shm/voice-agent-diagnostics/23dff71cba --label mac-stream`
+* Timing events: `docs/profiling/jev-llama32-tts-comparison-20261102/mac-aiden-stream-timing-events.jsonl`
+* Summary: `docs/profiling/jev-llama32-tts-comparison-20261102/summary.json` (`mac_stream` block)
+* Diagnostics: `/dev/shm/voice-agent-diagnostics/23dff71cba/` (Pi PID 49467)
+
 ## Running the human trial
 
 Speak the same script/number of replies as the previous trial (~30 replies,

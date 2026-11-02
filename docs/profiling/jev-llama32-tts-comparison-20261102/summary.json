@@ -76,5 +76,50 @@
       "route_smalltalk": 1
     },
     "classifier_failures": 0
+  },
+  "mac_stream": {
+    "run": "23dff71cba",
+    "e2e": {
+      "n": 29,
+      "median_s": 3.669,
+      "p95_s": 6.903,
+      "max_s": 7.551
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 22,
+      "median_s": 0.441,
+      "p95_s": 0.853,
+      "max_s": 1.955
+    },
+    "jev": {
+      "n": 27,
+      "median_s": 0.283,
+      "p95_s": 0.378,
+      "max_s": 0.475
+    },
+    "tts_first_audio": {
+      "n": 41,
+      "median_s": 0.327,
+      "p95_s": 0.637,
+      "max_s": 0.791
+    },
+    "tts_complete": {
+      "n": 41,
+      "median_s": 3.292,
+      "p95_s": 6.69,
+      "max_s": 14.414
+    },
+    "generation_x_realtime": {
+      "median": 0.91,
+      "share_slower_than_realtime": 0.59,
+      "min": 0.71
+    },
+    "routes": {
+      "route_glm": 23,
+      "route_tool": 6
+    },
+    "classifier_failures": 0,
+    "tts_failures": 0,
+    "tts_cancellations": 0
   }
 }
