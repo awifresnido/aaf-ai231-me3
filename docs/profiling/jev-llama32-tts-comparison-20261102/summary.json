@@ -121,5 +121,54 @@
     "classifier_failures": 0,
     "tts_failures": 0,
     "tts_cancellations": 0
+  },
+  "mac_stream_pcm60": {
+    "run": "80010e1930",
+    "note": "same Mac streaming TTS as mac_stream; speaker PCM 60%; local Llama small model was DOWN (Jetson :8084), so every smalltalk/extraction fell to GLM",
+    "e2e": {
+      "n": 30,
+      "median_s": 4.064,
+      "p95_s": 8.414,
+      "max_s": 9.245
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 26,
+      "median_s": 0.427,
+      "p95_s": 0.799,
+      "max_s": 0.892
+    },
+    "jev": {
+      "n": 29,
+      "median_s": 0.286,
+      "p95_s": 0.397,
+      "max_s": 0.553
+    },
+    "tts_first_audio": {
+      "n": 52,
+      "median_s": 0.321,
+      "p95_s": 0.541,
+      "max_s": 1.298
+    },
+    "tts_complete": {
+      "n": 51,
+      "median_s": 2.591,
+      "p95_s": 7.98,
+      "max_s": 10.171
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 4,
+        "median_s": 1.47
+      },
+      "glm": {
+        "n": 26,
+        "median_s": 4.95
+      }
+    },
+    "routes": {
+      "route_glm": 28,
+      "route_tool": 4
+    },
+    "classifier_failures": 0
   }
 }
