@@ -47,3 +47,12 @@ only 3 of 41 utterances need more than 1 s. So starting playback after ~1.0 s
 of buffered audio would remove essentially all underruns at a cost of about
 +0.7 s onset (≈1.0 s TTS first audio, ≈4.4 s end-to-end) — still much better
 than the 5.5 s whole-WAV run and only slightly behind DGX.
+
+### Chunk-seam check (rules out codec seams as the cause)
+
+A 0.25 s-interval stream of the test sentence (3.36 s audio, 13 seams) was
+compared with an unstreamed render. Windowed |sample delta| at chunk seams
+sits inside the normal speech distribution (median 0.0043 vs 0.0069 globally;
+percentiles 6.5-97.8), i.e. no systematic clicks or discontinuities at flush
+boundaries. The perceived roughness is therefore buffer starvation, not the
+streaming decoder.
