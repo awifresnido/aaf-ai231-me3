@@ -156,12 +156,16 @@ def build_speech_services(*, timing_observer=None):
         from voxtral_stt import VoxtralSTTService
         stt = VoxtralSTTService(timing_observer=timing_observer)
         logger.info("ASR backend: Jetson Voxtral Mini, model={}", stt.model_name)
+    elif ASR_BACKEND == "whisper":
+        from whisper_stt import WhisperSTTService
+        stt = WhisperSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: Jetson whisper.cpp, model={}", stt.model_name)
     elif ASR_BACKEND == "nemotron":
         stt = NvidiaSTTService(
             server=ASR_SERVER, use_ssl=False, model_function_map={},
             sample_rate=16000, audio_channel_count=1, stop_history=320)
     else:
-        raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio or voxtral_mini")
+        raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio, voxtral_mini or whisper")
     if TTS_BACKEND == "dgx_qwen":
         from qwen_tts import QwenTTSService
         tts = QwenTTSService(timing_observer=timing_observer)
