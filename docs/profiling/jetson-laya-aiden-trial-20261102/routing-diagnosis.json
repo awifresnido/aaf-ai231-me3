@@ -1,0 +1,48 @@
+{
+  "run": "016c1ab953",
+  "glm_referrals": {
+    "explicit_other_prediction": 16,
+    "accepted_tool_route_rejected_by_argument_grounding": 5,
+    "compound_bypass": 1
+  },
+  "human_classifications": 25,
+  "below_confidence_or_gap_threshold": 0,
+  "synthetic_classifier_only_replay": [
+    {
+      "text": "Set the room temperature to twenty degrees",
+      "choice": "other",
+      "top_prob": 0.8234
+    },
+    {
+      "text": "what is the weather today",
+      "choice": "other",
+      "top_prob": 0.5024
+    },
+    {
+      "text": "What is the weather today",
+      "choice": "get_weather",
+      "top_prob": 0.846
+    },
+    {
+      "text": "what is the weather today?",
+      "choice": "get_weather",
+      "top_prob": 0.984
+    },
+    {
+      "text": "What is the weather today?",
+      "choice": "get_weather",
+      "top_prob": 0.9751
+    },
+    {
+      "text": "Set the light color to green",
+      "choice": "control_lights",
+      "top_prob": 0.9724
+    },
+    {
+      "text": "Yes, what time is it?",
+      "choice": "get_time",
+      "top_prob": 0.9643
+    }
+  ],
+  "note": "Post-trial synthetic replay, no tools or speaker playback. No inference/configuration changes. Supports formatting sensitivity and a thermostat prediction miss; not an overall accuracy evaluation."
+}

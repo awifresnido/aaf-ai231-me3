@@ -1,0 +1,63 @@
+{
+  "activated_at": "2026-11-02T11:54:18.284283+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/jetson-laya-aiden-20261102-115418",
+  "changed_settings": {
+    "DGX_TTS_VOICE": "aiden",
+    "ROUTER_MODEL": "laya",
+    "LAYA_ROUTER_URL": "http://192.168.5.11:8082",
+    "VAD_EXPERIMENT": "jetson-laya-glm-qwen-aiden-20261102"
+  },
+  "log_start_bytes": 6082480,
+  "tts_backend": "dgx_qwen",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "tts_voice": "aiden",
+  "router_model": "laya",
+  "laya_host": "jetson",
+  "laya_checkpoint": "/home/aldwin/models/laya/laya_v1",
+  "laya_deadline_s": "2",
+  "jetson_health": {
+    "ready": true,
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "device": "cuda",
+    "host_role": "jetson",
+    "weights_dtype": "float16",
+    "autocast_dtype": "float16",
+    "checkpoint": "/home/aldwin/models/laya/laya_v1",
+    "threads": 2,
+    "load_s": 7.942849360000764,
+    "warmup_s": [
+      0.7842099419995066,
+      0.12176036100026977,
+      0.10255108899946208
+    ],
+    "model_sha256": "89948232efe015ca9ac260ef2160829b2d7b715005e5ed4115d9ae68d59649e6",
+    "torch_version": "2.15.0+cu132",
+    "laya_version": "0.4.21",
+    "cuda_allocated_bytes": 864480256,
+    "cuda_reserved_bytes": 964689920
+  },
+  "source_sha256": {
+    "bot.py": "9806fc033c436ccc56f5d4951511f70527f12e821f21d64529584cd799455c9a",
+    "qwen_tts.py": "4b9599cf8a6cc26bad0661b707ecd495eb7ebcd0e336e9bda6bb40b7a409e57c",
+    "orchestration.py": "97cd3363d88b262cd995c33d78f5730eac6f0da64d38d1bd34b9c33e29f207fa",
+    "laya_classifier.py": "48da3840b4bb2254f4522d32888ab715336b10c588f18078f321199a23228acb",
+    "laya_router.py": "898c2318fb3181d1d4af0f11850eb81ae6d564dba51f9c18277c13557a97aecf"
+  },
+  "preserved": "GLM, Llama, Jetson Nemotron ASR, Pi MCP, Jetson SQLite/NVMe, speakerphone/AEC, VAD, Smart Turn, streaming TTS and timeouts unchanged.",
+  "live_voice_trial": "Completed: 27 timed replies, direct median 3.259 s, context 3.980 s; Laya GPU server median 0.118 s, Pi wait 0.132 s. Three missing-ASR segments; no classifier/TTS errors. Resource capture stopped; classifier remains active.",
+  "run": "016c1ab953",
+  "pi_pid": 17735,
+  "service_status": "active",
+  "pipeline_ready_log": [
+    "2026-11-02 11:54:32.791 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)"
+  ],
+  "greeting_first_pcm_s": 0.16887825800040446,
+  "greeting_first_playback_at": 1793591688.295681,
+  "greeting_request_s": 1.1978281020001305,
+  "startup_errors": []
+}

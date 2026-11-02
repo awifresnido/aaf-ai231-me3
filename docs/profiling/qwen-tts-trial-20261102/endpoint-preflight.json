@@ -1,0 +1,24 @@
+{
+  "model_verified": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "port": 8001,
+  "authenticated_models_http_status": 200,
+  "voice": "vivian",
+  "note": "Two sequential synthetic endpoint probes, cold/cache effects not controlled; not an end-to-end voice comparison.",
+  "wav_nonstreaming": {
+    "first_body_s": 3.402228206,
+    "full_response_s": 3.780343646,
+    "bytes": 142124,
+    "sample_rate": 24000,
+    "channels": 1,
+    "sample_width_bytes": 2
+  },
+  "pcm_streaming": {
+    "first_body_s": 0.096571289,
+    "full_response_s": 0.518263185,
+    "bytes": 149760,
+    "body_chunks": 52,
+    "sample_rate": 24000,
+    "channels": 1,
+    "sample_width_bytes": 2
+  }
+}

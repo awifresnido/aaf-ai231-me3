@@ -1,5 +1,133 @@
 # Resume the voice agent work after a reboot
 
+Current live selection, 2026-11-02 16:10 Manila: **Nemotron ASR + Jev +
+Jetson GPU Llama 3.2 3B / GLM 5.3 fallback + DGX Qwen3 Aiden TTS**,
+run **`01993d4520`**. Pipeline ready, greeting first PCM **0.175 s**. The
+MacBook TTS trial is complete and deselected. DGX versus Mac median native
+reply onset was **3.901 versus 5.478 s**; Mac whole-WAV generation raised
+median first audio from **0.171 to 1.725 s**. See the
+[comparison](../profiling/jev-llama32-tts-comparison-20261102/comparison.md)
+and [Mac trial rollback](jev-nemotron-llama32-mac-tts-trial-20261102.md).
+
+Current live selection, 2026-11-02 15:56 Manila: **Nemotron ASR + Jev +
+Jetson GPU Llama 3.2 3B / GLM 5.3 fallback + MacBook Qwen3 Aiden TTS**.
+Only TTS changed from run `7373bf308b`. MacBook MLX server is reached on Pi
+`127.0.0.1:18099` through two transient SSH forwards. Preflight returned
+valid Aiden audio in 2.977 s. Experiment
+`jev-nemotron-jetson-llama32-mac-qwen3-aiden-20261102`, corrected active run
+**`9c5da96c89`**. Greeting played after **5.618 s** Mac generation, without
+an audio-context error. Human trial pending;
+see [MacBook trial details and rollback](jev-nemotron-llama32-mac-tts-trial-20261102.md).
+
+Current live selection, 2026-11-02 15:46 Manila: **Nemotron ASR + Jev +
+Jetson GPU Llama 3.2 3B / GLM 5.3 fallback + DGX Qwen3 Aiden TTS**.
+Jetson Llama at `192.168.5.11:8084`, transient
+`voice-agent-llama32-trial.service`; Voxtral stopped. Pi experiment
+`jev-nemotron-jetson-llama32-qwen3-aiden-20261102`, run **`7373bf308b`**.
+Llama reply/extraction probes
+passed at 0.784/1.160 s, GPU activity was observed, and 113 regression tests
+passed. MacBook Qwen3 TTS is available as a **dormant switchable option** via
+the `mac_qwen` adapter and Pi port 18099 SSH forwards; DGX Aiden remains
+selected. See the [trial runbook](jev-nemotron-jetson-llama32-mac-option-20261102.md).
+
+Current live selection, 2026-11-02 15:01 Manila: **Jev + Jetson Voxtral Mini
+ASR and small model + Qwen3 Aiden TTS**, run `7a50558fa3`, experiment
+`jev-voxtral-jetson-asr-small-qwen3-aiden-20261102`. GLM remains 5.3 Flash.
+Voxtral Q4 + Q8 audio projector runs at `192.168.5.11:8083`, transient
+`voice-agent-voxtral-native.service`, with the pinned audio-first chat template.
+Unused Jetson Laya is stopped to reclaim RAM; both Riva containers and SQLite
+are preserved. All 113 regression tests passed. Synthetic ASR took ~2.1 s,
+small greeting 0.31 s, extraction hit its 2.5 s deadline and retained fallback.
+Live greeting playback succeeded. Human trial: 26 main-window replies,
+direct median **4.153 s**, context **5.968 s**, overall **5.156 s**; Voxtral
+ASR median **2.263 s**, Jev **0.290 s**, Qwen3 first PCM **0.164 s**. Seven
+fast tools, 19 GLM routes, one smalltalk, two Jev timeouts. All 30 ASR HTTP
+requests completed, though several transcripts were altered or answer-like.
+Jetson RAM p95 **7031/7485 MB**, swap stable, zero model restarts. Resource
+capture was stopped. See the [trial analysis](jev-voxtral-trial-20261102.md).
+Services/SSH forwards are transient: after reboot follow
+the [Voxtral configuration and rollback](jev-voxtral-trial-20261102.md), and
+restore the existing DGX TTS forward before restarting the Pi pipeline.
+
+Current live selection, 2026-11-02 12:44 Manila: **Jev + DGX Qwen2-Audio ASR
+and small model + Qwen3 Aiden TTS**, run `72afa542c5`, experiment
+`jev-qwen2-audio-asr-small-qwen3-aiden-20261102`. GLM remains 5.3 Flash.
+DGX port 8000 is forwarded to Pi 18000; TTS 8001 still uses Pi 18001. The
+Qwen audio-language model handles transcription and small replies/extraction
+in separate calls around Jev. Both active ASR and small-model roles replace
+Nemotron/Llama; their endpoints/services are preserved for rollback.
+All 105 tests and a real VAD/Qwen-ASR/Jev/fake-tool preflight passed. Small
+reply and thermostat extraction worked; color extraction failed validation
+and must retain GLM fallback. Live test complete: **27 main-window reply
+onsets**, direct median **4.433 s**, context **4.502 s**, overall **4.494 s**.
+ASR HTTP median **0.744 s**, speech-end-to-transcript **1.052 s**, Jev
+**0.290 s**, Qwen3 first PCM **0.172 s**. ASR forwarded refusals/commentary,
+wrappers and answer-like outputs; no audio ground truth was recorded. The
+conversational small-model slot had zero calls; its one extraction failed.
+One **26.697 s** TTS stall caused a **29.884 s** response. Recommend isolating
+Qwen2 as small model while restoring Nemotron for a further test; no setting
+was changed during analysis. See
+[comparison, configuration and rollback](jev-qwen2-audio-trial-20261102.md).
+
+Current live selection, 2026-11-02 11:54 Manila: user-requested **Jetson CUDA
+Laya + DGX Qwen Aiden**, run `016c1ab953`, experiment
+`jetson-laya-glm-qwen-aiden-20261102`. Laya endpoint **192.168.5.11:8082** loads
+`/home/aldwin/models/laya/laya_v1` with FP16 weights/autocast, exact pinned
+questions and external calibration 1.995, gate 0.50/0.05. Jev is deselected;
+GLM, Llama, ASR, tools, state and audio configuration are retained.
+All 96 tests passed. Eight CPU/CUDA smoke comparisons had no route/gate flips;
+server medians **0.711 / 0.093 s**, Pi CUDA wait about **0.10–0.13 s**.
+Live test complete: **27 timed replies**, direct median **3.259 s**, context
+**3.980 s**, overall **3.448 s**. Laya GPU server median **0.118 s**, Pi wait
+**0.132 s**; no classifier timeouts. Only three replies used fast tools;
+22 used GLM. Longest waits **15.762 / 27.041 s** were mainly GLM/external API.
+Three speech segments lacked final ASR; message follow-up/argument coverage
+issues remain. RAM about 5,387/7,485 MB, swap flat 785 MB in 228 samples;
+classifier had no restarts. Resource capture stopped after test; classifier
+and voice bot remain active. The Jetson classifier is a transient user unit
+(not enabled across reboot); see
+[results, restart and rollback](jetson-laya-aiden-trial-20261102.md).
+
+Current live selection, 2026-11-02 11:03 Manila: user-requested **Jev + Qwen
+Ryan**, run `9576b0bcb6`, experiment `jev-glm-qwen-ryan-20261102`.
+Only TTS voice and experiment marker changed from Aiden; Jev/GLM, ASR, tools,
+storage and speakerphone configuration are retained. Ryan preflight and live
+startup playback passed. Live test complete: **23 replies**, direct median
+**2.668 s**, context **4.975 s**, overall **3.188 s**. Fast-tool median
+**1.317 s** and GLM-path median **4.419 s** match Aiden closely; more replies
+used GLM (15/23 versus 12/23). All 20 Jev classifications completed without
+timeout; all 31 human Qwen requests completed without errors, first PCM median
+**0.170 s**, maximum **0.362 s**. One segment lacked final ASR. See
+[results, capture and rollback](jev-ryan-trial-20261102.md).
+
+Current live selection, 2026-11-02 10:46 Manila: user-requested **Jev + Qwen
+Aiden**, run `f0c87b3a33`, experiment `jev-glm-qwen-aiden-20261102`.
+Jev 1.14.0 uses its existing 1,200 ms deadline; DGX Qwen streaming TTS stays on
+port 8001 via Pi 18001. Only router, voice and experiment marker changed;
+GLM, ASR, MCP, storage and speakerphone settings remain as below.
+The live test completed: 23 timed replies, direct median **1.477 s**, context
+median **4.960 s**, overall **2.559 s**. Successful Jev client wait median
+**0.283 s**; Qwen first PCM **0.165 s** across 30 completed human requests.
+Two Jev timeouts, two missing-ASR segments, one interrupted spoken reply and
+a **3.719 s** Qwen first-PCM stall remain. Context follow-up correctness needs
+work (message body became a greeting). See
+[results, capture and rollback](jev-aiden-trial-20261102.md).
+
+Latest live selection, 2026-11-02: **DGX Qwen streaming TTS** (port 8001,
+CustomVoice/Vivian), retaining Jetson Nemotron ASR and ThinkPad Laya + GLM.
+Run `147f31abef`, experiment `laya-glm-qwen-dgx-20261102`; 92 tests passed.
+The end-to-end test is complete: 30 native timed replies, direct median
+**3.809 s**, context median **4.668 s**; 28 have same-turn playback timing.
+Qwen first PCM median **0.163 s** across 41 successful human requests;
+one **11.371 s** first-PCM stall and one failed follow-up request occurred.
+Laya successful server classification median **0.748 s**, with one timeout,
+one HTTP-status failure and two cancellations. The user reported varied voice
+quality despite fixed Vivian selection; acoustic cause is not established.
+See [results, capture and rollback](qwen-tts-trial-20261102.md).
+Pi ports 18001 (DGX TTS) and 18082 (Laya) currently depend on a temporary
+ThinkPad SSH reverse tunnel; verify both after reboot. New changes are
+uncommitted on top of `e020464`.
+
 Latest completed work: [Laya direct/contextual benchmark](laya-glm-results-20261101.md),
 run `26c376b1c3`. Twenty classifications completed without timeout; Laya server
 p50 **0.704 s**, Pi wait p50 **0.723 s**. End-to-end medians: direct **4.807 s**,

@@ -1,0 +1,50 @@
+{
+  "captured_at": "2026-11-02T04:07:20.668435+00:00",
+  "meminfo_kib": {
+    "MemTotal": 7665092,
+    "MemAvailable": 1999340,
+    "SwapTotal": 12582908,
+    "SwapFree": 11779068
+  },
+  "laya_health": {
+    "ready": true,
+    "contract": {
+      "question_sha256": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+      "calibration_sha256": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+      "tau": 0.5,
+      "gap": 0.05
+    },
+    "device": "cuda",
+    "host_role": "jetson",
+    "weights_dtype": "float16",
+    "autocast_dtype": "float16",
+    "checkpoint": "/home/aldwin/models/laya/laya_v1",
+    "threads": 2,
+    "load_s": 7.942849360000764,
+    "warmup_s": [
+      0.7842099419995066,
+      0.12176036100026977,
+      0.10255108899946208
+    ],
+    "model_sha256": "89948232efe015ca9ac260ef2160829b2d7b715005e5ed4115d9ae68d59649e6",
+    "torch_version": "2.15.0+cu132",
+    "laya_version": "0.4.21",
+    "cuda_allocated_bytes": 864480256,
+    "cuda_reserved_bytes": 964689920
+  },
+  "service_status": [
+    "MainPID=690371",
+    "NRestarts=0",
+    "ExecMainStartTimestamp=Mon 2026-11-02 11:52:10 PST",
+    "MemoryCurrent=2424172544",
+    "MemoryPeak=2842853376",
+    "ActiveState=active",
+    "SubState=running"
+  ],
+  "riva_containers": [
+    "nemotron-asr-server\tUp 56 years\t5051d08b91a1",
+    "magpie-tts-lan\tUp 56 years\t51e414066f71"
+  ],
+  "metrics_stopped": true,
+  "tegrastats_path": "/tmp/jetson-laya-tegrastats-20261102.log"
+}

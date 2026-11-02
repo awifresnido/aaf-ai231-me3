@@ -1,0 +1,284 @@
+{
+  "groups": {
+    "direct": {
+      "e2e": {
+        "n": 11,
+        "median": 4.153,
+        "p95": 6.434,
+        "max": 6.434
+      },
+      "asr_http": {
+        "n": 12,
+        "median": 2.134,
+        "p95": 3.527,
+        "max": 3.527
+      },
+      "speech_to_transcript_ms": {
+        "n": 12,
+        "median": 2441.23,
+        "p95": 3832.62,
+        "max": 3832.62
+      },
+      "classifier": {
+        "n": 10,
+        "median": 0.288,
+        "p95": 0.716,
+        "max": 0.716
+      },
+      "tts_first_audio": {
+        "n": 12,
+        "median": 0.165,
+        "p95": 0.433,
+        "max": 0.433
+      },
+      "tts_request": {
+        "n": 12,
+        "median": 0.609,
+        "p95": 1.495,
+        "max": 1.495
+      },
+      "fast_tool_e2e": {
+        "n": 6,
+        "median": 2.915,
+        "p95": 4.296,
+        "max": 4.296
+      },
+      "glm_e2e": {
+        "n": 5,
+        "median": 5.369,
+        "p95": 6.434,
+        "max": 6.434
+      }
+    },
+    "context": {
+      "e2e": {
+        "n": 13,
+        "median": 5.968,
+        "p95": 7.537,
+        "max": 7.537
+      },
+      "asr_http": {
+        "n": 14,
+        "median": 2.344,
+        "p95": 2.791,
+        "max": 2.791
+      },
+      "speech_to_transcript_ms": {
+        "n": 14,
+        "median": 2651.17,
+        "p95": 3096.43,
+        "max": 3096.43
+      },
+      "classifier": {
+        "n": 12,
+        "median": 0.299,
+        "p95": 0.757,
+        "max": 0.757
+      },
+      "tts_first_audio": {
+        "n": 17,
+        "median": 0.165,
+        "p95": 0.487,
+        "max": 0.487
+      },
+      "tts_request": {
+        "n": 17,
+        "median": 0.799,
+        "p95": 1.782,
+        "max": 1.782
+      },
+      "fast_tool_e2e": {
+        "n": 0
+      },
+      "glm_e2e": {
+        "n": 12,
+        "median": 6.137,
+        "p95": 7.537,
+        "max": 7.537
+      }
+    },
+    "human_main": {
+      "e2e": {
+        "n": 26,
+        "median": 5.156,
+        "p95": 7.208,
+        "max": 7.537
+      },
+      "asr_http": {
+        "n": 28,
+        "median": 2.263,
+        "p95": 2.791,
+        "max": 3.527
+      },
+      "speech_to_transcript_ms": {
+        "n": 28,
+        "median": 2605.275,
+        "p95": 3096.43,
+        "max": 3832.62
+      },
+      "classifier": {
+        "n": 24,
+        "median": 0.29,
+        "p95": 0.716,
+        "max": 0.757
+      },
+      "tts_first_audio": {
+        "n": 32,
+        "median": 0.164,
+        "p95": 0.453,
+        "max": 0.487
+      },
+      "tts_request": {
+        "n": 32,
+        "median": 0.635,
+        "p95": 1.495,
+        "max": 1.782
+      },
+      "fast_tool_e2e": {
+        "n": 6,
+        "median": 2.915,
+        "p95": 4.296,
+        "max": 4.296
+      },
+      "glm_e2e": {
+        "n": 19,
+        "median": 5.669,
+        "p95": 7.537,
+        "max": 7.537
+      }
+    },
+    "all": {
+      "e2e": {
+        "n": 28,
+        "median": 5.011,
+        "p95": 7.208,
+        "max": 7.537
+      },
+      "asr_http": {
+        "n": 30,
+        "median": 2.222,
+        "p95": 2.791,
+        "max": 3.527
+      },
+      "speech_to_transcript_ms": {
+        "n": 30,
+        "median": 2569.725,
+        "p95": 3096.43,
+        "max": 3832.62
+      },
+      "classifier": {
+        "n": 26,
+        "median": 0.29,
+        "p95": 0.716,
+        "max": 0.757
+      },
+      "tts_first_audio": {
+        "n": 36,
+        "median": 0.164,
+        "p95": 0.453,
+        "max": 0.487
+      },
+      "tts_request": {
+        "n": 36,
+        "median": 0.635,
+        "p95": 1.495,
+        "max": 1.782
+      },
+      "fast_tool_e2e": {
+        "n": 6,
+        "median": 2.915,
+        "p95": 4.296,
+        "max": 4.296
+      },
+      "glm_e2e": {
+        "n": 21,
+        "median": 5.646,
+        "p95": 7.208,
+        "max": 7.537
+      }
+    }
+  },
+  "route_counts": {
+    "route_glm": 19,
+    "route_tool": 7,
+    "route_smalltalk": 1
+  },
+  "server": {
+    "prompt": {
+      "n": 31,
+      "median": 1.583,
+      "p95": 1.643,
+      "max": 1.645
+    },
+    "decode": {
+      "n": 31,
+      "median": 0.539,
+      "p95": 1.067,
+      "max": 1.822
+    },
+    "total": {
+      "n": 31,
+      "median": 2.057,
+      "p95": 2.644,
+      "max": 3.402
+    }
+  },
+  "jetson": {
+    "ram_mb": {
+      "n": 252,
+      "median": 6852.0,
+      "p95": 7031.0,
+      "max": 7034.0
+    },
+    "swap_mb": {
+      "n": 252,
+      "median": 615.0,
+      "p95": 617.0,
+      "max": 617.0
+    },
+    "gpu_pct": {
+      "n": 252,
+      "median": 0.0,
+      "p95": 99.0,
+      "max": 99.0
+    },
+    "gpu_temp_c": {
+      "n": 252,
+      "median": 53.593,
+      "p95": 55.062,
+      "max": 55.75
+    }
+  },
+  "pi_spans": {
+    "asr_voxtral_http": {
+      "n": 30,
+      "median": 2.221,
+      "p95": 2.79,
+      "max": 3.526
+    },
+    "classifier_client": {
+      "n": 28,
+      "median": 0.291,
+      "p95": 1.201,
+      "max": 1.202
+    },
+    "tts_qwen_http": {
+      "n": 37,
+      "median": 0.646,
+      "p95": 1.495,
+      "max": 1.782
+    },
+    "small_model_reply": {
+      "n": 1,
+      "median": 0.684,
+      "p95": 0.684,
+      "max": 0.684
+    },
+    "mcp_client_total": {
+      "n": 18,
+      "median": 0.028,
+      "p95": 1.351,
+      "max": 1.351
+    }
+  }
+}

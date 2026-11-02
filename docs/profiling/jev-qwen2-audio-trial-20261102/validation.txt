@@ -1,0 +1,3 @@
+105 tests passed on Pi in 8.947 seconds.
+Native VAD/Smart Turn/Qwen2-Audio transcription/Jev/synthetic MCP receipt preflight passed without speaker playback or real tool execution.
+Actual Qwen2-Audio reply and thermostat extraction passed. Light-color extraction produced invalid output and was rejected.

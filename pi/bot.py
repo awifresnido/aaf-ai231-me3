@@ -72,8 +72,10 @@ QUEUED_LOGGING = configure_queued_logging()
 
 SPEECH_MODE = os.getenv("SPEECH_MODE", "direct")
 ASR_SERVER = os.getenv("ASR_SERVER", "192.168.5.11:50051")
+ASR_BACKEND = os.getenv("ASR_BACKEND", "nemotron").strip().lower()
 TTS_SERVER = os.getenv("TTS_SERVER", "192.168.5.11:50052")
 TTS_VOICE = os.getenv("TTS_VOICE", "0")
+TTS_BACKEND = os.getenv("TTS_BACKEND", "magpie").strip().lower()
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
 ORCHESTRATION_MODE = os.getenv("ORCHESTRATION_MODE", "single").strip().lower()
@@ -111,11 +113,13 @@ if ORCHESTRATION_MODE == "local_vcm":
 
 
 
-def build_speech_services():
+def build_speech_services(*, timing_observer=None):
     """Return (stt, tts) for the configured SPEECH_MODE.
 
     Modes:
-      direct — Jetson Nemotron ASR + Magpie TTS over gRPC (streaming).
+      direct — independently select ASR_BACKEND and TTS_BACKEND.
+               Defaults are Nemotron ASR and Magpie TTS over Jetson gRPC.
+               dgx_qwen2_audio ASR is VAD-segmented; dgx_qwen TTS streams PCM.
       mcp    — same Jetson endpoints through local MCP servers (offline,
                per-utterance/per-sentence; smoother onsets, higher latency).
       deepgram — Deepgram cloud STT + TTS over WebSockets (streaming, needs
@@ -144,22 +148,34 @@ def build_speech_services():
         )
         return stt, tts
 
-    logger.info("Speech mode: direct (Jetson Riva gRPC streaming)")
-    stt = NvidiaSTTService(
-        server=ASR_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=16000,
-        audio_channel_count=1,
-        stop_history=320,
-    )
-    tts = NvidiaTTSService(
-        server=TTS_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=22050,
-        voice_id=TTS_VOICE,
-    )
+    if ASR_BACKEND == "dgx_qwen2_audio":
+        from qwen_audio_stt import QwenAudioSTTService
+        stt = QwenAudioSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: DGX Qwen2-Audio, model={}", stt.model_name)
+    elif ASR_BACKEND == "voxtral_mini":
+        from voxtral_stt import VoxtralSTTService
+        stt = VoxtralSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: Jetson Voxtral Mini, model={}", stt.model_name)
+    elif ASR_BACKEND == "nemotron":
+        stt = NvidiaSTTService(
+            server=ASR_SERVER, use_ssl=False, model_function_map={},
+            sample_rate=16000, audio_channel_count=1, stop_history=320)
+    else:
+        raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio or voxtral_mini")
+    if TTS_BACKEND == "dgx_qwen":
+        from qwen_tts import QwenTTSService
+        tts = QwenTTSService(timing_observer=timing_observer)
+        logger.info("TTS backend: DGX Qwen, model={}, voice={}", tts.model_name, tts.voice_name)
+    elif TTS_BACKEND == "mac_qwen":
+        from mac_qwen_tts import MacQwenTTSService
+        tts = MacQwenTTSService(timing_observer=timing_observer)
+        logger.info("TTS backend: Mac Qwen, model={}, voice={}", tts.model_name, tts.voice_name)
+    elif TTS_BACKEND == "magpie":
+        tts = NvidiaTTSService(
+            server=TTS_SERVER, use_ssl=False, model_function_map={},
+            sample_rate=22050, voice_id=TTS_VOICE)
+    else:
+        raise ValueError("TTS_BACKEND must be magpie, dgx_qwen or mac_qwen")
     return stt, tts
 
 
@@ -329,6 +345,15 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
                   laya_fallback_policy=os.getenv("LAYA_FALLBACK_POLICY", "clarify") if ORCHESTRATION_MODE == "local_vcm" and os.getenv("ROUTER_MODEL") == "laya" else None,
                   classifier_timeout_s=float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2")) if os.getenv("ROUTER_MODEL") == "laya" else None,
                   cloud_escalation=ORCHESTRATION_MODE == "two_brain_plusjev",
+                  asr_backend=ASR_BACKEND if SPEECH_MODE == "direct" else SPEECH_MODE,
+                  asr_model=(os.getenv("DGX_ASR_MODEL", "Qwen/Qwen2-Audio-7B-Instruct") if ASR_BACKEND == "dgx_qwen2_audio"
+                             else os.getenv("VOXTRAL_MODEL", "mistralai/Voxtral-Mini-3B-2507") if ASR_BACKEND == "voxtral_mini" else None),
+                  small_llm_primary_model=os.getenv("SMALL_LLM_PRIMARY_MODEL"),
+                  tts_backend=TTS_BACKEND if SPEECH_MODE == "direct" else SPEECH_MODE,
+                  tts_model=(os.getenv("DGX_TTS_MODEL", "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice") if TTS_BACKEND == "dgx_qwen"
+                             else "qwen3-tts-customvoice-mlx-4bit" if TTS_BACKEND == "mac_qwen" else None),
+                  tts_voice=(os.getenv("DGX_TTS_VOICE", "vivian") if TTS_BACKEND == "dgx_qwen"
+                             else os.getenv("MAC_TTS_VOICE", "Aiden") if TTS_BACKEND == "mac_qwen" else TTS_VOICE),
                   diagnostics_dir=str(diagnostics.path.parent) if diagnostics else None,
                   queued_logging=QUEUED_LOGGING,
                   vcm_tool_server_host=vcm_server.host, vcm_tool_transport=vcm_server.transport,
@@ -366,7 +391,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         voice_tools = ToolsSchema([tool for tool in voice_tools.standard_tools if tool.name in FAST_TOOLS])
     logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
 
-    stt, tts = build_speech_services()
+    stt, tts = build_speech_services(timing_observer=timing)
 
     context = LLMContext(tools=voice_tools)
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(

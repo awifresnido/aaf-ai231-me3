@@ -1,0 +1,52 @@
+{
+  "kind": "real_dgx_tts_adapter_pipeline_no_speaker_output",
+  "audio_bytes": 272640,
+  "events": [
+    {
+      "event": "tts_qwen_first_audio",
+      "turn": 1,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "d0d8e5fe-f185-4ffc-ad56-b50692f05103",
+      "first_audio_s": 0.2795724349998636,
+      "http_headers_s": 0.23418288599896186,
+      "sample_rate": 24000,
+      "chars": 25
+    },
+    {
+      "event": "tts_qwen_complete",
+      "turn": 1,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "d0d8e5fe-f185-4ffc-ad56-b50692f05103",
+      "request_s": 1.095074590999502,
+      "first_audio_s": 0.2795724349998636,
+      "audio_bytes": 130560,
+      "audio_s": 2.72,
+      "chars": 25
+    },
+    {
+      "event": "tts_qwen_first_audio",
+      "turn": 2,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "0fbd05a0-dc9e-443e-bac0-a8ddd32e7407",
+      "first_audio_s": 0.23573565199876612,
+      "http_headers_s": 0.19184616900020046,
+      "sample_rate": 24000,
+      "chars": 44
+    },
+    {
+      "event": "tts_qwen_complete",
+      "turn": 2,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "0fbd05a0-dc9e-443e-bac0-a8ddd32e7407",
+      "request_s": 0.6511702280004101,
+      "first_audio_s": 0.23573565199876612,
+      "audio_bytes": 142080,
+      "audio_s": 2.96,
+      "chars": 44
+    }
+  ]
+}

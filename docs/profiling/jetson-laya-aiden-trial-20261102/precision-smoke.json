@@ -1,0 +1,100 @@
+{
+  "kind": "Classifier-only parity smoke test; no tools",
+  "same_checkpoint_hash": "89948232efe015ca9ac260ef2160829b2d7b715005e5ed4115d9ae68d59649e6",
+  "same_contract": true,
+  "rows": [
+    {
+      "case": 0,
+      "text": "What time is it now?",
+      "cpu_choice": "get_time",
+      "cuda_choice": "get_time",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 2.696164013002999,
+      "cuda_server_s": 0.11569370500001241,
+      "max_abs_probability_difference": 9.999999999999983e-05
+    },
+    {
+      "case": 1,
+      "text": "Turn on the lights",
+      "cpu_choice": "control_lights",
+      "cuda_choice": "control_lights",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.7184465600294061,
+      "cuda_server_s": 0.1329998559995147,
+      "max_abs_probability_difference": 9.99999999999994e-05
+    },
+    {
+      "case": 2,
+      "text": "Set the lights to blue",
+      "cpu_choice": "control_lights",
+      "cuda_choice": "control_lights",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.6931908520055003,
+      "cuda_server_s": 0.11105916899941803,
+      "max_abs_probability_difference": 0.0007000000000000339
+    },
+    {
+      "case": 3,
+      "text": "Set the room temperature to twenty eight degrees",
+      "cpu_choice": "other",
+      "cuda_choice": "other",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.7016560569754802,
+      "cuda_server_s": 0.09123150199957308,
+      "max_abs_probability_difference": 0.0025000000000000577
+    },
+    {
+      "case": 4,
+      "text": "Remind me to study",
+      "cpu_choice": "add_reminder",
+      "cuda_choice": "add_reminder",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.7029593859915622,
+      "cuda_server_s": 0.08698530399851734,
+      "max_abs_probability_difference": 0.00010000000000000005
+    },
+    {
+      "case": 5,
+      "text": "It is dark here in my room",
+      "cpu_choice": "other",
+      "cuda_choice": "other",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.7466657370096073,
+      "cuda_server_s": 0.09346644600009313,
+      "max_abs_probability_difference": 0.0007999999999999952
+    },
+    {
+      "case": 6,
+      "text": "Yes please",
+      "cpu_choice": "small_talk",
+      "cuda_choice": "small_talk",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 0.6797353950096294,
+      "cuda_server_s": 0.09189402599986352,
+      "max_abs_probability_difference": 0.0006000000000000449
+    },
+    {
+      "case": 7,
+      "text": "Turn off the lights and stop the music",
+      "cpu_choice": "other",
+      "cuda_choice": "other",
+      "cpu_accepted": true,
+      "cuda_accepted": true,
+      "cpu_server_s": 1.176916181051638,
+      "cuda_server_s": 0.0891628050012514,
+      "max_abs_probability_difference": 9.99999999999994e-05
+    }
+  ],
+  "argmax_flips": 0,
+  "acceptance_flips": 0,
+  "cuda_server_median_s": 0.09268023599997832,
+  "cpu_server_median_s": 0.7107029730104841,
+  "max_abs_probability_difference": 0.0025000000000000577
+}
