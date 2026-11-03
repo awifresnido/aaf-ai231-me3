@@ -393,6 +393,29 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         from pipecat.adapters.schemas.tools_schema import ToolsSchema
         from orchestration import FAST_TOOLS
         voice_tools = ToolsSchema([tool for tool in voice_tools.standard_tools if tool.name in FAST_TOOLS])
+    if os.getenv("ONIT_TOOLS_ENABLED", "1").strip() == "1":
+        # Optional second MCP server: the lean OnIt knowledge tools (search,
+        # fetch_content). Register them for the escalation LLM so the
+        # `knowledge` group has real web access. Non-fatal if it can't start.
+        try:
+            from mcp import StdioServerParameters
+            from pipecat.adapters.schemas.tools_schema import ToolsSchema
+            onit_server = StdioServerParameters(
+                command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
+                args=[os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "mcp_servers", "onit_tools_mcp_server.py")],
+                env={"PATH": os.getenv("PATH", "/usr/bin:/bin")},
+            )
+            onit_mcp = client_class(server_params=onit_server, **client_options)
+            onit_tools = await onit_mcp.tools()
+            existing = {tool.name for tool in voice_tools.standard_tools}
+            voice_tools = ToolsSchema(
+                list(voice_tools.standard_tools)
+                + [tool for tool in onit_tools.standard_tools if tool.name not in existing]
+            )
+            logger.info("OnIt knowledge tools registered: {}", [tool.name for tool in onit_tools.standard_tools])
+        except Exception as exc:
+            logger.warning("OnIt knowledge tools unavailable: {}", type(exc).__name__)
     logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
 
     stt, tts = build_speech_services(timing_observer=timing)

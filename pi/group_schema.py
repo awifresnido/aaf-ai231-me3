@@ -32,7 +32,7 @@ GROUP_TOOLS = {
     "media": ["play_music", "playback_control"],
     "weather": ["get_weather"],
     "comms": ["send_message", "send_email", "place_call"],
-    "knowledge": ["search", "fetch_content", "local_search", "search_document"],
+    "knowledge": ["search", "fetch_content"],
     "workspace": ["read_file", "write_file", "edit_file", "grep", "github_repo", "send_file", "bash", "serve"],
     "chitchat": [],
 }
