@@ -32,6 +32,9 @@ FAST_TOOLS = {
     "set_alarm": {"time_str": str},
     "playback_control": {"action": str},
     "play_music": {"query": str},
+    "send_message": {"text": str},
+    "send_email": {"to": str, "subject": str, "body": str},
+    "place_call": {"to": str},
 }
 OPTIONS = {
     "get_time": "Ask for the current local clock time",
@@ -103,10 +106,30 @@ def accepted_route(result, minimum=0.90, gap=0.20):
     return choice
 
 
+def accepted_group(result, minimum=0.90, gap=0.20):
+    """Require a clear tool-group choice (tier-1 of the 4-tier router)."""
+    from group_schema import GROUPS
+    choice = result.choice
+    scores = result.probabilities
+    if choice not in GROUPS:
+        return None
+    top = scores.get(choice, 0.0)
+    next_best = max((value for key, value in scores.items() if key != choice), default=0)
+    if top < minimum or top - next_best < gap:
+        return None
+    return choice
+
+
 def direct_arguments(tool, text):
     lowered = text.lower().replace(".", "")
-    if tool in ("get_time", "list_reminders"):
-        return {}
+    if tool == "get_time":
+        if re.search(r"\b(time|clock|hour|o'clock)\b", lowered):
+            return {}
+        return None
+    if tool == "list_reminders":
+        if re.search(r"\b(reminder|reminders|remind)\b", lowered):
+            return {}
+        return None
     if tool == "get_weather":
         if re.search(r"\b(tomorrow|tonight|later|next|forecast|weekend|yesterday)\b", lowered):
             return None
@@ -198,6 +221,13 @@ def validate_arguments(tool, arguments):
         return arguments["action"] in {"pause", "stop", "resume", "next", "volume_up", "volume_down"}
     if tool == "play_music":
         return 1 <= len(arguments["query"].strip()) <= 80 and "\n" not in arguments["query"]
+    if tool == "send_message":
+        return 1 <= len(arguments["text"].strip()) <= 500 and "\n" not in arguments["text"]
+    if tool == "send_email":
+        return all(isinstance(arguments.get(k), str) and arguments[k].strip()
+                   for k in ("to", "subject", "body"))
+    if tool == "place_call":
+        return 1 <= len(arguments["to"].strip()) <= 80
     return True
 
 
@@ -286,6 +316,41 @@ class SmallModelClient:
             return proposed["arguments"]
         return None
 
+    async def extract_group(self, tools, text):
+        """Choose one tool from a small candidate set and fill typed arguments.
+
+        Returns ``(tool, arguments)`` when the reply is a valid, schema-exact
+        call, else ``(None, None)``.
+        """
+        if not self.endpoints or not tools:
+            return None, None
+        from group_schema import TOOL_JSON_PROPERTIES, narrow_schema_flat
+        schema = narrow_schema_flat(tools)
+        hint = ", ".join(
+            f"{tool}({', '.join(TOOL_JSON_PROPERTIES.get(tool, {}))})" for tool in tools
+        )
+        messages = [
+            {"role": "system", "content":
+                "You are the tool caller of a voice assistant. You are given ONE small set of "
+                "candidate tools. Choose exactly one and fill its arguments from the user's words. "
+                "Reply with JSON only: {\"tool\": <name>, \"arguments\": {...}}. "
+                "Use exactly the argument names shown for the tool you pick. "
+                "Never invent a tool outside the candidate set."},
+            {"role": "user", "content": "Candidate tools (with their arguments): " + hint + "\nUtterance: " + text},
+        ]
+        raw = await self._complete(messages, schema=schema, max_tokens=120)
+        if raw is None:
+            return None, None
+        try:
+            proposed = json.loads(raw)
+        except (TypeError, ValueError):
+            return None, None
+        tool = proposed.get("tool")
+        args = proposed.get("arguments")
+        if tool in tools and isinstance(args, dict) and validate_arguments(tool, args):
+            return tool, args
+        return None, None
+
     async def answer(self, text):
         """Generate one bounded conversational reply with the small model."""
         if not self.endpoints:
@@ -312,6 +377,8 @@ class TwoBrainRouter(FrameProcessor):
         self.router_model = os.getenv("ROUTER_MODEL", "jev").strip().lower()
         if self.router_model not in {"jev", "laya"}:
             raise ValueError("two_brain_plusjev ROUTER_MODEL must be jev or laya")
+        self.group_mode = (self.router_model == "jev"
+                           and os.getenv("ROUTE_SCHEMA", "").strip().lower() == "group")
         self.classifier_timeout = (float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2"))
             if self.router_model == "laya" else float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000)
         if classifier is None and self.router_model == "laya":
@@ -344,6 +411,101 @@ class TwoBrainRouter(FrameProcessor):
         await self.classifier.cleanup()
         await self.extractor.close()
         await super().cleanup()
+
+    def _question(self):
+        """Classifier question: tool groups for the group schema, flat tools otherwise."""
+        if self.group_mode:
+            from group_schema import GROUP_CRITERIA
+            return {"intent": ChoiceQuestion(
+                instructions="Select the single group of tools that can serve this utterance; "
+                             "if it is plain conversation needing no tool, choose chitchat",
+                options=GROUP_CRITERIA)}
+        return {"intent": ChoiceQuestion(
+            instructions="Select one supported command only when explicit and singular; otherwise other",
+            options=OPTIONS)}
+
+    async def _speak(self, text):
+        await self.push_frame(TTSSpeakFrame(text=text))
+
+    async def _execute_tool(self, tool, args, text, route_turn, classifier_fields, started,
+                            owner, extraction="direct", extraction_s=0.0):
+        receipt = (tool, json.dumps(args, sort_keys=True), text)
+        if receipt in self._inflight:
+            return
+        self._inflight.add(receipt)
+        try:
+            mcp_started = time.monotonic()
+            raw = await self.mcp_client._call_tool_text(tool, args)
+            mcp_s = time.monotonic() - mcp_started
+            try:
+                payload = json.loads(raw)
+            except (TypeError, ValueError):
+                payload = {"spoken": "I couldn't confirm that action. Please check its state before trying again."}
+            spoken = payload.get("spoken") or "I couldn't confirm that action. Please check its state before trying again."
+            if self.router_model == "laya" and not isinstance(spoken, str):
+                raise ValueError("Invalid tool receipt")
+            self.record("route_tool", route_turn, tool=tool, **classifier_fields,
+                        extraction=extraction, extraction_s=extraction_s, mcp_s=mcp_s,
+                        router_s=time.monotonic() - started)
+            if owner is not None:
+                owner["owner"] = "handled"
+            await self._speak(spoken)
+            logger.info("Fast route {}: {}={:.3f}s {}={:.3f}s mcp={:.3f}s total={:.3f}s",
+                        tool, self.router_model, classifier_fields.get("classifier_s", 0.0),
+                        extraction, extraction_s, mcp_s, time.monotonic() - started)
+        finally:
+            self._inflight.discard(receipt)
+
+    async def _dispatch_group(self, group, text, frame, route_turn, classifier_fields, started, owner):
+        """Tier-2/3/4 dispatch after the classifier has picked a group."""
+        from group_schema import GROUP_TOOLS, FAST_GROUPS, CHITCHAT
+        if group in FAST_TOOLS:
+            # explicit-route bypass handed us a specific tool (e.g. add_reminder)
+            args = direct_arguments(group, text)
+            if args is not None and validate_arguments(group, args):
+                await self._execute_tool(group, args, text, route_turn, classifier_fields, started, owner)
+                return
+            tool, args = await self.extractor.extract_group([group], text)
+            if tool is not None:
+                await self._execute_tool(tool, args, text, route_turn, classifier_fields, started, owner,
+                                         extraction="group_llama")
+                return
+        elif group == CHITCHAT:
+            reply_started = time.monotonic()
+            with self.span("small_model_reply", route_turn):
+                answer = await self.extractor.answer(text)
+            if answer:
+                self.record("route_smalltalk", route_turn, **classifier_fields,
+                            llama_s=time.monotonic() - reply_started)
+                if owner is not None:
+                    owner["owner"] = "handled"
+                await self._speak(answer)
+                return
+        elif group in FAST_GROUPS:
+            tools = GROUP_TOOLS[group]
+            # tier 2a: deterministic grammar over each candidate tool
+            for tool in tools:
+                args = direct_arguments(tool, text)
+                if args is not None and validate_arguments(tool, args):
+                    await self._execute_tool(tool, args, text, route_turn, classifier_fields, started, owner)
+                    return
+            # tier 2b: narrowed small-model extraction
+            extraction_started = time.monotonic()
+            tool, args = await self.extractor.extract_group(tools, text)
+            extraction_s = time.monotonic() - extraction_started
+            self.record("argument_result", route_turn, tool=tool or group, extraction="group_llama",
+                        extraction_s=extraction_s, valid=tool is not None)
+            if tool is not None:
+                await self._execute_tool(tool, args, text, route_turn, classifier_fields, started, owner,
+                                         extraction="group_llama", extraction_s=extraction_s)
+                return
+            logger.info("Group {} unresolved after direct + llama; escalating", group)
+        # knowledge / workspace / unresolved -> escalate to the tool-bearing LLM
+        self.record("route_glm", route_turn, classifier_s=classifier_fields.get("classifier_s", 0.0),
+                    router_s=time.monotonic() - started)
+        if owner is not None:
+            owner["owner"] = "glm"
+        await self.push_frame(frame, direction=FrameDirection.DOWNSTREAM)
 
     async def process_frame(self, frame, direction: FrameDirection):
         await super().process_frame(frame, direction)
@@ -387,13 +549,14 @@ class TwoBrainRouter(FrameProcessor):
                 classifier_started = time.monotonic()
                 with self.span("classifier_client", route_turn):
                     result = (await asyncio.wait_for(self.classifier.choice(
-                        {"utterance": text},
-                        {"intent": ChoiceQuestion(instructions="Select one supported command only when explicit and singular; otherwise other", options=OPTIONS)},
+                        {"utterance": text}, self._question(),
                     ), timeout=self.classifier_timeout))["intent"]
                 classifier_s = time.monotonic() - classifier_started
                 if self.router_model == "laya":
                     from laya_contract import TAU, GAP
                     tool = accepted_route(result, minimum=TAU, gap=GAP)
+                elif self.group_mode:
+                    tool = accepted_group(result)
                 else:
                     tool = accepted_route(result)
                 top = float(result.probabilities.get(result.choice, 0))
@@ -408,6 +571,9 @@ class TwoBrainRouter(FrameProcessor):
             else:
                 self.record("classifier_bypass", route_turn, reason="explicit_reminder", classifier_s=0.0)
             classifier_fields = {"classifier_s": classifier_s, self.router_model + "_s": classifier_s}
+            if self.group_mode:
+                await self._dispatch_group(tool, text, frame, route_turn, classifier_fields, started, owner)
+                return
             if tool == "small_talk":
                 reply_started = time.monotonic()
                 with self.span("small_model_reply", route_turn):
