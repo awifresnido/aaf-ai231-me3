@@ -170,5 +170,54 @@
       "route_tool": 4
     },
     "classifier_failures": 0
+  },
+  "whisper_dgx_aiden": {
+    "run": "844e8c074f",
+    "note": "ASR switched to whisper.cpp large-v3-turbo on Jetson CUDA (:8090); TTS back to DGX Aiden; small model still down",
+    "e2e": {
+      "n": 27,
+      "median_s": 4.894,
+      "p95_s": 13.187,
+      "max_s": 22.587
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 28,
+      "median_s": 1.405,
+      "p95_s": 1.542,
+      "max_s": 4.0
+    },
+    "jev": {
+      "n": 25,
+      "median_s": 0.281,
+      "p95_s": 0.366,
+      "max_s": 0.44
+    },
+    "tts_first_audio": {
+      "n": 51,
+      "median_s": 0.162,
+      "p95_s": 1.884,
+      "max_s": 3.973
+    },
+    "tts_complete": {
+      "n": 50,
+      "median_s": 0.738,
+      "p95_s": 4.398,
+      "max_s": 6.607
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 5,
+        "median_s": 3.33
+      },
+      "glm": {
+        "n": 22,
+        "median_s": 5.18
+      }
+    },
+    "routes": {
+      "route_glm": 23,
+      "route_tool": 5
+    },
+    "classifier_failures": 0
   }
 }

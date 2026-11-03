@@ -16,8 +16,9 @@ ranked; restore-verification runs with 0 timed replies are omitted.
 | 6 | `80010e1930` | MacBook MLX / Aiden, streaming, PCM 60 % | Jev (small model DOWN) | 30 | 4.064 s | 8.414 | 9.245 |
 | 7 | `147f31abef` | DGX Qwen3 / Vivian | Laya | 30 | 4.321 s | 9.301 s | 14.401 s |
 | 8 | `72afa542c5` | DGX Qwen3 / Aiden | Jev (Qwen2-Audio ASR + small model) | 29 | 4.494 s | 9.661 s | 29.884 s |
-| 9 | `7a50558fa3` | DGX Qwen3 / Aiden | Jev (Voxtral ASR) | 28 | 5.011 s | 7.208 s | 7.537 s |
-| 10 | `9c5da96c89` | MacBook MLX / Aiden, whole WAV | Jev | 30 | 5.478 s | 13.758 s | 18.277 s |
+| 9 | `844e8c074f` | DGX Qwen3 / Aiden, **whisper.cpp ASR** | Jev (small model DOWN) | 27 | 4.894 s | 13.187 | 22.587 |
+| 10 | `7a50558fa3` | DGX Qwen3 / Aiden | Jev (Voxtral ASR) | 28 | 5.011 s | 7.208 s | 7.537 s |
+| 11 | `9c5da96c89` | MacBook MLX / Aiden, whole WAV | Jev | 30 | 5.478 s | 13.758 s | 18.277 s |
 
 ## Reading the ranking
 
@@ -36,6 +37,12 @@ ranked; restore-verification runs with 0 timed replies are omitted.
   3B small model was not running, so smalltalk and argument extraction fell
   through to GLM on every turn (fast-tool turns still averaged 1.47 s vs 4.95 s
   for GLM turns).
+* **Whisper ASR costs ~1 s per turn.** `844e8c074f` (whisper.cpp
+  large-v3-turbo, Jetson CUDA) moved speech-end→transcript from 0.43 s
+  (Nemotron streaming) to **1.405 s** median, with a fixed ~1.0 s cost per
+  request that barely grows with clip length; end-to-end median rose to
+  4.894 s with TTS unchanged at 0.162 s. Whisper's transcripts were exact on
+  the probe phrases, so this is an accuracy-versus-latency trade.
 * **Not a like-for-like ordering:** items 3, 6 use Laya routing; 7 and 8 change
   the ASR / small-model slot. Only 1, 2, 4, 5, 9 share the full
   Nemotron + Jev + Llama 3.2 3B stack, which makes 4 the only MacBook run that
