@@ -219,5 +219,59 @@
       "route_tool": 5
     },
     "classifier_failures": 0
+  },
+  "whisper_dgx_smallmodel": {
+    "run": "3ba3a6592d",
+    "note": "whisper.cpp ASR + DGX Aiden TTS + Jetson Llama 3.2 3B small model restored (persistent unit, CUDA)",
+    "e2e": {
+      "n": 24,
+      "median_s": 3.571,
+      "p95_s": 6.559,
+      "max_s": 7.163
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 24,
+      "median_s": 1.404,
+      "p95_s": 1.486,
+      "max_s": 1.596
+    },
+    "jev": {
+      "n": 21,
+      "median_s": 0.28,
+      "p95_s": 0.419,
+      "max_s": 0.783
+    },
+    "tts_first_audio": {
+      "n": 41,
+      "median_s": 0.15,
+      "p95_s": 0.169,
+      "max_s": 0.438
+    },
+    "tts_complete": {
+      "n": 41,
+      "median_s": 0.583,
+      "p95_s": 1.089,
+      "max_s": 1.733
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 6,
+        "median_s": 1.86
+      },
+      "smalltalk_local": {
+        "n": 1,
+        "median_s": 2.82
+      },
+      "glm": {
+        "n": 17,
+        "median_s": 4.45
+      }
+    },
+    "routes": {
+      "route_smalltalk": 1,
+      "route_glm": 17,
+      "route_tool": 6
+    },
+    "classifier_failures": 1
   }
 }
