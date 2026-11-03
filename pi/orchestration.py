@@ -379,6 +379,8 @@ class TwoBrainRouter(FrameProcessor):
             raise ValueError("two_brain_plusjev ROUTER_MODEL must be jev or laya")
         self.group_mode = (self.router_model == "jev"
                            and os.getenv("ROUTE_SCHEMA", "").strip().lower() == "group")
+        if self.group_mode:
+            logger.info("Group schema routing enabled (ROUTE_SCHEMA=group)")
         self.classifier_timeout = (float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2"))
             if self.router_model == "laya" else float(os.getenv("JEV_DEADLINE_MS", "800")) / 1000)
         if classifier is None and self.router_model == "laya":
