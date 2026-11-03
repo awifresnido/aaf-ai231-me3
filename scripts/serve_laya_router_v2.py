@@ -22,10 +22,12 @@ from laya_contract_v2 import CONTRACT, QUESTIONS, TEMPERATURE, gate, verify_arti
 def load(checkpoint, threads):
     checkpoint = checkpoint.resolve()
     verify_artifacts(checkpoint)
-    # The Orin's 8 GB is shared with llama.cpp (3B) + whisper.cpp (turbo), so fp16
-    # CUDA has no headroom. Run fp32 on CPU — a functional routing test, ~0.7 s.
-    os.environ["LAYA_PRECISION"] = "fp32"
-    os.environ["LAYA_CUDA_AMP"] = "fp32"
+    # The Orin's 8 GB is shared with llama.cpp (3B, 2.7 GB) + whisper.cpp (turbo,
+    # 1.9 GB). fp32 CUDA needs ~1.7 GB and only sometimes allocates — silently
+    # falling back to CPU (~2.5 s) which trips the Pi's 2 s classifier timeout.
+    # fp16 halves that footprint so CUDA allocation is reliable and ~10x faster.
+    os.environ["LAYA_PRECISION"] = "fp16"
+    os.environ["LAYA_CUDA_AMP"] = "fp16"
     import torch  # noqa: E402
     torch.set_num_threads(threads)
     torch.set_num_interop_threads(1)
@@ -116,7 +118,7 @@ if __name__ == "__main__":
     parser.add_argument("--checkpoint", type=Path, default=Path.home() / "models/laya/laya_v2")
     parser.add_argument("--host", default="0.0.0.0")
     parser.add_argument("--port", type=int, default=8083)
-    parser.add_argument("--threads", type=int, default=2)
+    parser.add_argument("--threads", type=int, default=6)
     args = parser.parse_args()
     if not 1 <= args.threads <= 6:
         parser.error("threads must be between 1 and 6")
