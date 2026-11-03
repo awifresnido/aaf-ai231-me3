@@ -106,8 +106,14 @@ def accepted_route(result, minimum=0.90, gap=0.20):
     return choice
 
 
-def accepted_group(result, minimum=0.90, gap=0.20):
-    """Require a clear tool-group choice (tier-1 of the 4-tier router)."""
+def accepted_group(result, minimum=0.65, gap=0.10):
+    """Require a clear tool-group choice (tier-1 of the 4-tier router).
+
+    The 9-way group question is much coarser than the old 12-way tool question,
+    so Jev's absolute confidence lands lower (0.7-0.9) while the margin over the
+    runner-up stays large. Thresholds are lowered accordingly; anything genuinely
+    uncertain still falls through to the escalation LLM.
+    """
     from group_schema import GROUPS
     choice = result.choice
     scores = result.probabilities
@@ -472,7 +478,7 @@ class TwoBrainRouter(FrameProcessor):
                 await self._execute_tool(tool, args, text, route_turn, classifier_fields, started, owner,
                                          extraction="group_llama")
                 return
-        elif group == CHITCHAT:
+        elif group in (CHITCHAT, "small_talk"):
             reply_started = time.monotonic()
             with self.span("small_model_reply", route_turn):
                 answer = await self.extractor.answer(text)
@@ -573,7 +579,7 @@ class TwoBrainRouter(FrameProcessor):
             else:
                 self.record("classifier_bypass", route_turn, reason="explicit_reminder", classifier_s=0.0)
             classifier_fields = {"classifier_s": classifier_s, self.router_model + "_s": classifier_s}
-            if self.group_mode:
+            if self.group_mode or self.router_model == "laya":
                 await self._dispatch_group(tool, text, frame, route_turn, classifier_fields, started, owner)
                 return
             if tool == "small_talk":
