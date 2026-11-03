@@ -416,6 +416,29 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
             logger.info("OnIt knowledge tools registered: {}", [tool.name for tool in onit_tools.standard_tools])
         except Exception as exc:
             logger.warning("OnIt knowledge tools unavailable: {}", type(exc).__name__)
+    if os.getenv("WORKSPACE_TOOLS_ENABLED", "1").strip() == "1":
+        # Third MCP server: the workspace tools (files, shell, github) for the
+        # `workspace` group, which the router escalates to the cloud LLM.
+        # Non-fatal if it can't start.
+        try:
+            from mcp import StdioServerParameters
+            from pipecat.adapters.schemas.tools_schema import ToolsSchema
+            workspace_server = StdioServerParameters(
+                command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
+                args=[os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "mcp_servers", "workspace_tools_mcp_server.py")],
+                env={"PATH": os.getenv("PATH", "/usr/bin:/bin")},
+            )
+            workspace_mcp = client_class(server_params=workspace_server, **client_options)
+            workspace_tools = await workspace_mcp.tools()
+            existing = {tool.name for tool in voice_tools.standard_tools}
+            voice_tools = ToolsSchema(
+                list(voice_tools.standard_tools)
+                + [tool for tool in workspace_tools.standard_tools if tool.name not in existing]
+            )
+            logger.info("Workspace tools registered: {}", [tool.name for tool in workspace_tools.standard_tools])
+        except Exception as exc:
+            logger.warning("Workspace tools unavailable: {}", type(exc).__name__)
     logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
 
     stt, tts = build_speech_services(timing_observer=timing)
