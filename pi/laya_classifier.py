@@ -10,7 +10,10 @@ from types import SimpleNamespace
 
 import httpx
 
-from laya_contract import CONTRACT, gate
+if os.getenv("LAYA_SCHEMA", "").strip().lower() == "v2":
+    from laya_contract_v2 import CONTRACT, gate
+else:
+    from laya_contract import CONTRACT, gate
 
 
 class LayaClassifier:

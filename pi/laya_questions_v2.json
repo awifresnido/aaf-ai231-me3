@@ -1,0 +1,17 @@
+{
+  "route": {
+    "type": "choice",
+    "instructions": "Select the single group of tools that can serve this utterance; if it is plain conversation needing no tool, choose chitchat",
+    "criteria": {
+      "home": "Lights on, off, a colour, or brightness; or the thermostat temperature",
+      "clock": "The current time, one timer, or one alarm",
+      "reminders": "Add, list, or complete a reminder",
+      "media": "Play music by genre, mood, artist, or title; or control the current playback",
+      "weather": "Current weather or a short forecast",
+      "comms": "Send a message or an email, or place a phone call",
+      "knowledge": "Look something up on the web, open a URL, or search the user's documents",
+      "workspace": "Multi-step work on files, code, a shell, or GitHub",
+      "chitchat": "A greeting, thanks, or conversational reply that needs no tool"
+    }
+  }
+}

@@ -561,8 +561,12 @@ class TwoBrainRouter(FrameProcessor):
                     ), timeout=self.classifier_timeout))["intent"]
                 classifier_s = time.monotonic() - classifier_started
                 if self.router_model == "laya":
-                    from laya_contract import TAU, GAP
-                    tool = accepted_route(result, minimum=TAU, gap=GAP)
+                    if os.getenv("LAYA_SCHEMA", "").strip().lower() == "v2":
+                        from laya_contract_v2 import TAU, GAP
+                        tool = accepted_group(result, minimum=TAU, gap=GAP)
+                    else:
+                        from laya_contract import TAU, GAP
+                        tool = accepted_route(result, minimum=TAU, gap=GAP)
                 elif self.group_mode:
                     tool = accepted_group(result)
                 else:
