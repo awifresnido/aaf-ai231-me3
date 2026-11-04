@@ -163,7 +163,7 @@ def build_speech_services(*, timing_observer=None):
     elif ASR_BACKEND == "nemotron":
         stt = NvidiaSTTService(
             server=ASR_SERVER, use_ssl=False, model_function_map={},
-            sample_rate=16000, audio_channel_count=1, stop_history=320)
+            sample_rate=16000, audio_channel_count=1, stop_history=int(os.getenv("NEMOTRON_STOP_HISTORY_MS", "600")))
     else:
         raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio, voxtral_mini or whisper")
     if TTS_BACKEND == "dgx_qwen":
@@ -233,6 +233,14 @@ class PacatAudioOutput(BaseOutputTransport):
         self.timing_observer = None
         self._last_playback_context = None
         self._last_write_at = float("-inf")
+        # Backchannel echo gate: measured playback state (never frame events).
+        self._playback_pending_s = 0.0
+        self._playback_bytes_at = 0.0
+        self.playback_busy_until = 0.0
+        # Backchannel burst id: increments each time playback goes
+        # idle->active, so the backchannel can tell "filler played, silence
+        # since" from "the real answer played" without frame-event guessing.
+        self._playback_burst_id = 0
 
     async def setup(self, setup):
         # Run BaseOutputTransport.setup for resampler/chunking init, but do NOT
@@ -266,6 +274,21 @@ class PacatAudioOutput(BaseOutputTransport):
             self._proc.stdin.write(frame.audio)
             await self._proc.stdin.drain()
             now = time.monotonic()
+            # Measured playback accounting: a DRAINING bucket. Each write
+            # adds seconds of pending audio; wall-clock time drains it.
+            # (Run 079d8d8b7f bug: a cumulative byte total made
+            # playback_busy_until creep forward forever, blocking fillers.)
+            n = len(frame.audio)
+            rate = self.sample_rate or 24000
+            channels = self._params.audio_out_channels or 1
+            elapsed = now - self._playback_bytes_at
+            pending = max(0.0, self._playback_pending_s - elapsed)
+            if pending <= 0.001 and n > 0:
+                self._playback_burst_id += 1
+            pending += n / (rate * channels * 2)
+            self._playback_pending_s = pending
+            self._playback_bytes_at = now
+            self.playback_busy_until = now + pending + 0.15
             context_id = getattr(frame, "context_id", None)
             first = (context_id is not None and context_id != self._last_playback_context) or (context_id is None and now - self._last_write_at > 0.5)
             self._last_write_at = now
@@ -455,7 +478,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
             from speculative_laya import SpeculativeLaya
             from spec_tap import SpecTap
             spec_layer = SpeculativeLaya(timing=timing)
-            spec_tap = SpecTap(spec_layer, timing_observer=timing)
+            spec_tap = SpecTap(spec_layer, timing_observer=timing, stt=stt)
             logger.info("Speculative Laya enabled (min_audio_s={})", spec_layer.min_audio_s)
         except Exception as exc:
             logger.warning("Speculative Laya unavailable: {}", type(exc).__name__)
@@ -509,10 +532,22 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
             llm_stages.insert(0, router)
             logger.info("Two-brain routing enabled: classifier={}, GLM={}", llm_stages[0].router_model, OLLAMA_MODEL)
 
+    bc_processor = None
+    if os.getenv("BACKCHANNEL", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        try:
+            from backchannel import BackchannelProcessor
+            bc_processor = BackchannelProcessor(
+                timing_observer=timing, output_transport=transport.output())
+            logger.info("Backchannel processor enabled")
+        except Exception as exc:
+            logger.warning("Backchannel processor unavailable: {}", type(exc).__name__)
+            bc_processor = None
+
     pipeline = Pipeline([
         transport.input(),
         *( [spec_tap] if spec_layer is not None else [] ),
         stt,
+        *( [bc_processor] if bc_processor is not None else [] ),
         user_aggregator,
         *llm_stages,
         tts,
