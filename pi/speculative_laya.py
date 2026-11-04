@@ -176,6 +176,9 @@ class SpeculativeLaya:
 
     def record_outcome(self, turn, final_group, used):
         """Log whether the speculation matched the final decision."""
-        self.record("spec_laya_outcome", turn=turn, speculated=self._spec_group,
+        # self.record injects turn=self._spec_turn; update it instead of passing
+        # a second `turn` kwarg (that TypeError took out the whole classify).
+        self._spec_turn = turn if turn is not None else self._spec_turn
+        self.record("spec_laya_outcome", speculated=self._spec_group,
                     final=final_group, used=used,
                     match=(self._spec_group == final_group) if final_group else None)
