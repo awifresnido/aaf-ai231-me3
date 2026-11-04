@@ -550,9 +550,37 @@ class TwoBrainRouter(FrameProcessor):
         classifier_started = None
         classification_recorded = False
         tool_issued = False
+        spec = getattr(self, "spec_layer", None)
+        spec_group, spec_conf = (None, 0.0)
+        spec_used = False
+        if spec is not None:
+            spec_group, spec_conf = spec.result
         try:
             tool = explicit_route_hint(text)
             result = None
+            # Speculative fast path: during speech the speculator classified a
+            # partial transcript. Trust it ONLY for local tool groups, and only
+            # when the tier-2 argument grammar validates against the FINAL
+            # transcript — a wrong speculation then just falls through to the
+            # normal classify path, so it can never fire a wrong tool.
+            if (not tool and spec_group
+                    and os.getenv("LAYA_SCHEMA", "").strip().lower() == "v2"):
+                from group_schema import FAST_GROUPS
+                if spec_group in FAST_GROUPS:
+                    from laya_router import grounded_arguments
+                    from group_schema import GROUP_TOOLS
+                    for spec_tool in GROUP_TOOLS[spec_group]:
+                        args = grounded_arguments(spec_tool, text)
+                        if args is not None and validate_arguments(spec_tool, args):
+                            spec_used = True
+                            spec.record_outcome(route_turn, spec_group, used=True)
+                            self.record("spec_laya_hit", route_turn, group=spec_group,
+                                        tool=spec_tool, conf=spec_conf,
+                                        **{k: v for k, v in spec.spec_data().items() if k != "group"})
+                            await self._execute_tool(spec_tool, args, text, route_turn,
+                                                     {"classifier_s": 0.0, self.router_model + "_s": 0.0},
+                                                     started, owner, extraction="spec_direct")
+                            return
             if not tool:
                 classifier_started = time.monotonic()
                 with self.span("classifier_client", route_turn):
@@ -573,6 +601,8 @@ class TwoBrainRouter(FrameProcessor):
                     tool = accepted_route(result)
                 top = float(result.probabilities.get(result.choice, 0))
                 next_best = max((float(v) for k, v in result.probabilities.items() if k != result.choice), default=0)
+                if spec is not None and spec_group is not None and not spec_used:
+                    spec.record_outcome(route_turn, result.choice, used=False)
                 server_s = getattr(result, "server_classifier_s", None)
                 self.record("classifier_result", route_turn, classifier_s=classifier_s,
                             server_classifier_s=server_s,

@@ -443,6 +443,24 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
 
     stt, tts = build_speech_services(timing_observer=timing)
 
+    # Speculative Laya: classify partial audio while the user still speaks, so
+    # local-tool commands skip the serial ASR->classify wait. Toggle with
+    # SPECULATIVE_LAYA=0; a wrong speculation cannot fire a wrong tool (tier-2
+    # grammar still validates against the final transcript).
+    spec_layer = None
+    spec_tap = None
+    if (ORCHESTRATION_MODE == "two_brain_plusjev"
+            and os.getenv("SPECULATIVE_LAYA", "1").strip() == "1"):
+        try:
+            from speculative_laya import SpeculativeLaya
+            from spec_tap import SpecTap
+            spec_layer = SpeculativeLaya(timing=timing)
+            spec_tap = SpecTap(spec_layer, timing_observer=timing)
+            logger.info("Speculative Laya enabled (min_audio_s={})", spec_layer.min_audio_s)
+        except Exception as exc:
+            logger.warning("Speculative Laya unavailable: {}", type(exc).__name__)
+            spec_layer = None
+
     context = LLMContext(tools=voice_tools)
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
         context,
@@ -485,11 +503,15 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         llm_stages = [llm]
         if ORCHESTRATION_MODE == "two_brain_plusjev":
             from orchestration import TwoBrainRouter
-            llm_stages.insert(0, TwoBrainRouter(tools_mcp, timing_observer=timing))
+            router = TwoBrainRouter(tools_mcp, timing_observer=timing)
+            if spec_layer is not None:
+                router.spec_layer = spec_layer
+            llm_stages.insert(0, router)
             logger.info("Two-brain routing enabled: classifier={}, GLM={}", llm_stages[0].router_model, OLLAMA_MODEL)
 
     pipeline = Pipeline([
         transport.input(),
+        *( [spec_tap] if spec_layer is not None else [] ),
         stt,
         user_aggregator,
         *llm_stages,
