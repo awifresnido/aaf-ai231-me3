@@ -41,6 +41,14 @@ def load(checkpoint, threads, precision):
     param = next(agent.model.parameters())
     device = param.device.type
     ptype = str(param.dtype).replace("torch.", "")
+    if device != "cuda":
+        # A silent CPU fallback is how routing died twice (2 s+ per classify →
+        # the Pi's timeout → every turn escalated to GLM). Fail loudly instead:
+        # systemd restarts us until memory is actually available.
+        raise SystemExit(
+            f"laya_v2 landed on {device} ({ptype}) — CUDA required. "
+            "Free memory or fix LAYA_PRECISION; refusing to serve on CPU."
+        )
     if agent.temperature != TEMPERATURE or getattr(agent, "temperature_by_options", None):
         raise ValueError("External Laya calibration was not installed")
     warmups = []
@@ -48,6 +56,10 @@ def load(checkpoint, threads, precision):
         s = time.monotonic()
         gate(agent.predict("what time is it", QUESTIONS)["answers"]["route"])
         warmups.append(time.monotonic() - s)
+    if warmups[2] > 1.5:
+        # Steady-state classify must be well under the Pi's 2 s budget; the
+        # swap-thrash case warmed up at 254 s.
+        raise SystemExit(f"laya_v2 steady-state warmup {warmups[2]:.2f}s > 1.5s — thrashing.")
     with (checkpoint / "model.safetensors").open("rb") as weights:
         model_sha256 = hashlib.file_digest(weights, "sha256").hexdigest()
     return agent, {"contract": CONTRACT, "device": device, "weights_dtype": ptype,
