@@ -4,6 +4,11 @@
 # Bootstraps everything if missing (python venv -> deps -> frontend build),
 # then runs the FastAPI server.  Read-only: never touches the Pi or any model.
 #
+# Binds 0.0.0.0 by default so the dashboard is reachable from another machine
+# on the LAN (e.g. a laptop) via http://<this-host-ip>:<port>/.
+#   HOST=127.0.0.1 bash dashboard/scripts/serve.sh   # local-only
+#   PORT=9000   bash dashboard/scripts/serve.sh       # different port
+#
 # Usage:  bash dashboard/scripts/serve.sh
 set -euo pipefail
 
@@ -11,6 +16,7 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$REPO"
 
+HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-8000}"
 
 echo "==> repo: $REPO"
@@ -42,6 +48,9 @@ if [ ! -f dashboard/frontend/dist/index.html ]; then
 fi
 
 # 4) Run
+LAN_IP="$(hostname -I 2>/dev/null | awk '{print $1}')"
 echo "==> serving on http://127.0.0.1:${PORT}/  (Ctrl-C to stop)"
+[ -n "$LAN_IP" ] && [ "$HOST" != "127.0.0.1" ] && \
+  echo "==> from another machine on the LAN: http://${LAN_IP}:${PORT}/"
 cd dashboard
-exec ../.venv/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port "$PORT"
+exec ../.venv/bin/python -m uvicorn backend.app:app --host "$HOST" --port "$PORT"
