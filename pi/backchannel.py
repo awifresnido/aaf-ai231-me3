@@ -116,6 +116,9 @@ class BackchannelProcessor(FrameProcessor):
         self._speech_end_mono = None
         # mic RMS ring buffer over the trailing 1 s (ts_mono -> rms)
         self._rms_ring = []
+        # interruptibility evidence: mic energy while the bot plays
+        self._pb_window_rms = 0.0
+        self._pb_window_at = 0.0
         # predict mode (Phase 2): classify the latest in-speech partial with
         # Laya (Jetson :8083, not the shared DGX GPU — no ASR contention).
         # Budget: ONE classify HTTP call per turn, async, never blocking STT.
@@ -134,6 +137,20 @@ class BackchannelProcessor(FrameProcessor):
         self.long_clip_name = os.getenv("BACKCHANNEL_LONG_CLIP", "still_working")
         self._long_task = None
         self._filler_burst_prev = None
+        # Interruptibility trial: RMS-based barge-in bypassing the AEC.
+        # Calibrated on run 3deabb0044 (207 windows during playback):
+        # median idle 30.7, speech tail 300-981 -> 250 / 200 ms / 2 s.
+        self.barge = os.getenv("BARGE_IN_VAD_BYPASS", "0").strip() == "1"
+        self.barge_rms = float(os.getenv("BACKCHANNEL_BARGE_RMS", "250"))
+        self.barge_ms = float(os.getenv("BACKCHANNEL_BARGE_MS", "200"))
+        self.barge_cooldown_s = float(os.getenv("BACKCHANNEL_BARGE_COOLDOWN_S", "2"))
+        self._barge_hot_since = 0.0
+        self._barge_last_fire = 0.0
+        self._barge_fires = 0
+        if self.barge:
+            logger.info("Barge-in bypass: rms>{} for {}ms while playback busy "
+                        "(cooldown {}s)", self.barge_rms, self.barge_ms,
+                        self.barge_cooldown_s)
         if self.enabled:
             logger.info("Backchannel: mode={} deadline_ms={} cooldown_s={} clips={}",
                         self.mode, self.deadline_ms, self.cooldown_s, list(self.clips))
@@ -337,6 +354,11 @@ class BackchannelProcessor(FrameProcessor):
             # VAD lifecycle frames from the user aggregator (upstream broadcast)
             if isinstance(frame, VADUserStartedSpeakingFrame):
                 self._user_speaking = True
+                now = time.monotonic()
+                if self.output is not None and getattr(
+                        self.output, "playback_busy_until", 0.0) > now - 0.05:
+                    self.record("vad_during_playback",
+                                rms_max=round(self._pb_window_rms, 1) if self._pb_window_rms else None)
                 self._cancel_task()
                 self._cancel_long()
                 await self.push_frame(frame, direction)
@@ -361,6 +383,40 @@ class BackchannelProcessor(FrameProcessor):
                 cutoff = now - 1.2
                 while self._rms_ring and self._rms_ring[0][0] < cutoff:
                     self._rms_ring.pop(0)
+                # evidence accumulation while the bot is playing
+                if self.output is not None and getattr(
+                        self.output, "playback_busy_until", 0.0) > now - 0.05:
+                    if r > self._pb_window_rms:
+                        self._pb_window_rms = r
+                    if now - self._pb_window_at >= 0.5:
+                        self.record("bc_mic_while_bot", rms_max=round(self._pb_window_rms, 1))
+                        self._pb_window_rms = 0.0
+                        self._pb_window_at = now
+                    # RMS barge-in bypass (AEC swallows near-end speech):
+                    # sustained high RMS while playback measured-busy -> fire.
+                    if self.barge and r >= self.barge_rms:
+                        if not self._barge_hot_since:
+                            self._barge_hot_since = now
+                        elif (now - self._barge_hot_since >= self.barge_ms / 1000.0
+                              and now - self._barge_last_fire >= self.barge_cooldown_s):
+                            self._barge_last_fire = now
+                            self._barge_fires += 1
+                            self.record("bc_barge_fired", rms=round(r, 1),
+                                        hot_for_ms=round((now - self._barge_hot_since) * 1000),
+                                        fire_n=self._barge_fires)
+                            # Real interruption, pushed DOWNSTREAM from here:
+                            # router passes it, LLM cancels generation, TTS
+                            # clears, transport flushes its queues and the
+                            # flush-kill drops the pacat pipe instantly.
+                            from pipecat.frames.frames import InterruptionFrame
+                            await self.push_frame(InterruptionFrame(), direction)
+                        # stay hot; cooldown gate re-arms on the next window
+                    elif r < self.barge_rms * 0.6:
+                        self._barge_hot_since = 0.0
+                elif self._pb_window_at:
+                    self._pb_window_rms = 0.0
+                    self._pb_window_at = 0.0
+                    self._barge_hot_since = 0.0
             await self.push_frame(frame, direction)
             return
 

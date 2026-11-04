@@ -57,6 +57,7 @@ from pipecat.services.nvidia.stt import NvidiaSTTService
 from pipecat.services.nvidia.tts import NvidiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_output import BaseOutputTransport
+from pipecat.processors.frame_processor import FrameDirection
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
 from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
@@ -233,6 +234,9 @@ class PacatAudioOutput(BaseOutputTransport):
         self.timing_observer = None
         self._last_playback_context = None
         self._last_write_at = float("-inf")
+        self._interrupt_at = 0.0
+        self._interrupt_burst = -1
+        self._interrupt_pending = 0.0
         # Backchannel echo gate: measured playback state (never frame events).
         self._playback_pending_s = 0.0
         self._playback_bytes_at = 0.0
@@ -267,9 +271,61 @@ class PacatAudioOutput(BaseOutputTransport):
         await BaseOutputTransport.start(self, frame)
         await self.set_transport_ready(frame)
 
+    async def process_frame(self, frame, direction=FrameDirection.DOWNSTREAM):
+        if type(frame).__name__ == "InterruptionFrame":
+            now = time.monotonic()
+            pending = max(0.0, self._playback_pending_s -
+                          (now - self._playback_bytes_at))
+            if self.timing_observer:
+                self.timing_observer.record(
+                    "bc_interrupt", pending_s=round(pending, 3),
+                    busy_until_in_ms=round(max(0.0, self.playback_busy_until - now) * 1000),
+                    burst_id=self._playback_burst_id)
+            # remember for the post-interrupt drain measurement
+            self._interrupt_at = now
+            self._interrupt_burst = self._playback_burst_id
+            self._interrupt_pending = pending
+            # Hard flush: SIGKILL pacat so buffered-but-unplayed audio dies
+            # with the pipe. Respawned lazily on the next write.
+            if pending > 0.05 and self._proc is not None:
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_flush", killed_pending_s=round(pending, 3))
+                try:
+                    self._proc.kill()
+                    await self._proc.wait()
+                    if self.timing_observer:
+                        self.timing_observer.record(
+                            "bc_flush_pacat_gone", exit_code=self._proc.returncode)
+                except Exception:
+                    pass
+                self._proc = None
+        return await super().process_frame(frame, direction)
+
+    async def _spawn_pacat(self):
+        self._proc = await asyncio.create_subprocess_exec(
+            "pacat",
+            "--playback",
+            "--raw",
+            "--format=s16le",
+            f"--rate={self.sample_rate}",
+            f"--channels={self._params.audio_out_channels}",
+            f"--latency-msec={PACAT_LATENCY_MS}",
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.DEVNULL,
+        )
+
     async def write_audio_frame(self, frame) -> bool:
         if self._proc is None or self._proc.stdin is None:
-            return False
+            if frame.audio:
+                try:
+                    await self._spawn_pacat()
+                except Exception as exc:
+                    logger.error("pacat respawn failed: {}", exc)
+                    return False
+            else:
+                return False
         try:
             self._proc.stdin.write(frame.audio)
             await self._proc.stdin.drain()
@@ -289,6 +345,14 @@ class PacatAudioOutput(BaseOutputTransport):
             self._playback_pending_s = pending
             self._playback_bytes_at = now
             self.playback_busy_until = now + pending + 0.15
+            if (self._interrupt_at and now - self._interrupt_at > 0.9
+                    and (self._playback_burst_id > self._interrupt_burst or pending <= 0.001)):
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_drain", after_interrupt_s=round(now - self._interrupt_at, 3),
+                        predicted_pending_s=round(self._interrupt_pending, 3),
+                        new_burst=self._playback_burst_id > self._interrupt_burst)
+                self._interrupt_at = 0.0
             context_id = getattr(frame, "context_id", None)
             first = (context_id is not None and context_id != self._last_playback_context) or (context_id is None and now - self._last_write_at > 0.5)
             self._last_write_at = now
@@ -591,6 +655,27 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     async def on_client_disconnected(transport, client):
         logger.info("Client disconnected")
         await runner.cancel()
+
+    if os.getenv("BC_FLUSH_TEST", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        async def _flush_test():
+            out = transport.output()
+            # wait until the greeting is ACTIVELY queued in the pacat pipe
+            # (v1 waited for first write + 1 s, by which time the short
+            # greeting had drained -> pending was 0 and the kill never fired)
+            for _ in range(200):
+                if getattr(out, "_playback_pending_s", 0.0) > 1.0:
+                    break
+                await asyncio.sleep(0.1)
+            from pipecat.frames.frames import InterruptionFrame
+            await out.process_frame(InterruptionFrame(), FrameDirection.DOWNSTREAM)
+            timing.record("bc_flush_test", stage="interrupt_pushed")
+            await asyncio.sleep(2.0)
+            await worker.queue_frames([TTSSpeakFrame(
+                text="Flush test complete. If you hear this, respawn works.")])
+            timing.record("bc_flush_test", stage="respawn_speech_queued")
+
+        asyncio.create_task(_flush_test())
+        logger.info("BC_FLUSH_TEST armed: interrupt at greeting+1s, respawn check at +3s")
 
     monitor = asyncio.create_task(diagnostics.monitor_loop(lambda: timing.turn)) if diagnostics else None
     try:
