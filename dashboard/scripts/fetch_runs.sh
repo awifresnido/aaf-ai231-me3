@@ -3,11 +3,12 @@
 # Usage: bash dashboard/scripts/fetch_runs.sh <run-id> [<run-id> ...]
 set -euo pipefail
 
-SSH_KEY=/opt/data/home/.ssh/id_ed25519
-KNOWN_HOSTS=/opt/data/.ssh/known_hosts
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # dashboard/
+BASE="$(cd "$HERE/../.." && pwd)"                          # /opt/data (container) = ~/.hermes (host)
+SSH_KEY="${DASHBOARD_SSH_KEY:-$BASE/home/.ssh/id_ed25519}"
+KNOWN_HOSTS="${DASHBOARD_KNOWN_HOSTS:-$BASE/.ssh/known_hosts}"
 PI=aldwinrpi4@192.168.5.12
 REMOTE_DIR=/dev/shm/voice-agent-diagnostics
-HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DATA_DIR="${DASHBOARD_DATA_DIR:-$HERE/data}"
 
 if [ "$#" -eq 0 ]; then
