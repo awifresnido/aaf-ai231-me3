@@ -84,6 +84,16 @@ def explicit_route_hint(text):
     return None
 
 
+def _direct_chitchat(text):
+    """Recognize standalone questions about the assistant or connection."""
+    normalized = re.sub(r"[^a-z0-9\s']", " ", (text or "").lower())
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return bool(re.fullmatch(
+        r"(?:(?:hello|hi|hey)\s+)?(?:can you hear me|who are you|are you listening)(?:\s+please)?",
+        normalized,
+    ))
+
+
 def latest_user_text(context):
     for message in reversed(context.get_messages()):
         if isinstance(message, dict) and message.get("role") == "user":
@@ -591,6 +601,11 @@ class TwoBrainRouter(FrameProcessor):
         if spec is not None:
             spec_group, spec_conf = spec.result
         try:
+            if self.router_model == "laya" and _direct_chitchat(text):
+                self.record("classifier_bypass", route_turn, reason="direct_chitchat", classifier_s=0.0)
+                await self._dispatch_group("chitchat", text, frame, route_turn,
+                                           {"classifier_s": 0.0, "laya_s": 0.0}, started, owner)
+                return
             tool = explicit_route_hint(text)
             result = None
             # Speculative fast path: during speech the speculator classified a

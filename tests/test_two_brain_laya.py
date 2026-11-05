@@ -14,7 +14,7 @@ import httpx
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pi"))
 from laya_classifier import LayaClassifier
 from laya_contract import CONTRACT, ROUTES
-from orchestration import TwoBrainRouter
+from orchestration import TwoBrainRouter, _direct_chitchat
 from pipecat.frames.frames import LLMContextFrame, TTSSpeakFrame
 from pipecat.processors.frame_processor import FrameDirection
 
@@ -79,6 +79,16 @@ class RouterTests(unittest.IsolatedAsyncioTestCase):
             router=TwoBrainRouter(mcp,classifier=classifier,extractor=extractor,timing_observer=timing)
         router.push_frame=AsyncMock()
         return router,classifier,extractor,mcp,timing
+
+    async def test_standalone_connection_questions_use_local_reply(self):
+        for text in ("Can you hear me?", "Who are you?", "Are you listening?"):
+            router, classifier, extractor, mcp, timing = self.router(result("other"))
+            await router.process_frame(self.frame(text), FrameDirection.DOWNSTREAM)
+            classifier.choice.assert_not_awaited()
+            extractor.answer.assert_awaited_once_with(text)
+            mcp._call_tool_text.assert_not_awaited()
+            self.assertTrue(any(call.args[0] == "route_smalltalk" for call in timing.record.call_args_list))
+        self.assertFalse(_direct_chitchat("Can you hear me and turn on the lights?"))
 
     async def test_laya_gate_and_timing_fast_path(self):
         router,classifier,extractor,mcp,timing=self.router(result("control_lights",.7))
