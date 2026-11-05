@@ -159,3 +159,76 @@ tbody tr:hover { background: var(--panel-2); }
   margin-bottom: 16px;
   font-size: 13px;
 }
+
+/* ---- Smart controls (simulated smart home) ---- */
+.sc-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.sc-head h2 { margin: 0; flex: 1 1 auto; }
+.sc-note { font-size: 12.5px; margin: 0 0 14px; max-width: 72ch; }
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.device-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 13px 14px;
+}
+.device-card h3 {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.sc-light { display: flex; align-items: center; gap: 12px; }
+.sc-bulb { width: 64px; height: 80px; flex: 0 0 auto; }
+.sc-facts { display: flex; flex-direction: column; gap: 4px; margin: 0; font-size: 12.5px; }
+.sc-facts div { display: flex; gap: 8px; }
+.sc-facts dt { color: var(--muted); min-width: 70px; }
+.sc-facts dd { margin: 0; font-weight: 550; }
+
+.sc-thermostat { display: flex; align-items: baseline; gap: 4px; }
+.sc-bignum { font-family: var(--mono); font-size: 30px; font-weight: 650; }
+.sc-unit { color: var(--muted); font-size: 15px; }
+
+.sc-media { display: flex; align-items: center; gap: 12px; }
+.sc-title { font-weight: 600; font-size: 13px; }
+.sc-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 22px; }
+.sc-eq i { width: 4px; background: var(--muted); border-radius: 2px; height: 4px; }
+.sc-eq.on i { background: var(--accent); animation: sc-eq 0.9s ease-in-out infinite; }
+.sc-eq.on i:nth-child(2) { animation-delay: 0.2s; }
+.sc-eq.on i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes sc-eq {
+  0%, 100% { height: 4px; }
+  50% { height: 20px; }
+}
+
+.sc-list { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.sc-row { display: flex; justify-content: space-between; gap: 10px; }
+.sc-row .muted { font-size: 11.5px; }
+
+.sc-sub { margin: 4px 0 8px; }
+.sc-activity { display: flex; flex-direction: column; gap: 2px; }
+.sc-activity-row {
+  display: grid;
+  grid-template-columns: 70px 150px 1fr 64px;
+  gap: 10px;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+.sc-activity-row:nth-child(odd) { background: var(--panel-2); }
+.sc-tool { font-weight: 600; }
+.sc-change { color: var(--text); }
+.sc-dur { text-align: right; }
+@media (max-width: 700px) {
+  .sc-activity-row { grid-template-columns: 62px 120px 1fr; }
+  .sc-dur { display: none; }
+}

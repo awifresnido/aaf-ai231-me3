@@ -7,6 +7,7 @@ import Waterfall from "./components/Waterfall";
 import RoutingTrace from "./components/RoutingTrace";
 import ToolActivity from "./components/ToolActivity";
 import ClassifierHealth from "./components/ClassifierHealth";
+import SmartControls from "./components/SmartControls";
 import { fmtS, fmtTime } from "./displayNames";
 
 export default function App() {
@@ -118,6 +119,7 @@ export default function App() {
           <ToolActivity detail={detail} dn={dn} />
           <Waterfall detail={detail} />
           <TurnFeed turns={detail.turns} dn={dn} />
+          <SmartControls devices={detail.devices} dn={dn} />
         </>
       )}
     </div>

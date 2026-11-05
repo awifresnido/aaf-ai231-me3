@@ -86,6 +86,31 @@ export interface ToolSpan {
   duration_s: number | null;
 }
 
+export interface DeviceState {
+  lights: { power: boolean; brightness: string; color: string | null };
+  thermostat: { degrees: number | null; set_at: number | null };
+  media: { mode: string | null; title: string | null; status: string };
+  timers: { label: string; ends_at: number | null }[];
+  alarms: { time_str: string }[];
+  reminders: { text: string; created_ms: number | null }[];
+  call: { status: string; to: string | null; at: number | null };
+}
+
+export interface DeviceEvent {
+  tool: string | null;
+  arguments: Record<string, unknown> | null;
+  at: number | null;
+  duration_s: number | null;
+  change: string | null;
+}
+
+export interface Devices {
+  reconstructed: boolean;
+  args_recorded: boolean;
+  final: DeviceState;
+  events: DeviceEvent[];
+}
+
 export interface RunDetail {
   run_id: string;
   started_at: number | null;
@@ -105,6 +130,7 @@ export interface RunDetail {
   tool_activity: ToolActivity[];
   tool_timeline: ToolSpan[];
   dispatch_breakdown: Record<string, number>;
+  devices: Devices;
 }
 
 export interface GroupDisplay {
