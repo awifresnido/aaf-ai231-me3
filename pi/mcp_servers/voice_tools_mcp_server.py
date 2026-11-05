@@ -75,7 +75,7 @@ class ProfiledToolServer(MCPServer):
             call_id = ""
         if not isinstance(call_id, str) or not re.fullmatch(r"[0-9a-f]{32}", call_id):
             call_id = uuid.uuid4().hex
-        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name):
+        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name, arguments=arguments):
             return await super().call_tool(name, arguments, ctx)
 
     async def run_stdio_async(self):
