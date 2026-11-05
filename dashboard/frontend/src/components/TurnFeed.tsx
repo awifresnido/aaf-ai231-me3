@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { DisplayNames, Turn } from "../types";
 import {
   groupColor,
@@ -8,7 +9,9 @@ import {
   fmtProb,
 } from "../displayNames";
 
-// One row per turn: group, raw choice, confidence, gate, tool/GLM, e2e.
+// One row per turn, oldest at top, newest at the bottom. The container is
+// auto-scrolled to the latest turn so a live demo defaults to the newest
+// command and the operator only scrolls UP to review older ones.
 export default function TurnFeed({
   turns,
   dn,
@@ -16,6 +19,13 @@ export default function TurnFeed({
   turns: Turn[];
   dn: DisplayNames;
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [turns]);
+
   const gateClass = (g: string) =>
     g === "accepted"
       ? "good"
@@ -26,9 +36,9 @@ export default function TurnFeed({
           : "";
 
   return (
-    <div className="panel">
+    <div className="panel turn-feed">
       <h2>Turn feed ({turns.length})</h2>
-      <div style={{ maxHeight: 420, overflowY: "auto" }}>
+      <div className="turn-scroll" ref={scrollRef}>
         <table>
           <thead>
             <tr>

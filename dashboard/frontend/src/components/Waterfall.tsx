@@ -16,28 +16,46 @@ const SEGMENTS: Segment[] = [
 
 const STAGE_KEYS = ["e2e_s", "asr_s", "classifier_s", "tool_s", "tts_first_s"] as const;
 
-// Per-turn stacked latency waterfall (measured stages), with median/p95 summary.
+// Latency waterfall, trimmed to the most recent 3 turns (full-width strip).
+// Each turn is a stacked bar of the measured stages; the run-level median/p95
+// summary is shown inline so the whole thing stays one short band.
 export default function Waterfall({ detail }: { detail: RunDetail }) {
-  const turns = detail.turns;
+  const turns = detail.turns.slice(-3);
   const e2eValues = turns
     .map((t) => t.timings.e2e_s)
     .filter((v): v is number => v !== null);
   const maxE2e = Math.max(...e2eValues, 1);
 
   return (
-    <div className="panel">
-      <h2>Latency waterfall (per turn)</h2>
-      <div className="legend">
-        {SEGMENTS.map((s) => (
-          <span className="item" key={s.key}>
-            <span className="dot" style={{ background: s.color }} />
-            {s.label}
-          </span>
-        ))}
-        <span className="item muted">
-          widths scale to max e2e ({fmtS(maxE2e)}); stages don't sum to e2e — the
-          gap is unmeasured (VAD / queue / dispatch).
-        </span>
+    <div className="panel panel-tight">
+      <h2>Latency waterfall · last {turns.length} turns</h2>
+
+      <div className="wf-head">
+        <div className="legend">
+          {SEGMENTS.map((s) => (
+            <span className="item" key={s.key}>
+              <span className="dot" style={{ background: s.color }} />
+              {s.label}
+            </span>
+          ))}
+        </div>
+        <div className="wf-aggs">
+          {STAGE_KEYS.map((k) => {
+            const s = detail.aggregates[k];
+            const label =
+              k === "e2e_s"
+                ? "E2E"
+                : SEGMENTS.find((x) => x.key === k)?.label ?? k;
+            return (
+              <span className="wf-agg" key={k} title={`median · p95`}>
+                <span className="muted">{label}</span>{" "}
+                <span className="mono">
+                  {fmtS(s.median)} / {fmtS(s.p95)}
+                </span>
+              </span>
+            );
+          })}
+        </div>
       </div>
 
       <div className="waterfall">
@@ -56,9 +74,7 @@ export default function Waterfall({ detail }: { detail: RunDetail }) {
           });
           return (
             <div className="wf-row" key={t.turn}>
-              <span className="muted mono" style={{ fontSize: 11 }}>
-                #{t.turn}
-              </span>
+              <span className="muted mono wf-turn">#{t.turn}</span>
               <div className="wf-bar">
                 {parts.map((p, i) => (
                   <div
@@ -70,25 +86,6 @@ export default function Waterfall({ detail }: { detail: RunDetail }) {
                 ))}
               </div>
               <span className="wf-e2e-label">{fmtS(t.timings.e2e_s)}</span>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="stats" style={{ marginTop: 14 }}>
-        {STAGE_KEYS.map((k) => {
-          const s = detail.aggregates[k];
-          const label =
-            k === "e2e_s"
-              ? "E2E"
-              : SEGMENTS.find((x) => x.key === k)?.label ?? k;
-          return (
-            <div className="stat" key={k}>
-              <div className="k">{label}</div>
-              <div className="v">{fmtS(s.median)}</div>
-              <div className="muted" style={{ fontSize: 11 }}>
-                median · p95 {fmtS(s.p95)}
-              </div>
             </div>
           );
         })}

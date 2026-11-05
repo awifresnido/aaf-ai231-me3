@@ -20,7 +20,7 @@ REMOTE_DIR=/dev/shm/voice-agent-diagnostics
 DATA_DIR="${DASHBOARD_DATA_DIR:-$HERE/data}"
 POLL="${LIVE_POLL_SECS:-3}"
 
-SSH_OPTS=(-i "$SSH_KEY" -o IdentitiesOnly=yes -o UserKnownHostsFile="$KNOWN_HOSTS" -o ConnectTimeout=6 -o BatchMode=yes)
+SSH_OPTS=(-F "${DASHBOARD_SSH_CONFIG:-/dev/null}" -i "$SSH_KEY" -o IdentitiesOnly=yes -o UserKnownHostsFile="$KNOWN_HOSTS" -o ConnectTimeout=6 -o BatchMode=yes)
 
 echo "live-pull: polling $PI:$REMOTE_DIR every ${POLL}s -> $DATA_DIR  (Ctrl-C to stop)"
 

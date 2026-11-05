@@ -96,8 +96,10 @@ class Run:
             "router_model": c.get("router_model"),
             "tts_backend": c.get("tts_backend"),
             "tts_model": c.get("tts_model"),
+            "tts_voice": c.get("tts_voice"),
             "asr_backend": c.get("asr_backend"),
             "asr_model": c.get("asr_model"),
+            "small_llm_primary_model": c.get("small_llm_primary_model"),
             "classifier_timeout_s": c.get("classifier_timeout_s"),
             "cloud_escalation": c.get("cloud_escalation"),
         }
@@ -260,6 +262,7 @@ def _parse_run(run_id, path):
 
 
 def _extract_config(pi_files):
+    config = {}
     for pf in pi_files:
         with open(pf, "r", encoding="utf-8") as f:
             for line in f:
@@ -272,9 +275,20 @@ def _extract_config(pi_files):
                     continue
                 if d.get("event") != _TURN_EVENT:
                     continue
-                if d.get("timing_event") == "configuration":
-                    return d.get("fields") or {}
-    return {}
+                te = d.get("timing_event")
+                if te == "configuration" and not config:
+                    config = dict(d.get("fields") or {})
+                # asr_model is null in the configuration event but is carried on
+                # each per-turn whisper event; backfill it for the pipeline view.
+                if not config.get("asr_model") and te in (
+                    "asr_whisper_start", "asr_whisper_complete",
+                ):
+                    m = (d.get("fields") or {}).get("asr_model")
+                    if m:
+                        config["asr_model"] = m
+        if config and config.get("asr_model"):
+            break
+    return config
 
 
 def _parse_mcp_spans(fh, run):
@@ -306,6 +320,7 @@ def _parse_mcp_spans(fh, run):
                 "duration_s": duration,
                 "error": d.get("error"),
                 "arguments": start.get("arguments"),
+                "result": d.get("result"),
             })
 
 

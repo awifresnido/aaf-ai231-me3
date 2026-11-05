@@ -36,8 +36,10 @@ export interface RunConfig {
   router_model: string | null;
   tts_backend: string | null;
   tts_model: string | null;
+  tts_voice: string | null;
   asr_backend: string | null;
   asr_model: string | null;
+  small_llm_primary_model: string | null;
   classifier_timeout_s: number | null;
   cloud_escalation: boolean | null;
 }
@@ -89,7 +91,7 @@ export interface ToolSpan {
 export interface DeviceState {
   lights: { power: boolean; brightness: string; color: string | null };
   thermostat: { degrees: number | null; set_at: number | null };
-  media: { mode: string | null; title: string | null; status: string };
+  media: { mode: string | null; title: string | null; status: string; volume: number };
   timers: { label: string; ends_at: number | null }[];
   alarms: { time_str: string }[];
   reminders: { text: string; created_ms: number | null }[];

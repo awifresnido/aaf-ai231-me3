@@ -46,7 +46,7 @@ CHITCHAT = "chitchat"
 # only emit well-typed arguments.
 TOOL_JSON_PROPERTIES = {
     "get_time": {},
-    "get_weather": {},
+    "get_weather": {"place": {"type": "string", "description": "city or place name"}},
     "list_reminders": {},
     "add_reminder": {"text": {"type": "string", "description": "the reminder note"}},
     "set_thermostat": {"degrees": {"type": "integer", "description": "celsius temperature 16-32"}},

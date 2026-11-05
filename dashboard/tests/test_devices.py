@@ -71,6 +71,19 @@ def test_playback_control_maps_status():
     assert r["final"]["media"]["status"] == "paused"
 
 
+def test_recorded_media_result_overrides_replayed_volume_and_title():
+    play = _span("play_music", {"query": "local files"}, 1)
+    play["result"] = {"ok": True, "media": {"mode": "music", "title": "Track A",
+                                            "status": "playing", "volume": 1}}
+    change = _span("playback_control", {"action": "volume_up"}, 2)
+    change["result"] = {"ok": True, "media": {"mode": "music", "title": "Track B",
+                                              "status": "playing", "volume": 4}}
+    r = devices.reconstruct([play, change])
+    assert r["results_recorded"] is True
+    assert r["final"]["media"]["title"] == "Track B"
+    assert r["final"]["media"]["volume"] == 4
+
+
 def test_place_call():
     r = devices.reconstruct([_span("place_call", {"to": "Mom"}, 7)])
     assert r["final"]["call"]["status"] == "calling"

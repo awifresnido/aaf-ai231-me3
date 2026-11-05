@@ -66,6 +66,7 @@ function ThermostatCard({ t }: { t: Devices["final"]["thermostat"] }) {
 
 function MediaCard({ m }: { m: Devices["final"]["media"] }) {
   const playing = m.status === "playing";
+  const vol = typeof m.volume === "number" ? Math.max(0, Math.min(4, m.volume)) : 3;
   return (
     <Card title="Music">
       <div className="sc-media">
@@ -79,6 +80,12 @@ function MediaCard({ m }: { m: Devices["final"]["media"] }) {
             {m.mode === "music" && m.title ? " · requested" : ""}
           </div>
         </div>
+      </div>
+      <div className="sc-vol" title={`Volume ${vol + 1} of 5`} aria-label={`Volume ${vol + 1} of 5`}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <span key={i} className={`sc-vol-bar ${i <= vol ? "on" : ""}`} />
+        ))}
+        <span className="muted sc-vol-label">volume {vol + 1}/5</span>
       </div>
     </Card>
   );
@@ -145,9 +152,10 @@ function ActivityFeed({ events, dn }: { events: DeviceEvent[]; dn: DisplayNames 
   if (events.length === 0) {
     return <p className="muted">No tool calls in this run.</p>;
   }
+  const recent = events.slice(-10);
   return (
     <div className="sc-activity">
-      {events.map((e, i) => (
+      {recent.map((e, i) => (
         <div key={i} className="sc-activity-row">
           <time className="mono muted">{fmtTime(e.at)}</time>
           <span className="sc-tool">{toolName(dn, e.tool)}</span>
@@ -190,7 +198,7 @@ export default function SmartControls({ devices, dn }: { devices: Devices; dn: D
         <CallCard call={d.call} />
       </div>
 
-      <h3 className="sc-sub">Device activity</h3>
+      <h3 className="sc-sub">Device activity (last 10 commands)</h3>
       <ActivityFeed events={devices.events} dn={dn} />
     </section>
   );

@@ -38,7 +38,7 @@ FAST_TOOLS = {
 }
 OPTIONS = {
     "get_time": "Ask for the current local clock time",
-    "get_weather": "Ask for current local weather; no forecast or another location",
+    "get_weather": "Ask for the current weather at a stated place (city or location name)",
     "list_reminders": "Ask to list existing reminders",
     "add_reminder": "Create one reminder with stated note text, such as 'remind me to study'; no time is required",
     "set_thermostat": "Set the thermostat to one explicit Celsius temperature",
@@ -126,6 +126,18 @@ def accepted_group(result, minimum=0.65, gap=0.10):
     return choice
 
 
+def _music_source_answer(text):
+    """Return 'local'/'internet' for a bare answer to the play_music source
+    question (e.g. 'local', 'my files', 'the internet'), else None."""
+    t = re.sub(r"\b(?:the|my|from|use|go|with)\b", " ", (text or "").lower(), flags=re.I)
+    t = re.sub(r"\s+", " ", t).strip(" .?!")
+    if re.fullmatch(r"(?:local|internet|online|stream|web|cloud|files?|folder|offline|stored)", t):
+        if re.search(r"(?:local|files?|folder|offline|stored)", t):
+            return "local"
+        return "internet"
+    return None
+
+
 def direct_arguments(tool, text):
     lowered = text.lower().replace(".", "")
     if tool == "get_time":
@@ -207,6 +219,12 @@ def direct_arguments(tool, text):
 
 
 def validate_arguments(tool, arguments):
+    if tool == "get_weather":
+        # place is optional: {} -> default location; {"place": "City"} -> named.
+        if not isinstance(arguments, dict) or set(arguments) - {"place"}:
+            return False
+        place = arguments.get("place")
+        return place is None or (isinstance(place, str) and len(place.strip()) <= 60)
     schema = FAST_TOOLS.get(tool)
     if schema is None or not isinstance(arguments, dict) or set(arguments) != set(schema):
         return False
@@ -403,6 +421,7 @@ class TwoBrainRouter(FrameProcessor):
         )
         self._inflight = set()
         self._laya_owners = deque(maxlen=64)
+        self._pending_music = False
 
     def record(self, event, turn, **fields):
         if self.timing_observer:
@@ -450,6 +469,8 @@ class TwoBrainRouter(FrameProcessor):
             except (TypeError, ValueError):
                 payload = {"spoken": "I couldn't confirm that action. Please check its state before trying again."}
             spoken = payload.get("spoken") or "I couldn't confirm that action. Please check its state before trying again."
+            if tool == "play_music" and payload.get("ask_source"):
+                self._pending_music = True
             if self.router_model == "laya" and not isinstance(spoken, str):
                 raise ValueError("Invalid tool receipt")
             self.record("route_tool", route_turn, tool=tool, **classifier_fields,
@@ -545,6 +566,20 @@ class TwoBrainRouter(FrameProcessor):
                 owner["owner"] = "glm"
             await self.push_frame(frame, direction)
             return
+        pending = self._pending_music
+        self._pending_music = False
+        if pending:
+            src = _music_source_answer(text)
+            if src:
+                self.record("route_tool", route_turn, tool="play_music", source=src,
+                            extraction="pending_source", classifier_s=0.0,
+                            **{self.router_model + "_s": 0.0})
+                if owner is not None:
+                    owner["owner"] = "handled"
+                await self._execute_tool("play_music", {"query": "", "source": src}, text,
+                                         route_turn, {"classifier_s": 0.0, self.router_model + "_s": 0.0},
+                                         time.monotonic(), owner, extraction="pending_source")
+                return
         started = time.monotonic()
         classifier_s = 0.0
         classifier_started = None

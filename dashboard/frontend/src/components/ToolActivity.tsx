@@ -1,7 +1,11 @@
 import type { DisplayNames, RunDetail } from "../types";
-import { fmtS, fmtTime, toolName } from "../displayNames";
+import { fmtS, toolName } from "../displayNames";
 
-// Tool activity: count table + a timeline of invocations across the run.
+// Tool activity: local MCP tool counts, plus a line surfacing the workspace /
+// knowledge turns that escalated to the cloud GLM. Those GLM-side tool calls
+// (read_file, bash, github_repo, …) run off-instrument on the DGX, so they are
+// reported as a count rather than as individual spans — honest rather than
+// invented.
 export default function ToolActivity({
   detail,
   dn,
@@ -10,51 +14,23 @@ export default function ToolActivity({
   dn: DisplayNames;
 }) {
   const activity = detail.tool_activity;
-  const timeline = detail.tool_timeline.filter((s) => s.at !== null);
-
-  const start = detail.started_at;
-  const end = detail.ended_at;
-  const span = end && start ? end - start : 0;
-
-  const xPct = (at: number | null) => {
-    if (at === null || !start || !span) return 0;
-    return ((at - start) / span) * 100;
-  };
+  const escalated = detail.turns.filter((t) => t.escalate);
+  const ws = escalated.filter(
+    (t) => t.group === "workspace" || t.group === "knowledge"
+  );
 
   return (
-    <div className="panel">
+    <div className="panel panel-tight">
       <h2>Tool activity</h2>
 
-      {timeline.length > 0 && (
-        <div style={{ marginBottom: 16 }}>
-          <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
-            timeline ({fmtTime(start)} → {fmtTime(end)})
-          </div>
-          <div
-            style={{
-              position: "relative",
-              height: 40,
-              background: "var(--panel-2)",
-              borderRadius: 6,
-            }}
-          >
-            {timeline.map((s, i) => (
-              <span
-                key={i}
-                title={`${toolName(dn, s.tool)} @ ${fmtTime(s.at)} (${fmtS(s.duration_s, 3)})`}
-                style={{
-                  position: "absolute",
-                  left: `${xPct(s.at)}%`,
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  background: dn.groups[s.group ?? ""]?.color ?? "var(--muted)",
-                }}
-              />
-            ))}
-          </div>
+      {ws.length > 0 && (
+        <div className="ta-escalate">
+          <span className="dot" style={{ background: "var(--warn)" }} />
+          <span>
+            <strong>{ws.length}</strong> workspace / knowledge turn
+            {ws.length === 1 ? "" : "s"} handled by <strong>GLM (cloud)</strong>{" "}
+            — cloud tool calls run off-instrument
+          </span>
         </div>
       )}
 
@@ -67,7 +43,7 @@ export default function ToolActivity({
               <th>Tool</th>
               <th>Group</th>
               <th className="num">Count</th>
-              <th className="num">Median duration</th>
+              <th className="num">Median</th>
             </tr>
           </thead>
           <tbody>

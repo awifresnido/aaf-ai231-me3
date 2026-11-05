@@ -1,7 +1,9 @@
 import type { RunDetail } from "../types";
 import { fmtS } from "../displayNames";
 
-// Classifier health: success vs timeout/error counts + latency histogram.
+// Classifier health, reduced: a single compact strip of gate counts plus a
+// one-line latency summary. The big histogram was dropped to keep the right
+// rail tight — the smart-home panel is the focus, not the classifier.
 export default function ClassifierHealth({ detail }: { detail: RunDetail }) {
   const h = detail.classifier_health;
   const buckets: [string, number, string][] = [
@@ -10,60 +12,25 @@ export default function ClassifierHealth({ detail }: { detail: RunDetail }) {
     ["rejected", h.rejected, "var(--muted)"],
     ["timeout", h.timeout, "var(--bad)"],
     ["error", h.error, "var(--bad)"],
-    ["bypass", h.bypass, "var(--muted)"],
-    ["multiple_actions", h.multiple_actions, "var(--muted)"],
   ];
-  const totalRuns =
-    h.accepted + h.escalated + h.rejected + h.timeout + h.error;
-  const maxBin = Math.max(...h.histogram.bins.map((b) => b.count), 1);
+  const total = h.accepted + h.escalated + h.rejected + h.timeout + h.error;
 
   return (
-    <div className="panel">
+    <div className="panel panel-tight">
       <h2>Classifier health</h2>
-
-      {h.timeout + h.error > 0 && (
-        <div className="error-note">
-          <strong>
-            {h.timeout} timeout{h.timeout === 1 ? "" : "s"} · {h.error} error
-            {h.error === 1 ? "" : "s"}
-          </strong>{" "}
-          — classifier latency hit the {fmtS(detail.config.classifier_timeout_s)}{" "}
-          timeout ceiling (the fp32→CPU era showed ~2 s timeouts; fp16 CUDA should
-          sit well under 1 s).
-        </div>
-      )}
-
-      <div className="stats" style={{ marginBottom: 16 }}>
+      <div className="ch-strip">
         {buckets.map(([label, count, color]) => (
-          <div className="stat" key={label}>
-            <div className="k" style={{ color }}>
+          <span className="ch-chip" key={label}>
+            <span className="ch-label" style={{ color }}>
               {label}
-            </div>
-            <div className="v">{count}</div>
-          </div>
+            </span>
+            <span className="ch-count">{count}</span>
+          </span>
         ))}
       </div>
-
-      <div className="muted" style={{ fontSize: 11, marginBottom: 6 }}>
-        classifier latency distribution ({h.latency.n} runs · median{" "}
-        {fmtS(h.latency.median)} · p95 {fmtS(h.latency.p95)})
-        {totalRuns > 0 ? ` · ${h.timeout + h.error}/${totalRuns} failed` : ""}
-      </div>
-      <div className="hist">
-        {h.histogram.bins.map((b, i) => (
-          <div className="bin" key={i}>
-            <div
-              className={`bar ${b.hi > 1.5 ? "timeout" : ""}`}
-              style={{ height: `${(b.count / maxBin) * 100}%` }}
-              title={`${b.lo}–${b.hi}s: ${b.count}`}
-            />
-            <span className="lbl">{b.lo}</span>
-          </div>
-        ))}
-      </div>
-      <div className="muted" style={{ fontSize: 11, marginTop: 4 }}>
-        x-axis: seconds. Red bins ≈ the {fmtS(detail.config.classifier_timeout_s)}{" "}
-        timeout ceiling.
+      <div className="muted ch-meta">
+        latency median {fmtS(h.latency.median)} · p95 {fmtS(h.latency.p95)}
+        {total > 0 ? ` · ${h.timeout + h.error}/${total} failed` : ""}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from . import groups as G
+from . import control
 from . import ingest
 
 DEFAULT_DATA_DIR = str(Path(__file__).resolve().parents[1] / "data")
@@ -24,7 +25,7 @@ app = FastAPI(title="ME3 voice-agent dashboard", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -69,6 +70,34 @@ def run_detail(run_id: str):
 @app.get("/api/runs/{run_id}/turns")
 def run_turns(run_id: str):
     return _find(run_id).turns
+
+
+@app.post("/api/tests/new")
+def new_test():
+    """Restart the bot on the Pi to begin a fresh diagnostics run.
+
+    This is the one pipeline-driving action in the dashboard (see
+    ``backend/control.py``). It is synchronous on purpose: FastAPI runs it on a
+    worker thread, so other requests stay responsive while the restart + run-id
+    poll (up to ~15 s) completes.
+    """
+    try:
+        run_id = control.restart_bot()
+        return {"ok": True, "run_id": run_id, "message": "bot restarted"}
+    except Exception as exc:  # noqa: BLE001 — surface any control failure to the UI
+        raise HTTPException(status_code=500, detail=f"new test failed: {exc}")
+
+
+@app.post("/api/runs/{run_id}/save")
+def save_run(run_id: str):
+    """Archive a run's diagnostics into ``data/saved/<run_id>/``."""
+    try:
+        path = control.save_run(run_id)
+        return {"ok": True, "path": path}
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"no such run: {run_id}")
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"save failed: {exc}")
 
 
 # Serve the built frontend (npm run build -> dashboard/frontend/dist) if present.
