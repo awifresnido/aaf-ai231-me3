@@ -23,6 +23,7 @@ import json
 import os
 from collections import Counter, defaultdict
 
+from . import devices
 from . import groups as G
 from . import metrics
 
@@ -134,6 +135,7 @@ class Run:
             "tool_activity": self._tool_activity(),
             "tool_timeline": self._tool_timeline(),
             "dispatch_breakdown": self._dispatch_breakdown(),
+            "devices": devices.reconstruct(self.tool_spans),
         }
 
     def _classifier_latencies(self):
@@ -288,7 +290,8 @@ def _parse_mcp_spans(fh, run):
         ev = d.get("event")
         span_id = d.get("span_id")
         if ev == "span_start" and d.get("phase") == "mcp_server_call":
-            open_spans[span_id] = {"tool": d.get("tool"), "at": _finite_float(d.get("at"))}
+            open_spans[span_id] = {"tool": d.get("tool"), "at": _finite_float(d.get("at")),
+                                   "arguments": d.get("arguments")}
         elif ev == "span_end" and span_id in open_spans:
             start = open_spans.pop(span_id)
             end_at = _finite_float(d.get("at"))
@@ -302,6 +305,7 @@ def _parse_mcp_spans(fh, run):
                 "at": start["at"],
                 "duration_s": duration,
                 "error": d.get("error"),
+                "arguments": start.get("arguments"),
             })
 
 
