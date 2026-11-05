@@ -115,6 +115,23 @@ tbody tr:hover { background: var(--panel-2); }
 .muted { color: var(--muted); }
 .mono { font-family: var(--mono); }
 
+/* ---- Live indicator ---- */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--good);
+  margin-right: 4px;
+  vertical-align: middle;
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+.live-tag { color: var(--good); font-size: 12px; }
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
 /* ---- Waterfall ---- */
 .waterfall { display: flex; flex-direction: column; gap: 3px; }
 .wf-row { display: grid; grid-template-columns: 42px 1fr 64px; align-items: center; gap: 8px; }

@@ -10,29 +10,46 @@ import ClassifierHealth from "./components/ClassifierHealth";
 import SmartControls from "./components/SmartControls";
 import { fmtS, fmtTime } from "./displayNames";
 
+const LIVE_MS = 2000; // live refresh interval for a running trial
+
 export default function App() {
   const [state, setState] = useState<State | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [detail, setDetail] = useState<RunDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Initial load — select the most recently started run (the active session in
+  // a live trial) so the dashboard tracks the current trial automatically.
   useEffect(() => {
     fetchState()
       .then((s) => {
         setState(s);
-        // Default to the run with the most turns (richest initial view).
-        const richest = [...s.runs].sort((a, b) => b.turns - a.turns)[0];
-        if (richest) setSelectedId(richest.run_id);
+        const newest = [...s.runs].sort(
+          (a, b) => (b.started_at ?? 0) - (a.started_at ?? 0)
+        )[0];
+        if (newest) setSelectedId(newest.run_id);
       })
       .catch((e) => setError(String(e)));
   }, []);
 
+  // Load a run's detail whenever the selection changes.
   useEffect(() => {
     if (!selectedId) return;
     setDetail(null);
     fetchRun(selectedId)
       .then(setDetail)
       .catch((e) => setError(String(e)));
+  }, [selectedId]);
+
+  // Live refresh — re-pull the run list and the selected run's detail so the
+  // turn feed, latency waterfall, and smart-home panel track a running trial.
+  useEffect(() => {
+    if (!selectedId) return;
+    const id = setInterval(() => {
+      fetchState().then(setState).catch(() => {});
+      fetchRun(selectedId).then(setDetail).catch(() => {});
+    }, LIVE_MS);
+    return () => clearInterval(id);
   }, [selectedId]);
 
   const dn = state?.display_names;
@@ -68,7 +85,9 @@ export default function App() {
         <h1>ME3 voice-agent dashboard</h1>
         <p className="subtitle">
           Read-only pipeline diagnostics · {state.runs.length} run
-          {state.runs.length === 1 ? "" : "s"} · source {state.data_dir}
+          {state.runs.length === 1 ? "" : "s"} · source {state.data_dir} ·{" "}
+          <span className="live-dot" aria-hidden />
+          <span className="live-tag">live · {LIVE_MS / 1000}s</span>
         </p>
       </header>
 
