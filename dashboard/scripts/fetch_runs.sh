@@ -4,7 +4,8 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"   # dashboard/
-BASE="$(cd "$HERE/../.." && pwd)"                          # /opt/data (container) = ~/.hermes (host)
+REPO="$(cd "$HERE/.." && pwd)"                             # repo root
+BASE="$(cd "$REPO/../.." && pwd)"                          # /opt/data (container) = ~/.hermes (host)
 SSH_KEY="${DASHBOARD_SSH_KEY:-$BASE/home/.ssh/id_ed25519}"
 KNOWN_HOSTS="${DASHBOARD_KNOWN_HOSTS:-$BASE/.ssh/known_hosts}"
 PI=aldwinrpi4@192.168.5.12

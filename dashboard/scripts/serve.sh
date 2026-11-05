@@ -52,5 +52,7 @@ LAN_IP="$(hostname -I 2>/dev/null | awk '{print $1}')"
 echo "==> serving on http://127.0.0.1:${PORT}/  (Ctrl-C to stop)"
 [ -n "$LAN_IP" ] && [ "$HOST" != "127.0.0.1" ] && \
   echo "==> from another machine on the LAN: http://${LAN_IP}:${PORT}/"
+echo "==> for a LIVE trial, also run in a second terminal:"
+echo "      bash dashboard/scripts/live_pull.sh"
 cd dashboard
 exec ../.venv/bin/python -m uvicorn backend.app:app --host "$HOST" --port "$PORT"
