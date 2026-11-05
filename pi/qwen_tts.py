@@ -28,10 +28,38 @@ class QwenTTSService(TTSService):
                          push_stop_frames=True,
                          settings=TTSSettings(model=self.model_name, voice=self.voice_name, language=None), **kwargs)
         self.client = client if client is not None else httpx.AsyncClient(
-            timeout=httpx.Timeout(float(os.getenv("DGX_TTS_TIMEOUT_SECS", "45")), connect=5),
+            timeout=httpx.Timeout(float(os.getenv("DGX_TTS_TIMEOUT_SECS", "15")), connect=5),
             trust_env=False)
         self.timing = timing_observer
         self.diagnostics = getattr(timing_observer, "diagnostics", None)
+        # Self-healing: pipecat retires a TTS service permanently after
+        # N consecutive zero-audio contexts (force_treat_as_permanent). We
+        # keep the circuit breaker but revive on a timer instead of needing
+        # a bot restart.
+        self._revive_task = None
+        self.add_event_handler("on_usable_changed", self._on_usable_changed)
+
+    async def _on_usable_changed(self, is_usable: bool):
+        self.record("tts_usable_changed", self.timing.turn if self.timing else None,
+                    usable=is_usable)
+        if is_usable:
+            return
+        if os.getenv("DGX_TTS_AUTO_REVIVE", "1").strip() != "1":
+            return
+        if self._revive_task is not None and not self._revive_task.done():
+            return
+        self._revive_task = asyncio.create_task(self._revive_later())
+
+    async def _revive_later(self):
+        delay = float(os.getenv("DGX_TTS_REVIVE_S", "60"))
+        try:
+            await asyncio.sleep(delay)
+            if not self.is_usable:
+                await self.set_usable(True)
+                self.record("tts_revived", self.timing.turn if self.timing else None,
+                            after_s=delay)
+        except asyncio.CancelledError:
+            return
 
     def can_generate_metrics(self):
         return True
@@ -58,7 +86,8 @@ class QwenTTSService(TTSService):
             await self.start_ttfb_metrics()
             with scope:
                 async with self.client.stream("POST", self.base_url + "/v1/audio/speech",
-                    headers={"Authorization": "Bearer " + self.api_key},
+                    headers={"Authorization": "Bearer " + self.api_key,
+                             "Connection": "close"},
                     json={"model": self.model_name, "input": text, "voice": self.voice_name,
                           "task_type": "CustomVoice", "language": "English",
                           "response_format": "pcm", "sample_rate": SAMPLE_RATE,
