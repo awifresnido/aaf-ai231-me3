@@ -3,7 +3,8 @@
 A **read-only** dashboard that links the ME3 voice-agent pipeline's on-disk
 diagnostics to a UI. It ingests the JSONL diagnostics the Pi writes under
 `/dev/shm/voice-agent-diagnostics/<run-id>/` and renders a turn feed, latency
-waterfall, routing trace, tool activity, and classifier health — plus side-by-side
+waterfall, routing trace, tool activity, classifier health, a **simulated smart
+home** (device state reconstructed from tool-call arguments), plus side-by-side
 run comparison. It **never runs the pipeline and never calls a cloud model**; it
 only reads and renders already-captured measurements.
 

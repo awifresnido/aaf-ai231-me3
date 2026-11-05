@@ -63,6 +63,9 @@ cd /opt/data/projects/me3-laya
   latency histogram. The fp32→CPU era shows a spike at the ~2 s timeout ceiling;
   fp16 CUDA should sit well under 1 s. Timeouts are rendered red.
 - **Run comparison** — all loaded runs ranked by median e2e.
+- **Simulated smart home** — a read-only mirror of the TinyVCM demo app's device
+  UI (light, thermostat, music, timer/alarm, reminders, phone), reconstructed
+  from each tool call's arguments (see §7).
 
 ## 4. Schema notes (read this before trusting a number)
 
@@ -87,8 +90,10 @@ The diagnostics span multiple router generations, so the parser is defensive:
   - `unknown` — nothing classifiable recorded for that turn.
 - **`router_model` is reported verbatim** (the data mixes `jev` and `laya`); the
   dashboard does not assume one router.
-- **Transcripts are not logged** (by design) — the dashboard only ever sees
-  timings, routes, and tool names.
+- **Transcripts are not logged** (by design) — the dashboard never sees spoken
+  text. Tool **arguments** are logged (since 2026-11), which for a few tools
+  includes user-provided strings (reminder/message/email text); these are the
+  same strings the tools already persist, not the spoken transcript.
 
 ## 5. Sample data
 
@@ -106,3 +111,35 @@ to keep the repo small. Every `turn_event` and MCP tool span is verbatim:
 ```bash
 cd /opt/data/projects/me3-laya && .venv/bin/python -m pytest dashboard/tests -q
 ```
+
+## 7. Smart-controls integration (device state)
+
+The voice tools (`control_lights`, `set_thermostat`, `play_music`, …) mutate a
+persistent simulated smart-home state. The dashboard replays those tool calls
+into a device panel that mirrors the TinyVCM demo app's `Devices` UI, so a live
+demo can *see* the effect of each command (light on, temperature 24°C, a track
+playing, a reminder added).
+
+To reconstruct **what** a tool did, the diagnostics must log each tool call's
+**arguments**. This was added in `pi/mcp_servers/voice_tools_mcp_server.py` — the
+`mcp_server_call` span now carries `arguments`. Runs captured before that change
+carry no arguments, so the panel shows default device state and tool names only,
+with an "args not recorded" notice.
+
+To get live device state in a demo:
+
+1. Deploy the updated MCP server to the Pi (sync `pi/mcp_servers/` to
+   `~/voice-agent/mcp_servers/`).
+2. Run a trial and speak a few commands — "turn on the lights", "set the
+   temperature to 24", "play some jazz", "remind me to …".
+3. Pull the run (see §1) and reload — the smart-home panel now reflects each
+   action, and the activity feed lists every tool call with its effect.
+
+Honesty notes:
+
+- The state is **reconstructed** from the recorded arguments — it is *not* read
+  from the live SQLite `state.db` on the Jetson. For `play_music` the panel shows
+  the *requested* query, not the track the music catalog actually resolved.
+- Tools that don't mutate device state (`get_weather`, `get_time`,
+  `send_message`, `list_reminders`, …) appear in the activity feed but leave the
+  device panel unchanged.
