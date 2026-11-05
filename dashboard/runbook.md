@@ -46,6 +46,19 @@ cd /opt/data/projects/me3-laya
 # frontend (already built) is served at http://127.0.0.1:8000/
 ```
 
+### Live mode (track a running trial)
+
+The frontend auto-refreshes every 2 s, but it only sees data that is *local*.
+To follow a live trial, run the puller in a second terminal — it continuously
+copies the Pi's active run into `dashboard/data/`:
+
+```bash
+bash dashboard/scripts/live_pull.sh     # polls the Pi every 3 s
+```
+
+Then reload the browser: the newest run is auto-selected, and the turn feed,
+latency waterfall, and smart-home panel update as each new turn/tool lands.
+
 ## 3. Reading the views
 
 - **Turn feed** — one row per turn: group, raw classifier choice, confidence
