@@ -1,0 +1,16 @@
+[Unit]
+Description=ME3 private Telegram command bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/voice-agent
+Environment=PYTHONUNBUFFERED=1
+ExecStart=%h/pipecat-quickstart/server/.venv/bin/python %h/voice-agent/telegram_bridge.py
+Restart=on-failure
+RestartSec=5
+UMask=0077
+
+[Install]
+WantedBy=default.target

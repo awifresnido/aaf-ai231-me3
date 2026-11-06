@@ -29,6 +29,7 @@ Run on the Pi:
 Env: OLLAMA_API_KEY etc. in ~/.voice-agent-env (chmod 600, outside the repo).
 """
 import asyncio
+import json
 import os
 import time
 from contextlib import suppress
@@ -480,6 +481,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
         from pipecat.adapters.schemas.tools_schema import ToolsSchema
         from orchestration import FAST_TOOLS
         voice_tools = ToolsSchema([tool for tool in voice_tools.standard_tools if tool.name in FAST_TOOLS])
+    onit_registered = False
     if os.getenv("ONIT_TOOLS_ENABLED", "1").strip() == "1":
         # Optional second MCP server: the lean OnIt knowledge tools (search,
         # fetch_content). Register them for the escalation LLM so the
@@ -500,6 +502,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
                 list(voice_tools.standard_tools)
                 + [tool for tool in onit_tools.standard_tools if tool.name not in existing]
             )
+            onit_registered = True
             logger.info("OnIt knowledge tools registered: {}", [tool.name for tool in onit_tools.standard_tools])
         except Exception as exc:
             logger.warning("OnIt knowledge tools unavailable: {}", type(exc).__name__)
@@ -510,11 +513,27 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
         try:
             from mcp import StdioServerParameters
             from pipecat.adapters.schemas.tools_schema import ToolsSchema
+            inventory = {
+                "source": "running voice agent startup configuration; not a health check",
+                "harness": "Pipecat", "vad": {"model": "Silero", "host": "Pi"},
+                "speech_transport": SPEECH_MODE,
+                "asr": {"backend": ASR_BACKEND, "model": os.getenv("WHISPER_ASR_MODEL", "whisper-large-v3-turbo") if ASR_BACKEND == "whisper" else None,
+                        "endpoint": os.getenv("WHISPER_ASR_BASE", "http://192.168.5.11:8090") if ASR_BACKEND == "whisper" else None},
+                "router": {"model": os.getenv("ROUTER_MODEL", "jev"), "endpoint": os.getenv("LAYA_ROUTER_URL", "http://192.168.5.11:8083")},
+                "local_llm": {"model": os.getenv("SMALL_LLM_PRIMARY_MODEL"), "endpoint": os.getenv("SMALL_LLM_PRIMARY_URL")},
+                "cloud_llm": {"model": OLLAMA_MODEL} if ORCHESTRATION_MODE != "local_vcm" else None,
+                "tts": {"backend": TTS_BACKEND, "model": os.getenv("DGX_TTS_MODEL", "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice") if TTS_BACKEND == "dgx_qwen" else None,
+                        "voice": os.getenv("DGX_TTS_VOICE", "vivian") if TTS_BACKEND == "dgx_qwen" else TTS_VOICE},
+                "mcp_servers": ["voice_tools", "workspace_tools"] + (["onit_tools"] if onit_registered else []),
+            }
+            if SPEECH_MODE == "mcp":
+                inventory["mcp_servers"] += ["asr_mcp", "tts_mcp"]
             workspace_server = StdioServerParameters(
                 command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
                 args=[os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                    "mcp_servers", "workspace_tools_mcp_server.py")],
-                env={"PATH": os.getenv("PATH", "/usr/bin:/bin")},
+                env={"PATH": os.getenv("PATH", "/usr/bin:/bin"), "ME3_SYSTEM_INVENTORY": json.dumps(inventory),
+                     **(diagnostics.server_env() if diagnostics else {})},
             )
             workspace_mcp = client_class(server_params=workspace_server, **client_options)
             workspace_tools = await workspace_mcp.tools()
@@ -548,14 +567,20 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
             logger.warning("Speculative Laya unavailable: {}", type(exc).__name__)
             spec_layer = None
 
+    stop_strategy = TurnAnalyzerUserTurnStopStrategy
+    stop_options = {}
+    if ASR_BACKEND == "whisper" and SPEECH_MODE == "direct":
+        from whisper_turn_stop import LatestWhisperTurnStopStrategy
+        stop_strategy = LatestWhisperTurnStopStrategy
+        stop_options = {"stt": stt, "timing": timing}
     context = LLMContext(tools=voice_tools)
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
         context,
         user_params=LLMUserAggregatorParams(
             vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=VAD_STOP_SECS)),
             user_turn_strategies=UserTurnStrategies(stop=[
-                TurnAnalyzerUserTurnStopStrategy(
-                    turn_analyzer=LocalSmartTurnAnalyzerV3(cpu_count=SMART_TURN_CPU_COUNT)
+                stop_strategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3(cpu_count=SMART_TURN_CPU_COUNT), **stop_options
                 )
             ]),
         ),
@@ -582,7 +607,12 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
                     "the user asks for weather, time, timers, alarms, reminders, "
                     "music, lights, thermostat, or messaging, call the "
                     "matching tool and then briefly speak its result. Never read "
-                    "out code or URLs. Radio playback is not supported."
+                    "out code or URLs. Radio playback is not supported. When asked "
+                    "which models or servers are running, call get_system_inventory "
+                    "and describe its configured values without guessing; configuration "
+                    "does not prove service health. Workspace tool paths are relative: "
+                    "write_file requires both path and content; serve the root with path '.'. "
+                    "When sending a link, use the actual URL returned by serve, not a placeholder."
                 ),
             ),
         )

@@ -18,24 +18,84 @@ Run: .venv/bin/python workspace_tools_mcp_server.py   (stdio transport)
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import shutil
+import socket
 import subprocess
 import sys
+import time
+import uuid
 from pathlib import Path
 
 from mcp.server.mcpserver import MCPServer
 
-server = MCPServer(
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from stall_diagnostics import Diagnostics, META_KEY
+
+diagnostics = Diagnostics.from_env("mcp")
+
+
+class ProfiledWorkspaceServer(MCPServer):
+    async def call_tool(self, name, arguments, context=None):
+        if diagnostics is None:
+            return await super().call_tool(name, arguments, context)
+        ctx = context if context is not None else self.get_context()
+        try:
+            call_id = (ctx.request_context.meta or {}).get(META_KEY, "")
+        except (ValueError, AttributeError):
+            call_id = ""
+        if not isinstance(call_id, str) or not re.fullmatch(r"[0-9a-f]{32}", call_id):
+            call_id = uuid.uuid4().hex
+        # Record metadata for the demo without logging file contents or shell commands.
+        safe_args = {k: v for k, v in (arguments or {}).items() if k in {"path", "port"}}
+        if isinstance((arguments or {}).get("content"), str):
+            safe_args["content_chars"] = len(arguments["content"])
+        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name, arguments=safe_args) as fields:
+            result = await super().call_tool(name, arguments, ctx)
+            payload = getattr(result, "structured_content", None)
+            if payload is None:
+                content = getattr(result, "content", [])
+                payload = getattr(content[0], "text", None) if content else None
+            if isinstance(payload, str):
+                try:
+                    payload = json.loads(payload)
+                except ValueError:
+                    payload = None
+            if isinstance(payload, dict):
+                fields["result"] = {k: payload[k] for k in ("ok", "path", "url", "size", "pid", "reused") if k in payload}
+            return result
+
+
+server = ProfiledWorkspaceServer(
     name="workspace-tools",
     version="0.1.0",
     instructions=(
         "Workspace tools for the voice agent: files, shell, and GitHub. All "
-        "paths are relative to the workspace directory. Return short dicts "
+        "paths must be relative to the workspace directory; use '.' to serve "
+        "the workspace. write_file requires path and content. Return short dicts "
         "safe to speak back to the user."
     ),
 )
+
+
+@server.tool(
+    name="get_system_inventory",
+    description="Get the voice agent's configured models, locations, and registered MCP servers. Use when asked what the agent is running; values are configuration, not a live health check.",
+)
+def get_system_inventory() -> dict:
+    raw = os.getenv("ME3_SYSTEM_INVENTORY", "")
+    if not raw:
+        return {"ok": False, "spoken": "The current system inventory is unavailable."}
+    try:
+        inventory = json.loads(raw)
+        if not isinstance(inventory, dict):
+            raise ValueError("Invalid inventory")
+        return {"ok": True, "spoken": "I found the current system configuration.",
+                "inventory": inventory, "source": "voice agent startup configuration"}
+    except (ValueError, TypeError):
+        return {"ok": False, "spoken": "The current system inventory is unavailable."}
 
 WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", str(Path.home() / "workspace"))).expanduser().resolve()
 OUTBOX = WORKSPACE_ROOT / "outbox"
@@ -91,9 +151,9 @@ def read_file(path: str = "") -> dict:
 
 @server.tool(
     name="write_file",
-    description="Write text to a file in the workspace, creating parent directories as needed.",
+    description="Write text to a workspace-relative path. Supply both path and content; create parent directories as needed.",
 )
-def write_file(path: str = "", content: str = "") -> dict:
+def write_file(path: str, content: str) -> dict:
     if not (path or "").strip():
         return {"ok": False, "spoken": "I need a filename."}
     try:
@@ -101,7 +161,7 @@ def write_file(path: str = "", content: str = "") -> dict:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(content, encoding="utf-8")
         return {"ok": True, "spoken": f"Wrote {len(content)} characters to {target.name}.",
-                "path": str(target)}
+                "path": str(target.relative_to(WORKSPACE_ROOT))}
     except ValueError as exc:
         return {"ok": False, "spoken": str(exc)}
     except Exception as exc:  # noqa: BLE001
@@ -269,20 +329,93 @@ def send_file(path: str = "") -> dict:
         return {"ok": False, "spoken": "I couldn't send that file.", "error": exc.__class__.__name__}
 
 
+def _cluster_address():
+    """Use the Pi's address on the cluster route, not a placeholder or loopback."""
+    configured = os.getenv("WORKSPACE_PUBLIC_HOST", "").strip()
+    if configured:
+        return configured
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as probe:
+        probe.connect((os.getenv("WORKSPACE_ROUTE_TARGET", "192.168.5.11"), 9))
+        address = probe.getsockname()[0]
+    if address.startswith("127.") or address == "0.0.0.0":
+        raise OSError("No usable cluster address")
+    return address
+
+
+def _listener_ready(port):
+    try:
+        with socket.create_connection(("127.0.0.1", port), timeout=.2):
+            return True
+    except OSError:
+        return False
+
+
+def _existing_http_server(port, base, proc_root=Path("/proc")):
+    """Identify a matching local Python HTTP server; never claim other listeners."""
+    for process in proc_root.glob("[0-9]*"):
+        try:
+            parts = (process / "cmdline").read_bytes().decode("utf-8").split("\0")
+            index = parts.index("http.server")
+            directory = parts[parts.index("--directory") + 1]
+            if parts[index - 1] == "-m" and parts[index + 1] == str(port) and Path(directory).resolve() == base:
+                return int(process.name)
+        except (OSError, UnicodeError, ValueError, IndexError):
+            continue
+    return None
+
+
+def _launch_http_server(port, base):
+    """Prefer a separate user service so restarting the voice bot keeps the page up."""
+    command = [sys.executable, "-m", "http.server", str(port), "--directory", str(base)]
+    runtime = Path(f"/run/user/{os.getuid()}")
+    runner = shutil.which("systemd-run")
+    if os.getenv("WORKSPACE_SYSTEMD", "1") == "1" and runner and (runtime / "bus").exists():
+        unit = f"me3-workspace-http-{port}-{uuid.uuid4().hex[:8]}"
+        env = {**os.environ, "XDG_RUNTIME_DIR": str(runtime)}
+        started = subprocess.run([runner, "--user", "--quiet", "--collect", "--unit", unit, *command],
+                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env, timeout=8)
+        if started.returncode == 0:
+            for _ in range(40):
+                pid = _existing_http_server(port, base)
+                if pid is not None and _listener_ready(port):
+                    return {"pid": pid, "survives_bot_restart": True, "unit": unit}
+                time.sleep(.05)
+            subprocess.run(["systemctl", "--user", "stop", unit], stdout=subprocess.DEVNULL,
+                           stderr=subprocess.DEVNULL, env=env, timeout=8)
+            raise OSError("Web service did not become ready")
+    proc = subprocess.Popen(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    for _ in range(40):
+        if proc.poll() is not None:
+            raise OSError("Web server exited")
+        if _listener_ready(port):
+            return {"pid": proc.pid, "survives_bot_restart": False}
+        time.sleep(.05)
+    proc.terminate()
+    raise OSError("Web server did not become ready")
+
+
 @server.tool(
     name="serve",
-    description="Serve a workspace directory over HTTP on a port (background process).",
+    description="Serve a workspace-relative directory over HTTP. Use path '.' for the workspace root. Returns its usable LAN URL.",
 )
 def serve(path: str = "", port: int = 8000) -> dict:
     try:
         base = _resolve(path) if path.strip() else WORKSPACE_ROOT
+        if not base.is_dir():
+            return {"ok": False, "spoken": "I couldn't find that directory."}
         port = max(1024, min(int(port or 8000), 65535))
-        proc = subprocess.Popen(
-            [sys.executable, "-m", "http.server", str(port), "--directory", str(base)],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-        )
+        address = _cluster_address()
+        if _listener_ready(port):
+            existing = _existing_http_server(port, base)
+            if existing is None:
+                return {"ok": False, "spoken": f"Port {port} is already in use by another service."}
+            return {"ok": True, "spoken": f"The workspace is already served on port {port}.",
+                    "url": f"http://{address}:{port}/", "pid": existing,
+                    "directory": str(base), "reused": True}
+        server_info = _launch_http_server(port, base)
         return {"ok": True, "spoken": f"Serving {base.name} on port {port}.",
-                "url": f"http://<device-ip>:{port}/", "pid": proc.pid, "directory": str(base)}
+                "url": f"http://{address}:{port}/", **server_info,
+                "directory": str(base), "reused": False}
     except ValueError as exc:
         return {"ok": False, "spoken": str(exc)}
     except Exception as exc:  # noqa: BLE001

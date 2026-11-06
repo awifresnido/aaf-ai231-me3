@@ -107,6 +107,12 @@ class WhisperSTTService(SegmentedSTTService):
             self.timing.record(event, turn=turn, asr_backend="whisper",
                                asr_model=self.model_name, **fields)
 
+    def _transcript(self, text, segment_id):
+        frame = TranscriptionFrame(text, self._user_id, time_now_iso8601(), finalized=True)
+        if segment_id is not None:
+            frame.metadata["whisper_segment_id"] = segment_id
+        return frame
+
     async def _transcribe_wav(self, wav_bytes):
         """POST a WAV to the whisper server, return stripped text."""
         resp = await self.client.post(
@@ -185,7 +191,7 @@ class WhisperSTTService(SegmentedSTTService):
                 self.record("asr_whisper_promoted", turn, request_s=0.0,
                             partial_age_s=round(partial_age, 3), chars=len(text),
                             partial_attempts=self._partial_attempts, **common)
-                yield TranscriptionFrame(text, self._user_id, time_now_iso8601(), finalized=True)
+                yield self._transcript(text, segment_id)
                 # Background verification with the full segment; recorded only.
                 asyncio.create_task(self._verify_full(audio, turn, text, common))
                 return
@@ -200,7 +206,7 @@ class WhisperSTTService(SegmentedSTTService):
                 return
             self.record("asr_whisper_complete", turn, request_s=time.monotonic() - started,
                         chars=len(text), **common)
-            yield TranscriptionFrame(text, self._user_id, time_now_iso8601(), finalized=True)
+            yield self._transcript(text, segment_id)
         except asyncio.CancelledError:
             self.record("asr_whisper_cancelled", turn, request_s=time.monotonic() - started, **common)
             raise

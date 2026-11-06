@@ -122,6 +122,9 @@ def _apply(state, tool, args, at, result=None):
             to = str(result.get("to", ""))
             state["message"] = {"status": "simulated", "to": to, "text": result.get("text", ""), "at": at}
             summary = f"simulated message to {to}"
+        elif isinstance(result, dict) and result.get("ok") and result.get("to") == "Telegram":
+            state["message"] = {"status": "sent", "to": "Telegram", "text": result.get("text", ""), "at": at}
+            summary = "message sent to Telegram"
         else:
             summary = "message sent" if isinstance(result, dict) and result.get("ok") else "message not confirmed"
     else:

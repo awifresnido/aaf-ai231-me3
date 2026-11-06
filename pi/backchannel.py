@@ -138,6 +138,7 @@ class BackchannelProcessor(FrameProcessor):
         self._long_task = None
         self.final_wait_s = float(os.getenv("BACKCHANNEL_FINAL_WAIT_S", "18"))
         self.final_clip_name = os.getenv("BACKCHANNEL_FINAL_CLIP", "response_delayed")
+        self.final_repeat_s = float(os.getenv("BACKCHANNEL_FINAL_REPEAT_S", "25"))
         self._final_task = None
         self._filler_burst_prev = None
         # Interruptibility trial: RMS-based barge-in bypassing the AEC.
@@ -329,10 +330,12 @@ class BackchannelProcessor(FrameProcessor):
                     after_speech_end_ms=round((now - (self._speech_end_mono or now)) * 1000, 1))
         try:
             if self.output is not None:
+                # Capture before queueing: the queued filler itself is allowed
+                # one new playback burst; any additional burst is the answer.
+                burst = getattr(self.output, "_playback_burst_id", None)
                 await self.output.queue_frame(OutputAudioRawFrame(
                     audio=pcm, sample_rate=24000, num_channels=1))
                 if self.final_wait_s > self.long_wait_s and self.final_clip_name in self.clips:
-                    burst = getattr(self.output, "_playback_burst_id", None)
                     delay = max(dur + .2, self.final_wait_s - (time.monotonic() - (self._speech_end_mono or now)))
                     self._final_task = asyncio.create_task(self._fire_final(delay, burst))
         except Exception as exc:
@@ -355,6 +358,9 @@ class BackchannelProcessor(FrameProcessor):
         pcm, dur = self.clips[self.final_clip_name]
         self.record("bc_fired_final", clip=self.final_clip_name, duration_s=round(dur, 3))
         await self.output.queue_frame(OutputAudioRawFrame(audio=pcm, sample_rate=24000, num_channels=1))
+        if self.final_repeat_s > 0:
+            self._final_task = asyncio.create_task(
+                self._fire_final(max(self.final_repeat_s, dur + .2), burst))
 
     def _cancel_long(self):
         if self._long_task is not None and not self._long_task.done():
