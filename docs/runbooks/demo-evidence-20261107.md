@@ -16,7 +16,7 @@ The current production voice configuration uses Whisper on the Jetson and Qwen A
 
 ## Latest dashboard revisions: run `bb4c872892`
 
-This later run covers follow-up edits to the generated HTML page, not a new measurement of all five original demo beats. The page shows the voice-agent system cards on the left and the pipeline on the right, with microphone → Silero VAD → Whisper ASR → Laya router → Llama/GLM → Qwen TTS → speaker. Its labels describe startup configuration, not live health. The saved presentation still contains the earlier five-beat script; confirm the revised presentation sequence before rearranging this evidence around it.
+The demo follows the original five-beat script above. This later run covers additional requests to edit the generated HTML page, not a new measurement of all five beats. The page shows the voice-agent system cards on the left and the pipeline on the right, with microphone → Silero VAD → Whisper ASR → Laya router → Llama/GLM → Qwen TTS → speaker. Its labels describe startup configuration, not live health. The saved presentation contains the same five-beat script.
 
 | Request and stage | What the logs show | Result and limitations |
 | --- | --- | --- |
