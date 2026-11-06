@@ -37,10 +37,10 @@ def _load_all():
 
 
 def _find(run_id):
-    for run in _load_all():
-        if run.run_id == run_id:
-            return run
-    raise HTTPException(status_code=404, detail=f"no such run: {run_id}")
+    try:
+        return ingest.load_run(run_id, DATA_DIR)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"no such run: {run_id}")
 
 
 @app.get("/api/state")

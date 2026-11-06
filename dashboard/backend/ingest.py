@@ -21,6 +21,7 @@ See ``docs/runbooks/`` / the runbook for the exact rules.
 import glob
 import json
 import os
+import threading
 from collections import Counter, defaultdict
 
 from . import devices
@@ -29,6 +30,32 @@ from . import metrics
 
 
 _TURN_EVENT = "turn_event"
+_CACHE_LOCK = threading.RLock()
+_RUN_CACHE = {}
+
+
+def _cached_run(run_id, path):
+    """Reparse only when a run's diagnostic files change, including appends."""
+    files = sorted(glob.glob(os.path.join(path, "pi-*.jsonl")) +
+                   glob.glob(os.path.join(path, "mcp-*.jsonl")))
+    if not files:
+        return None
+    try:
+        signature = tuple((p, s.st_ino, s.st_size, s.st_mtime_ns)
+                          for p in files for s in [os.stat(p)])
+    except FileNotFoundError:
+        return None  # run is being removed or rotated; retry on the next poll
+    key = os.path.abspath(path)
+    with _CACHE_LOCK:
+        cached = _RUN_CACHE.get(key)
+        if cached is not None and cached[0] == signature:
+            return cached[1]
+        try:
+            run = _parse_run(run_id, path)
+        except FileNotFoundError:
+            return None
+        _RUN_CACHE[key] = (signature, run)
+        return run
 
 # Gate labels.  Order matters only for readability.
 GATE_ACCEPTED = "accepted"
@@ -454,10 +481,15 @@ def _build_turn(turn, events_by_te):
 
 
 def load_run(run_id, data_dir):
+    if run_id in ("", ".", "..") or os.path.basename(run_id) != run_id:
+        raise FileNotFoundError(f"no such run: {run_id}")
     path = os.path.join(data_dir, run_id)
     if not os.path.isdir(path):
         raise FileNotFoundError(f"no such run: {run_id}")
-    return _parse_run(run_id, path)
+    run = _cached_run(run_id, path)
+    if run is None:
+        raise FileNotFoundError(f"no diagnostics for run: {run_id}")
+    return run
 
 
 def list_runs(data_dir):
@@ -469,9 +501,8 @@ def list_runs(data_dir):
         path = os.path.join(data_dir, name)
         if not os.path.isdir(path):
             continue
-        if not (glob.glob(os.path.join(path, "pi-*.jsonl"))
-                or glob.glob(os.path.join(path, "mcp-*.jsonl"))):
-            continue
-        runs.append(_parse_run(name, path))
+        run = _cached_run(name, path)
+        if run is not None:
+            runs.append(run)
     runs.sort(key=lambda r: (r.started_at is None, r.started_at or 0))
     return runs
