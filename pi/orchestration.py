@@ -486,7 +486,18 @@ class TwoBrainRouter(FrameProcessor):
         self._inflight.add(receipt)
         try:
             mcp_started = time.monotonic()
-            raw = await self.mcp_client._call_tool_text(tool, args)
+            try:
+                raw = await self.mcp_client._call_tool_text(tool, args)
+            except Exception as exc:
+                if self.router_model != "laya":
+                    raise
+                if owner is not None:
+                    owner["owner"] = "handled"
+                self.record("route_tool_uncertain", route_turn, tool=tool,
+                            error=type(exc).__name__, router_s=time.monotonic() - started,
+                            **classifier_fields)
+                await self._speak("I couldn't confirm that command's outcome. Please check its state before repeating it.")
+                return
             mcp_s = time.monotonic() - mcp_started
             try:
                 payload = json.loads(raw)
