@@ -1,0 +1,247 @@
+{
+  "alignment": "22 chronological server tasks matched to 22 Pi decisions; all paired durations differ by less than 100 ms",
+  "measurements": [
+    {
+      "task": "2491",
+      "turn": 1,
+      "model_s": 4.209704387001693,
+      "prompt_ms": 3168.4,
+      "prompt_evaluated_tokens": 56,
+      "generation_ms": 970.29,
+      "generation_tokens": 11,
+      "server_total_ms": 4138.69,
+      "pi_minus_server_ms": 71.01438700169365
+    },
+    {
+      "task": "2503",
+      "turn": 2,
+      "model_s": 2.4949215879969415,
+      "prompt_ms": 998.83,
+      "prompt_evaluated_tokens": 42,
+      "generation_ms": 1465.04,
+      "generation_tokens": 17,
+      "server_total_ms": 2463.87,
+      "pi_minus_server_ms": 31.051587996941635
+    },
+    {
+      "task": "2521",
+      "turn": 3,
+      "model_s": 4.296201253993786,
+      "prompt_ms": 2381.25,
+      "prompt_evaluated_tokens": 89,
+      "generation_ms": 1881.06,
+      "generation_tokens": 18,
+      "server_total_ms": 4262.31,
+      "pi_minus_server_ms": 33.89125399378554
+    },
+    {
+      "task": "2540",
+      "turn": 4,
+      "model_s": 3.51413026299997,
+      "prompt_ms": 1964.12,
+      "prompt_evaluated_tokens": 97,
+      "generation_ms": 1522.22,
+      "generation_tokens": 15,
+      "server_total_ms": 3486.34,
+      "pi_minus_server_ms": 27.790262999969855
+    },
+    {
+      "task": "2556",
+      "turn": 5,
+      "model_s": 3.2257074150038534,
+      "prompt_ms": 1870.06,
+      "prompt_evaluated_tokens": 92,
+      "generation_ms": 1333.85,
+      "generation_tokens": 15,
+      "server_total_ms": 3203.91,
+      "pi_minus_server_ms": 21.79741500385353
+    },
+    {
+      "task": "2572",
+      "turn": 6,
+      "model_s": 3.9414914669978316,
+      "prompt_ms": 1916.13,
+      "prompt_evaluated_tokens": 93,
+      "generation_ms": 2000.48,
+      "generation_tokens": 19,
+      "server_total_ms": 3916.61,
+      "pi_minus_server_ms": 24.881466997831467
+    },
+    {
+      "task": "2592",
+      "turn": 7,
+      "model_s": 2.6813884240036714,
+      "prompt_ms": 1645.86,
+      "prompt_evaluated_tokens": 82,
+      "generation_ms": 1014.24,
+      "generation_tokens": 14,
+      "server_total_ms": 2660.09,
+      "pi_minus_server_ms": 21.298424003671244
+    },
+    {
+      "task": "2607",
+      "turn": 8,
+      "model_s": 2.837406374004786,
+      "prompt_ms": 1586.67,
+      "prompt_evaluated_tokens": 78,
+      "generation_ms": 1229.9,
+      "generation_tokens": 18,
+      "server_total_ms": 2816.57,
+      "pi_minus_server_ms": 20.83637400478574
+    },
+    {
+      "task": "2626",
+      "turn": 9,
+      "model_s": 3.421344558002602,
+      "prompt_ms": 2233.62,
+      "prompt_evaluated_tokens": 94,
+      "generation_ms": 1161.27,
+      "generation_tokens": 11,
+      "server_total_ms": 3394.89,
+      "pi_minus_server_ms": 26.45455800260197
+    },
+    {
+      "task": "2638",
+      "turn": 10,
+      "model_s": 3.5145546279964037,
+      "prompt_ms": 2045.28,
+      "prompt_evaluated_tokens": 103,
+      "generation_ms": 1444.53,
+      "generation_tokens": 16,
+      "server_total_ms": 3489.8,
+      "pi_minus_server_ms": 24.754627996403542
+    },
+    {
+      "task": "2655",
+      "turn": 11,
+      "model_s": 3.648607679999259,
+      "prompt_ms": 1872.46,
+      "prompt_evaluated_tokens": 91,
+      "generation_ms": 1754.42,
+      "generation_tokens": 17,
+      "server_total_ms": 3626.88,
+      "pi_minus_server_ms": 21.727679999258726
+    },
+    {
+      "task": "2673",
+      "turn": 12,
+      "model_s": 3.1509852630042587,
+      "prompt_ms": 1692.23,
+      "prompt_evaluated_tokens": 83,
+      "generation_ms": 1434.19,
+      "generation_tokens": 17,
+      "server_total_ms": 3126.42,
+      "pi_minus_server_ms": 24.565263004258668
+    },
+    {
+      "task": "2691",
+      "turn": 13,
+      "model_s": 4.299110537998786,
+      "prompt_ms": 2262.41,
+      "prompt_evaluated_tokens": 87,
+      "generation_ms": 2009.84,
+      "generation_tokens": 18,
+      "server_total_ms": 4272.26,
+      "pi_minus_server_ms": 26.850537998785512
+    },
+    {
+      "task": "2710",
+      "turn": 14,
+      "model_s": 3.636564314001589,
+      "prompt_ms": 2035.89,
+      "prompt_evaluated_tokens": 92,
+      "generation_ms": 1578.67,
+      "generation_tokens": 15,
+      "server_total_ms": 3614.55,
+      "pi_minus_server_ms": 22.0143140015889
+    },
+    {
+      "task": "2726",
+      "turn": 15,
+      "model_s": 4.4102699360009865,
+      "prompt_ms": 2037.31,
+      "prompt_evaluated_tokens": 95,
+      "generation_ms": 2351.43,
+      "generation_tokens": 22,
+      "server_total_ms": 4388.74,
+      "pi_minus_server_ms": 21.52993600098671
+    },
+    {
+      "task": "2749",
+      "turn": 16,
+      "model_s": 3.445035773998825,
+      "prompt_ms": 1948.37,
+      "prompt_evaluated_tokens": 95,
+      "generation_ms": 1475.37,
+      "generation_tokens": 15,
+      "server_total_ms": 3423.74,
+      "pi_minus_server_ms": 21.295773998825098
+    },
+    {
+      "task": "2765",
+      "turn": 17,
+      "model_s": 3.1508278619949124,
+      "prompt_ms": 1719.83,
+      "prompt_evaluated_tokens": 86,
+      "generation_ms": 1411.84,
+      "generation_tokens": 15,
+      "server_total_ms": 3131.67,
+      "pi_minus_server_ms": 19.15786199491231
+    },
+    {
+      "task": "2781",
+      "turn": 18,
+      "model_s": 3.294189865999215,
+      "prompt_ms": 1932.95,
+      "prompt_evaluated_tokens": 90,
+      "generation_ms": 1338.87,
+      "generation_tokens": 13,
+      "server_total_ms": 3271.81,
+      "pi_minus_server_ms": 22.37986599921487
+    },
+    {
+      "task": "2795",
+      "turn": 19,
+      "model_s": 3.7076721740013454,
+      "prompt_ms": 2120.52,
+      "prompt_evaluated_tokens": 109,
+      "generation_ms": 1564.17,
+      "generation_tokens": 18,
+      "server_total_ms": 3684.69,
+      "pi_minus_server_ms": 22.982174001345356
+    },
+    {
+      "task": "2814",
+      "turn": 20,
+      "model_s": 4.141470205002406,
+      "prompt_ms": 3016.11,
+      "prompt_evaluated_tokens": 111,
+      "generation_ms": 1097.17,
+      "generation_tokens": 11,
+      "server_total_ms": 4113.28,
+      "pi_minus_server_ms": 28.1902050024064
+    },
+    {
+      "task": "2826",
+      "turn": 21,
+      "model_s": 3.519968565000454,
+      "prompt_ms": 1933.37,
+      "prompt_evaluated_tokens": 99,
+      "generation_ms": 1567.63,
+      "generation_tokens": 16,
+      "server_total_ms": 3501.0,
+      "pi_minus_server_ms": 18.968565000453964
+    },
+    {
+      "task": "2843",
+      "turn": 22,
+      "model_s": 4.093356862002111,
+      "prompt_ms": 2280.52,
+      "prompt_evaluated_tokens": 91,
+      "generation_ms": 1790.89,
+      "generation_tokens": 17,
+      "server_total_ms": 4071.41,
+      "pi_minus_server_ms": 21.94686200211072
+    }
+  ]
+}

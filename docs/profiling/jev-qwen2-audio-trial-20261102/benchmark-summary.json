@@ -1,0 +1,1462 @@
+{
+  "run": "72afa542c5",
+  "asr_model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "small_model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "router": "jev-1.14.0",
+  "tts_voice": "aiden",
+  "bounds": {
+    "startup_checks": [
+      0,
+      2
+    ],
+    "direct": [
+      3,
+      19
+    ],
+    "transition": [
+      20,
+      20
+    ],
+    "context": [
+      21,
+      30
+    ]
+  },
+  "boundary_note": "Main command trial starts with lights-on at turn 3 after an earlier setup/refusal exchange. Sets inferred from command content. Native latency at 11 inherits prior segment timing; 10 has no independent spoken reply.",
+  "counts": {
+    "all_speech_start_events": 30,
+    "human_window_speech_start_events": 28,
+    "timed_reply_onsets": 27,
+    "aligned_same_turn_playback_timings": 26,
+    "human_asr_requests": 29,
+    "human_asr_complete": 28,
+    "human_asr_no_speech": 1,
+    "human_asr_failures": 0,
+    "human_jev_results": 25,
+    "jev_timeouts": 1,
+    "fast_tool_replies": 5,
+    "glm_timed_replies": 22,
+    "smalltalk_replies": 0,
+    "small_model_extraction_attempts": 1,
+    "small_model_extraction_rejections": 1,
+    "human_tts_completed_requests": 39,
+    "human_tts_cancelled_requests": 1,
+    "human_tts_failed_http_requests": 0,
+    "tts_late_context_warnings": 1
+  },
+  "groups": {
+    "direct": {
+      "native_e2e_s": {
+        "count": 16,
+        "p50": 4.433120250701904,
+        "p95_nearest_rank": 29.883822202682495,
+        "min": 1.5771076679229736,
+        "max": 29.883822202682495,
+        "mean": 6.130287259817123
+      },
+      "aligned_first_playback_e2e_s": {
+        "count": 15,
+        "p50": 5.00145,
+        "p95_nearest_rank": 29.88186,
+        "min": 1.57385,
+        "max": 29.88186,
+        "mean": 6.400675333333333
+      },
+      "asr_http_s": {
+        "count": 17,
+        "p50": 0.7417952910000167,
+        "p95_nearest_rank": 2.049632376001682,
+        "min": 0.4629769849998411,
+        "max": 2.049632376001682,
+        "mean": 0.7875407628825462
+      },
+      "asr_queue_wait_s": {
+        "count": 18,
+        "p50": 0.003106440499323071,
+        "p95_nearest_rank": 0.00587910500325961,
+        "min": 0.0020461770000110846,
+        "max": 0.00587910500325961,
+        "mean": 0.0029872609445899595
+      },
+      "speech_end_to_transcript_s": {
+        "count": 17,
+        "p50": 1.04836,
+        "p95_nearest_rank": 2.3575100000000004,
+        "min": 0.77007,
+        "max": 2.3575100000000004,
+        "mean": 1.0956476470588234
+      },
+      "jev_client_s": {
+        "count": 15,
+        "p50": 0.2930562769979588,
+        "p95_nearest_rank": 0.3495855399996799,
+        "min": 0.26868029000252136,
+        "max": 0.3495855399996799,
+        "mean": 0.3020520365998285
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 24,
+        "p50": 0.17886191700017662,
+        "p95_nearest_rank": 0.7552918520013918,
+        "min": 0.10402829600207042,
+        "max": 26.6969898440002,
+        "mean": 1.3190531035417432
+      },
+      "qwen_all_request_complete_s": {
+        "count": 23,
+        "p50": 0.8165797260007821,
+        "p95_nearest_rank": 1.802539855998475,
+        "min": 0.3740815009987273,
+        "max": 33.98243868999998,
+        "mean": 2.3046816828691985
+      }
+    },
+    "transition": {
+      "native_e2e_s": {
+        "count": 1,
+        "p50": 3.2552499771118164,
+        "p95_nearest_rank": 3.2552499771118164,
+        "min": 3.2552499771118164,
+        "max": 3.2552499771118164,
+        "mean": 3.2552499771118164
+      },
+      "aligned_first_playback_e2e_s": {
+        "count": 1,
+        "p50": 3.2522699999999998,
+        "p95_nearest_rank": 3.2522699999999998,
+        "min": 3.2522699999999998,
+        "max": 3.2522699999999998,
+        "mean": 3.2522699999999998
+      },
+      "asr_http_s": {
+        "count": 1,
+        "p50": 0.8277202659992327,
+        "p95_nearest_rank": 0.8277202659992327,
+        "min": 0.8277202659992327,
+        "max": 0.8277202659992327,
+        "mean": 0.8277202659992327
+      },
+      "asr_queue_wait_s": {
+        "count": 1,
+        "p50": 0.002147083003364969,
+        "p95_nearest_rank": 0.002147083003364969,
+        "min": 0.002147083003364969,
+        "max": 0.002147083003364969,
+        "mean": 0.002147083003364969
+      },
+      "speech_end_to_transcript_s": {
+        "count": 1,
+        "p50": 1.13635,
+        "p95_nearest_rank": 1.13635,
+        "min": 1.13635,
+        "max": 1.13635,
+        "mean": 1.13635
+      },
+      "jev_client_s": {
+        "count": 1,
+        "p50": 0.2877477910005837,
+        "p95_nearest_rank": 0.2877477910005837,
+        "min": 0.2877477910005837,
+        "max": 0.2877477910005837,
+        "mean": 0.2877477910005837
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 3,
+        "p50": 0.11449982699923567,
+        "p95_nearest_rank": 0.17908714299846906,
+        "min": 0.1079420210007811,
+        "max": 0.17908714299846906,
+        "mean": 0.13384299699949528
+      },
+      "qwen_all_request_complete_s": {
+        "count": 3,
+        "p50": 0.4899554100011301,
+        "p95_nearest_rank": 1.3425610329977644,
+        "min": 0.3004805339987797,
+        "max": 1.3425610329977644,
+        "mean": 0.710998992332558
+      }
+    },
+    "context": {
+      "native_e2e_s": {
+        "count": 10,
+        "p50": 4.502169728279114,
+        "p95_nearest_rank": 9.380269765853882,
+        "min": 3.650442600250244,
+        "max": 9.380269765853882,
+        "mean": 4.914456748962403
+      },
+      "aligned_first_playback_e2e_s": {
+        "count": 10,
+        "p50": 4.499585,
+        "p95_nearest_rank": 9.377360000000001,
+        "min": 3.64795,
+        "max": 9.377360000000001,
+        "mean": 4.911872
+      },
+      "asr_http_s": {
+        "count": 10,
+        "p50": 0.7398737929997878,
+        "p95_nearest_rank": 1.077352323998639,
+        "min": 0.5155509169999277,
+        "max": 1.077352323998639,
+        "mean": 0.7370989016995736
+      },
+      "asr_queue_wait_s": {
+        "count": 10,
+        "p50": 0.003608613998949295,
+        "p95_nearest_rank": 0.004114204999495996,
+        "min": 0.0021257500011415686,
+        "max": 0.004114204999495996,
+        "mean": 0.0035197683995647822
+      },
+      "speech_end_to_transcript_s": {
+        "count": 10,
+        "p50": 1.049895,
+        "p95_nearest_rank": 1.38413,
+        "min": 0.8248,
+        "max": 1.38413,
+        "mean": 1.046788
+      },
+      "jev_client_s": {
+        "count": 9,
+        "p50": 0.28900558299937984,
+        "p95_nearest_rank": 0.3128546700027073,
+        "min": 0.26290551200145273,
+        "max": 0.3128546700027073,
+        "mean": 0.2867970231115275
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 13,
+        "p50": 0.16533681600049022,
+        "p95_nearest_rank": 0.2074565809998603,
+        "min": 0.10511570000016945,
+        "max": 0.2074565809998603,
+        "mean": 0.15978552253783654
+      },
+      "qwen_all_request_complete_s": {
+        "count": 13,
+        "p50": 1.1754032030003145,
+        "p95_nearest_rank": 2.250730330000806,
+        "min": 0.3815856389992405,
+        "max": 2.250730330000806,
+        "mean": 1.142872167153725
+      }
+    },
+    "all_human": {
+      "native_e2e_s": {
+        "count": 27,
+        "p50": 4.494068384170532,
+        "p95_nearest_rank": 9.660831689834595,
+        "min": 1.5771076679229736,
+        "max": 29.883822202682495,
+        "mean": 5.573496800881845
+      },
+      "aligned_first_playback_e2e_s": {
+        "count": 26,
+        "p50": 4.499585,
+        "p95_nearest_rank": 9.65865,
+        "min": 1.57385,
+        "max": 29.88186,
+        "mean": 5.706966153846154
+      },
+      "asr_http_s": {
+        "count": 28,
+        "p50": 0.7435330440002872,
+        "p95_nearest_rank": 1.2636375879992556,
+        "min": 0.4629769849998411,
+        "max": 2.049632376001682,
+        "mean": 0.7709607947142233
+      },
+      "asr_queue_wait_s": {
+        "count": 29,
+        "p50": 0.0034824110007320996,
+        "p95_nearest_rank": 0.004114204999495996,
+        "min": 0.0020461770000110846,
+        "max": 0.00587910500325961,
+        "mean": 0.003141912551780416
+      },
+      "speech_end_to_transcript_s": {
+        "count": 28,
+        "p50": 1.051765,
+        "p95_nearest_rank": 1.5708499999999999,
+        "min": 0.77007,
+        "max": 2.3575100000000004,
+        "mean": 1.0796514285714285
+      },
+      "jev_client_s": {
+        "count": 25,
+        "p50": 0.2899245359985798,
+        "p95_nearest_rank": 0.34270656300213886,
+        "min": 0.26290551200145273,
+        "max": 0.3495855399996799,
+        "mean": 0.2959880619200703
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 40,
+        "p50": 0.17184326599999622,
+        "p95_nearest_rank": 0.386092387001554,
+        "min": 0.10402829600207042,
+        "max": 26.6969898440002,
+        "mean": 0.8534003817248049
+      },
+      "qwen_all_request_complete_s": {
+        "count": 39,
+        "p50": 0.8428496980013733,
+        "p95_nearest_rank": 2.250730330000806,
+        "min": 0.3004805339987797,
+        "max": 33.98243868999998,
+        "mean": 1.7948208681022477
+      }
+    }
+  },
+  "by_route": {
+    "route_tool": {
+      "turns": [
+        3,
+        4,
+        11,
+        13,
+        15
+      ],
+      "native_e2e_s": {
+        "count": 5,
+        "p50": 2.0369298458099365,
+        "p95_nearest_rank": 3.862513303756714,
+        "min": 1.5771076679229736,
+        "max": 3.862513303756714,
+        "mean": 2.357473134994507
+      }
+    },
+    "route_smalltalk": {
+      "turns": [],
+      "native_e2e_s": {
+        "count": 0
+      }
+    },
+    "route_glm": {
+      "turns": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        12,
+        14,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "native_e2e_s": {
+        "count": 22,
+        "p50": 4.6930354833602905,
+        "p95_nearest_rank": 9.660831689834595,
+        "min": 2.474764347076416,
+        "max": 29.883822202682495,
+        "mean": 6.304411270401695
+      }
+    }
+  },
+  "issues": [
+    {
+      "run": "72afa542c5",
+      "experiment": "jev-qwen2-audio-asr-small-qwen3-aiden-20261102",
+      "turn": 3,
+      "event": "asr_qwen2_no_speech",
+      "at": 1793594915.8753498,
+      "asr_backend": "dgx_qwen2_audio",
+      "asr_model": "Qwen/Qwen2-Audio-7B-Instruct",
+      "request_s": 1.0346333059969766,
+      "segment_id": 3,
+      "queue_wait_s": 0.00587910500325961,
+      "audio_s": 2.52,
+      "audio_bytes": 80684
+    },
+    {
+      "run": "72afa542c5",
+      "experiment": "jev-qwen2-audio-asr-small-qwen3-aiden-20261102",
+      "turn": 9,
+      "event": "tts_qwen_cancelled",
+      "at": 1793595027.1558285,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "34f7a478-7954-4f50-81cc-6217935b928e",
+      "request_s": 0.44673403200067696,
+      "audio_bytes": 3840
+    },
+    {
+      "run": "72afa542c5",
+      "experiment": "jev-qwen2-audio-asr-small-qwen3-aiden-20261102",
+      "turn": 23,
+      "event": "classifier_failure",
+      "at": 1793595198.4934695,
+      "router_model": "jev",
+      "classifier_s": 1.2019911960014724,
+      "status": "timeout",
+      "error": "TimeoutError"
+    }
+  ],
+  "asr_contract_observations": {
+    "refusal_or_meta_output_turns": [
+      1,
+      2,
+      6,
+      9,
+      10,
+      12,
+      20
+    ],
+    "wrapped_transcript_turns": [
+      5,
+      7,
+      8,
+      19
+    ],
+    "answer_like_output_turns": [
+      16,
+      17,
+      18,
+      28
+    ],
+    "note": "Assessed from private LLM context history, not saved raw. Refusal/commentary and wrapped output reached Jev/GLM as user content. No recorded audio/ground truth: no WER or exact intent accuracy. Natural-language no-speech reports at 6/9 did not equal the exact sentinel and were forwarded; segment 3 exact sentinel was suppressed."
+  },
+  "small_model_observation": {
+    "conversational_reply_calls": 0,
+    "extraction_attempts": 1,
+    "extraction_s": 1.258384101001866,
+    "validated": false,
+    "note": "Only turn 30 used model extraction, failed validation and reached GLM. Other argument extractions were deterministic. The configured Qwen2 small-model conversational role was not exercised; this is primarily an ASR trial."
+  },
+  "observations": [
+    {
+      "turn": 6,
+      "event": "tts_first_audio_stall",
+      "e2e_s": 29.883822202682495,
+      "first_audio_s": 26.6969898440002,
+      "note": "Pipecat marked context empty after about three seconds then recreated it on late PCM; request eventually completed.",
+      "http_headers_s": 26.642947762000404
+    },
+    {
+      "turn": 9,
+      "event": "overlapping_playback_marker",
+      "note": "A 0.529-second write was prior-turn audio; own first audio/playback occurred at about 2.475 seconds and was interrupted by turn 10."
+    },
+    {
+      "turns": [
+        10,
+        11
+      ],
+      "event": "segment_turn_reassignment",
+      "note": "ASR segment 12 captured under turn 10 produced reminder routed under 11. Native E2E is 2.037 s from preceding segment; no same-turn speech-end marker for 11."
+    },
+    {
+      "turn": 4,
+      "event": "endpoint_wait",
+      "note": "Transcript at 0.906 seconds after speech end; Smart Turn delayed route until about 3.304 seconds, before Jev and TTS. ASR alone does not explain 3.863-second green-lights response."
+    }
+  ],
+  "comparisons": [
+    {
+      "label": "Nemotron ASR / Jev / Llama small / Aiden",
+      "run": "f0c87b3a33",
+      "direct_median_s": 1.477433443069458,
+      "context_median_s": 4.960083484649658,
+      "overall_median_s": 2.5593886375427246,
+      "timed_reply_count": 23
+    },
+    {
+      "label": "Nemotron ASR / Jev / Llama small / Ryan",
+      "run": "9576b0bcb6",
+      "direct_median_s": 2.6679757833480835,
+      "context_median_s": 4.975452423095703,
+      "overall_median_s": 3.187995195388794,
+      "timed_reply_count": 23
+    },
+    {
+      "label": "Nemotron ASR / Jetson CUDA Laya / Llama small / Aiden",
+      "run": "016c1ab953",
+      "direct_median_s": 3.2594321966171265,
+      "context_median_s": 3.980072855949402,
+      "overall_median_s": 3.4476795196533203,
+      "timed_reply_count": 27
+    },
+    {
+      "label": "Nemotron ASR / ThinkPad CPU Laya / Llama small / Vivian",
+      "run": "147f31abef",
+      "direct_median_s": 3.808502197265625,
+      "context_median_s": 4.6677751541137695,
+      "overall_median_s": 4.3208030462265015,
+      "timed_reply_count": 30
+    },
+    {
+      "label": "Qwen2-Audio ASR / Jev / Qwen2 small / Aiden (current)",
+      "run": "72afa542c5",
+      "direct_median_s": 4.433120250701904,
+      "context_median_s": 4.502169728279114,
+      "overall_median_s": 4.494068384170532,
+      "timed_reply_count": 27
+    }
+  ],
+  "measurement_limits": [
+    "Reply onset, not successful tool/action completion; one reply interrupted.",
+    "Different command mixes, utterance quality, state, model roles and remote waits; observational comparisons, not matched causal A/B.",
+    "No recorded speech or ground-truth transcript; cannot measure WER or definitively reconstruct intended words.",
+    "ASR sends whole VAD segments after speech stops; previous Nemotron streamed during speech.",
+    "Native 11 spans preceding segment/turn boundary; strict playback sample has 26 replies.",
+    "Filter prior response playback before current TTS audio to avoid turn-9 underestimate.",
+    "Nearest-rank P95 on small samples.",
+    "No runtime or model change made during assessment."
+  ],
+  "per_turn": [
+    {
+      "turn": 0,
+      "case": "startup_greeting",
+      "group": "startup_checks",
+      "native_e2e_s": null,
+      "aligned_first_playback_e2e_s": null,
+      "asr_request_s": [],
+      "asr_segments": [],
+      "asr_no_speech": 0,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.2441265300003579,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 1,
+      "case": "startup_asr_refusal",
+      "group": "startup_checks",
+      "native_e2e_s": 4.843678951263428,
+      "aligned_first_playback_e2e_s": 4.84125,
+      "asr_request_s": [
+        1.4489149919972988
+      ],
+      "asr_segments": [
+        1
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.33254977599790436,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.2382976859989867,
+      "qwen_tts_complete_requests": 3,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 2,
+      "case": "startup_repeated_asr_refusal",
+      "group": "startup_checks",
+      "native_e2e_s": 3.55041241645813,
+      "aligned_first_playback_e2e_s": 3.54791,
+      "asr_request_s": [
+        0.8806144660011341
+      ],
+      "asr_segments": [
+        2
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2854043260012986,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.1811343859990302,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 3,
+      "case": "lights_on_after_no_speech_segment",
+      "group": "direct",
+      "native_e2e_s": 1.5960333347320557,
+      "aligned_first_playback_e2e_s": 1.5937000000000001,
+      "asr_request_s": [
+        0.7815139699996507
+      ],
+      "asr_segments": [
+        3,
+        4
+      ],
+      "asr_no_speech": 1,
+      "jev_client_s": 0.2955238760005159,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_tts_first_request_pcm_s": 0.15576714399867342,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights"
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.002259842000057688,
+          "valid": true
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 4,
+      "case": "color_green_endpoint_delay",
+      "group": "direct",
+      "native_e2e_s": 3.862513303756714,
+      "aligned_first_playback_e2e_s": 3.86058,
+      "asr_request_s": [
+        0.5970821720002277
+      ],
+      "asr_segments": [
+        5
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.34270656300213886,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_tts_first_request_pcm_s": 0.17903295200085267,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights"
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.0001681100002315361,
+          "valid": true
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 5,
+      "case": "thermostat_wrapped_asr",
+      "group": "direct",
+      "native_e2e_s": 6.916772127151489,
+      "aligned_first_playback_e2e_s": 6.913600000000001,
+      "asr_request_s": [
+        0.7417952910000167
+      ],
+      "asr_segments": [
+        6
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2930562769979588,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.1770001279983262,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 6,
+      "case": "no_speech_text_tts_stall",
+      "group": "direct",
+      "native_e2e_s": 29.883822202682495,
+      "aligned_first_playback_e2e_s": 29.88186,
+      "asr_request_s": [
+        1.2636375879992556
+      ],
+      "asr_segments": [
+        7
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.26868029000252136,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 26.6969898440002,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 7,
+      "case": "message_request_wrapped_asr",
+      "group": "direct",
+      "native_e2e_s": 9.660831689834595,
+      "aligned_first_playback_e2e_s": 9.65865,
+      "asr_request_s": [
+        2.049632376001682
+      ],
+      "asr_segments": [
+        8
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.30876708299911115,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.17869088199950056,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 8,
+      "case": "message_body_wrapped_asr",
+      "group": "direct",
+      "native_e2e_s": 5.003727197647095,
+      "aligned_first_playback_e2e_s": 5.00145,
+      "asr_request_s": [
+        0.5974132360024669
+      ],
+      "asr_segments": [
+        9
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.29069538399926387,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.16493201499906718,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 9,
+      "case": "no_speech_text_interrupted_reply",
+      "group": "direct",
+      "native_e2e_s": 2.474764347076416,
+      "aligned_first_playback_e2e_s": 2.4723800000000002,
+      "asr_request_s": [
+        0.4643332340019697
+      ],
+      "asr_segments": [
+        10
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2840850419997878,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.2687116090019117,
+      "qwen_tts_complete_requests": 0,
+      "qwen_tts_cancellations": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": true
+    },
+    {
+      "turn": 10,
+      "case": "asr_refusal_then_reminder_continuation",
+      "group": "direct",
+      "native_e2e_s": null,
+      "aligned_first_playback_e2e_s": null,
+      "asr_request_s": [
+        0.7644088929991995,
+        0.7604628179979045
+      ],
+      "asr_segments": [
+        11,
+        12
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2899245359985798,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": null,
+      "qwen_tts_complete_requests": 0,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 11,
+      "case": "reminder_drink_water",
+      "group": "direct",
+      "native_e2e_s": 2.0369298458099365,
+      "aligned_first_playback_e2e_s": null,
+      "asr_request_s": [],
+      "asr_segments": [],
+      "asr_no_speech": 0,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.21683542300161207,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "add_reminder"
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "add_reminder",
+          "extraction": "direct",
+          "extraction_s": 0.0007729040007689036,
+          "valid": true
+        }
+      ],
+      "inherited_turn_timing": true,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 12,
+      "case": "asr_refusal_followup",
+      "group": "direct",
+      "native_e2e_s": 3.382068634033203,
+      "aligned_first_playback_e2e_s": 3.37984,
+      "asr_request_s": [
+        0.7720895839993318
+      ],
+      "asr_segments": [
+        13
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.3495855399996799,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.22241475099872332,
+      "qwen_tts_complete_requests": 3,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 13,
+      "case": "music_catalog",
+      "group": "direct",
+      "native_e2e_s": 2.7147815227508545,
+      "aligned_first_playback_e2e_s": 2.71082,
+      "asr_request_s": [
+        0.7289066960001946
+      ],
+      "asr_segments": [
+        14
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2921903979986382,
+      "jev_choice": "play_music",
+      "accepted_choice": "play_music",
+      "qwen_tts_first_request_pcm_s": 0.17087871300100232,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "play_music"
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "play_music",
+          "extraction": "direct",
+          "extraction_s": 0.0008894409984350204,
+          "valid": true
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 14,
+      "case": "blue_fragment_glm",
+      "group": "direct",
+      "native_e2e_s": 8.534551620483398,
+      "aligned_first_playback_e2e_s": 8.53188,
+      "asr_request_s": [
+        0.7691125630008173
+      ],
+      "asr_segments": [
+        15
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.32259319399963715,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.18514620899804868,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 15,
+      "case": "volume_up",
+      "group": "direct",
+      "native_e2e_s": 1.5771076679229736,
+      "aligned_first_playback_e2e_s": 1.57385,
+      "asr_request_s": [
+        0.6104331310016278
+      ],
+      "asr_segments": [
+        16
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2812505570000212,
+      "jev_choice": "playback_control",
+      "accepted_choice": "playback_control",
+      "qwen_tts_first_request_pcm_s": 0.3168008489992644,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "playback_control"
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "playback_control",
+          "extraction": "direct",
+          "extraction_s": 0.0012695509976765607,
+          "valid": true
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 16,
+      "case": "weather_answer_like_asr",
+      "group": "direct",
+      "native_e2e_s": 3.36909818649292,
+      "aligned_first_playback_e2e_s": 3.36713,
+      "asr_request_s": [
+        0.4629769849998411
+      ],
+      "asr_segments": [
+        17
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.31096461600100156,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.386092387001554,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 17,
+      "case": "weather_answer_like_repeat",
+      "group": "direct",
+      "native_e2e_s": 5.298267364501953,
+      "aligned_first_playback_e2e_s": 5.2965100000000005,
+      "asr_request_s": [
+        0.606953203001467
+      ],
+      "asr_segments": [
+        18
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.3228032879997045,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.18886550800016266,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 18,
+      "case": "clock_answer_like_asr",
+      "group": "direct",
+      "native_e2e_s": 5.240991830825806,
+      "aligned_first_playback_e2e_s": 5.2385399999999995,
+      "asr_request_s": [
+        0.5556289799969818
+      ],
+      "asr_segments": [
+        19
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2779539049988671,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.1696553119982127,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 19,
+      "case": "compound_stop_music_lights_off_wrapped",
+      "group": "direct",
+      "native_e2e_s": 6.53233528137207,
+      "aligned_first_playback_e2e_s": 6.52934,
+      "asr_request_s": [
+        0.8618122490006499
+      ],
+      "asr_segments": [
+        20
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.7552918520013918,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 20,
+      "case": "transition_hearing_check_asr_refusal",
+      "group": "transition",
+      "native_e2e_s": 3.2552499771118164,
+      "aligned_first_playback_e2e_s": 3.2522699999999998,
+      "asr_request_s": [
+        0.8277202659992327
+      ],
+      "asr_segments": [
+        21
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2877477910005837,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.17908714299846906,
+      "qwen_tts_complete_requests": 3,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 21,
+      "case": "dark_room",
+      "group": "context",
+      "native_e2e_s": 4.510271072387695,
+      "aligned_first_playback_e2e_s": 4.5081999999999995,
+      "asr_request_s": [
+        0.7089145339996321
+      ],
+      "asr_segments": [
+        22
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.28967789499802166,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.17189089699968463,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 22,
+      "case": "room_too_bright",
+      "group": "context",
+      "native_e2e_s": 4.21596097946167,
+      "aligned_first_playback_e2e_s": 4.21354,
+      "asr_request_s": [
+        0.7536241969974071
+      ],
+      "asr_segments": [
+        23
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.28900558299937984,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.17023484899982577,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 23,
+      "case": "heat_complaint",
+      "group": "context",
+      "native_e2e_s": 4.650848388671875,
+      "aligned_first_playback_e2e_s": 4.64809,
+      "asr_request_s": [
+        0.6567734069976723
+      ],
+      "asr_segments": [
+        24
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.18147804199907114,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 24,
+      "case": "make_cooler_followup",
+      "group": "context",
+      "native_e2e_s": 3.9551796913146973,
+      "aligned_first_playback_e2e_s": 3.95298,
+      "asr_request_s": [
+        0.5155509169999277
+      ],
+      "asr_segments": [
+        25
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.28685224299988477,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.2074565809998603,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 25,
+      "case": "alarm_seven_tomorrow",
+      "group": "context",
+      "native_e2e_s": 4.463788270950317,
+      "aligned_first_playback_e2e_s": 4.46028,
+      "asr_request_s": [
+        1.077352323998639
+      ],
+      "asr_segments": [
+        26
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.27355433699995046,
+      "jev_choice": "set_alarm",
+      "accepted_choice": "set_alarm",
+      "qwen_tts_first_request_pcm_s": 0.17439509099858697,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "set_alarm",
+          "extraction": "direct",
+          "extraction_s": 0.0006252749990380835,
+          "valid": false
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 26,
+      "case": "green_preference",
+      "group": "context",
+      "native_e2e_s": 4.494068384170532,
+      "aligned_first_playback_e2e_s": 4.49097,
+      "asr_request_s": [
+        0.8423236770031508
+      ],
+      "asr_segments": [
+        27
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.26290551200145273,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.16500283499772195,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 27,
+      "case": "rain_today",
+      "group": "context",
+      "native_e2e_s": 9.380269765853882,
+      "aligned_first_playback_e2e_s": 9.377360000000001,
+      "asr_request_s": [
+        0.7672993300002418
+      ],
+      "asr_segments": [
+        28
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.3128546700027073,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.16533681600049022,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 28,
+      "case": "manila_time_statement_asr",
+      "group": "context",
+      "native_e2e_s": 4.735222578048706,
+      "aligned_first_playback_e2e_s": 4.732600000000001,
+      "asr_request_s": [
+        0.7452707970005576
+      ],
+      "asr_segments": [
+        29
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2920559439990029,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.1644446530008281,
+      "qwen_tts_complete_requests": 2,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 29,
+      "case": "music_too_loud",
+      "group": "context",
+      "native_e2e_s": 3.650442600250244,
+      "aligned_first_playback_e2e_s": 3.64795,
+      "asr_request_s": [
+        0.5694030449994898
+      ],
+      "asr_segments": [
+        30
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.2851210290027666,
+      "jev_choice": "playback_control",
+      "accepted_choice": null,
+      "qwen_tts_first_request_pcm_s": 0.16189364499950898,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    },
+    {
+      "turn": 30,
+      "case": "lights_off_extraction_reject",
+      "group": "context",
+      "native_e2e_s": 5.088515758514404,
+      "aligned_first_playback_e2e_s": 5.08675,
+      "asr_request_s": [
+        0.734476788999018
+      ],
+      "asr_segments": [
+        31
+      ],
+      "asr_no_speech": 0,
+      "jev_client_s": 0.289145995000581,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_tts_first_request_pcm_s": 0.1787481299979845,
+      "qwen_tts_complete_requests": 1,
+      "qwen_tts_cancellations": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "arguments": [
+        {
+          "tool": "control_lights",
+          "extraction": "llama",
+          "extraction_s": 1.258384101001866,
+          "valid": false
+        }
+      ],
+      "inherited_turn_timing": false,
+      "partial_spoken_reply": false
+    }
+  ]
+}

@@ -1,0 +1,1084 @@
+{
+  "run": "147f31abef",
+  "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "requested_voice": "vivian",
+  "language": "English",
+  "bounds": {
+    "initial_checks": [
+      1,
+      6
+    ],
+    "direct": [
+      7,
+      21
+    ],
+    "context": [
+      22,
+      34
+    ]
+  },
+  "boundary_note": "Inferred from transition from hearing check to direct lights-on, then lights-off to dark-room contextual statement.",
+  "counts": {
+    "speech_start_events": 34,
+    "native_timed_replies": 30,
+    "strict_playback_timed_replies": 28,
+    "asr_missing_turns": [
+      6,
+      11
+    ],
+    "fragment_pairs": [
+      [
+        28,
+        29
+      ],
+      [
+        33,
+        34
+      ]
+    ],
+    "complete_laya_results": 27,
+    "laya_failures": 2,
+    "laya_cancellations": 2,
+    "qwen_complete_human_requests": 41,
+    "qwen_failed_human_requests": 1
+  },
+  "groups": {
+    "initial_checks": {
+      "native_e2e_s": {
+        "count": 5,
+        "p50": 3.5334925651550293,
+        "p95_nearest_rank": 14.400659561157227,
+        "mean": 5.491656732559204,
+        "min": 1.7711291313171387,
+        "max": 14.400659561157227
+      },
+      "strict_first_playback_e2e_s": {
+        "count": 5,
+        "p50": 3.53091,
+        "p95_nearest_rank": 14.3958,
+        "mean": 5.488774,
+        "min": 1.7688199999999998,
+        "max": 14.3958
+      },
+      "laya_server_s": {
+        "count": 4,
+        "p50": 0.7191724785079714,
+        "p95_nearest_rank": 0.7473169090226293,
+        "mean": 0.7224164347571786,
+        "min": 0.7040038729901426,
+        "max": 0.7473169090226293
+      },
+      "laya_pi_wait_s": {
+        "count": 4,
+        "p50": 0.7370971464997638,
+        "p95_nearest_rank": 0.7657086109993543,
+        "mean": 0.7411301697497947,
+        "min": 0.7246177750002971,
+        "max": 0.7657086109993543
+      },
+      "first_request_pcm_s": {
+        "count": 5,
+        "p50": 0.16470903099980205,
+        "p95_nearest_rank": 11.370988323000347,
+        "mean": 2.4101061724002646,
+        "min": 0.15746470399972168,
+        "max": 11.370988323000347
+      },
+      "all_qwen_request_first_pcm_s": {
+        "count": 8,
+        "p50": 0.16044554349991813,
+        "p95_nearest_rank": 11.370988323000347,
+        "mean": 1.552729478999936,
+        "min": 0.10634858499906841,
+        "max": 11.370988323000347
+      },
+      "qwen_request_complete_s": {
+        "count": 8,
+        "p50": 0.8519581660002586,
+        "p95_nearest_rank": 16.52293831099996,
+        "mean": 3.1691240179998204,
+        "min": 0.6424850459989102,
+        "max": 16.52293831099996
+      }
+    },
+    "direct": {
+      "native_e2e_s": {
+        "count": 14,
+        "p50": 3.808502197265625,
+        "p95_nearest_rank": 9.300989389419556,
+        "mean": 3.822181224822998,
+        "min": 1.6561639308929443,
+        "max": 9.300989389419556
+      },
+      "strict_first_playback_e2e_s": {
+        "count": 14,
+        "p50": 3.806155,
+        "p95_nearest_rank": 9.29706,
+        "mean": 3.8194564285714288,
+        "min": 1.65384,
+        "max": 9.29706
+      },
+      "laya_server_s": {
+        "count": 13,
+        "p50": 0.7477082710247487,
+        "p95_nearest_rank": 0.8341000120271929,
+        "mean": 0.7518724667069574,
+        "min": 0.7029685990419239,
+        "max": 0.8341000120271929
+      },
+      "laya_pi_wait_s": {
+        "count": 13,
+        "p50": 0.76607336699999,
+        "p95_nearest_rank": 0.8502651540002262,
+        "mean": 0.7695891300765931,
+        "min": 0.7193356389998371,
+        "max": 0.8502651540002262
+      },
+      "first_request_pcm_s": {
+        "count": 14,
+        "p50": 0.17301823150046403,
+        "p95_nearest_rank": 1.1692018789999565,
+        "mean": 0.29551223550034983,
+        "min": 0.15114417400036473,
+        "max": 1.1692018789999565
+      },
+      "all_qwen_request_first_pcm_s": {
+        "count": 17,
+        "p50": 0.1688104580007348,
+        "p95_nearest_rank": 1.1692018789999565,
+        "mean": 0.26214296264729725,
+        "min": 0.10323366599914152,
+        "max": 1.1692018789999565
+      },
+      "qwen_request_complete_s": {
+        "count": 17,
+        "p50": 0.5964665680003236,
+        "p95_nearest_rank": 1.6905344219994731,
+        "mean": 0.7865764629999937,
+        "min": 0.37534093000067514,
+        "max": 1.6905344219994731
+      }
+    },
+    "context": {
+      "native_e2e_s": {
+        "count": 11,
+        "p50": 4.6677751541137695,
+        "p95_nearest_rank": 7.725509405136108,
+        "mean": 5.274042216214267,
+        "min": 3.091885805130005,
+        "max": 7.725509405136108
+      },
+      "strict_first_playback_e2e_s": {
+        "count": 9,
+        "p50": 4.58188,
+        "p95_nearest_rank": 7.67796,
+        "mean": 4.88811,
+        "min": 3.08902,
+        "max": 7.67796
+      },
+      "laya_server_s": {
+        "count": 10,
+        "p50": 0.7577576754847541,
+        "p95_nearest_rank": 0.7775717859622091,
+        "mean": 0.7523093747033271,
+        "min": 0.7120382690336555,
+        "max": 0.7775717859622091
+      },
+      "laya_pi_wait_s": {
+        "count": 10,
+        "p50": 0.7776272289993358,
+        "p95_nearest_rank": 0.794728025999575,
+        "mean": 0.7694534861997454,
+        "min": 0.7267180720009492,
+        "max": 0.794728025999575
+      },
+      "first_request_pcm_s": {
+        "count": 11,
+        "p50": 0.17119393999928434,
+        "p95_nearest_rank": 0.3810596359999181,
+        "mean": 0.18925069709108688,
+        "min": 0.15458637300071132,
+        "max": 0.3810596359999181
+      },
+      "all_qwen_request_first_pcm_s": {
+        "count": 16,
+        "p50": 0.15988942649983073,
+        "p95_nearest_rank": 0.3810596359999181,
+        "mean": 0.16423742931272045,
+        "min": 0.0977594300002238,
+        "max": 0.3810596359999181
+      },
+      "qwen_request_complete_s": {
+        "count": 16,
+        "p50": 0.7513403829998424,
+        "p95_nearest_rank": 5.208461248999811,
+        "mean": 1.0716601886878152,
+        "min": 0.3427929570007109,
+        "max": 5.208461248999811
+      }
+    },
+    "all_human": {
+      "native_e2e_s": {
+        "count": 30,
+        "p50": 4.3208030462265015,
+        "p95_nearest_rank": 9.300989389419556,
+        "mean": 4.632776172955831,
+        "min": 1.6561639308929443,
+        "max": 14.400659561157227
+      },
+      "strict_first_playback_e2e_s": {
+        "count": 28,
+        "p50": 4.200699999999999,
+        "p95_nearest_rank": 9.29706,
+        "mean": 4.461044642857143,
+        "min": 1.65384,
+        "max": 14.3958
+      },
+      "laya_server_s": {
+        "count": 27,
+        "p50": 0.7477082710247487,
+        "p95_nearest_rank": 0.8019914889591746,
+        "mean": 0.7476704278982382,
+        "min": 0.7029685990419239,
+        "max": 0.8341000120271929
+      },
+      "laya_pi_wait_s": {
+        "count": 27,
+        "p50": 0.76607336699999,
+        "p95_nearest_rank": 0.8227387459992315,
+        "mean": 0.7653227493330498,
+        "min": 0.7193356389998371,
+        "max": 0.8502651540002262
+      },
+      "first_request_pcm_s": {
+        "count": 30,
+        "p50": 0.17071373949966073,
+        "p95_nearest_rank": 1.1692018789999565,
+        "mean": 0.6089819942336059,
+        "min": 0.15114417400036473,
+        "max": 11.370988323000347
+      },
+      "all_qwen_request_first_pcm_s": {
+        "count": 41,
+        "p50": 0.16342638300011458,
+        "p95_nearest_rank": 0.5050302790004935,
+        "mean": 0.47575768453675776,
+        "min": 0.0977594300002238,
+        "max": 11.370988323000347
+      },
+      "qwen_request_complete_s": {
+        "count": 41,
+        "p50": 0.7497176870001567,
+        "p95_nearest_rank": 3.22466278399952,
+        "mean": 1.3627159764391097,
+        "min": 0.3427929570007109,
+        "max": 16.52293831099996
+      }
+    }
+  },
+  "issues": [
+    {
+      "run": "147f31abef",
+      "experiment": "laya-glm-qwen-dgx-20261102",
+      "turn": 1,
+      "event": "classifier_failure",
+      "at": 1793586260.4485362,
+      "router_model": "laya",
+      "classifier_s": 2.0020746760001202,
+      "status": "timeout",
+      "error": "TimeoutError"
+    },
+    {
+      "run": "147f31abef",
+      "experiment": "laya-glm-qwen-dgx-20261102",
+      "turn": 28,
+      "event": "router_cancelled",
+      "at": 1793586819.6407514,
+      "router_model": "laya",
+      "classifier_s": 0.03512360900094791,
+      "stage": "classifier"
+    },
+    {
+      "run": "147f31abef",
+      "experiment": "laya-glm-qwen-dgx-20261102",
+      "turn": 29,
+      "event": "classifier_failure",
+      "at": 1793586820.3558757,
+      "router_model": "laya",
+      "classifier_s": 0.01641700599975593,
+      "status": "error",
+      "error": "HTTPStatusError"
+    },
+    {
+      "run": "147f31abef",
+      "experiment": "laya-glm-qwen-dgx-20261102",
+      "turn": 32,
+      "event": "tts_qwen_failure",
+      "at": 1793586886.6360407,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "6a34aaa5-885f-48e3-a431-03493fcba8b9",
+      "request_s": 0.3585307110006397,
+      "audio_bytes": 0,
+      "error": "RemoteProtocolError"
+    },
+    {
+      "run": "147f31abef",
+      "experiment": "laya-glm-qwen-dgx-20261102",
+      "turn": 33,
+      "event": "router_cancelled",
+      "at": 1793586891.887019,
+      "router_model": "laya",
+      "classifier_s": 0.012560442999529187,
+      "stage": "classifier"
+    },
+    {
+      "turn": 5,
+      "event": "late_context_recreation",
+      "first_pcm_s": 11.370988323000347,
+      "http_headers_s": 11.31179013900146,
+      "request_s": 16.52293831099996,
+      "e2e_s": 14.400659561157227,
+      "note": "Pipecat declared empty context after about 3 s; late audio recreated context and played. Headers wait dominates; DGX queue/compute vs network is not separated."
+    }
+  ],
+  "voice_assessment": {
+    "user_report": "Different types and qualities of voices heard.",
+    "observed_tts_service_classes": [
+      "QwenTTSService"
+    ],
+    "fixed_request_voice": "vivian",
+    "fixed_request_sample_rate": 24000,
+    "live_sink_format": "s16le mono 24000 Hz",
+    "magpie_fallback": false,
+    "style_instruction_sent": false,
+    "seed_sent": false,
+    "limitations": "No recorded trial waveform or DGX request trace. Constant client settings do not prove server speaker identity or acoustic consistency.",
+    "hypotheses": [
+      "Separate synthesis for each sentence without shared acoustic prompt may affect continuity.",
+      "Vivian is Chinese-native; Qwen recommends native-language speakers for best quality.",
+      "Stall, late context recreation and failed follow-up can affect continuity."
+    ],
+    "official_reference": "https://github.com/QwenLM/Qwen3-TTS#custom-voice"
+  },
+  "measurement_limits": [
+    "Native E2E is estimated speech end to software bot-start; excludes independent acoustic onset measurement.",
+    "28 replies have direct speech-end-to-first-playback markers; 29/34 retain native latency from preceding fragmented turn.",
+    "P95 uses nearest rank; small samples.",
+    "Qwen client timings include network, server and generator/transport backpressure; no isolated DGX inference time.",
+    "Set medians are observational; utterances, downstream routing and tool paths differ from previous run.",
+    "Missing ASR segments and fragment cancellations are not counted as successful independent replies."
+  ],
+  "per_turn": [
+    {
+      "turn": 0,
+      "case": "startup_greeting",
+      "group": "startup",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": 0.16324152000015602,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 0,
+      "routes": [],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 1,
+      "case": "hearing_check_initial",
+      "group": "initial_checks",
+      "native_e2e_s": 5.154564380645752,
+      "first_playback_e2e_s": 5.15216,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": 0.16342638300011458,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 2,
+      "case": "identity_question",
+      "group": "initial_checks",
+      "native_e2e_s": 3.5334925651550293,
+      "first_playback_e2e_s": 3.53091,
+      "laya_server_s": 0.7040038729901426,
+      "laya_pi_wait_s": 0.7276924779998808,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.15746470399972168,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 3,
+      "case": "weather_initial",
+      "group": "initial_checks",
+      "native_e2e_s": 2.598438024520874,
+      "first_playback_e2e_s": 2.59618,
+      "laya_server_s": 0.7083419180125929,
+      "laya_pi_wait_s": 0.7246177750002971,
+      "laya_choice": "get_weather",
+      "qwen_first_request_pcm_s": 0.16470903099980205,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_weather"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 4,
+      "case": "time_initial",
+      "group": "initial_checks",
+      "native_e2e_s": 1.7711291313171387,
+      "first_playback_e2e_s": 1.7688199999999998,
+      "laya_server_s": 0.7300030390033498,
+      "laya_pi_wait_s": 0.7465018149996467,
+      "laya_choice": "get_time",
+      "qwen_first_request_pcm_s": 0.19394242100133852,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_time"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 5,
+      "case": "hearing_check_tts_stall",
+      "group": "initial_checks",
+      "native_e2e_s": 14.400659561157227,
+      "first_playback_e2e_s": 14.3958,
+      "laya_server_s": 0.7473169090226293,
+      "laya_pi_wait_s": 0.7657086109993543,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 11.370988323000347,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 6,
+      "case": "no_final_asr",
+      "group": "initial_checks",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "qwen_failure_requests": 0,
+      "asr_frames": 0,
+      "routes": [],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 7,
+      "case": "hearing_check_direct_set",
+      "group": "direct",
+      "native_e2e_s": 4.944566965103149,
+      "first_playback_e2e_s": 4.94134,
+      "laya_server_s": 0.7829966749995947,
+      "laya_pi_wait_s": 0.8008879819990398,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.176817748000758,
+      "qwen_complete_requests": 3,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 8,
+      "case": "lights_on",
+      "group": "direct",
+      "native_e2e_s": 1.787593126296997,
+      "first_playback_e2e_s": 1.78454,
+      "laya_server_s": 0.7046807000297122,
+      "laya_pi_wait_s": 0.7223761349996494,
+      "laya_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.17585556599988195,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 9,
+      "case": "color_green",
+      "group": "direct",
+      "native_e2e_s": 4.1135478019714355,
+      "first_playback_e2e_s": 4.11124,
+      "laya_server_s": 0.7208748830016702,
+      "laya_pi_wait_s": 0.7383138879995386,
+      "laya_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.15863799100043252,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 10,
+      "case": "thermostat_twenty",
+      "group": "direct",
+      "native_e2e_s": 4.348165512084961,
+      "first_playback_e2e_s": 4.34539,
+      "laya_server_s": 0.7398681920021772,
+      "laya_pi_wait_s": 0.7554825460010761,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.4734143869991385,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 11,
+      "case": "no_final_asr",
+      "group": "direct",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "qwen_failure_requests": 0,
+      "asr_frames": 0,
+      "routes": [],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 12,
+      "case": "message_request_no_body",
+      "group": "direct",
+      "native_e2e_s": 3.7177894115448,
+      "first_playback_e2e_s": 3.7154499999999997,
+      "laya_server_s": 0.7029685990419239,
+      "laya_pi_wait_s": 0.7193356389998371,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.16773334500066994,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 13,
+      "case": "message_body_followup",
+      "group": "direct",
+      "native_e2e_s": 9.300989389419556,
+      "first_playback_e2e_s": 9.29706,
+      "laya_server_s": 0.7311100860242732,
+      "laya_pi_wait_s": 0.7493339339998784,
+      "laya_choice": "small_talk",
+      "qwen_first_request_pcm_s": 0.1688104580007348,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 14,
+      "case": "reminder_study",
+      "group": "direct",
+      "native_e2e_s": 1.9539787769317627,
+      "first_playback_e2e_s": 1.95223,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": 1.1692018789999565,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "add_reminder"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 15,
+      "case": "music_catalog",
+      "group": "direct",
+      "native_e2e_s": 2.881682872772217,
+      "first_playback_e2e_s": 2.8791599999999997,
+      "laya_server_s": 0.7497890430386178,
+      "laya_pi_wait_s": 0.76607336699999,
+      "laya_choice": "play_music",
+      "qwen_first_request_pcm_s": 0.5050302790004935,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "play_music"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 16,
+      "case": "color_blue",
+      "group": "direct",
+      "native_e2e_s": 3.89921498298645,
+      "first_playback_e2e_s": 3.89686,
+      "laya_server_s": 0.7592817970435135,
+      "laya_pi_wait_s": 0.7765639789995475,
+      "laya_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.1649627300012071,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 17,
+      "case": "color_red_fragment",
+      "group": "direct",
+      "native_e2e_s": 5.816002607345581,
+      "first_playback_e2e_s": 5.81394,
+      "laya_server_s": 0.8019914889591746,
+      "laya_pi_wait_s": 0.8227387459992315,
+      "laya_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.17580292400089093,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 18,
+      "case": "volume_down_direct",
+      "group": "direct",
+      "native_e2e_s": 4.293440580368042,
+      "first_playback_e2e_s": 4.29016,
+      "laya_server_s": 0.751927990000695,
+      "laya_pi_wait_s": 0.7697792799990566,
+      "laya_choice": "playback_control",
+      "qwen_first_request_pcm_s": 0.15902084700064734,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "playback_control"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 19,
+      "case": "weather_direct",
+      "group": "direct",
+      "native_e2e_s": 3.083004951477051,
+      "first_playback_e2e_s": 3.0795500000000002,
+      "laya_server_s": 0.8341000120271929,
+      "laya_pi_wait_s": 0.8502651540002262,
+      "laya_choice": "get_weather",
+      "qwen_first_request_pcm_s": 0.32050542999968457,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_weather"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 20,
+      "case": "time_direct",
+      "group": "direct",
+      "native_e2e_s": 1.6561639308929443,
+      "first_playback_e2e_s": 1.65384,
+      "laya_server_s": 0.7477082710247487,
+      "laya_pi_wait_s": 0.7646488699992915,
+      "laya_choice": "get_time",
+      "qwen_first_request_pcm_s": 0.15114417400036473,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_time"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 21,
+      "case": "lights_off_direct",
+      "group": "direct",
+      "native_e2e_s": 1.7143962383270264,
+      "first_playback_e2e_s": 1.7116300000000002,
+      "laya_server_s": 0.7470443299971521,
+      "laya_pi_wait_s": 0.7688591709993489,
+      "laya_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.17023353900003713,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights"
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 22,
+      "case": "dark_room",
+      "group": "context",
+      "native_e2e_s": 3.091885805130005,
+      "first_playback_e2e_s": 3.08902,
+      "laya_server_s": 0.763114970002789,
+      "laya_pi_wait_s": 0.7807247300006566,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.20722446700165165,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 23,
+      "case": "lights_on_consent",
+      "group": "context",
+      "native_e2e_s": 4.585686445236206,
+      "first_playback_e2e_s": 4.58188,
+      "laya_server_s": 0.7465404540416785,
+      "laya_pi_wait_s": 0.7621306080000068,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.16061339400039287,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 24,
+      "case": "room_too_bright",
+      "group": "context",
+      "native_e2e_s": 4.947110176086426,
+      "first_playback_e2e_s": 4.944979999999999,
+      "laya_server_s": 0.7600179529981688,
+      "laya_pi_wait_s": 0.7797691609994217,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.1591654589992686,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 25,
+      "case": "heat_complaint",
+      "group": "context",
+      "native_e2e_s": 4.3835365772247314,
+      "first_playback_e2e_s": 4.3813,
+      "laya_server_s": 0.7632970540435053,
+      "laya_pi_wait_s": 0.7795549040001788,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.15856364999854122,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 26,
+      "case": "lower_temperature_followup",
+      "group": "context",
+      "native_e2e_s": 4.461227655410767,
+      "first_playback_e2e_s": 4.45911,
+      "laya_server_s": 0.753462855995167,
+      "laya_pi_wait_s": 0.7694067189986527,
+      "laya_choice": "playback_control",
+      "qwen_first_request_pcm_s": 0.17119393999928434,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 27,
+      "case": "alarm_tomorrow_six",
+      "group": "context",
+      "native_e2e_s": 4.0312888622283936,
+      "first_playback_e2e_s": 4.02889,
+      "laya_server_s": 0.7775717859622091,
+      "laya_pi_wait_s": 0.794728025999575,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.17257801000050677,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 28,
+      "case": "color_preference_fragment",
+      "group": "context",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "qwen_failure_requests": 0,
+      "asr_frames": 2,
+      "routes": [],
+      "fragment_caveat": true
+    },
+    {
+      "turn": 29,
+      "case": "color_preference_continuation",
+      "group": "context",
+      "native_e2e_s": 6.274258136749268,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": 0.1755755260001024,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 0,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": true
+    },
+    {
+      "turn": 30,
+      "case": "rain_question",
+      "group": "context",
+      "native_e2e_s": 6.166471004486084,
+      "first_playback_e2e_s": 6.16421,
+      "laya_server_s": 0.7554973979713395,
+      "laya_pi_wait_s": 0.7756995539984928,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.16201486700083478,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 31,
+      "case": "manila_time",
+      "group": "context",
+      "native_e2e_s": 7.679715156555176,
+      "first_playback_e2e_s": 7.67796,
+      "laya_server_s": 0.7676042590173893,
+      "laya_pi_wait_s": 0.7850425999986328,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.17918234600074356,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 0,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 32,
+      "case": "music_too_loud",
+      "group": "context",
+      "native_e2e_s": 4.6677751541137695,
+      "first_playback_e2e_s": 4.665640000000001,
+      "laya_server_s": 0.7239487479673699,
+      "laya_pi_wait_s": 0.7407604880008876,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.3810596359999181,
+      "qwen_complete_requests": 1,
+      "qwen_failure_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": false
+    },
+    {
+      "turn": 33,
+      "case": "lights_off_idiom_fragment",
+      "group": "context",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "laya_server_s": null,
+      "laya_pi_wait_s": null,
+      "laya_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [],
+      "fragment_caveat": true
+    },
+    {
+      "turn": 34,
+      "case": "lights_off_idiom_continuation",
+      "group": "context",
+      "native_e2e_s": 7.725509405136108,
+      "first_playback_e2e_s": null,
+      "laya_server_s": 0.7120382690336555,
+      "laya_pi_wait_s": 0.7267180720009492,
+      "laya_choice": "other",
+      "qwen_first_request_pcm_s": 0.15458637300071132,
+      "qwen_complete_requests": 2,
+      "qwen_failure_requests": 0,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null
+        }
+      ],
+      "fragment_caveat": true
+    }
+  ]
+}

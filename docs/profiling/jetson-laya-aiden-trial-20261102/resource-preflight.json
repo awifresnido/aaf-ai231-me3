@@ -1,0 +1,28 @@
+{
+  "meminfo_kib": {
+    "MemTotal": 7665092,
+    "MemAvailable": 1999524,
+    "SwapTotal": 12582908,
+    "SwapFree": 11778044
+  },
+  "small_artifact_sha256": {
+    "questions.json": "824fd9c3237e9e0f81a7203d11f6bfea6e49b3d9f2d26d71b7c7383cc0c752b3",
+    "calibration_refit.json": "6bb7a87077438fa279cbc5350b26394c36ffdc7e72481e3cf69897bb1264994c",
+    "rl_agent_config.json": "b664b61f6f1bea6e17628f478f6bfb855ccf06ce761d6e07a99f2b5d81425671",
+    "use_router.py": "22de52734ffe209656c81aa5e663a57ab902685ab2cee692295bd8325102a230",
+    "PRECISION.md": "b46a97b3f495722af69c95a5d9566ecc24b56abe552d18f5292e14a56a20a34d"
+  },
+  "service_status": [
+    "MainPID=690371",
+    "MemoryCurrent=2423595008",
+    "MemoryPeak=2842853376",
+    "ActiveState=active",
+    "SubState=running"
+  ],
+  "riva_containers": [
+    "nemotron-asr-server\tUp 56 years",
+    "magpie-tts-lan\tUp 56 years"
+  ],
+  "resource_capture": "/tmp/jetson-laya-tegrastats-20261102.log",
+  "capture_service_status": "active"
+}

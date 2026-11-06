@@ -1,0 +1,38 @@
+{
+  "activated_at": "2026-11-02T10:46:24.414018+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/jev-aiden-20261102-104624",
+  "changed_settings": {
+    "DGX_TTS_VOICE": "aiden",
+    "ROUTER_MODEL": "jev",
+    "VAD_EXPERIMENT": "jev-glm-qwen-aiden-20261102"
+  },
+  "log_start_bytes": 5145111,
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "tts_backend": "dgx_qwen",
+  "jev_model": "jev-1.14.0",
+  "jev_deadline_ms": "1200",
+  "source_sha256": {
+    "bot.py": "9806fc033c436ccc56f5d4951511f70527f12e821f21d64529584cd799455c9a",
+    "qwen_tts.py": "4b9599cf8a6cc26bad0661b707ecd495eb7ebcd0e336e9bda6bb40b7a409e57c",
+    "orchestration.py": "97cd3363d88b262cd995c33d78f5730eac6f0da64d38d1bd34b9c33e29f207fa"
+  },
+  "preserved": "GLM, Llama, Jetson ASR/SQLite, Pi MCP, speakerphone/AEC, VAD and TTS transport unchanged; secondary small model URL remains blank.",
+  "preflight": {
+    "aiden_first_pcm_s": 0.22162662600021577,
+    "aiden_request_s": 0.6602211539993732,
+    "aiden_audio_bytes": 119040,
+    "jev_choice": "get_time",
+    "jev_seconds": 0.4720892040004401
+  },
+  "live_voice_trial": "Completed; 23 timed replies, direct median 1.477 s, contextual median 4.960 s. Two missing-ASR segments and one interrupted spoken reply retained separately.",
+  "run": "f0c87b3a33",
+  "pi_pid": 12850,
+  "service_status": "active",
+  "pipeline_ready_log": [
+    "2026-11-02 10:46:37.489 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)"
+  ],
+  "greeting_first_pcm_s": 0.1603684780002368,
+  "greeting_first_playback_at": 1793587612.6082687,
+  "greeting_request_s": 0.95733523600029,
+  "startup_errors": []
+}

@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "base_commit": "81cbbb8",
+  "purpose": "Correlate Pi filesystem waits with I/O/writeback/process counters and compare another durable filesystem",
+  "live_database_modified": false,
+  "private_data_copied": false,
+  "bot_model_audio_or_services_changed": false,
+  "sysctls_or_cache_policy_changed": false,
+  "observer_runs": [
+    {
+      "directory": ".",
+      "started": "2026-11-01T17:47:51.168564+08:00",
+      "ended": "2026-11-01T17:49:08.701693+08:00",
+      "transactions": 8,
+      "flush_pairs": 3,
+      "period_secs": 0.2,
+      "process_scan_policy": "Every sample; superseded sampler revision",
+      "source_hash_applies": false
+    },
+    {
+      "directory": "light",
+      "started": "2026-11-01T17:52:15.566227+08:00",
+      "ended": "2026-11-01T17:53:13.369064+08:00",
+      "transactions": 6,
+      "flush_pairs": 2,
+      "period_secs": 0.1,
+      "process_scan_policy": "Full scan roughly every second; watched probe/journal/USB threads between scans",
+      "source_hash_applies": true
+    }
+  ],
+  "durable_hosts": {
+    "durable-pi": "Pi /dev/sda2 ext4, Sony USB storage",
+    "durable-jetson": "Jetson /dev/nvme0n1p1 ext4, Kingston SNV3S500G"
+  },
+  "observer_commands": {
+    "initial": "profile_storage_activity.py --baseline-secs 10 --tail-secs 10 --period-secs 0.2 --timeout-secs 180 -- strace [filter] diagnose_sqlite_storage.py --transactions 8 --flushes 3 --interval-secs 5",
+    "light": "profile_storage_activity.py --baseline-secs 10 --tail-secs 10 --period-secs 0.1 --process-period-secs 1 --timeout-secs 180 -- strace [filter] diagnose_sqlite_storage.py --transactions 6 --flushes 2 --interval-secs 5"
+  },
+  "trace_filter": "-f -ttt -T -yy -e trace=fsync,fdatasync,fcntl,unlink,clock_nanosleep,openat,close,ftruncate,pwrite64,pread64,mmap,msync -e raw=pwrite64,pread64",
+  "durable_command": "python -B diagnose_sqlite_storage.py --disk-root <owning-user-home-on-target-filesystem> --output <RAM-output>/events.jsonl --transactions 6 --flushes 2 --interval-secs 5; no strace/observer",
+  "notes": [
+    "Initial sampler was revised after the first capture; current sampler source hash applies to light run only. Raw events preserve initial policy/results.",
+    "I/O and wait-channel coverage is restricted for root-owned processes. No sudo password or host changes were requested.",
+    "The Jetson benchmark used the same hash-verified diagnosis script as the Pi. Python/SQLite/host/kernel versions differ."
+  ],
+  "sha256": {
+    "activity.jsonl.gz": "abf52db8f26dd15403bbe28c8e2684c94c0037d8e13bac7f776ca658d090a60f",
+    "bot-after.txt": "1a64c0f9616b95fcf87123da802f36cff85f9974d46169c1f7a5e3d66c61c92b",
+    "bot-before.txt": "1a64c0f9616b95fcf87123da802f36cff85f9974d46169c1f7a5e3d66c61c92b",
+    "cleanup-postcheck.json": "dfda0924cf729dc6558c277d172923add5801decfb4843210f7df62a4a7bb8eb",
+    "durable-comparison.json": "35e152840dde0b64440a2eea5481d68ee9421668029ec552e41c32ef6925a5ba",
+    "durable-jetson/events.jsonl": "df40fe4e0dfbfb408f05c2294e56a226914620df7d68b3f6be6368d8cf31c4dc",
+    "durable-jetson/progress.log": "6eb4be5e3b194be4ca4b2df60143373eb9b16ab61bde11b4096f747139a6a601",
+    "durable-pi/events.jsonl": "83a1125c4ad647d0af6ac804c1a97b14ad19db49a24e4be084af45e032ec7923",
+    "durable-pi/progress.log": "76ea7e3f358b8ad79408b0ffb77c66b7cec3860aebc627b72161b0006e35c9b8",
+    "events.jsonl": "a5eae02cedc780b11b706dbc3c9c801ea264948a37acea84f31001646a470a4a",
+    "inventory.json": "1265bee0536699c1ce987380f9df3a6da7f9de9771d4a0fb0cbc8c30853577d0",
+    "jetson-postcheck.txt": "7cd736185a1f7e9402108de1fcf8711cb3dfed7bf40925a06e92f48786f355e7",
+    "light/activity.jsonl.gz": "d24efc8a46594eaed7ba3e990528c917221aeec1d47531883ffd56f768f3256a",
+    "light/events.jsonl": "8c97dea756f11cd550745fa7b6aee561b0ac40933f5df16db76d78d7b4b5991f",
+    "light/probe-output.log": "e7346a2a1e9b10771f6c146f15ffe576a283bbfcbbffc86697a48887ec1bdf46",
+    "light/summary.json": "75cbf8f17de4a02f354026b508beaaf7f2f7c2ccbeb21493f9154c6e3ed3b29a",
+    "light/syscalls.log": "7db55fdeddf99276f674b9f24d8169c5f709e708c5d51d297229b4a9ae79e00d",
+    "pi-postcheck.txt": "61cd776eaff08eadbe469bc9d16aa5b19678e69ff0e8ace21b524b61e67a9957",
+    "probe-output.log": "2bdcfc5c2b0716ad98b2de2343b2d4482f11b2f201e11c51c8d973c43a9a0786",
+    "summary.json": "b93114bccdcfe22cc72b3281b67203f5b5c070ce819789f7d72aea406f7edc70",
+    "syscalls.log": "6fa25cec4ffba67ad74486091a06d8c47e56c6b2ebedd07af050eb3a5b1e2e32"
+  },
+  "uncompressed_activity_sha256": {
+    "activity.jsonl": "54c2f1a2b8c493b7c895e17576748f9e7a1ea384d680eadd41175ab6de4f2620",
+    "light/activity.jsonl": "1b8465152ecf192d421dff34709718f27360e09ec2dabbfa5970c0d54ca64c2e"
+  },
+  "source_sha256": {
+    "scripts/profile_storage_activity.py": "8ab246a405a7dfea496979634454986964212da1b7a4ca58228206bfcaab0395",
+    "scripts/summarize_storage_activity.py": "d00a9729b471c22b00f168923c05e2edfc97440700cabb9833e509d67941c030",
+    "scripts/diagnose_sqlite_storage.py": "bec5dbb1748c0e3f8bfd8de49c90205c07c94d28dc8b278b65e9f47bc1e17012"
+  }
+}

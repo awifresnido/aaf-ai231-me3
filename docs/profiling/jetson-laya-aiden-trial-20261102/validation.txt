@@ -1,0 +1,3 @@
+96 tests passed on Pi in 8.750 seconds, including four new CUDA placement/precision/timing checks.
+Synthetic Pi classifier and Aiden PCM preflights passed without tools or speaker playback.
+Eight CPU/CUDA phrase checks: identical checkpoint hash, zero argmax flips, zero acceptance flips; not an accuracy evaluation.

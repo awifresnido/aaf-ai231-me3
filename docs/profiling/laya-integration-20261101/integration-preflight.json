@@ -1,0 +1,105 @@
+{
+  "kind": "disposable_text_integration_not_voice",
+  "run": "laya-preflight-5cb7c45d71",
+  "trace_dir": "/dev/shm/voice-agent-diagnostics/laya-preflight-5cb7c45d71",
+  "rows": [
+    {
+      "turn": 1,
+      "expected_tool": "control_lights",
+      "calls": [
+        "control_lights"
+      ],
+      "seconds": 0.7537798150005983,
+      "passed": true
+    },
+    {
+      "turn": 2,
+      "expected_tool": "control_lights",
+      "calls": [
+        "control_lights"
+      ],
+      "seconds": 0.7230969899974298,
+      "passed": true
+    },
+    {
+      "turn": 3,
+      "expected_tool": "set_thermostat",
+      "calls": [
+        "set_thermostat"
+      ],
+      "seconds": 0.745595679996768,
+      "passed": true
+    },
+    {
+      "turn": 4,
+      "expected_tool": "add_reminder",
+      "calls": [
+        "add_reminder"
+      ],
+      "seconds": 0.7569524330028798,
+      "passed": true
+    },
+    {
+      "turn": 5,
+      "expected_tool": "list_reminders",
+      "calls": [
+        "list_reminders"
+      ],
+      "seconds": 0.8099512300032075,
+      "passed": true
+    },
+    {
+      "turn": 6,
+      "expected_tool": "set_timer",
+      "calls": [
+        "set_timer"
+      ],
+      "seconds": 0.8447139619966038,
+      "passed": true
+    },
+    {
+      "turn": 7,
+      "expected_tool": "set_alarm",
+      "calls": [
+        "set_alarm"
+      ],
+      "seconds": 0.8743266689998563,
+      "passed": true
+    },
+    {
+      "turn": 8,
+      "expected_tool": null,
+      "calls": [],
+      "seconds": 0.7991913349978859,
+      "passed": true
+    },
+    {
+      "turn": 9,
+      "expected_tool": null,
+      "calls": [],
+      "seconds": 0.799137633999635,
+      "passed": true
+    },
+    {
+      "turn": 10,
+      "expected_tool": null,
+      "calls": [],
+      "seconds": 0.8012002730029053,
+      "passed": true
+    },
+    {
+      "turn": 11,
+      "expected_tool": null,
+      "calls": [],
+      "seconds": 0.8582557889967575,
+      "passed": true
+    },
+    {
+      "turn": 12,
+      "expected_tool": null,
+      "calls": [],
+      "seconds": 0.9070688689971576,
+      "passed": true
+    }
+  ]
+}

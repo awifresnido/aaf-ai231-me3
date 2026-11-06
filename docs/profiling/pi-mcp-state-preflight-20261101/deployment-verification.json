@@ -1,0 +1,69 @@
+{
+  "startup_pi": {
+    "configuration": {
+      "run": "afe7b8b933",
+      "experiment": "vcm-pi-mcp-nvme-worker-20261101",
+      "turn": 0,
+      "event": "configuration",
+      "at": 1793536535.023229,
+      "vad_stop_secs": 0.3,
+      "transport": "local",
+      "smart_turn_cpu_count": 2,
+      "orchestration_mode": "local_vcm",
+      "vcm_model_host": "thinkpad",
+      "diagnostics_dir": "/dev/shm/voice-agent-diagnostics/afe7b8b933",
+      "queued_logging": true,
+      "vcm_tool_server_host": "pi",
+      "vcm_tool_transport": "local_stdio",
+      "vcm_state_backend": "jetson_sqlite",
+      "pulse_source": "voice_agent_aec_source",
+      "pulse_sink": "voice_agent_aec_sink",
+      "pacat_latency_ms": 150
+    },
+    "first_playback_events": 1,
+    "original_pi_db_unchanged": true,
+    "changed_setting_names": [
+      "VAD_EXPERIMENT",
+      "VCM_STATE_BACKEND",
+      "VCM_TOOL_SERVER_HOST"
+    ],
+    "pi_mcp_processes": [
+      {
+        "pid": 50276,
+        "script": "/home/aldwinrpi4/voice-agent/mcp_servers/voice_tools_mcp_server.py"
+      }
+    ],
+    "errors_in_tail": []
+  },
+  "startup_jetson": {
+    "processes": [
+      {
+        "pid": 1297656,
+        "script": "/home/aldwin/voice-agent-vcm/pi/vcm_state_worker.py"
+      }
+    ],
+    "existing_state_rows_match_backup": true,
+    "integrity_check": "ok",
+    "journal_mode": "delete",
+    "new_receipt_count": 0
+  },
+  "after_voice_pi_db_unchanged": true,
+  "after_voice_jetson": {
+    "source_sha256": {
+      "vcm_server_location.py": "724aff4cb0dad956af38bc43ffbd7f465b31ef3698d2243b76973cad4fdabf9c",
+      "vcm_state.py": "312071d1ce35ba8ed035b39ce938c682d0a961744562856cab4dc2a15c08ae06",
+      "vcm_state_worker.py": "0e67469c70fa3eac9b4348e205d1fc198153af6c376c3ca05c1ea64fb17a692a"
+    },
+    "integrity_check": "ok",
+    "journal_mode": "delete",
+    "receipt_count": 13
+  },
+  "pi_source_sha256": {
+    "bot.py": "850122b25205a592eb732fb18289aae3422232619d36cb5a51f808cd5aec9b31",
+    "vcm_server_location.py": "724aff4cb0dad956af38bc43ffbd7f465b31ef3698d2243b76973cad4fdabf9c",
+    "vcm_state.py": "312071d1ce35ba8ed035b39ce938c682d0a961744562856cab4dc2a15c08ae06",
+    "vcm_state_worker.py": "0e67469c70fa3eac9b4348e205d1fc198153af6c376c3ca05c1ea64fb17a692a",
+    "mcp_servers/voice_tools_mcp_server.py": "0c5fa1b79cc063c7980d3d76588e3d76a1c7d8f705f070c631b936d11c4cb5a9"
+  },
+  "private_state_or_environment_copied_to_repo": false
+}

@@ -1,0 +1,121 @@
+{
+  "activation": {
+    "backup": "/home/aldwinrpi4/voice-agent-backups/jev-voxtral-20261102-150120",
+    "activated_manila": "2026-11-02T15:01:24.038880+08:00",
+    "log_start_offset": 7451797,
+    "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+    "source_sha256": {
+      "bot.py": "a323834434e6a4b4fe49eb9b1ca18f64667ae8101ceb9617e42c1532337ca74e",
+      "qwen_audio_stt.py": "b55f26e6f551ac22c5df2d6a608a752acc2cd765b496658435b61f781c56ecc0",
+      "voxtral_stt.py": "7c856c2bef54757d9e7bb29c94fd81d2fd4cee3ce0c1448131f77f45315913e4"
+    }
+  },
+  "startup_events": [
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "configuration",
+      "at": 1793602887.8975232,
+      "vad_stop_secs": 0.3,
+      "transport": "local",
+      "smart_turn_cpu_count": 2,
+      "orchestration_mode": "two_brain_plusjev",
+      "vcm_model_host": null,
+      "router_model": "jev",
+      "laya_fallback_policy": null,
+      "classifier_timeout_s": null,
+      "cloud_escalation": true,
+      "asr_backend": "voxtral_mini",
+      "asr_model": "mistralai/Voxtral-Mini-3B-2507",
+      "small_llm_primary_model": "mistralai/Voxtral-Mini-3B-2507",
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "tts_voice": "aiden",
+      "diagnostics_dir": "/dev/shm/voice-agent-diagnostics/7a50558fa3",
+      "queued_logging": true,
+      "vcm_tool_server_host": "pi",
+      "vcm_tool_transport": "local_stdio",
+      "vcm_state_backend": "jetson_sqlite",
+      "pulse_source": "voice_agent_aec_source",
+      "pulse_sink": "voice_agent_aec_sink",
+      "pacat_latency_ms": 150
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "asr_voxtral_server_verified",
+      "at": 1793602893.6104789,
+      "asr_backend": "voxtral_mini",
+      "asr_model": "mistralai/Voxtral-Mini-3B-2507",
+      "chat_template_sha256": "3faa7f0b8d012e01c58769d7ca81a8a87719acc57b59588afbfa47cee0e66dec"
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "tts_qwen_first_audio",
+      "at": 1793602909.1087751,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "7bc20350-7ea6-4a94-a9da-7bd4b9f30570",
+      "first_audio_s": 0.16330747899701237,
+      "http_headers_s": 0.11173038199922303,
+      "sample_rate": 24000,
+      "chars": 78
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "first_playback_write",
+      "at": 1793602909.1270447,
+      "context_id": null,
+      "since_speech_end_ms": null
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "tts_qwen_complete",
+      "at": 1793602909.847166,
+      "tts_backend": "dgx_qwen",
+      "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "context_id": "7bc20350-7ea6-4a94-a9da-7bd4b9f30570",
+      "request_s": 0.9027779689968156,
+      "first_audio_s": 0.16330747899701237,
+      "audio_bytes": 257280,
+      "audio_s": 5.36,
+      "chars": 78
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "first_playback_write",
+      "at": 1793602911.0328329,
+      "context_id": null,
+      "since_speech_end_ms": null
+    },
+    {
+      "run": "7a50558fa3",
+      "experiment": "jev-voxtral-jetson-asr-small-qwen3-aiden-20261102",
+      "turn": 0,
+      "event": "first_playback_write",
+      "at": 1793602912.4790041,
+      "context_id": null,
+      "since_speech_end_ms": null
+    }
+  ],
+  "ready": true,
+  "event_counts": {
+    "configuration": 1,
+    "asr_voxtral_server_verified": 1,
+    "tts_qwen_first_audio": 1,
+    "first_playback_write": 3,
+    "bot_started": 1,
+    "tts_qwen_complete": 1,
+    "routing_context_ready": 1
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "durable-pi": {
+    "sqlite_version": "3.46.1",
+    "summary": {
+      "disk:seed_fsync": {
+        "count": 1,
+        "median_ms": 39.28923,
+        "min_ms": 39.28923,
+        "max_ms": 39.28923
+      },
+      "ram:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.134166,
+        "min_ms": 0.134166,
+        "max_ms": 0.134166
+      },
+      "disk:sqlite_execute": {
+        "count": 6,
+        "median_ms": 0.8190554999999999,
+        "min_ms": 0.660407,
+        "max_ms": 0.943537
+      },
+      "disk:sqlite_commit": {
+        "count": 6,
+        "median_ms": 792.725557,
+        "min_ms": 23.979149,
+        "max_ms": 1937.247556
+      },
+      "ram:sqlite_execute": {
+        "count": 6,
+        "median_ms": 0.7033050000000001,
+        "min_ms": 0.376148,
+        "max_ms": 0.803869
+      },
+      "ram:sqlite_commit": {
+        "count": 6,
+        "median_ms": 0.3789165,
+        "min_ms": 0.169019,
+        "max_ms": 0.469074
+      },
+      "disk:raw_fdatasync": {
+        "count": 2,
+        "median_ms": 7.438336,
+        "min_ms": 5.845254,
+        "max_ms": 9.031418
+      },
+      "disk:raw_fsync": {
+        "count": 2,
+        "median_ms": 8.844705000000001,
+        "min_ms": 8.365344,
+        "max_ms": 9.324066
+      },
+      "ram:raw_fdatasync": {
+        "count": 2,
+        "median_ms": 0.165491,
+        "min_ms": 0.164963,
+        "max_ms": 0.166019
+      },
+      "ram:raw_fsync": {
+        "count": 2,
+        "median_ms": 0.1051205,
+        "min_ms": 0.094408,
+        "max_ms": 0.115833
+      },
+      "lock_control:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.139611,
+        "min_ms": 0.139611,
+        "max_ms": 0.139611
+      },
+      "lock_control:sqlite_commit": {
+        "count": 1,
+        "median_ms": 329.708629,
+        "min_ms": 329.708629,
+        "max_ms": 329.708629
+      }
+    }
+  },
+  "durable-jetson": {
+    "sqlite_version": "3.45.1",
+    "summary": {
+      "disk:seed_fsync": {
+        "count": 1,
+        "median_ms": 1.256855,
+        "min_ms": 1.256855,
+        "max_ms": 1.256855
+      },
+      "ram:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.052353,
+        "min_ms": 0.052353,
+        "max_ms": 0.052353
+      },
+      "disk:sqlite_execute": {
+        "count": 6,
+        "median_ms": 0.619356,
+        "min_ms": 0.276517,
+        "max_ms": 0.640365
+      },
+      "disk:sqlite_commit": {
+        "count": 6,
+        "median_ms": 2.433199,
+        "min_ms": 1.644382,
+        "max_ms": 3.181374
+      },
+      "ram:sqlite_execute": {
+        "count": 6,
+        "median_ms": 0.35141500000000003,
+        "min_ms": 0.196419,
+        "max_ms": 0.384584
+      },
+      "ram:sqlite_commit": {
+        "count": 6,
+        "median_ms": 0.19747599999999998,
+        "min_ms": 0.114882,
+        "max_ms": 0.208196
+      },
+      "disk:raw_fdatasync": {
+        "count": 2,
+        "median_ms": 0.9278575,
+        "min_ms": 0.802383,
+        "max_ms": 1.053332
+      },
+      "disk:raw_fsync": {
+        "count": 2,
+        "median_ms": 0.7443985,
+        "min_ms": 0.424008,
+        "max_ms": 1.064789
+      },
+      "ram:raw_fdatasync": {
+        "count": 2,
+        "median_ms": 0.080402,
+        "min_ms": 0.077698,
+        "max_ms": 0.083106
+      },
+      "ram:raw_fsync": {
+        "count": 2,
+        "median_ms": 0.055265499999999995,
+        "min_ms": 0.055074,
+        "max_ms": 0.055457
+      },
+      "lock_control:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.082274,
+        "min_ms": 0.082274,
+        "max_ms": 0.082274
+      },
+      "lock_control:sqlite_commit": {
+        "count": 1,
+        "median_ms": 329.190648,
+        "min_ms": 329.190648,
+        "max_ms": 329.190648
+      }
+    }
+  }
+}

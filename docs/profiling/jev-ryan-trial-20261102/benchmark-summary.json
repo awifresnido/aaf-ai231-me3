@@ -1,0 +1,988 @@
+{
+  "run": "9576b0bcb6",
+  "router": "jev-1.14.0",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "voice": "ryan",
+  "bounds": {
+    "direct": [
+      1,
+      15
+    ],
+    "transition": [
+      16,
+      16
+    ],
+    "context": [
+      17,
+      24
+    ]
+  },
+  "boundary_note": "Direct/context sets inferred from command content; hearing check at 16 separated as transition.",
+  "counts": {
+    "speech_start_events": 24,
+    "timed_replies": 23,
+    "asr_missing_turns": [
+      6
+    ],
+    "interrupted_before_spoken_reply": [],
+    "successful_jev_results": 20,
+    "jev_timeouts": 0,
+    "jev_failures": 0,
+    "classifier_bypass": 1,
+    "compound_bypass": 2,
+    "jev_route_tool": 8,
+    "jev_route_smalltalk": 0,
+    "route_glm_events": 15,
+    "successful_human_qwen_requests": 31,
+    "failed_human_qwen_http_requests": 0,
+    "qwen_cancellations": 0,
+    "late_context_recreation_turns": []
+  },
+  "groups": {
+    "direct": {
+      "native_e2e_s": {
+        "count": 14,
+        "p50": 2.6679757833480835,
+        "p95_nearest_rank": 8.136401176452637,
+        "min": 1.0559051036834717,
+        "max": 8.136401176452637,
+        "mean": 2.793308002608163
+      },
+      "first_playback_e2e_s": {
+        "count": 14,
+        "p50": 2.66553,
+        "p95_nearest_rank": 8.13407,
+        "min": 1.05361,
+        "max": 8.13407,
+        "mean": 2.7906685714285713
+      },
+      "jev_client_s": {
+        "count": 12,
+        "p50": 0.28493959350089426,
+        "p95_nearest_rank": 0.3549126839989185,
+        "min": 0.26319076900108485,
+        "max": 0.3549126839989185,
+        "mean": 0.2885948897498262
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 14,
+        "p50": 0.17351332099951833,
+        "p95_nearest_rank": 0.3616167479995056,
+        "min": 0.15739119599857077,
+        "max": 0.3616167479995056,
+        "mean": 0.19445145549980225
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 18,
+        "p50": 0.16286289200070314,
+        "p95_nearest_rank": 0.3616167479995056,
+        "min": 0.09684345399909944,
+        "max": 0.3616167479995056,
+        "mean": 0.1741391580552671
+      },
+      "qwen_all_request_complete_s": {
+        "count": 18,
+        "p50": 0.6213431070000297,
+        "p95_nearest_rank": 0.9709259860010206,
+        "min": 0.24699051000061445,
+        "max": 0.9709259860010206,
+        "mean": 0.6240535471111394
+      }
+    },
+    "transition": {
+      "native_e2e_s": {
+        "count": 1,
+        "p50": 2.5871188640594482,
+        "p95_nearest_rank": 2.5871188640594482,
+        "min": 2.5871188640594482,
+        "max": 2.5871188640594482,
+        "mean": 2.5871188640594482
+      },
+      "first_playback_e2e_s": {
+        "count": 1,
+        "p50": 2.5846,
+        "p95_nearest_rank": 2.5846,
+        "min": 2.5846,
+        "max": 2.5846,
+        "mean": 2.5846
+      },
+      "jev_client_s": {
+        "count": 1,
+        "p50": 0.27667082600055437,
+        "p95_nearest_rank": 0.27667082600055437,
+        "min": 0.27667082600055437,
+        "max": 0.27667082600055437,
+        "mean": 0.27667082600055437
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 1,
+        "p50": 0.17508326700044563,
+        "p95_nearest_rank": 0.17508326700044563,
+        "min": 0.17508326700044563,
+        "max": 0.17508326700044563,
+        "mean": 0.17508326700044563
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 2,
+        "p50": 0.1380487100004757,
+        "p95_nearest_rank": 0.17508326700044563,
+        "min": 0.10101415300050576,
+        "max": 0.17508326700044563,
+        "mean": 0.1380487100004757
+      },
+      "qwen_all_request_complete_s": {
+        "count": 2,
+        "p50": 0.6360388010007227,
+        "p95_nearest_rank": 0.6727250530002493,
+        "min": 0.5993525490011962,
+        "max": 0.6727250530002493,
+        "mean": 0.6360388010007227
+      }
+    },
+    "context": {
+      "native_e2e_s": {
+        "count": 8,
+        "p50": 4.975452423095703,
+        "p95_nearest_rank": 6.567273378372192,
+        "min": 1.345900535583496,
+        "max": 6.567273378372192,
+        "mean": 4.6250578463077545
+      },
+      "first_playback_e2e_s": {
+        "count": 8,
+        "p50": 4.973165,
+        "p95_nearest_rank": 6.56441,
+        "min": 1.3436,
+        "max": 6.56441,
+        "mean": 4.6227225
+      },
+      "jev_client_s": {
+        "count": 7,
+        "p50": 0.2922936249997292,
+        "p95_nearest_rank": 0.2984582400004001,
+        "min": 0.27711033199921076,
+        "max": 0.2984582400004001,
+        "mean": 0.2889902244283543
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 8,
+        "p50": 0.17844010050066572,
+        "p95_nearest_rank": 0.25501612199877854,
+        "min": 0.16054749899922172,
+        "max": 0.25501612199877854,
+        "mean": 0.1860873172497577
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 11,
+        "p50": 0.17596482800036028,
+        "p95_nearest_rank": 0.25501612199877854,
+        "min": 0.10290222799994808,
+        "max": 0.25501612199877854,
+        "mean": 0.1651829441816517
+      },
+      "qwen_all_request_complete_s": {
+        "count": 11,
+        "p50": 0.6236451880013192,
+        "p95_nearest_rank": 1.0449387039989233,
+        "min": 0.3170826000005036,
+        "max": 1.0449387039989233,
+        "mean": 0.6611398518183375
+      }
+    },
+    "all_human": {
+      "native_e2e_s": {
+        "count": 23,
+        "p50": 3.187995195388794,
+        "p95_nearest_rank": 6.567273378372192,
+        "min": 1.0559051036834717,
+        "max": 8.136401176452637,
+        "mean": 3.42147363787112
+      },
+      "first_playback_e2e_s": {
+        "count": 23,
+        "p50": 3.1855900000000004,
+        "p95_nearest_rank": 6.56441,
+        "min": 1.05361,
+        "max": 8.13407,
+        "mean": 3.4189452173913044
+      },
+      "jev_client_s": {
+        "count": 20,
+        "p50": 0.2854187805005495,
+        "p95_nearest_rank": 0.3032147519988939,
+        "min": 0.26319076900108485,
+        "max": 0.3549126839989185,
+        "mean": 0.28813705369984743
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 23,
+        "p50": 0.17596482800036028,
+        "p95_nearest_rank": 0.29954332699890074,
+        "min": 0.15739119599857077,
+        "max": 0.3616167479995056,
+        "mean": 0.19070009486937994
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 31,
+        "p50": 0.17016625499854854,
+        "p95_nearest_rank": 0.29954332699890074,
+        "min": 0.09684345399909944,
+        "max": 0.3616167479995056,
+        "mean": 0.16863273067722348
+      },
+      "qwen_all_request_complete_s": {
+        "count": 31,
+        "p50": 0.6236451880013192,
+        "p95_nearest_rank": 0.9709259860010206,
+        "min": 0.24699051000061445,
+        "max": 1.0449387039989233,
+        "mean": 0.6379864458065698
+      }
+    }
+  },
+  "by_route": {
+    "route_tool": {
+      "turns": [
+        2,
+        4,
+        8,
+        10,
+        11,
+        13,
+        14,
+        21
+      ],
+      "native_e2e_s": {
+        "count": 8,
+        "p50": 1.3165963888168335,
+        "p95_nearest_rank": 2.3574957847595215,
+        "min": 1.0559051036834717,
+        "max": 2.3574957847595215,
+        "mean": 1.4341011345386505
+      }
+    },
+    "route_smalltalk": {
+      "turns": [],
+      "native_e2e_s": {
+        "count": 0
+      }
+    },
+    "route_glm": {
+      "turns": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        12,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23,
+        24
+      ],
+      "native_e2e_s": {
+        "count": 15,
+        "p50": 4.418877124786377,
+        "p95_nearest_rank": 8.136401176452637,
+        "min": 2.5871188640594482,
+        "max": 8.136401176452637,
+        "mean": 4.481405639648438
+      }
+    }
+  },
+  "issues": [],
+  "observations": [
+    {
+      "turn": 6,
+      "event": "no_final_asr",
+      "note": "Between message request and message-status question; no response or send_message call. Intended missing speech cannot be recovered from metadata."
+    },
+    {
+      "turn": 12,
+      "event": "slow_compound_reply",
+      "e2e_s": 8.136401176452637,
+      "glm_generation_s": [
+        2.97,
+        1.305
+      ],
+      "qwen_first_pcm_s": 0.1998285499994381,
+      "note": "Smart Turn judged both stops incomplete, delaying routing; GLM issued color and volume tools. Tool calls about 36 and 43 ms."
+    },
+    {
+      "turn": 17,
+      "event": "slow_context_reply",
+      "e2e_s": 6.567273378372192,
+      "qwen_first_pcm_s": 0.18312267900000734,
+      "note": "Smart Turn initially incomplete; low-confidence lights choice escalated to GLM, which turned lights on."
+    }
+  ],
+  "previous_run_comparison": {
+    "run": "f0c87b3a33",
+    "changed_runtime_setting": "speaker: Aiden to Ryan; router and source unchanged",
+    "groups": {
+      "direct": {
+        "current": {
+          "count": 14,
+          "p50": 2.6679757833480835,
+          "p95_nearest_rank": 8.136401176452637,
+          "min": 1.0559051036834717,
+          "max": 8.136401176452637,
+          "mean": 2.793308002608163
+        },
+        "previous": {
+          "count": 13,
+          "p50": 1.477433443069458,
+          "p95_nearest_rank": 4.323714971542358,
+          "min": 1.073314905166626,
+          "max": 4.323714971542358,
+          "mean": 2.1088431981893687
+        }
+      },
+      "context": {
+        "current": {
+          "count": 8,
+          "p50": 4.975452423095703,
+          "p95_nearest_rank": 6.567273378372192,
+          "min": 1.345900535583496,
+          "max": 6.567273378372192,
+          "mean": 4.6250578463077545
+        },
+        "previous": {
+          "count": 9,
+          "p50": 4.960083484649658,
+          "p95_nearest_rank": 12.085700750350952,
+          "min": 2.4063048362731934,
+          "max": 12.085700750350952,
+          "mean": 5.627757761213514
+        }
+      },
+      "all_human": {
+        "current": {
+          "count": 23,
+          "p50": 3.187995195388794,
+          "p95_nearest_rank": 6.567273378372192,
+          "min": 1.0559051036834717,
+          "max": 8.136401176452637,
+          "mean": 3.42147363787112
+        },
+        "previous": {
+          "count": 23,
+          "p50": 2.5593886375427246,
+          "p95_nearest_rank": 7.277637958526611,
+          "min": 1.073314905166626,
+          "max": 12.085700750350952,
+          "mean": 3.50539869847505
+        }
+      }
+    },
+    "by_route": {
+      "route_tool": {
+        "current": {
+          "count": 8,
+          "p50": 1.3165963888168335,
+          "p95_nearest_rank": 2.3574957847595215,
+          "min": 1.0559051036834717,
+          "max": 2.3574957847595215,
+          "mean": 1.4341011345386505
+        },
+        "previous": {
+          "count": 9,
+          "p50": 1.3134315013885498,
+          "p95_nearest_rank": 2.4063048362731934,
+          "min": 1.073314905166626,
+          "max": 2.4063048362731934,
+          "mean": 1.487540192074246
+        }
+      },
+      "route_glm": {
+        "current": {
+          "count": 15,
+          "p50": 4.418877124786377,
+          "p95_nearest_rank": 8.136401176452637,
+          "min": 2.5871188640594482,
+          "max": 8.136401176452637,
+          "mean": 4.481405639648438
+        },
+        "previous": {
+          "count": 12,
+          "p50": 4.428309440612793,
+          "p95_nearest_rank": 12.085700750350952,
+          "min": 2.5593886375427246,
+          "max": 12.085700750350952,
+          "mean": 5.266615390777588
+        }
+      }
+    },
+    "jev_client_s": {
+      "current": {
+        "count": 20,
+        "p50": 0.2854187805005495,
+        "p95_nearest_rank": 0.3032147519988939,
+        "min": 0.26319076900108485,
+        "max": 0.3549126839989185,
+        "mean": 0.28813705369984743
+      },
+      "previous": {
+        "count": 20,
+        "p50": 0.2826670029990055,
+        "p95_nearest_rank": 0.41389304699987406,
+        "min": 0.2556472249998478,
+        "max": 0.484857422999994,
+        "mean": 0.2967792120999547
+      }
+    },
+    "qwen_first_pcm_s": {
+      "current": {
+        "count": 31,
+        "p50": 0.17016625499854854,
+        "p95_nearest_rank": 0.29954332699890074,
+        "min": 0.09684345399909944,
+        "max": 0.3616167479995056,
+        "mean": 0.16863273067722348
+      },
+      "previous": {
+        "count": 30,
+        "p50": 0.16472217599948635,
+        "p95_nearest_rank": 1.4091754199998832,
+        "min": 0.10557792899999185,
+        "max": 3.7193421899992245,
+        "mean": 0.325105779999952
+      }
+    },
+    "note": "Observational comparison: different wording, persistent state, GLM generations and downstream route mix. Ryan had 15/23 GLM replies versus 12/23 for Aiden. No causal voice-speed estimate from aggregate medians."
+  },
+  "correctness_notes": [
+    "Eight fast tool replies and 15 GLM replies; no local small-talk replies.",
+    "Pronoun-based green follow-up, contextual brightness, dark room and Manila-time choices were below Jev confidence threshold and escalated.",
+    "Context green preference was accepted directly and changed lights in 1.346 s.",
+    "Message status correctly acknowledged no message sent after the missing-ASR segment; no send_message call was made.",
+    "No acoustic recording or objective voice-consistency assessment."
+  ],
+  "measurement_limits": [
+    "Estimated speech end to software bot start/playback, not physical acoustic onset.",
+    "Successful reply statistics exclude the one missing-ASR segment.",
+    "Classifier wait includes network; isolated Jev inference time is unavailable.",
+    "TTS client timings include network/server and full request may include generator backpressure.",
+    "Nearest-rank P95 on small samples.",
+    "Multiple VAD stops can occur within one turn; E2E uses final stop, consistent with native observer.",
+    "Response latency alone does not establish action correctness."
+  ],
+  "per_turn": [
+    {
+      "turn": 0,
+      "case": "startup_greeting",
+      "group": "startup",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.33721521100051177,
+      "qwen_complete_requests": 1,
+      "asr_frames": 0,
+      "routes": []
+    },
+    {
+      "turn": 1,
+      "case": "hearing_check_direct",
+      "group": "direct",
+      "native_e2e_s": 3.187995195388794,
+      "first_playback_e2e_s": 3.1855900000000004,
+      "jev_client_s": 0.3549126839989185,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.19689193799968052,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.3549126839989185,
+          "router_s": 0.35654254899964144
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "case": "lights_on",
+      "group": "direct",
+      "native_e2e_s": 1.317718267440796,
+      "first_playback_e2e_s": 1.3153599999999999,
+      "jev_client_s": 0.26319076900108485,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.15832967899950745,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.26319076900108485,
+          "router_s": 0.28881920499952685
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "case": "green_pronoun_followup",
+      "group": "direct",
+      "native_e2e_s": 3.7589986324310303,
+      "first_playback_e2e_s": 3.75679,
+      "jev_client_s": 0.27623945599953004,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.15904101399974024,
+      "qwen_complete_requests": 1,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.27623945599953004,
+          "router_s": 0.27738602600038575
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "case": "thermostat_twenty_five",
+      "group": "direct",
+      "native_e2e_s": 1.284163236618042,
+      "first_playback_e2e_s": 1.28132,
+      "jev_client_s": 0.2761896319989319,
+      "jev_choice": "set_thermostat",
+      "accepted_choice": "set_thermostat",
+      "qwen_first_request_pcm_s": 0.17594620599993505,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "set_thermostat",
+          "classifier_s": 0.2761896319989319,
+          "router_s": 0.2985499690003053
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "case": "message_request_no_body",
+      "group": "direct",
+      "native_e2e_s": 2.9784557819366455,
+      "first_playback_e2e_s": 2.9761100000000003,
+      "jev_client_s": 0.2759747130003234,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.29954332699890074,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2759747130003234,
+          "router_s": 0.27727835699988646
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "case": "no_final_asr",
+      "group": "direct",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "asr_frames": 0,
+      "routes": []
+    },
+    {
+      "turn": 7,
+      "case": "message_status_followup",
+      "group": "direct",
+      "native_e2e_s": 3.14031720161438,
+      "first_playback_e2e_s": 3.13704,
+      "jev_client_s": 0.28585018800004036,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.16124454100099683,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.28585018800004036,
+          "router_s": 0.2869822779994138
+        }
+      ]
+    },
+    {
+      "turn": 8,
+      "case": "reminder_eat_lunch",
+      "group": "direct",
+      "native_e2e_s": 1.0559051036834717,
+      "first_playback_e2e_s": 1.05361,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.16448124300040945,
+      "qwen_complete_requests": 1,
+      "asr_frames": 4,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "add_reminder",
+          "classifier_s": 0.0,
+          "router_s": 0.03507526799876359
+        }
+      ]
+    },
+    {
+      "turn": 9,
+      "case": "music_catalog",
+      "group": "direct",
+      "native_e2e_s": 4.418877124786377,
+      "first_playback_e2e_s": 4.41493,
+      "jev_client_s": 0.3032147519988939,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1587892820007255,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.3032147519988939,
+          "router_s": 0.30471880400000373
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "case": "color_red",
+      "group": "direct",
+      "native_e2e_s": 1.2365968227386475,
+      "first_playback_e2e_s": 1.23438,
+      "jev_client_s": 0.28489181400072994,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.1710804359991016,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.28489181400072994,
+          "router_s": 0.30709350899996934
+        }
+      ]
+    },
+    {
+      "turn": 11,
+      "case": "volume_up",
+      "group": "direct",
+      "native_e2e_s": 1.5595548152923584,
+      "first_playback_e2e_s": 1.5564,
+      "jev_client_s": 0.29352666399972804,
+      "jev_choice": "playback_control",
+      "accepted_choice": "playback_control",
+      "qwen_first_request_pcm_s": 0.3616167479995056,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "playback_control",
+          "classifier_s": 0.29352666399972804,
+          "router_s": 0.3189195360009762
+        }
+      ]
+    },
+    {
+      "turn": 12,
+      "case": "compound_green_and_volume_down",
+      "group": "direct",
+      "native_e2e_s": 8.136401176452637,
+      "first_playback_e2e_s": 8.13407,
+      "jev_client_s": 0.28886264899847447,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1998285499994381,
+      "qwen_complete_requests": 1,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.28886264899847447,
+          "router_s": 0.2901323299993237
+        }
+      ]
+    },
+    {
+      "turn": 13,
+      "case": "weather_direct",
+      "group": "direct",
+      "native_e2e_s": 2.3574957847595215,
+      "first_playback_e2e_s": 2.3549499999999997,
+      "jev_client_s": 0.2849873730010586,
+      "jev_choice": "get_weather",
+      "accepted_choice": "get_weather",
+      "qwen_first_request_pcm_s": 0.17679139699976076,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_weather",
+          "classifier_s": 0.2849873730010586,
+          "router_s": 1.3989627539995126
+        }
+      ]
+    },
+    {
+      "turn": 14,
+      "case": "time_direct",
+      "group": "direct",
+      "native_e2e_s": 1.315474510192871,
+      "first_playback_e2e_s": 1.31315,
+      "jev_client_s": 0.2752979830002005,
+      "jev_choice": "get_time",
+      "accepted_choice": "get_time",
+      "qwen_first_request_pcm_s": 0.15739119599857077,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_time",
+          "classifier_s": 0.2752979830002005,
+          "router_s": 0.2876107080010115
+        }
+      ]
+    },
+    {
+      "turn": 15,
+      "case": "compound_stop_music_lights_off",
+      "group": "direct",
+      "native_e2e_s": 3.358358383178711,
+      "first_playback_e2e_s": 3.35566,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.18134482000095886,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.0,
+          "router_s": 0.0
+        }
+      ]
+    },
+    {
+      "turn": 16,
+      "case": "hearing_check_transition",
+      "group": "transition",
+      "native_e2e_s": 2.5871188640594482,
+      "first_playback_e2e_s": 2.5846,
+      "jev_client_s": 0.27667082600055437,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17508326700044563,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.27667082600055437,
+          "router_s": 0.27793776700127637
+        }
+      ]
+    },
+    {
+      "turn": 17,
+      "case": "dark_room",
+      "group": "context",
+      "native_e2e_s": 6.567273378372192,
+      "first_playback_e2e_s": 6.56441,
+      "jev_client_s": 0.2984582400004001,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.18312267900000734,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2984582400004001,
+          "router_s": 0.2998222909991455
+        }
+      ]
+    },
+    {
+      "turn": 18,
+      "case": "room_too_bright",
+      "group": "context",
+      "native_e2e_s": 4.428959608078003,
+      "first_playback_e2e_s": 4.42663,
+      "jev_client_s": 0.2926678740004718,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17016625499854854,
+      "qwen_complete_requests": 1,
+      "asr_frames": 4,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2926678740004718,
+          "router_s": 0.29381990900037636
+        }
+      ]
+    },
+    {
+      "turn": 19,
+      "case": "heat_complaint",
+      "group": "context",
+      "native_e2e_s": 5.01840353012085,
+      "first_playback_e2e_s": 5.01608,
+      "jev_client_s": 0.2922936249997292,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.18086417599988636,
+      "qwen_complete_requests": 1,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2922936249997292,
+          "router_s": 0.29344775099889375
+        }
+      ]
+    },
+    {
+      "turn": 20,
+      "case": "alarm_tomorrow_six",
+      "group": "context",
+      "native_e2e_s": 3.8942854404449463,
+      "first_playback_e2e_s": 3.8920100000000004,
+      "jev_client_s": 0.27850965299876407,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.25501612199877854,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.27850965299876407,
+          "router_s": 0.2796268899983261
+        }
+      ]
+    },
+    {
+      "turn": 21,
+      "case": "green_preference_fast",
+      "group": "context",
+      "native_e2e_s": 1.345900535583496,
+      "first_playback_e2e_s": 1.3436,
+      "jev_client_s": 0.27711033199921076,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.16054749899922172,
+      "qwen_complete_requests": 1,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.27711033199921076,
+          "router_s": 0.299122404998343
+        }
+      ]
+    },
+    {
+      "turn": 22,
+      "case": "rain_today",
+      "group": "context",
+      "native_e2e_s": 5.64586067199707,
+      "first_playback_e2e_s": 5.643890000000001,
+      "jev_client_s": 0.2882634559991857,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.18700095399981365,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2882634559991857,
+          "router_s": 0.2894262299996626
+        }
+      ]
+    },
+    {
+      "turn": 23,
+      "case": "manila_time",
+      "group": "context",
+      "native_e2e_s": 4.932501316070557,
+      "first_playback_e2e_s": 4.93025,
+      "jev_client_s": 0.2956283910007187,
+      "jev_choice": "get_time",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1760160250014451,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2956283910007187,
+          "router_s": 0.29677657399952295
+        }
+      ]
+    },
+    {
+      "turn": 24,
+      "case": "compound_stop_music_lights_off_context",
+      "group": "context",
+      "native_e2e_s": 5.167278289794922,
+      "first_playback_e2e_s": 5.16491,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17596482800036028,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.0,
+          "router_s": 0.0
+        }
+      ]
+    }
+  ]
+}

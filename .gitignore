@@ -18,3 +18,6 @@ __pycache__/
 
 # node
 node_modules/
+
+# dashboard frontend build artifact
+dashboard/frontend/dist/

@@ -1,0 +1,151 @@
+{
+  "run_ids": [
+    "pi-state-preflight-20261101"
+  ],
+  "event_count": 233,
+  "incomplete_lines": 0,
+  "unfinished_spans": [],
+  "max_reported_dropped": 0,
+  "max_reported_write_errors": 0,
+  "model_ms": {
+    "count": 0,
+    "median": null
+  },
+  "event_loop": {
+    "mcp": {
+      "count_over_50ms": 0,
+      "max_lag_ms": 0
+    },
+    "pi": {
+      "count_over_50ms": 0,
+      "max_lag_ms": 0
+    },
+    "state": {
+      "count_over_50ms": 0,
+      "max_lag_ms": 0
+    }
+  },
+  "slowest_normal_logs": [],
+  "calls": [
+    {
+      "call_id": "00bd30d3bcd3449d86c81a5e4f4acdfb",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 21.335,
+      "mcp_open_session_ms": 0.042,
+      "mcp_rpc_ms": 19.435,
+      "mcp_server_call_ms": 12.205,
+      "tool_execute_ms": 10.393,
+      "sqlite_connect_ms": 0.291,
+      "sqlite_execute_ms": 2.326,
+      "sqlite_fetchone_ms": 0.031,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 2.228,
+      "sqlite_close_ms": 0.334,
+      "http_request_ms": null,
+      "state_rpc_ms": 9.764,
+      "state_worker_call_ms": 6.831,
+      "state_request_count": 1,
+      "sqlite_components": [
+        "state"
+      ],
+      "state_rpc_outside_worker_ms": 2.933,
+      "client_before_rpc_ms": 0.508,
+      "client_after_rpc_ms": 1.366,
+      "rpc_to_server_entry_ms": 4.818,
+      "server_exit_to_rpc_return_ms": 2.451,
+      "same_clock_domain": true,
+      "rpc_outside_server_ms": 7.23
+    },
+    {
+      "call_id": "5b1677fb211e40498469deae7dec2abd",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 26.87,
+      "mcp_open_session_ms": 0.121,
+      "mcp_rpc_ms": 22.435,
+      "mcp_server_call_ms": 13.686,
+      "tool_execute_ms": 11.147,
+      "sqlite_connect_ms": 0.392,
+      "sqlite_execute_ms": 2.997,
+      "sqlite_fetchone_ms": 0.224,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 2.028,
+      "sqlite_close_ms": 0.213,
+      "http_request_ms": null,
+      "state_rpc_ms": 10.35,
+      "state_worker_call_ms": 8.036,
+      "state_request_count": 1,
+      "sqlite_components": [
+        "state"
+      ],
+      "state_rpc_outside_worker_ms": 2.314,
+      "client_before_rpc_ms": 2.373,
+      "client_after_rpc_ms": 2.013,
+      "rpc_to_server_entry_ms": 4.834,
+      "server_exit_to_rpc_return_ms": 3.951,
+      "same_clock_domain": true,
+      "rpc_outside_server_ms": 8.749
+    },
+    {
+      "call_id": "797c1ea0b6f74a05b5eff83a1f8f71b4",
+      "tool": "set_thermostat",
+      "error": null,
+      "mcp_client_total_ms": 24.465,
+      "mcp_open_session_ms": 0.096,
+      "mcp_rpc_ms": 20.39,
+      "mcp_server_call_ms": 12.844,
+      "tool_execute_ms": 10.468,
+      "sqlite_connect_ms": 0.394,
+      "sqlite_execute_ms": 2.755,
+      "sqlite_fetchone_ms": 0.023,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 2.155,
+      "sqlite_close_ms": 0.209,
+      "http_request_ms": null,
+      "state_rpc_ms": 9.818,
+      "state_worker_call_ms": 7.545,
+      "state_request_count": 1,
+      "sqlite_components": [
+        "state"
+      ],
+      "state_rpc_outside_worker_ms": 2.273,
+      "client_before_rpc_ms": 1.351,
+      "client_after_rpc_ms": 2.694,
+      "rpc_to_server_entry_ms": 4.135,
+      "server_exit_to_rpc_return_ms": 3.447,
+      "same_clock_domain": true,
+      "rpc_outside_server_ms": 7.545
+    },
+    {
+      "call_id": "becdb8d835464a4cbc52fb1c775c3e65",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 25.623,
+      "mcp_open_session_ms": 0.078,
+      "mcp_rpc_ms": 21.803,
+      "mcp_server_call_ms": 13.235,
+      "tool_execute_ms": 11.033,
+      "sqlite_connect_ms": 0.387,
+      "sqlite_execute_ms": 3.174,
+      "sqlite_fetchone_ms": 0.179,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 2.303,
+      "sqlite_close_ms": 0.284,
+      "http_request_ms": null,
+      "state_rpc_ms": 10.454,
+      "state_worker_call_ms": 8.458,
+      "state_request_count": 1,
+      "sqlite_components": [
+        "state"
+      ],
+      "state_rpc_outside_worker_ms": 1.996,
+      "client_before_rpc_ms": 1.147,
+      "client_after_rpc_ms": 2.655,
+      "rpc_to_server_entry_ms": 4.129,
+      "server_exit_to_rpc_return_ms": 4.409,
+      "same_clock_domain": true,
+      "rpc_outside_server_ms": 8.568
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=Optional resident Laya text router (no MCP)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/aldlinux/ai/voice-agent-cluster/aaf-ai231-me3
+ExecStart=/home/aldlinux/ai/laya-env/bin/python scripts/serve_laya_router.py --threads 2 --port 8082
+Environment=HF_HUB_OFFLINE=1
+Environment=TOKENIZERS_PARALLELISM=false
+Restart=on-failure
+RestartSec=5
+TimeoutStartSec=120
+UMask=0077
+
+[Install]
+WantedBy=default.target

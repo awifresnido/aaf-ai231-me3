@@ -1,0 +1,277 @@
+{
+  "dgx": {
+    "run": "7373bf308b",
+    "e2e": {
+      "n": 24,
+      "median_s": 3.901,
+      "p95_s": 7.958,
+      "max_s": 8.774
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 25,
+      "median_s": 467.37,
+      "p95_s": 2852.4,
+      "max_s": 3484.47
+    },
+    "jev": {
+      "n": 22,
+      "median_s": 0.294,
+      "p95_s": 0.38,
+      "max_s": 0.437
+    },
+    "tts_first_audio": {
+      "n": 41,
+      "median_s": 0.171,
+      "p95_s": 0.203,
+      "max_s": 1.491
+    },
+    "tts_complete": {
+      "n": 41,
+      "median_s": 0.649,
+      "p95_s": 1.397,
+      "max_s": 1.958
+    },
+    "routes": {
+      "route_smalltalk": 2,
+      "route_glm": 20,
+      "route_tool": 2
+    },
+    "classifier_failures": 1
+  },
+  "mac": {
+    "run": "9c5da96c89",
+    "e2e": {
+      "n": 30,
+      "median_s": 5.478,
+      "p95_s": 13.758,
+      "max_s": 18.277
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 21,
+      "median_s": 485.69,
+      "p95_s": 2303.42,
+      "max_s": 2977.96
+    },
+    "jev": {
+      "n": 30,
+      "median_s": 0.285,
+      "p95_s": 0.337,
+      "max_s": 0.343
+    },
+    "tts_first_audio": {
+      "n": 45,
+      "median_s": 1.725,
+      "p95_s": 4.2,
+      "max_s": 6.01
+    },
+    "tts_complete": {
+      "n": 45,
+      "median_s": 1.731,
+      "p95_s": 4.213,
+      "max_s": 6.021
+    },
+    "routes": {
+      "route_glm": 22,
+      "route_tool": 7,
+      "route_smalltalk": 1
+    },
+    "classifier_failures": 0
+  },
+  "mac_stream": {
+    "run": "23dff71cba",
+    "e2e": {
+      "n": 29,
+      "median_s": 3.669,
+      "p95_s": 6.903,
+      "max_s": 7.551
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 22,
+      "median_s": 0.441,
+      "p95_s": 0.853,
+      "max_s": 1.955
+    },
+    "jev": {
+      "n": 27,
+      "median_s": 0.283,
+      "p95_s": 0.378,
+      "max_s": 0.475
+    },
+    "tts_first_audio": {
+      "n": 41,
+      "median_s": 0.327,
+      "p95_s": 0.637,
+      "max_s": 0.791
+    },
+    "tts_complete": {
+      "n": 41,
+      "median_s": 3.292,
+      "p95_s": 6.69,
+      "max_s": 14.414
+    },
+    "generation_x_realtime": {
+      "median": 0.91,
+      "share_slower_than_realtime": 0.59,
+      "min": 0.71
+    },
+    "routes": {
+      "route_glm": 23,
+      "route_tool": 6
+    },
+    "classifier_failures": 0,
+    "tts_failures": 0,
+    "tts_cancellations": 0
+  },
+  "mac_stream_pcm60": {
+    "run": "80010e1930",
+    "note": "same Mac streaming TTS as mac_stream; speaker PCM 60%; local Llama small model was DOWN (Jetson :8084), so every smalltalk/extraction fell to GLM",
+    "e2e": {
+      "n": 30,
+      "median_s": 4.064,
+      "p95_s": 8.414,
+      "max_s": 9.245
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 26,
+      "median_s": 0.427,
+      "p95_s": 0.799,
+      "max_s": 0.892
+    },
+    "jev": {
+      "n": 29,
+      "median_s": 0.286,
+      "p95_s": 0.397,
+      "max_s": 0.553
+    },
+    "tts_first_audio": {
+      "n": 52,
+      "median_s": 0.321,
+      "p95_s": 0.541,
+      "max_s": 1.298
+    },
+    "tts_complete": {
+      "n": 51,
+      "median_s": 2.591,
+      "p95_s": 7.98,
+      "max_s": 10.171
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 4,
+        "median_s": 1.47
+      },
+      "glm": {
+        "n": 26,
+        "median_s": 4.95
+      }
+    },
+    "routes": {
+      "route_glm": 28,
+      "route_tool": 4
+    },
+    "classifier_failures": 0
+  },
+  "whisper_dgx_aiden": {
+    "run": "844e8c074f",
+    "note": "ASR switched to whisper.cpp large-v3-turbo on Jetson CUDA (:8090); TTS back to DGX Aiden; small model still down",
+    "e2e": {
+      "n": 27,
+      "median_s": 4.894,
+      "p95_s": 13.187,
+      "max_s": 22.587
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 28,
+      "median_s": 1.405,
+      "p95_s": 1.542,
+      "max_s": 4.0
+    },
+    "jev": {
+      "n": 25,
+      "median_s": 0.281,
+      "p95_s": 0.366,
+      "max_s": 0.44
+    },
+    "tts_first_audio": {
+      "n": 51,
+      "median_s": 0.162,
+      "p95_s": 1.884,
+      "max_s": 3.973
+    },
+    "tts_complete": {
+      "n": 50,
+      "median_s": 0.738,
+      "p95_s": 4.398,
+      "max_s": 6.607
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 5,
+        "median_s": 3.33
+      },
+      "glm": {
+        "n": 22,
+        "median_s": 5.18
+      }
+    },
+    "routes": {
+      "route_glm": 23,
+      "route_tool": 5
+    },
+    "classifier_failures": 0
+  },
+  "whisper_dgx_smallmodel": {
+    "run": "3ba3a6592d",
+    "note": "whisper.cpp ASR + DGX Aiden TTS + Jetson Llama 3.2 3B small model restored (persistent unit, CUDA)",
+    "e2e": {
+      "n": 24,
+      "median_s": 3.571,
+      "p95_s": 6.559,
+      "max_s": 7.163
+    },
+    "asr_speech_end_to_transcript_ms": {
+      "n": 24,
+      "median_s": 1.404,
+      "p95_s": 1.486,
+      "max_s": 1.596
+    },
+    "jev": {
+      "n": 21,
+      "median_s": 0.28,
+      "p95_s": 0.419,
+      "max_s": 0.783
+    },
+    "tts_first_audio": {
+      "n": 41,
+      "median_s": 0.15,
+      "p95_s": 0.169,
+      "max_s": 0.438
+    },
+    "tts_complete": {
+      "n": 41,
+      "median_s": 0.583,
+      "p95_s": 1.089,
+      "max_s": 1.733
+    },
+    "by_route": {
+      "fast_tool": {
+        "n": 6,
+        "median_s": 1.86
+      },
+      "smalltalk_local": {
+        "n": 1,
+        "median_s": 2.82
+      },
+      "glm": {
+        "n": 17,
+        "median_s": 4.45
+      }
+    },
+    "routes": {
+      "route_smalltalk": 1,
+      "route_glm": 17,
+      "route_tool": 6
+    },
+    "classifier_failures": 1
+  }
+}

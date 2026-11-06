@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "run": "afe7b8b933",
+  "experiment": "vcm-pi-mcp-nvme-worker-20261101",
+  "configuration": {
+    "vad_stop_secs": 0.3,
+    "transport": "local",
+    "smart_turn_cpu_count": 2,
+    "orchestration_mode": "local_vcm",
+    "vcm_model_host": "thinkpad",
+    "diagnostics_dir": "/dev/shm/voice-agent-diagnostics/afe7b8b933",
+    "queued_logging": true,
+    "vcm_tool_server_host": "pi",
+    "vcm_tool_transport": "local_stdio",
+    "vcm_state_backend": "jetson_sqlite",
+    "pulse_source": "voice_agent_aec_source",
+    "pulse_sink": "voice_agent_aec_sink",
+    "pacat_latency_ms": 150
+  },
+  "pass_bounds": [
+    [
+      1,
+      11
+    ],
+    [
+      12,
+      22
+    ]
+  ],
+  "boundary_method": "Inferred repeated lights/color/thermostat sequence at turn 12; no explicit pass marker",
+  "measured_replies": 22,
+  "mcp_calls": 18,
+  "state_requests": 13,
+  "original_pi_database_unchanged_after_test": true,
+  "main_log_transcripts_or_database_contents_included": false,
+  "runtime_changes_during_assessment": false,
+  "model_source": "ThinkPad user journal 2026-11-01 12:35\u201312:45 UTC; timing lines only; 22 chronological tasks matched, all duration differences below 100 ms",
+  "tts_source": "Private Pi main log, TTFB after synthesis-start; filtered metadata only",
+  "capture_end_by_component": {
+    "pi": "2026-11-01T20:44:46.943954+08:00",
+    "mcp": "2026-11-01T20:44:46.738219+08:00",
+    "state": "2026-11-01T20:42:02.244353+08:00"
+  },
+  "sha256": {
+    "llama-timings.log": "ccc654168dc34c21ef8c94ab2e2cf4d9109d3a88db88a9007be796fb77681b51",
+    "mcp-50276.jsonl": "f25a33f5712f78f40e8015fa6bd56abd8bd5f9745b23d1077931bf8e30cbcb4c",
+    "model-metadata.json": "79bfd90fd0cfa0181c9e056dfd310a59909bcd01166179efe6982cce14ac39f1",
+    "passes.json": "29fa75d63beab491b8cb279fef05294afff1692162c51fb317052e095570356e",
+    "pi-50252.jsonl": "e2d92eee4a1a83d3f53474af5f2a3810488abcf8ad268c5873e77afa582cb4f1",
+    "state-1297656.jsonl": "e6af23948fec18c438ea030ba66246b105dca7af03f087cd899d72ad64052987",
+    "summary.json": "af04e1bdc994be30196462385437ee41b7b4544d14652d95e3ce4986b629620a",
+    "tts-metadata.json": "b4286ab211d8505e0e76139f5d826d924b7d39ce193116872f6ab174d49afe6b"
+  },
+  "source_sha256": {
+    "scripts/summarize_stall_diagnostics.py": "db0b891d15262fcb3816cf8f2585418a569d8f29768846e90ed93362bc2d1d18",
+    "scripts/summarize_voice_trial.py": "a3c2ba4397ec66cf72587f52884841db366439c831fc3b46db2db22d76adaf36"
+  }
+}

@@ -1,0 +1,3 @@
+bec5dbb1748c0e3f8bfd8de49c90205c07c94d28dc8b278b65e9f47bc1e17012  /tmp/voice-diagnose-sqlite-storage.py
+nemotron-asr-server Up 6 hours
+magpie-tts-lan Up 6 hours

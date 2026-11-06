@@ -1,0 +1,2203 @@
+{
+  "run": "26c376b1c3",
+  "bounds": {
+    "startup": [
+      0,
+      2
+    ],
+    "direct": [
+      3,
+      15
+    ],
+    "context": [
+      16,
+      26
+    ]
+  },
+  "boundary_note": "Sets inferred from the switch from the compound stop/lights-off command to the dark-room contextual statement; user confirmed two sets.",
+  "manila_reference": "User explicitly confirmed the intended question was time in Manila, not weather.",
+  "groups": {
+    "direct": {
+      "speech_start_ids": 13,
+      "timed_replies": 11,
+      "completed_classifications": 10,
+      "classifier_failures": 0,
+      "interrupted_classifier_turns": [
+        11
+      ],
+      "missing_final_asr_turns": [
+        8
+      ],
+      "e2e_first_speech_s": {
+        "count": 11,
+        "p50": 4.8072733879089355,
+        "p95_nearest_rank": 34.54308366775513,
+        "min": 2.459789276123047,
+        "max": 34.54308366775513,
+        "mean": 7.3023153868588535
+      },
+      "laya_pi_client_s": {
+        "count": 10,
+        "p50": 0.7155423405019974,
+        "p95_nearest_rank": 0.7622080269939033,
+        "min": 0.6943308199988678,
+        "max": 0.7622080269939033,
+        "mean": 0.7205502974997217
+      },
+      "laya_server_s": {
+        "count": 10,
+        "p50": 0.6925684134912444,
+        "p95_nearest_rank": 0.743667914008256,
+        "min": 0.6806685509800445,
+        "max": 0.743667914008256,
+        "mean": 0.7024457619991153
+      },
+      "laya_client_outside_server_ms": {
+        "count": 10,
+        "p50": 17.86188750702422,
+        "p95_nearest_rank": 29.894654006056953,
+        "min": 13.662269018823281,
+        "max": 29.894654006056953,
+        "mean": 18.10453550060629
+      },
+      "endpoint_context_ms": {
+        "count": 12,
+        "p50": 805.935,
+        "p95_nearest_rank": 860.44,
+        "min": 704.79,
+        "max": 860.44,
+        "mean": 784.515
+      },
+      "first_tts_byte_s": {
+        "count": 11,
+        "p50": 0.991,
+        "p95_nearest_rank": 1.095,
+        "min": 0.92,
+        "max": 1.095,
+        "mean": 1.0139090909090909
+      },
+      "routes": {
+        "route_smalltalk": 1,
+        "route_glm": 8,
+        "route_tool": 2
+      },
+      "glm_calls": 19,
+      "glm_processing_s": {
+        "count": 19,
+        "p50": 1.345,
+        "p95_nearest_rank": 2.192,
+        "min": 1.006,
+        "max": 2.192,
+        "mean": 1.4299473684210526
+      },
+      "classifications_with_fast_tool_candidate": 6,
+      "glm_tool_calls": 13,
+      "fast_tool_calls": 2,
+      "total_mcp_calls": 15
+    },
+    "context": {
+      "speech_start_ids": 11,
+      "timed_replies": 10,
+      "completed_classifications": 10,
+      "classifier_failures": 0,
+      "interrupted_classifier_turns": [],
+      "missing_final_asr_turns": [
+        18
+      ],
+      "e2e_first_speech_s": {
+        "count": 10,
+        "p50": 6.130525469779968,
+        "p95_nearest_rank": 9.02420687675476,
+        "min": 3.3063201904296875,
+        "max": 9.02420687675476,
+        "mean": 6.180559968948364
+      },
+      "laya_pi_client_s": {
+        "count": 10,
+        "p50": 0.7391338835004717,
+        "p95_nearest_rank": 0.7721089189944905,
+        "min": 0.7031324839990702,
+        "max": 0.7721089189944905,
+        "mean": 0.736012639299588
+      },
+      "laya_server_s": {
+        "count": 10,
+        "p50": 0.7193393270135857,
+        "p95_nearest_rank": 0.7482928660174366,
+        "min": 0.6889797570183873,
+        "max": 0.7482928660174366,
+        "mean": 0.7183852081070654
+      },
+      "laya_client_outside_server_ms": {
+        "count": 10,
+        "p50": 16.77421098065679,
+        "p95_nearest_rank": 23.816052977053914,
+        "min": 13.291149007272907,
+        "max": 23.816052977053914,
+        "mean": 17.627431192522636
+      },
+      "endpoint_context_ms": {
+        "count": 10,
+        "p50": 844.06,
+        "p95_nearest_rank": 3301.18,
+        "min": 740.83,
+        "max": 3301.18,
+        "mean": 1072.108
+      },
+      "first_tts_byte_s": {
+        "count": 10,
+        "p50": 0.9984999999999999,
+        "p95_nearest_rank": 1.11,
+        "min": 0.962,
+        "max": 1.11,
+        "mean": 1.0158
+      },
+      "routes": {
+        "route_glm": 9,
+        "route_smalltalk": 1
+      },
+      "glm_calls": 19,
+      "glm_processing_s": {
+        "count": 19,
+        "p50": 1.475,
+        "p95_nearest_rank": 2.45,
+        "min": 1.215,
+        "max": 2.45,
+        "mean": 1.5599473684210525
+      },
+      "classifications_with_fast_tool_candidate": 2,
+      "glm_tool_calls": 10,
+      "fast_tool_calls": 0,
+      "total_mcp_calls": 10
+    }
+  },
+  "combined": {
+    "speech_start_ids": 24,
+    "timed_replies": 21,
+    "completed_classifications": 20,
+    "classifier_failures": 0,
+    "interrupted_classifier_turns": [
+      11
+    ],
+    "missing_final_asr_turns": [
+      8,
+      18
+    ],
+    "e2e_first_speech_s": {
+      "count": 21,
+      "p50": 5.496598243713379,
+      "p95_nearest_rank": 9.02420687675476,
+      "min": 2.459789276123047,
+      "max": 34.54308366775513,
+      "mean": 6.768146140234811
+    },
+    "laya_pi_client_s": {
+      "count": 20,
+      "p50": 0.7227907805026916,
+      "p95_nearest_rank": 0.7622080269939033,
+      "min": 0.6943308199988678,
+      "max": 0.7721089189944905,
+      "mean": 0.7282814683996548
+    },
+    "laya_server_s": {
+      "count": 20,
+      "p50": 0.7044459690077929,
+      "p95_nearest_rank": 0.743667914008256,
+      "min": 0.6806685509800445,
+      "max": 0.7482928660174366,
+      "mean": 0.7104154850530904
+    },
+    "laya_client_outside_server_ms": {
+      "count": 20,
+      "p50": 17.287556496739853,
+      "p95_nearest_rank": 23.816052977053914,
+      "min": 13.291149007272907,
+      "max": 29.894654006056953,
+      "mean": 17.865983346564462
+    },
+    "endpoint_context_ms": {
+      "count": 22,
+      "p50": 826.47,
+      "p95_nearest_rank": 870.43,
+      "min": 704.79,
+      "max": 3301.18,
+      "mean": 915.2390909090909
+    },
+    "first_tts_byte_s": {
+      "count": 21,
+      "p50": 0.995,
+      "p95_nearest_rank": 1.095,
+      "min": 0.92,
+      "max": 1.11,
+      "mean": 1.0148095238095238
+    },
+    "routes": {
+      "route_smalltalk": 2,
+      "route_glm": 17,
+      "route_tool": 2
+    },
+    "glm_calls": 38,
+    "glm_processing_s": {
+      "count": 38,
+      "p50": 1.4445000000000001,
+      "p95_nearest_rank": 2.192,
+      "min": 1.006,
+      "max": 2.45,
+      "mean": 1.4949473684210526
+    },
+    "classifications_with_fast_tool_candidate": 8,
+    "glm_tool_calls": 23,
+    "fast_tool_calls": 2,
+    "total_mcp_calls": 25
+  },
+  "turns": [
+    {
+      "turn": 0,
+      "set": "startup",
+      "label": "greeting",
+      "asr_transcript_frames": 0,
+      "classification": null,
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": null,
+      "route_fields": null,
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": null,
+      "smart_turn": [],
+      "glm_calls": [],
+      "tts_first_byte_s": [
+        1.125
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 1,
+      "set": "startup",
+      "label": "startup_echo",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.748751965998963,
+        "server_classifier_s": 0.7289597660128493,
+        "client_outside_server_s": 0.0197921999861137,
+        "raw_choice": "other",
+        "top_prob": 0.7612,
+        "gap": 0.712,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.748751965998963,
+        "router_s": 0.7516351179947378
+      },
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": null,
+      "smart_turn": [],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:48:14.745",
+          "first_token_s": 1.859,
+          "usage": {
+            "prompt_tokens": 1249,
+            "completion_tokens": 107,
+            "reasoning_tokens": 70
+          },
+          "processing_s": 2.347
+        }
+      ],
+      "tts_first_byte_s": [
+        0.986
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 2,
+      "set": "startup",
+      "label": "startup_echo",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7213658230029978,
+        "server_classifier_s": 0.6948638219910208,
+        "client_outside_server_s": 0.026502001011976972,
+        "raw_choice": "other",
+        "top_prob": 0.6343,
+        "gap": 0.39349999999999996,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7213658230029978,
+        "router_s": 0.7237559070053976
+      },
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": null,
+      "smart_turn": [],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:48:22.228",
+          "first_token_s": 1.114,
+          "usage": {
+            "prompt_tokens": 1265,
+            "completion_tokens": 136,
+            "reasoning_tokens": 101
+          },
+          "processing_s": 2.014
+        }
+      ],
+      "tts_first_byte_s": [
+        0.99
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 3,
+      "set": "direct",
+      "label": "hearing_check",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7502366360058659,
+        "server_classifier_s": 0.732139008003287,
+        "client_outside_server_s": 0.01809762800257886,
+        "raw_choice": "small_talk",
+        "top_prob": 0.9265,
+        "gap": 0.8773,
+        "fast_route": "small_talk",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_smalltalk",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7502366360058659,
+        "laya_s": 0.7502366360058659,
+        "llama_s": 1.0298831069958396
+      },
+      "e2e_first_speech_s": 3.6381044387817383,
+      "first_playback_ms": 3632.7,
+      "endpoint_context_ms": 833.87,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9870367050170898,
+          "e2e_processing_time_ms": 431.51822700019693
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [
+        0.991
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 4,
+      "set": "direct",
+      "label": "lights_on_noisy_asr",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7069956470004399,
+        "server_classifier_s": 0.6921714159834664,
+        "client_outside_server_s": 0.0148242310169735,
+        "raw_choice": "control_lights",
+        "top_prob": 0.8768,
+        "gap": 0.78,
+        "fast_route": "control_lights",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.014944547998311464,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7069956470004399,
+        "router_s": 0.7243082999993931
+      },
+      "e2e_first_speech_s": 6.308674097061157,
+      "first_playback_ms": 6303.64,
+      "endpoint_context_ms": 850.82,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9836374521255493,
+          "e2e_processing_time_ms": 440.58519300597254
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:50:59.890",
+          "first_token_s": 1.338,
+          "usage": {
+            "prompt_tokens": 1327,
+            "completion_tokens": 64,
+            "reasoning_tokens": 52
+          },
+          "processing_s": 1.834
+        },
+        {
+          "started_at_local": "2026-11-01 22:51:01.767",
+          "first_token_s": 1.132,
+          "usage": {
+            "prompt_tokens": 1398,
+            "completion_tokens": 30,
+            "reasoning_tokens": 17
+          },
+          "processing_s": 1.733
+        }
+      ],
+      "tts_first_byte_s": [
+        1.095
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:51:01.727"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "3b48886fe87a4ceabe28d75906a5b3cd",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 32.387,
+          "sqlite_commit_ms": 2.373,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "set": "direct",
+      "label": "light_color_blue",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7082246159989154,
+        "server_classifier_s": 0.6916773430129979,
+        "client_outside_server_s": 0.016547272985917516,
+        "raw_choice": "control_lights",
+        "top_prob": 0.9621,
+        "gap": 0.9344,
+        "fast_route": "control_lights",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.0017612040028325282,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7082246159989154,
+        "router_s": 0.7123400920027052
+      },
+      "e2e_first_speech_s": 4.8072733879089355,
+      "first_playback_ms": 4804.7,
+      "endpoint_context_ms": 860.44,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9848582744598389,
+          "e2e_processing_time_ms": 452.5704929983476
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:51:13.815",
+          "first_token_s": 1.153,
+          "usage": {
+            "prompt_tokens": 1421,
+            "completion_tokens": 19,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.18
+        },
+        {
+          "started_at_local": "2026-11-01 22:51:15.036",
+          "first_token_s": 0.967,
+          "usage": {
+            "prompt_tokens": 1500,
+            "completion_tokens": 10,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.006
+        }
+      ],
+      "tts_first_byte_s": [
+        0.986
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:51:15.000"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "6d0ee3a5b1dc475ea5150087da345790",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 28.977,
+          "sqlite_commit_ms": 3.376,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "set": "direct",
+      "label": "thermostat_twenty",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7239998670047498,
+        "server_classifier_s": 0.7063737199932802,
+        "client_outside_server_s": 0.017626147011469584,
+        "raw_choice": "other",
+        "top_prob": 0.86,
+        "gap": 0.8242,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7239998670047498,
+        "router_s": 0.7251314309978625
+      },
+      "e2e_first_speech_s": 5.0274903774261475,
+      "first_playback_ms": 5024.56,
+      "endpoint_context_ms": 704.79,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9884648323059082,
+          "e2e_processing_time_ms": 393.23957500164397
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:51:24.856",
+          "first_token_s": 1.199,
+          "usage": {
+            "prompt_tokens": 1521,
+            "completion_tokens": 26,
+            "reasoning_tokens": 13
+          },
+          "processing_s": 1.298
+        },
+        {
+          "started_at_local": "2026-11-01 22:51:26.202",
+          "first_token_s": 1.159,
+          "usage": {
+            "prompt_tokens": 1564,
+            "completion_tokens": 26,
+            "reasoning_tokens": 13
+          },
+          "processing_s": 1.241
+        }
+      ],
+      "tts_first_byte_s": [
+        0.991
+      ],
+      "tools": [
+        {
+          "tool": "set_thermostat",
+          "at_local": "2026-11-01 22:51:26.159"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "f1d4915f62af4afab4d4fc7c59507f00",
+          "tool": "set_thermostat",
+          "mcp_client_total_ms": 32.9,
+          "sqlite_commit_ms": 2.394,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "set": "direct",
+      "label": "message_request_no_body",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7022030299995095,
+        "server_classifier_s": 0.6837732510175556,
+        "client_outside_server_s": 0.01842977898195386,
+        "raw_choice": "other",
+        "top_prob": 0.9625,
+        "gap": 0.9589,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7022030299995095,
+        "router_s": 0.7035686450035428
+      },
+      "e2e_first_speech_s": 4.11264705657959,
+      "first_playback_ms": 4109.9,
+      "endpoint_context_ms": 836.69,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9897372126579285,
+          "e2e_processing_time_ms": 425.13048100227024
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:51:37.845",
+          "first_token_s": 1.143,
+          "usage": {
+            "prompt_tokens": 1586,
+            "completion_tokens": 53,
+            "reasoning_tokens": 41
+          },
+          "processing_s": 1.533
+        }
+      ],
+      "tts_first_byte_s": [
+        1.018
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 8,
+      "set": "direct",
+      "label": "no_final_asr",
+      "asr_transcript_frames": 0,
+      "classification": null,
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": null,
+      "route_fields": null,
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": null,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.834087073802948,
+          "e2e_processing_time_ms": 403.8663299943437
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [],
+      "tools": [],
+      "empty_turn_closed_local": "2026-11-01 22:51:51.130",
+      "mcp_calls": []
+    },
+    {
+      "turn": 9,
+      "set": "direct",
+      "label": "reminder_creation",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7228600650050794,
+        "server_classifier_s": 0.6929654109990224,
+        "client_outside_server_s": 0.029894654006056953,
+        "raw_choice": "add_reminder",
+        "top_prob": 0.9864,
+        "gap": 0.9766,
+        "fast_route": "add_reminder",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "add_reminder",
+          "extraction": "direct",
+          "extraction_s": 0.0012832830034312792,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7228600650050794,
+        "router_s": 0.7260740700003225
+      },
+      "e2e_first_speech_s": 5.434476375579834,
+      "first_playback_ms": 5429.13,
+      "endpoint_context_ms": 745.91,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9875311851501465,
+          "e2e_processing_time_ms": 432.47726099798456
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:52:03.959",
+          "first_token_s": 1.409,
+          "usage": {
+            "prompt_tokens": 1608,
+            "completion_tokens": 38,
+            "reasoning_tokens": 25
+          },
+          "processing_s": 1.718
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:05.715",
+          "first_token_s": 1.08,
+          "usage": {
+            "prompt_tokens": 1649,
+            "completion_tokens": 8,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.16
+        }
+      ],
+      "tts_first_byte_s": [
+        1.014
+      ],
+      "tools": [
+        {
+          "tool": "add_reminder",
+          "at_local": "2026-11-01 22:52:05.680"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "a05f0386dc59421ea497495b0cd9dc83",
+          "tool": "add_reminder",
+          "mcp_client_total_ms": 28.051,
+          "sqlite_commit_ms": 3.767,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "set": "direct",
+      "label": "music_catalog_repeated_searches",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7622080269939033,
+        "server_classifier_s": 0.743667914008256,
+        "client_outside_server_s": 0.018540112985647283,
+        "raw_choice": "other",
+        "top_prob": 0.8682,
+        "gap": 0.837,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7622080269939033,
+        "router_s": 0.7641251559980446
+      },
+      "e2e_first_speech_s": 34.54308366775513,
+      "first_playback_ms": 34537.21,
+      "endpoint_context_ms": 799.52,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.975929319858551,
+          "e2e_processing_time_ms": 404.1131060002954
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:52:14.976",
+          "first_token_s": 1.192,
+          "usage": {
+            "prompt_tokens": 1662,
+            "completion_tokens": 69,
+            "reasoning_tokens": 55
+          },
+          "processing_s": 1.43
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:17.583",
+          "first_token_s": 1.075,
+          "usage": {
+            "prompt_tokens": 1708,
+            "completion_tokens": 41,
+            "reasoning_tokens": 30
+          },
+          "processing_s": 1.234
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:25.528",
+          "first_token_s": 0.968,
+          "usage": {
+            "prompt_tokens": 1751,
+            "completion_tokens": 38,
+            "reasoning_tokens": 24
+          },
+          "processing_s": 1.135
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:33.453",
+          "first_token_s": 2.178,
+          "usage": {
+            "prompt_tokens": 1797,
+            "completion_tokens": 42,
+            "reasoning_tokens": 29
+          },
+          "processing_s": 2.192
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:42.789",
+          "first_token_s": 1.179,
+          "usage": {
+            "prompt_tokens": 1842,
+            "completion_tokens": 12,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.23
+        },
+        {
+          "started_at_local": "2026-11-01 22:52:45.357",
+          "first_token_s": 1.405,
+          "usage": {
+            "prompt_tokens": 1958,
+            "completion_tokens": 17,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.471
+        }
+      ],
+      "tts_first_byte_s": [
+        1.095
+      ],
+      "tools": [
+        {
+          "tool": "play_music",
+          "at_local": "2026-11-01 22:52:16.409"
+        },
+        {
+          "tool": "play_music",
+          "at_local": "2026-11-01 22:52:18.821"
+        },
+        {
+          "tool": "play_music",
+          "at_local": "2026-11-01 22:52:26.666"
+        },
+        {
+          "tool": "play_music",
+          "at_local": "2026-11-01 22:52:35.649"
+        },
+        {
+          "tool": "play_music",
+          "at_local": "2026-11-01 22:52:44.024"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "a74f4b16eeec442aabca04e98f2e496c",
+          "tool": "play_music",
+          "mcp_client_total_ms": 1165.869,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 1148.999,
+          "state_request_count": null
+        },
+        {
+          "call_id": "1b905e3002cd4f819adaaf64686263bc",
+          "tool": "play_music",
+          "mcp_client_total_ms": 6697.449,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 6677.282,
+          "state_request_count": null
+        },
+        {
+          "call_id": "7900fb2b7f9840568b84408a3a56d949",
+          "tool": "play_music",
+          "mcp_client_total_ms": 6772.78,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 6752.278,
+          "state_request_count": null
+        },
+        {
+          "call_id": "6be238d5747d4a00902d0b699fa6b9fa",
+          "tool": "play_music",
+          "mcp_client_total_ms": 7128.527,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 7109.296,
+          "state_request_count": null
+        },
+        {
+          "call_id": "a9d5cf7faab247d7b552ceda9d35d962",
+          "tool": "play_music",
+          "mcp_client_total_ms": 1327.133,
+          "sqlite_commit_ms": 3.33,
+          "http_request_ms": 1299.802,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 11,
+      "set": "direct",
+      "label": "interrupted_color_fragment",
+      "asr_transcript_frames": 1,
+      "classification": null,
+      "classifier_failure": null,
+      "router_cancelled": {
+        "router_model": "laya",
+        "classifier_s": 0.1916401999988011,
+        "stage": "classifier"
+      },
+      "argument_results": [],
+      "route": null,
+      "route_fields": null,
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": 723.75,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9859892129898071,
+          "e2e_processing_time_ms": 412.68337100336794
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 12,
+      "set": "direct",
+      "label": "color_and_volume_continuation",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7080379729959532,
+        "server_classifier_s": 0.6899093649990391,
+        "client_outside_server_s": 0.01812860799691407,
+        "raw_choice": "playback_control",
+        "top_prob": 0.9846,
+        "gap": 0.9729,
+        "fast_route": "playback_control",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "playback_control",
+          "extraction": "direct",
+          "extraction_s": 0.0014440409941016696,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7080379729959532,
+        "router_s": 0.7111941090042819
+      },
+      "e2e_first_speech_s": 5.573307991027832,
+      "first_playback_ms": 5570.26,
+      "endpoint_context_ms": 707.63,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.87754225730896,
+          "e2e_processing_time_ms": 399.9002590062446
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:53:03.829",
+          "first_token_s": 1.372,
+          "usage": {
+            "prompt_tokens": 1988,
+            "completion_tokens": 76,
+            "reasoning_tokens": 46
+          },
+          "processing_s": 1.803
+        },
+        {
+          "started_at_local": "2026-11-01 22:53:05.722",
+          "first_token_s": 1.151,
+          "usage": {
+            "prompt_tokens": 2177,
+            "completion_tokens": 26,
+            "reasoning_tokens": 12
+          },
+          "processing_s": 1.271
+        }
+      ],
+      "tts_first_byte_s": [
+        0.967
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:53:05.639"
+        },
+        {
+          "tool": "playback_control",
+          "at_local": "2026-11-01 22:53:05.643"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "5d929e04965042fa92fa91f456ae04e9",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 54.767,
+          "sqlite_commit_ms": 2.672,
+          "http_request_ms": null,
+          "state_request_count": 1
+        },
+        {
+          "call_id": "9dc9ab6431eb422985901ebf80ca7aae",
+          "tool": "playback_control",
+          "mcp_client_total_ms": 58.923,
+          "sqlite_commit_ms": 2.118,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 13,
+      "set": "direct",
+      "label": "current_weather",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7264062939939322,
+        "server_classifier_s": 0.7111116409942042,
+        "client_outside_server_s": 0.015294652999727987,
+        "raw_choice": "get_weather",
+        "top_prob": 0.9491,
+        "gap": 0.9071,
+        "fast_route": "get_weather",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "get_weather",
+          "extraction": "direct",
+          "extraction_s": 0.002157071001420263,
+          "valid": true
+        }
+      ],
+      "route": "route_tool",
+      "route_fields": {
+        "router_model": "laya",
+        "tool": "get_weather",
+        "classifier_s": 0.7264062939939322,
+        "laya_s": 0.7264062939939322,
+        "extraction": "direct",
+        "extraction_s": 0.002157071001420263,
+        "mcp_s": 1.2749616190048982,
+        "router_s": 2.0050345260024187
+      },
+      "e2e_first_speech_s": 3.8265225887298584,
+      "first_playback_ms": 3820.92,
+      "endpoint_context_ms": 812.35,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9842595458030701,
+          "e2e_processing_time_ms": 408.3696990055614
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [
+        0.982
+      ],
+      "tools": [],
+      "mcp_calls": [
+        {
+          "call_id": "e159338f7d8b4e9c99ff82f7a265f957",
+          "tool": "get_weather",
+          "mcp_client_total_ms": 1274.817,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 1266.124,
+          "state_request_count": null
+        }
+      ]
+    },
+    {
+      "turn": 14,
+      "set": "direct",
+      "label": "current_time",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.6943308199988678,
+        "server_classifier_s": 0.6806685509800445,
+        "client_outside_server_s": 0.013662269018823281,
+        "raw_choice": "get_time",
+        "top_prob": 0.9876,
+        "gap": 0.98,
+        "fast_route": "get_time",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "get_time",
+          "extraction": "direct",
+          "extraction_s": 0.0011270260001765564,
+          "valid": true
+        }
+      ],
+      "route": "route_tool",
+      "route_fields": {
+        "router_model": "laya",
+        "tool": "get_time",
+        "classifier_s": 0.6943308199988678,
+        "laya_s": 0.6943308199988678,
+        "extraction": "direct",
+        "extraction_s": 0.0011270260001765564,
+        "mcp_s": 0.01056267500098329,
+        "router_s": 0.7077464870017138
+      },
+      "e2e_first_speech_s": 2.459789276123047,
+      "first_playback_ms": 2456.42,
+      "endpoint_context_ms": 813.92,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9768373966217041,
+          "e2e_processing_time_ms": 407.3862810037099
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [
+        0.92
+      ],
+      "tools": [],
+      "mcp_calls": [
+        {
+          "call_id": "8f6f05291b9040db90894edafb9d4e5f",
+          "tool": "get_time",
+          "mcp_client_total_ms": 10.407,
+          "sqlite_commit_ms": null,
+          "http_request_ms": null,
+          "state_request_count": null
+        }
+      ]
+    },
+    {
+      "turn": 15,
+      "set": "direct",
+      "label": "compound_stop_music_lights_off",
+      "asr_transcript_frames": 1,
+      "classification": null,
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "reason": "multiple_actions",
+        "router_s": 0.0,
+        "classifier_s": 0.0
+      },
+      "e2e_first_speech_s": 4.594099998474121,
+      "first_playback_ms": 4590.88,
+      "endpoint_context_ms": 724.49,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9875311851501465,
+          "e2e_processing_time_ms": 413.9692889948492
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:53:33.691",
+          "first_token_s": 1.283,
+          "usage": {
+            "prompt_tokens": 2244,
+            "completion_tokens": 24,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.355
+        },
+        {
+          "started_at_local": "2026-11-01 22:53:35.097",
+          "first_token_s": 1.291,
+          "usage": {
+            "prompt_tokens": 2422,
+            "completion_tokens": 9,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.345
+        }
+      ],
+      "tts_first_byte_s": [
+        1.094
+      ],
+      "tools": [
+        {
+          "tool": "playback_control",
+          "at_local": "2026-11-01 22:53:35.050"
+        },
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:53:35.052"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "940e3cf712614ec7b77276466542b744",
+          "tool": "playback_control",
+          "mcp_client_total_ms": 29.991,
+          "sqlite_commit_ms": 3.633,
+          "http_request_ms": null,
+          "state_request_count": 1
+        },
+        {
+          "call_id": "948fbc5bc4124e05bc33cdbb788d81f3",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 37.267,
+          "sqlite_commit_ms": 2.587,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 16,
+      "set": "context",
+      "label": "dark_room",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7556027110040304,
+        "server_classifier_s": 0.7405286639987025,
+        "client_outside_server_s": 0.015074047005327884,
+        "raw_choice": "other",
+        "top_prob": 0.5778,
+        "gap": 0.4434,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7556027110040304,
+        "router_s": 0.7569275499990908
+      },
+      "e2e_first_speech_s": 6.902286052703857,
+      "first_playback_ms": 6899.29,
+      "endpoint_context_ms": 835.62,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.975929319858551,
+          "e2e_processing_time_ms": 430.2132880038698
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:53:48.730",
+          "first_token_s": 1.097,
+          "usage": {
+            "prompt_tokens": 2441,
+            "completion_tokens": 40,
+            "reasoning_tokens": 28
+          },
+          "processing_s": 1.215
+        },
+        {
+          "started_at_local": "2026-11-01 22:53:49.984",
+          "first_token_s": 1.151,
+          "usage": {
+            "prompt_tokens": 2512,
+            "completion_tokens": 93,
+            "reasoning_tokens": 75
+          },
+          "processing_s": 1.475
+        },
+        {
+          "started_at_local": "2026-11-01 22:53:51.496",
+          "first_token_s": 1.106,
+          "usage": {
+            "prompt_tokens": 2593,
+            "completion_tokens": 88,
+            "reasoning_tokens": 68
+          },
+          "processing_s": 1.459
+        }
+      ],
+      "tts_first_byte_s": [
+        1.11
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:53:49.948"
+        },
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:53:51.463"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "4561c45cb2004058b5aca2d8372b7a52",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 28.114,
+          "sqlite_commit_ms": 3.04,
+          "http_request_ms": null,
+          "state_request_count": 1
+        },
+        {
+          "call_id": "e8b4706259114537807f8a93cab348d3",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 27.923,
+          "sqlite_commit_ms": 3.655,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 17,
+      "set": "context",
+      "label": "room_too_bright_noisy_asr",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7227214960003039,
+        "server_classifier_s": 0.7047812880191486,
+        "client_outside_server_s": 0.017940207981155254,
+        "raw_choice": "other",
+        "top_prob": 0.8558,
+        "gap": 0.837,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7227214960003039,
+        "router_s": 0.7239140589954332
+      },
+      "e2e_first_speech_s": 5.899289131164551,
+      "first_playback_ms": 5894.54,
+      "endpoint_context_ms": 824.06,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9829913973808289,
+          "e2e_processing_time_ms": 418.0018929982907
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:54:03.845",
+          "first_token_s": 1.21,
+          "usage": {
+            "prompt_tokens": 2621,
+            "completion_tokens": 58,
+            "reasoning_tokens": 40
+          },
+          "processing_s": 1.64
+        },
+        {
+          "started_at_local": "2026-11-01 22:54:05.522",
+          "first_token_s": 1.213,
+          "usage": {
+            "prompt_tokens": 2702,
+            "completion_tokens": 56,
+            "reasoning_tokens": 31
+          },
+          "processing_s": 1.731
+        }
+      ],
+      "tts_first_byte_s": [
+        0.991
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:54:05.488"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "57df5a9ea8b94cc1ad919cbd94c8b69a",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 25.662,
+          "sqlite_commit_ms": 2.256,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 18,
+      "set": "context",
+      "label": "no_final_asr",
+      "asr_transcript_frames": 0,
+      "classification": null,
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": null,
+      "route_fields": null,
+      "e2e_first_speech_s": null,
+      "first_playback_ms": null,
+      "endpoint_context_ms": null,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9445840716362,
+          "e2e_processing_time_ms": 446.5367619995959
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [],
+      "tools": [],
+      "empty_turn_closed_local": "2026-11-01 22:54:23.696",
+      "mcp_calls": []
+    },
+    {
+      "turn": 19,
+      "set": "context",
+      "label": "heat_complaint",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7055792129976908,
+        "server_classifier_s": 0.6889797570183873,
+        "client_outside_server_s": 0.016599455979303457,
+        "raw_choice": "other",
+        "top_prob": 0.595,
+        "gap": 0.4697,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7055792129976908,
+        "router_s": 0.70700103299896
+      },
+      "e2e_first_speech_s": 7.290231704711914,
+      "first_playback_ms": 7286.79,
+      "endpoint_context_ms": 853.93,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9557313919067383,
+          "e2e_processing_time_ms": 443.0280379965552
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:54:43.694",
+          "first_token_s": 1.183,
+          "usage": {
+            "prompt_tokens": 2735,
+            "completion_tokens": 116,
+            "reasoning_tokens": 111
+          },
+          "processing_s": 1.801
+        },
+        {
+          "started_at_local": "2026-11-01 22:54:46.476",
+          "first_token_s": 1.175,
+          "usage": {
+            "prompt_tokens": 2883,
+            "completion_tokens": 86,
+            "reasoning_tokens": 51
+          },
+          "processing_s": 1.882
+        }
+      ],
+      "tts_first_byte_s": [
+        1.066
+      ],
+      "tools": [
+        {
+          "tool": "get_weather",
+          "at_local": "2026-11-01 22:54:45.500"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "07872df4a5ba4e2c8566a63e02a5a86f",
+          "tool": "get_weather",
+          "mcp_client_total_ms": 969.21,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 953.818,
+          "state_request_count": null
+        }
+      ]
+    },
+    {
+      "turn": 20,
+      "set": "context",
+      "label": "thermostat_consent_misrouted_smalltalk",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7031324839990702,
+        "server_classifier_s": 0.6892509220051579,
+        "client_outside_server_s": 0.013881561993912328,
+        "raw_choice": "small_talk",
+        "top_prob": 0.879,
+        "gap": 0.7877,
+        "fast_route": "small_talk",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_smalltalk",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7031324839990702,
+        "laya_s": 0.7031324839990702,
+        "llama_s": 0.6559471279979334
+      },
+      "e2e_first_speech_s": 3.3063201904296875,
+      "first_playback_ms": 3302.46,
+      "endpoint_context_ms": 852.5,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9884648323059082,
+          "e2e_processing_time_ms": 441.11652999708895
+        }
+      ],
+      "glm_calls": [],
+      "tts_first_byte_s": [
+        1.077
+      ],
+      "tools": [],
+      "mcp_calls": []
+    },
+    {
+      "turn": 21,
+      "set": "context",
+      "label": "alarm_tomorrow_six",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7721089189944905,
+        "server_classifier_s": 0.7482928660174366,
+        "client_outside_server_s": 0.023816052977053914,
+        "raw_choice": "other",
+        "top_prob": 0.8709,
+        "gap": 0.858,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7721089189944905,
+        "router_s": 0.773947384004714
+      },
+      "e2e_first_speech_s": 6.361761808395386,
+      "first_playback_ms": 6356.33,
+      "endpoint_context_ms": 740.83,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9042243957519531,
+          "e2e_processing_time_ms": 428.7384809940704
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:55:15.920",
+          "first_token_s": 1.116,
+          "usage": {
+            "prompt_tokens": 2947,
+            "completion_tokens": 290,
+            "reasoning_tokens": 275
+          },
+          "processing_s": 2.45
+        },
+        {
+          "started_at_local": "2026-11-01 22:55:18.412",
+          "first_token_s": 1.313,
+          "usage": {
+            "prompt_tokens": 3019,
+            "completion_tokens": 15,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.38
+        }
+      ],
+      "tts_first_byte_s": [
+        0.995
+      ],
+      "tools": [
+        {
+          "tool": "set_alarm",
+          "at_local": "2026-11-01 22:55:18.373"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "5a9ef47b35c84eed857683b8ea75d9b5",
+          "tool": "set_alarm",
+          "mcp_client_total_ms": 31.828,
+          "sqlite_commit_ms": 2.47,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 22,
+      "set": "context",
+      "label": "blue_preference",
+      "asr_transcript_frames": 2,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7570289029972628,
+        "server_classifier_s": 0.7338973660080228,
+        "client_outside_server_s": 0.023131536989239976,
+        "raw_choice": "control_lights",
+        "top_prob": 0.5779,
+        "gap": 0.24879999999999997,
+        "fast_route": "control_lights",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.000292886994429864,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7570289029972628,
+        "router_s": 0.7594815289994585
+      },
+      "e2e_first_speech_s": 5.698510646820068,
+      "first_playback_ms": 5692.18,
+      "endpoint_context_ms": 743.42,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9589470624923706,
+          "e2e_processing_time_ms": 431.125171999156
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:55:34.304",
+          "first_token_s": 1.299,
+          "usage": {
+            "prompt_tokens": 3046,
+            "completion_tokens": 50,
+            "reasoning_tokens": 32
+          },
+          "processing_s": 1.633
+        },
+        {
+          "started_at_local": "2026-11-01 22:55:35.976",
+          "first_token_s": 1.28,
+          "usage": {
+            "prompt_tokens": 3125,
+            "completion_tokens": 15,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.475
+        }
+      ],
+      "tts_first_byte_s": [
+        1.015
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:55:35.941"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "0b7db20901114c76a4f168f3a5f9383d",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 28.316,
+          "sqlite_commit_ms": 3.63,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 23,
+      "set": "context",
+      "label": "rain_question",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7555462710006395,
+        "server_classifier_s": 0.7422551219933666,
+        "client_outside_server_s": 0.013291149007272907,
+        "raw_choice": "other",
+        "top_prob": 0.8101,
+        "gap": 0.7912,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7555462710006395,
+        "router_s": 0.756790463005018
+      },
+      "e2e_first_speech_s": 9.02420687675476,
+      "first_playback_ms": 9021.36,
+      "endpoint_context_ms": 3301.18,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": false,
+          "probability": 0.21420252323150635,
+          "e2e_processing_time_ms": 425.7287770014955
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:55:49.982",
+          "first_token_s": 1.303,
+          "usage": {
+            "prompt_tokens": 3148,
+            "completion_tokens": 6,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.333
+        },
+        {
+          "started_at_local": "2026-11-01 22:55:52.365",
+          "first_token_s": 1.479,
+          "usage": {
+            "prompt_tokens": 3296,
+            "completion_tokens": 19,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.59
+        }
+      ],
+      "tts_first_byte_s": [
+        0.972
+      ],
+      "tools": [
+        {
+          "tool": "get_weather",
+          "at_local": "2026-11-01 22:55:51.324"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "0d1b5b5881ad486b96fc13a0f2239d38",
+          "tool": "get_weather",
+          "mcp_client_total_ms": 1028.871,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 1003.23,
+          "state_request_count": null
+        }
+      ]
+    },
+    {
+      "turn": 24,
+      "set": "context",
+      "label": "manila_time_intent_lost_in_asr_weather_answer",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7175463039966417,
+        "server_classifier_s": 0.7041106499964371,
+        "client_outside_server_s": 0.013435654000204522,
+        "raw_choice": "other",
+        "top_prob": 0.8845,
+        "gap": 0.8664,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7175463039966417,
+        "router_s": 0.718925050998223
+      },
+      "e2e_first_speech_s": 6.556835412979126,
+      "first_playback_ms": 6553.52,
+      "endpoint_context_ms": 828.88,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9829913973808289,
+          "e2e_processing_time_ms": 420.35694399964996
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:56:06.527",
+          "first_token_s": 1.114,
+          "usage": {
+            "prompt_tokens": 3322,
+            "completion_tokens": 108,
+            "reasoning_tokens": 87
+          },
+          "processing_s": 1.666
+        },
+        {
+          "started_at_local": "2026-11-01 22:56:09.115",
+          "first_token_s": 1.126,
+          "usage": {
+            "prompt_tokens": 3486,
+            "completion_tokens": 65,
+            "reasoning_tokens": 43
+          },
+          "processing_s": 1.395
+        }
+      ],
+      "tts_first_byte_s": [
+        1.002
+      ],
+      "tools": [
+        {
+          "tool": "get_weather",
+          "at_local": "2026-11-01 22:56:08.197"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "8107462e150b4f45998d1cbaf128d596",
+          "tool": "get_weather",
+          "mcp_client_total_ms": 910.292,
+          "sqlite_commit_ms": null,
+          "http_request_ms": 893.896,
+          "state_request_count": null
+        }
+      ]
+    },
+    {
+      "turn": 25,
+      "set": "context",
+      "label": "music_too_loud",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7109468449998531,
+        "server_classifier_s": 0.6939978790178429,
+        "client_outside_server_s": 0.016948965982010122,
+        "raw_choice": "other",
+        "top_prob": 0.7062,
+        "gap": 0.6209,
+        "fast_route": null,
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7109468449998531,
+        "router_s": 0.7120677240018267
+      },
+      "e2e_first_speech_s": 5.496598243713379,
+      "first_playback_ms": 5491.69,
+      "endpoint_context_ms": 870.23,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9848582744598389,
+          "e2e_processing_time_ms": 455.3242800029693
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:56:23.040",
+          "first_token_s": 1.254,
+          "usage": {
+            "prompt_tokens": 3516,
+            "completion_tokens": 14,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.281
+        },
+        {
+          "started_at_local": "2026-11-01 22:56:24.362",
+          "first_token_s": 1.193,
+          "usage": {
+            "prompt_tokens": 3626,
+            "completion_tokens": 67,
+            "reasoning_tokens": 48
+          },
+          "processing_s": 1.633
+        }
+      ],
+      "tts_first_byte_s": [
+        0.968
+      ],
+      "tools": [
+        {
+          "tool": "playback_control",
+          "at_local": "2026-11-01 22:56:24.325"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "d598b0ea15ca4110a9bb893302b76b3e",
+          "tool": "playback_control",
+          "mcp_client_total_ms": 28.449,
+          "sqlite_commit_ms": 2.491,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    },
+    {
+      "turn": 26,
+      "set": "context",
+      "label": "lights_off_idiom",
+      "asr_transcript_frames": 1,
+      "classification": {
+        "router_model": "laya",
+        "classifier_s": 0.7599132470058976,
+        "server_classifier_s": 0.7377575669961516,
+        "client_outside_server_s": 0.022155680009745993,
+        "raw_choice": "control_lights",
+        "top_prob": 0.9818,
+        "gap": 0.9698,
+        "fast_route": "control_lights",
+        "status": "ok",
+        "input_scope": "latest_utterance"
+      },
+      "classifier_failure": null,
+      "router_cancelled": null,
+      "argument_results": [
+        {
+          "router_model": "laya",
+          "tool": "control_lights",
+          "extraction": "direct",
+          "extraction_s": 0.000220998001168482,
+          "valid": false
+        }
+      ],
+      "route": "route_glm",
+      "route_fields": {
+        "router_model": "laya",
+        "classifier_s": 0.7599132470058976,
+        "router_s": 0.7617116759938654
+      },
+      "e2e_first_speech_s": 5.269559621810913,
+      "first_playback_ms": 5263.3,
+      "endpoint_context_ms": 870.43,
+      "smart_turn": [
+        {
+          "processor": "BaseSmartTurn",
+          "is_complete": true,
+          "probability": 0.9619386196136475,
+          "e2e_processing_time_ms": 418.21024200180545
+        }
+      ],
+      "glm_calls": [
+        {
+          "started_at_local": "2026-11-01 22:56:36.047",
+          "first_token_s": 1.231,
+          "usage": {
+            "prompt_tokens": 3651,
+            "completion_tokens": 13,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.251
+        },
+        {
+          "started_at_local": "2026-11-01 22:56:37.335",
+          "first_token_s": 1.326,
+          "usage": {
+            "prompt_tokens": 3722,
+            "completion_tokens": 6,
+            "reasoning_tokens": 1
+          },
+          "processing_s": 1.349
+        }
+      ],
+      "tts_first_byte_s": [
+        0.962
+      ],
+      "tools": [
+        {
+          "tool": "control_lights",
+          "at_local": "2026-11-01 22:56:37.303"
+        }
+      ],
+      "mcp_calls": [
+        {
+          "call_id": "f37b1a3069c7438d96ad7467c01825f7",
+          "tool": "control_lights",
+          "mcp_client_total_ms": 26.155,
+          "sqlite_commit_ms": 3.288,
+          "http_request_ms": null,
+          "state_request_count": 1
+        }
+      ]
+    }
+  ],
+  "measurement_note": "Estimated final speech-end to first software speech/playback; physical acoustic onset not measured. Later-sentence playback writes are not new replies. No-reply segments and the interrupted fragment are not finite-latency samples.",
+  "metric_definitions": {
+    "laya_pi_client_s": "Pi elapsed wall time waiting for one completed HTTP classification.",
+    "laya_server_s": "Resident server elapsed inference and gate time; excludes model loading.",
+    "laya_client_outside_server_ms": "Difference of elapsed durations, including HTTP/tunnel/client overhead.",
+    "latency_denominator": "Only replies with native first-response timing; missing-ASR and interrupted partial turn retained as separate counts."
+  },
+  "confirmed_errors": {
+    "manila": {
+      "turn": 24,
+      "intended": "time in Manila",
+      "actual": "weather in Manila",
+      "reference": "User clarification in this conversation"
+    },
+    "pending_thermostat_consent": {
+      "turn": 20,
+      "expected": "Continue the pending thermostat offer",
+      "actual": "Llama small-talk reply; no thermostat call"
+    }
+  },
+  "guard_diagnosis": [
+    {
+      "turn": 5,
+      "finding": "Existing direct parser recognizes the blue color, but the stricter Laya guard rejects the normal light-color phrasing even after whitespace normalization."
+    },
+    {
+      "turn": 9,
+      "finding": "Repeated ASR-fragment whitespace prevents the reminder bypass/parser/guard matching; a read-only normalization probe accepts the reminder."
+    }
+  ]
+}

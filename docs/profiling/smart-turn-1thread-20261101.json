@@ -1,0 +1,163 @@
+{
+  "wav": "/tmp/smart-turn-profile.wav",
+  "audio_seconds": 2.875,
+  "note": "Synthetic/offline prediction timing while the live agent remains running",
+  "env": {
+    "OPENBLAS_NUM_THREADS": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null
+  },
+  "threadpools": "threadpoolctl unavailable",
+  "results": [
+    {
+      "threads": 1,
+      "warmups": 2,
+      "samples": [
+        {
+          "resample_ms": 0.0017219999790540896,
+          "features_ms": 24.494555000273976,
+          "onnx_ms": 598.2563269999446,
+          "predict_ms": 623.319750000519,
+          "executor_queue_ms": 0.10357299925090047,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 623.7498209993646,
+          "other_ms": 0.5671460003213724
+        },
+        {
+          "resample_ms": 0.0016480007616337389,
+          "features_ms": 22.89558099982969,
+          "onnx_ms": 597.6630330005719,
+          "predict_ms": 621.1650180002835,
+          "executor_queue_ms": 0.12587000037456164,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 621.5954430008424,
+          "other_ms": 0.6047559991202434
+        },
+        {
+          "resample_ms": 0.0017399997886968777,
+          "features_ms": 25.21593999972538,
+          "onnx_ms": 598.6569540000346,
+          "predict_ms": 624.5074660000682,
+          "executor_queue_ms": 0.10668400045688031,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 624.9357599999712,
+          "other_ms": 0.6328320005195565
+        },
+        {
+          "resample_ms": 0.0017230004232260399,
+          "features_ms": 20.676887000263378,
+          "onnx_ms": 599.8769110001376,
+          "predict_ms": 621.1417209997308,
+          "executor_queue_ms": 0.10575899977993686,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 621.544386000096,
+          "other_ms": 0.5861999989065225
+        },
+        {
+          "resample_ms": 0.0018889995772042312,
+          "features_ms": 21.233106999716256,
+          "onnx_ms": 596.6050919996633,
+          "predict_ms": 618.4677519995603,
+          "executor_queue_ms": 0.12898100067104679,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 618.9510280000832,
+          "other_ms": 0.627664000603545
+        },
+        {
+          "resample_ms": 0.0017219999790540896,
+          "features_ms": 21.299346999512636,
+          "onnx_ms": 598.0841589998818,
+          "predict_ms": 619.9561519997587,
+          "executor_queue_ms": 0.1029069999276544,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 620.3654839991941,
+          "other_ms": 0.5709240003852756
+        },
+        {
+          "resample_ms": 0.0016849999155965634,
+          "features_ms": 20.483035999859567,
+          "onnx_ms": 597.5765319999482,
+          "predict_ms": 618.6673620004512,
+          "executor_queue_ms": 0.10288799967383966,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 619.0546930001801,
+          "other_ms": 0.6061090007278835
+        },
+        {
+          "resample_ms": 0.001630000042496249,
+          "features_ms": 21.014959999774874,
+          "onnx_ms": 596.2676310000461,
+          "predict_ms": 617.9688829997758,
+          "executor_queue_ms": 0.10051800018118229,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 618.382362000375,
+          "other_ms": 0.6846619999123504
+        },
+        {
+          "resample_ms": 0.001630000042496249,
+          "features_ms": 21.54516100017645,
+          "onnx_ms": 598.6993229998916,
+          "predict_ms": 620.8156479997342,
+          "executor_queue_ms": 0.10392500007583294,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 621.2265710000793,
+          "other_ms": 0.5695339996236726
+        },
+        {
+          "resample_ms": 0.0018330001694266684,
+          "features_ms": 30.23912200023915,
+          "onnx_ms": 599.0623950001464,
+          "predict_ms": 629.8706799998399,
+          "executor_queue_ms": 0.11285100026725559,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 630.2973259998907,
+          "other_ms": 0.5673299992849934
+        },
+        {
+          "resample_ms": 0.0016109997886815108,
+          "features_ms": 26.006641000094533,
+          "onnx_ms": 597.2207360000539,
+          "predict_ms": 623.8063370001328,
+          "executor_queue_ms": 0.10281400045641931,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 624.2089639999904,
+          "other_ms": 0.5773490001956816
+        },
+        {
+          "resample_ms": 0.0015559999155811965,
+          "features_ms": 21.21055099996738,
+          "onnx_ms": 597.8759919998993,
+          "predict_ms": 619.7268730002179,
+          "executor_queue_ms": 0.11472200003481703,
+          "probability": 0.9859892129898071,
+          "prediction": 1,
+          "caller_elapsed_ms": 620.12198299999,
+          "other_ms": 0.6387740004356601
+        }
+      ],
+      "median": {
+        "resample_ms": 0.0017034999473253265,
+        "features_ms": 21.422253999844543,
+        "onnx_ms": 597.9800754998905,
+        "predict_ms": 620.9786844997325,
+        "executor_queue_ms": 0.1048419999278849,
+        "probability": 0.9859892129898071,
+        "caller_elapsed_ms": 621.3854785000876,
+        "other_ms": 0.5954779990133829
+      },
+      "min_predict_ms": 617.9688829997758,
+      "max_predict_ms": 629.8706799998399
+    }
+  ]
+}

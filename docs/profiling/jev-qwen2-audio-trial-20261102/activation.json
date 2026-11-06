@@ -1,0 +1,56 @@
+{
+  "activated_at": "2026-11-02T12:44:50.291869+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/jev-qwen2-audio-20261102-124450",
+  "changed_settings": {
+    "ROUTER_MODEL": "jev",
+    "ASR_BACKEND": "dgx_qwen2_audio",
+    "DGX_ASR_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "DGX_ASR_TIMEOUT_SECS": "15",
+    "SMALL_LLM_PRIMARY_URL": "http://127.0.0.1:18000",
+    "SMALL_LLM_PRIMARY_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "SMALL_LLM_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "SMALL_LLM_PRIMARY_API_KEY_FILE": "/home/aldwinrpi4/.config/voice-agent/dgx-audio-api-key",
+    "VAD_EXPERIMENT": "jev-qwen2-audio-asr-small-qwen3-aiden-20261102"
+  },
+  "selected_settings": {
+    "ROUTER_MODEL": "jev",
+    "ASR_BACKEND": "dgx_qwen2_audio",
+    "DGX_ASR_BASE": "http://127.0.0.1:18000",
+    "DGX_ASR_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "DGX_ASR_TIMEOUT_SECS": "15",
+    "SMALL_LLM_PRIMARY_URL": "http://127.0.0.1:18000",
+    "SMALL_LLM_PRIMARY_PROTOCOL": "openai",
+    "SMALL_LLM_PRIMARY_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "SMALL_LLM_MODEL": "Qwen/Qwen2-Audio-7B-Instruct",
+    "SMALL_LLM_PRIMARY_API_KEY_FILE": "/home/aldwinrpi4/.config/voice-agent/dgx-audio-api-key",
+    "VAD_EXPERIMENT": "jev-qwen2-audio-asr-small-qwen3-aiden-20261102"
+  },
+  "log_start_bytes": 6760685,
+  "asr_model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "small_model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "small_model_timeout_ms": "2500",
+  "jev_model": "jev-1.14.0",
+  "jev_deadline_ms": "1200",
+  "glm_model": "z-ai/glm-5.3-flash",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "tts_voice": "aiden",
+  "source_sha256": {
+    "bot.py": "a817a016d19fae9b5f169b1b52104674279b23b2bf304e2becf5e190b242d5c9",
+    "qwen_audio_stt.py": "5cbb6272be4372b7bcb7935d357c4098ef35f57d37470c6cb37e292b50bcfbd3",
+    "qwen_tts.py": "4b9599cf8a6cc26bad0661b707ecd495eb7ebcd0e336e9bda6bb40b7a409e57c",
+    "orchestration.py": "97cd3363d88b262cd995c33d78f5730eac6f0da64d38d1bd34b9c33e29f207fa"
+  },
+  "preserved": "Qwen3 Aiden TTS, GLM endpoint/model, Pi MCP, Jetson SQLite/NVMe state, speakerphone/AEC, VAD 0.3s, Smart Turn two threads, pacat 150ms and deadlines retained. Nemotron and Llama endpoints preserved for rollback; no container changes.",
+  "validation": "105 tests passed. Real VAD/Smart Turn/Qwen ASR/Jev path passed with mocked MCP. Small reply and thermostat extraction passed; color extraction rejected by existing validation.",
+  "live_voice_trial": "Completed: 27 main-window timed onsets, direct median 4.433 s, context 4.502 s, overall 4.494 s. ASR HTTP median 0.744 s. Transcription-contract failures and a 26.697 s TTS stall; one failed small-model extraction, no conversational small-model calls.",
+  "run": "72afa542c5",
+  "pi_pid": 21477,
+  "service_status": "active",
+  "pipeline_ready_log": [
+    "2026-11-02 12:45:04.387 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)"
+  ],
+  "greeting_first_pcm_s": 0.2441265300003579,
+  "greeting_first_playback_at": 1793594719.5801675,
+  "greeting_request_s": 1.7657046079984866,
+  "startup_errors": []
+}

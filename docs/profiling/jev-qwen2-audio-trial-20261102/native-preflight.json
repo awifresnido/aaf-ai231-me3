@@ -1,0 +1,137 @@
+{
+  "kind": "Real VAD + Smart Turn + Qwen2-Audio STT + Jev + mocked MCP; no speaker playback or real tools",
+  "success": true,
+  "calls": [
+    {
+      "tool": "control_lights",
+      "arguments": {
+        "action": "on",
+        "value": ""
+      }
+    }
+  ],
+  "receipts": [
+    "Synthetic receipt, no tool executed."
+  ],
+  "events": [
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "user_turn_started",
+      "at": 1793594599.0581703
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "vad_stop",
+      "at": 1793594599.8351436,
+      "vad_confirmed_at": 1793594599.833747,
+      "stop_secs": 0.3,
+      "estimated_speech_end_at": 1793594599.533747
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "asr_qwen2_start",
+      "at": 1793594599.8365414,
+      "asr_backend": "dgx_qwen2_audio",
+      "asr_model": "Qwen/Qwen2-Audio-7B-Instruct",
+      "segment_id": 1,
+      "queue_wait_s": 0.000852162000228418,
+      "audio_s": 2.18,
+      "audio_bytes": 69804
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "turn_analysis",
+      "at": 1793594600.346983,
+      "processor": "BaseSmartTurn",
+      "is_complete": true,
+      "probability": 0.9749865531921387,
+      "e2e_processing_time_ms": 443.3526620014163
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "asr_qwen2_complete",
+      "at": 1793594600.536529,
+      "asr_backend": "dgx_qwen2_audio",
+      "asr_model": "Qwen/Qwen2-Audio-7B-Instruct",
+      "request_s": 0.7000910709975869,
+      "chars": 18,
+      "segment_id": 1,
+      "queue_wait_s": 0.000852162000228418,
+      "audio_s": 2.18,
+      "audio_bytes": 69804
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "asr_transcript",
+      "at": 1793594600.5384707,
+      "frame_id": 188,
+      "finalized": true,
+      "chars": 18,
+      "since_speech_end_ms": 1004.7
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "routing_context_ready",
+      "at": 1793594600.5429184,
+      "since_speech_end_ms": 1009.15
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "classifier_result",
+      "at": 1793594600.829707,
+      "router_model": "jev",
+      "classifier_s": 0.2827478869985498,
+      "server_classifier_s": null,
+      "client_outside_server_s": null,
+      "raw_choice": "control_lights",
+      "top_prob": 0.98,
+      "gap": 0.96,
+      "fast_route": "control_lights",
+      "status": "ok",
+      "input_scope": "latest_utterance"
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "argument_result",
+      "at": 1793594600.832088,
+      "router_model": "jev",
+      "tool": "control_lights",
+      "extraction": "direct",
+      "extraction_s": 0.0023152680005296133,
+      "valid": true
+    },
+    {
+      "run": "93aa5a2df7",
+      "experiment": "synthetic-qwen2-audio",
+      "turn": 1,
+      "event": "route_tool",
+      "at": 1793594600.8322628,
+      "router_model": "jev",
+      "tool": "control_lights",
+      "classifier_s": 0.2827478869985498,
+      "jev_s": 0.2827478869985498,
+      "extraction": "direct",
+      "extraction_s": 0.0023152680005296133,
+      "mcp_s": 3.2222000299952924e-05,
+      "router_s": 0.2859235020005144
+    }
+  ]
+}

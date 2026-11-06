@@ -1,0 +1,117 @@
+{
+  "source": "Pi main log, filtered to TTS measurements after synthesis-start; no speech text",
+  "measurements": [
+    {
+      "turn": 0,
+      "ttfb_s": 1.126
+    },
+    {
+      "turn": 1,
+      "ttfb_s": 0.954
+    },
+    {
+      "turn": 2,
+      "ttfb_s": 0.979
+    },
+    {
+      "turn": 3,
+      "ttfb_s": 1.0
+    },
+    {
+      "turn": 4,
+      "ttfb_s": 0.886
+    },
+    {
+      "turn": 5,
+      "ttfb_s": 0.977
+    },
+    {
+      "turn": 6,
+      "ttfb_s": 0.936
+    },
+    {
+      "turn": 7,
+      "ttfb_s": 0.95
+    },
+    {
+      "turn": 8,
+      "ttfb_s": 1.054
+    },
+    {
+      "turn": 9,
+      "ttfb_s": 0.948
+    },
+    {
+      "turn": 10,
+      "ttfb_s": 0.988
+    },
+    {
+      "turn": 11,
+      "ttfb_s": 0.976
+    },
+    {
+      "turn": 12,
+      "ttfb_s": 0.952
+    },
+    {
+      "turn": 15,
+      "ttfb_s": 1.039
+    },
+    {
+      "turn": 16,
+      "ttfb_s": 0.972
+    },
+    {
+      "turn": 17,
+      "ttfb_s": 0.959
+    },
+    {
+      "turn": 18,
+      "ttfb_s": 0.922
+    },
+    {
+      "turn": 19,
+      "ttfb_s": 1.093
+    },
+    {
+      "turn": 20,
+      "ttfb_s": 1.015
+    },
+    {
+      "turn": 21,
+      "ttfb_s": 0.995
+    },
+    {
+      "turn": 22,
+      "ttfb_s": 0.987
+    },
+    {
+      "turn": 23,
+      "ttfb_s": 0.993
+    },
+    {
+      "turn": 24,
+      "ttfb_s": 0.944
+    },
+    {
+      "turn": 25,
+      "ttfb_s": 0.968
+    },
+    {
+      "turn": 26,
+      "ttfb_s": 0.945
+    },
+    {
+      "turn": 27,
+      "ttfb_s": 0.934
+    },
+    {
+      "turn": 29,
+      "ttfb_s": 0.924
+    },
+    {
+      "turn": 30,
+      "ttfb_s": 1.024
+    }
+  ]
+}

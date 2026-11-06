@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "base_commit": "81cbbb8",
+  "branch": "two-brain-plusjev",
+  "purpose": "Pi-hosted MCP + non-MCP Jetson SQLite worker implementation and preflight",
+  "regression_tests_passed": 57,
+  "spaced_split_calls": 4,
+  "extended_contract_calls": 8,
+  "jetson_mcp_compatibility_calls": 4,
+  "full_synchronization": true,
+  "same_nvme_state_retained": true,
+  "original_pi_database_unchanged": true,
+  "data_or_credentials_in_artifact": false,
+  "sha256": {
+    "contract/mcp-49958.jsonl": "0acee1359a33507d01e2501854f9b89019a7c54e918f93510bf172925f11b9aa",
+    "contract/pi-49938.jsonl": "20ce15fc0eab2bde11a855822f25a4f23930028456399722ddf1c12edcf50d33",
+    "contract/state-1289893.jsonl": "f61a8656d7ab3e59dedb05df34f7d2db4aad24ddf853cb97053e5f61fd09e5bf",
+    "contract/summary.json": "3555aa85bfe2f4fe1b5cd53951dc1f3e14802718560e6a9256f5f615ca5f4283",
+    "deployment-verification.json": "5acb885ef4d25a72c8752a25f4e6ad954960c26f987167edcc20650fd4bcbd47",
+    "jetson-compat/mcp-1293446.jsonl": "0b2f8c51a297d9e53a8156e3341ca8e502bb92e19b9c708d259c01caa9466e75",
+    "jetson-compat/pi-50065.jsonl": "18ca9a9b2760547ab21d2a7c0a41889970524b9047a547e0544c00b344c449d8",
+    "jetson-compat/summary.json": "e5ca18c58af8b3db5ad8c547ce8c529a417e432b3b9672441d7d3f66d5f7d8e4",
+    "mcp-49691.jsonl": "2786457488462dfec0d36f3978e8aa7138cefe01ad8b34834fabba47d08f2f4b",
+    "pi-49682.jsonl": "0772d4bfe0f57b81ac45d6e50b463cd85d104acb2fa59e164232bf73339185b6",
+    "regression.log": "a29d15486e65435c57c989ce7c0969c339282069ef3886421674f968c6415c67",
+    "state-1281768.jsonl": "6eb74dce27f6dd56e02f302a121b0ee3b76f8a5ec44cf8d5de953fd4aecb9d68",
+    "summary.json": "d6cebe7b4d66c9098be47dff2f2cc21f022f5afff63057de2c346eba0857a61b"
+  },
+  "source_sha256": {
+    "pi/bot.py": "850122b25205a592eb732fb18289aae3422232619d36cb5a51f808cd5aec9b31",
+    "pi/vcm_server_location.py": "724aff4cb0dad956af38bc43ffbd7f465b31ef3698d2243b76973cad4fdabf9c",
+    "pi/vcm_state.py": "312071d1ce35ba8ed035b39ce938c682d0a961744562856cab4dc2a15c08ae06",
+    "pi/vcm_state_worker.py": "0e67469c70fa3eac9b4348e205d1fc198153af6c376c3ca05c1ea64fb17a692a",
+    "pi/mcp_servers/voice_tools_mcp_server.py": "0c5fa1b79cc063c7980d3d76588e3d76a1c7d8f705f070c631b936d11c4cb5a9",
+    "scripts/summarize_stall_diagnostics.py": "db0b891d15262fcb3816cf8f2585418a569d8f29768846e90ed93362bc2d1d18",
+    "scripts/probe_vcm_location.py": "33143e21c5e010a22964e77cf4c97c3fc5b1a6f3ba5939294f2852b6a9f0d5f9",
+    "tests/test_vcm_state.py": "9fe20aa46155ecf80a0537c7d6b3dc63a717cafd858ddcd99289a13d0172b492",
+    "tests/test_vcm_server_location.py": "ee9d8a3659490e08f82e26092580f39dffe13dc29130a7e7a3b59fd009c54a56",
+    "tests/test_stall_diagnostics.py": "b6b67d48d1da1a6fea312e2f1bcfdc32af9168eb43d030b724761fa14e7970d6"
+  }
+}

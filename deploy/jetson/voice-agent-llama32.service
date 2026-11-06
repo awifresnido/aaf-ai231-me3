@@ -1,0 +1,23 @@
+[Unit]
+Description=Voice agent small model - Llama 3.2 3B Instruct (llama.cpp, CUDA)
+Documentation=https://github.com/awifresnido/aaf-ai231-me3
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/aldwin/llama.cpp/build/bin/llama-server \
+    --model /home/aldwin/models/llm/Llama-3.2-3B-Instruct-Q4_K_M.gguf \
+    --alias meta-llama/Llama-3.2-3B-Instruct \
+    --host 0.0.0.0 --port 8084 \
+    --ctx-size 4096 --parallel 1 \
+    -ngl 99 --flash-attn on \
+    --cache-type-k q8_0 --cache-type-v q8_0 \
+    --threads 4 --jinja --no-webui
+StandardOutput=journal
+StandardError=journal
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
