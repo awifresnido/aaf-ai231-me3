@@ -20,11 +20,12 @@ export default function TurnFeed({
   dn: DisplayNames;
 }) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const followLatest = useRef(true);
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (el) el.scrollTop = el.scrollHeight;
-  }, [turns]);
+    if (el && followLatest.current) el.scrollTop = el.scrollHeight;
+  }, [turns.length]);
 
   const gateClass = (g: string) =>
     g === "accepted"
@@ -38,7 +39,10 @@ export default function TurnFeed({
   return (
     <div className="panel turn-feed">
       <h2>Turn feed ({turns.length})</h2>
-      <div className="turn-scroll" ref={scrollRef}>
+      <div className="turn-scroll" ref={scrollRef} onScroll={(event) => {
+        const el = event.currentTarget;
+        followLatest.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40;
+      }}>
         <table>
           <thead>
             <tr>

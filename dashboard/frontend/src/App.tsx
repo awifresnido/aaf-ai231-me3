@@ -1,12 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { fetchRun, fetchState, newTest, saveRun } from "./api";
+import { fetchAudioActivity, fetchRun, fetchState, newTest, saveRun } from "./api";
 import type { RunDetail, State } from "./types";
 import PipelineStrip from "./components/PipelineStrip";
 import RunCompare from "./components/RunCompare";
 import TurnFeed from "./components/TurnFeed";
-import Waterfall from "./components/Waterfall";
+import Waterfall, { LatencySummary } from "./components/Waterfall";
 import ToolActivity from "./components/ToolActivity";
-import ClassifierHealth from "./components/ClassifierHealth";
 import SmartControls from "./components/SmartControls";
 import { fmtS, fmtTime } from "./displayNames";
 
@@ -19,9 +18,21 @@ export default function App() {
   const [detail, setDetail] = useState<RunDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<"new" | "save" | null>(null);
+  const [audio, setAudio] = useState<{ available: boolean; user_speaking: boolean | null; bot_speaking: boolean | null }>({ available: false, user_speaking: null, bot_speaking: null });
   const [toast, setToast] = useState<{ kind: "ok" | "err"; text: string } | null>(
     null
   );
+
+  useEffect(() => {
+    let live = true;
+    const poll = async () => {
+      try { const value = await fetchAudioActivity(); if (live) setAudio(value); }
+      catch { if (live) setAudio({ available: false, user_speaking: null, bot_speaking: null }); }
+    };
+    void poll();
+    const id = setInterval(poll, 500);
+    return () => { live = false; clearInterval(id); };
+  }, []);
 
   // Initial load — select the most recently started run so a live trial is
   // tracked automatically.
@@ -114,7 +125,7 @@ export default function App() {
       <header className="app-header">
         <div className="header-row">
           <div className="header-title">
-            <h1>ME3 voice-agent dashboard</h1>
+            <h1>AI231 MLOPS ME3 | FULL-DUPLEX VOICE AGENT DASHBOARD</h1>
             <span className="subtitle-inline">
               {state.runs.length} run{state.runs.length === 1 ? "" : "s"} ·{" "}
               <span className="live-dot" aria-hidden />
@@ -122,6 +133,15 @@ export default function App() {
             </span>
           </div>
           <div className="header-actions">
+            <div className={`audio-indicator ${audio.available ? "" : "unavailable"}`} aria-label="Live speech activity" title="Live speech activity from the Pi speakerphone">
+              <span className={`audio-voice ${audio.user_speaking ? "speaking" : ""}`}>
+                <span className="audio-wave" aria-hidden><i /><i /><i /><i /></span>User{audio.user_speaking === null ? " —" : audio.user_speaking ? " speaking" : ""}
+              </span>
+              <span className={`audio-voice bot ${audio.bot_speaking ? "speaking" : ""}`}>
+                <span className="audio-wave" aria-hidden><i /><i /><i /><i /></span>Bot{audio.bot_speaking ? " speaking" : ""}
+              </span>
+              {!audio.available && <span className="audio-offline">Unavailable</span>}
+            </div>
             <button
               className="btn btn-primary"
               onClick={onNewTest}
@@ -146,21 +166,29 @@ export default function App() {
           </div>
         )}
 
-        {detail && (
-          <div className="pipe-wrap">
-            <PipelineStrip config={detail.config} />
-            <span className="run-meta muted">
-              <strong className="mono">{detail.run_id}</strong> · {detail.turns.length}{" "}
-              turns · {fmtTime(detail.started_at)} → {fmtTime(detail.ended_at)}
-            </span>
-          </div>
-        )}
-
-        <div className="run-strip">
+        <div className="header-overview">
+          <section className="pipe-wrap" aria-label="Pipeline architecture">
+            <div className="pipeline-heading">
+              <h2>PIPELINE ARCHITECTURE</h2>
+              <span className="pipe-escalate">Local brain or GLM cloud, depending on the request</span>
+            </div>
+            {detail ? <>
+              <PipelineStrip config={detail.config} />
+              <span className="run-meta muted">
+                <strong className="mono">{detail.run_id}</strong> · {detail.turns.length}{" "}
+                turns · {fmtTime(detail.started_at)} → {fmtTime(detail.ended_at)}
+              </span>
+            </> : <span className="muted">Loading pipeline…</span>}
+          </section>
+          <section className="run-selector" aria-label="Recent runs">
+            <h2>Recent runs</h2>
+            <div className="run-strip">
           {recentRuns.map((r) => (
-            <div
+            <button
+              type="button"
               key={r.run_id}
               className={`run-card ${r.run_id === selectedId ? "selected" : ""}`}
+              aria-pressed={r.run_id === selectedId}
               onClick={() => setSelectedId(r.run_id)}
             >
               <div className="id">{r.run_id}</div>
@@ -168,8 +196,10 @@ export default function App() {
                 {r.turns} turns · med e2e {fmtS(r.median_e2e_s)}
               </div>
               <div className="meta">{fmtTime(r.started_at)}</div>
-            </div>
+            </button>
           ))}
+            </div>
+          </section>
         </div>
       </header>
 
@@ -181,11 +211,11 @@ export default function App() {
         <>
           <div className="main-grid">
             <div className="col-left">
-              <SmartControls devices={detail.devices} dn={dn} />
+              <SmartControls devices={detail.devices} dn={dn} serverTimeMs={detail.server_time_ms} receivedMonotonicMs={detail.received_monotonic_ms} />
             </div>
             <div className="col-right">
               <TurnFeed turns={detail.turns} dn={dn} />
-              <ClassifierHealth detail={detail} />
+              <LatencySummary detail={detail} />
               <ToolActivity detail={detail} dn={dn} />
               <RunCompare runs={state.runs} />
             </div>

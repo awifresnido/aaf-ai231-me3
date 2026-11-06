@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import type { DeviceEvent, Devices, DisplayNames } from "../types";
 import { toolName, fmtTime, fmtS } from "../displayNames";
 
@@ -8,9 +9,9 @@ const BULB_COLORS: Record<string, string> = {
 };
 const WARM_WHITE = "#FFC857";
 
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
+function Card({ title, children, style }: { title: string; children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <section className="device-card">
+    <section style={style} className={`device-card ${title === "Light" || title === "Timer & alarm" || title.startsWith("Reminders") ? "device-card-featured" : ""}`}>
       <h3>{title}</h3>
       {children}
     </section>
@@ -19,9 +20,13 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
 
 function LightCard({ light }: { light: Devices["final"]["lights"] }) {
   const col = light.color ? BULB_COLORS[light.color] ?? WARM_WHITE : WARM_WHITE;
-  const glow = light.power ? 0.2 + 0.8 * (parseInt(light.brightness, 10) || 100) / 100 : 0;
+  const parsedBrightness = Number.parseInt(light.brightness, 10);
+  const brightness = Number.isFinite(parsedBrightness) ? Math.max(0, Math.min(100, parsedBrightness)) / 100 : 1;
+  const intensity = light.power ? brightness : 0;
+  const glow = intensity * 0.9;
+  const cardAlpha = Math.round(intensity * 0.4 * 255).toString(16).padStart(2, "0");
   return (
-    <Card title="Light">
+    <Card title="Light" style={light.power ? { background: `linear-gradient(135deg, ${col}${cardAlpha}, #171c28)`, borderColor: col } : undefined}>
       <div className="sc-light">
         <svg viewBox="0 0 120 150" className="sc-bulb" aria-hidden>
           <defs>
@@ -34,7 +39,7 @@ function LightCard({ light }: { light: Devices["final"]["lights"] }) {
           <path
             d="M60 14c-22 0-38 16-38 37 0 14 7 23 14 31 5 6 8 11 8 18h32c0-7 3-12 8-18 7-8 14-17 14-31 0-21-16-37-38-37z"
             fill={light.power ? col : "#3a4048"}
-            fillOpacity={light.power ? 0.4 + 0.6 * (parseInt(light.brightness, 10) || 100) / 100 : 1}
+            fillOpacity={light.power ? 0.15 + 0.85 * intensity : 1}
             stroke="#56606A"
             strokeWidth="2"
           />
@@ -44,7 +49,7 @@ function LightCard({ light }: { light: Devices["final"]["lights"] }) {
         </svg>
         <dl className="sc-facts">
           <div><dt>Power</dt><dd>{light.power ? "On" : "Off"}</dd></div>
-          <div><dt>Brightness</dt><dd>{light.brightness}</dd></div>
+          <div><dt>Brightness</dt><dd>{Math.round(brightness * 100)}%</dd></div>
           <div><dt>Colour</dt><dd>{light.color ?? "Warm white"}</dd></div>
         </dl>
       </div>
@@ -91,23 +96,28 @@ function MediaCard({ m }: { m: Devices["final"]["media"] }) {
   );
 }
 
-function ClockCard({ timers, alarms }: { timers: Devices["final"]["timers"]; alarms: Devices["final"]["alarms"] }) {
+function ClockCard({ timers, alarms, serverTimeMs, receivedMonotonicMs }: { timers: Devices["final"]["timers"]; alarms: Devices["final"]["alarms"]; serverTimeMs: number; receivedMonotonicMs: number }) {
+  const [tick, setTick] = useState(performance.now());
+  useEffect(() => { const id = setInterval(() => setTick(performance.now()), 250); return () => clearInterval(id); }, []);
+  const now = serverTimeMs + Math.max(0, tick - receivedMonotonicMs);
+  const activeTimers = timers.filter((t) => t.ends_at == null || t.ends_at * 1000 > now);
+  const latestAlarm = alarms.slice(-1);
   return (
     <Card title="Timer & alarm">
       <div className="sc-list">
-        {timers.length === 0 && alarms.length === 0 && (
+        {activeTimers.length === 0 && alarms.length === 0 && (
           <p className="muted">No timers or alarms set.</p>
         )}
-        {timers.map((t, i) => (
+        {activeTimers.map((t, i) => (
           <div key={`t${i}`} className="sc-row">
-            <span className="mono">{t.label}</span>
-            <span className="muted">timer</span>
+            <span className="mono countdown">{t.ends_at == null ? t.label : formatCountdown(t.ends_at, now)}</span>
+            <span>{t.ends_at != null && t.ends_at * 1000 <= now ? "Finished" : "Remaining"}</span>
           </div>
         ))}
-        {alarms.map((a, i) => (
+        {latestAlarm.map((a, i) => (
           <div key={`a${i}`} className="sc-row">
             <span className="mono">{a.time_str}</span>
-            <span className="muted">alarm</span>
+            <span className="muted">{alarms.length > 1 ? `latest alarm · ${alarms.length} set` : "alarm"}</span>
           </div>
         ))}
       </div>
@@ -115,10 +125,18 @@ function ClockCard({ timers, alarms }: { timers: Devices["final"]["timers"]; ala
   );
 }
 
+function formatCountdown(endsAt: number, now: number) {
+  const seconds = Math.max(0, Math.ceil(endsAt - now / 1000));
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor(seconds % 3600 / 60);
+  const remaining = String(seconds % 60).padStart(2, "0");
+  return hours ? `${hours}:${String(minutes).padStart(2, "0")}:${remaining}` : `${minutes}:${remaining}`;
+}
+
 function RemindersCard({ reminders }: { reminders: Devices["final"]["reminders"] }) {
   return (
-    <Card title="Reminders">
-      <div className="sc-list">
+    <Card title={`Reminders · ${reminders.length}`}>
+      <div className="sc-list sc-reminders">
         {reminders.length === 0 && <p className="muted">No reminders added.</p>}
         {reminders.map((r, i) => (
           <div key={i} className="sc-row">
@@ -131,9 +149,9 @@ function RemindersCard({ reminders }: { reminders: Devices["final"]["reminders"]
   );
 }
 
-function CallCard({ call }: { call: Devices["final"]["call"] }) {
+function CallCard({ call, message }: { call: Devices["final"]["call"]; message: Devices["final"]["message"] }) {
   return (
-    <Card title="Phone">
+    <Card title="Calls & messages · simulated">
       <div className="sc-list">
         {call.status === "idle" ? (
           <p className="muted">No call placed.</p>
@@ -143,6 +161,8 @@ function CallCard({ call }: { call: Devices["final"]["call"] }) {
             <span className="muted">{call.to}</span>
           </div>
         )}
+        {message.status === "simulated" && <div className="sc-row"><span>Message to {message.to}</span><span>{message.text}</span></div>}
+        <p className="muted small">Contacts: Mom · Dad · John</p>
       </div>
     </Card>
   );
@@ -169,13 +189,13 @@ function ActivityFeed({ events, dn }: { events: DeviceEvent[]; dn: DisplayNames 
   );
 }
 
-export default function SmartControls({ devices, dn }: { devices: Devices; dn: DisplayNames }) {
+export default function SmartControls({ devices, dn, serverTimeMs, receivedMonotonicMs }: { devices: Devices; dn: DisplayNames; serverTimeMs: number; receivedMonotonicMs: number }) {
   const d = devices.final;
   return (
     <section className="panel">
       <div className="sc-head">
         <h2>Simulated smart home</h2>
-        <span className="badge warn">reconstructed from tool args</span>
+        <span className="badge warn">Simulated · current run</span>
         {!devices.args_recorded && (
           <span className="badge bad">args not recorded</span>
         )}
@@ -193,9 +213,9 @@ export default function SmartControls({ devices, dn }: { devices: Devices; dn: D
         <LightCard light={d.lights} />
         <ThermostatCard t={d.thermostat} />
         <MediaCard m={d.media} />
-        <ClockCard timers={d.timers} alarms={d.alarms} />
+        <ClockCard timers={d.timers} alarms={d.alarms} serverTimeMs={serverTimeMs} receivedMonotonicMs={receivedMonotonicMs} />
         <RemindersCard reminders={d.reminders} />
-        <CallCard call={d.call} />
+        <CallCard call={d.call} message={d.message} />
       </div>
 
       <h3 className="sc-sub">Device activity (last 10 commands)</h3>

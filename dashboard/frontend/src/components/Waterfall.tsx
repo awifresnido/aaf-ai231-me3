@@ -16,6 +16,16 @@ const SEGMENTS: Segment[] = [
 
 const STAGE_KEYS = ["e2e_s", "asr_s", "classifier_s", "tool_s", "tts_first_s"] as const;
 
+export function LatencySummary({ detail }: { detail: RunDetail }) {
+  return <div className="panel panel-tight"><h2>Latency · median / p95</h2><div className="latency-summary">
+    {STAGE_KEYS.map((k) => {
+      const label = k === "e2e_s" ? "E2E" : SEGMENTS.find((x) => x.key === k)?.label ?? k;
+      const color = SEGMENTS.find((x) => x.key === k)?.color;
+      return <div className="latency-summary-row" key={k} style={color ? { borderTopColor: color } : undefined}><span className="latency-label">{color && <span className="dot" style={{ background: color }} />}{label}</span><strong className="mono">{fmtS(detail.aggregates[k].median)}</strong><small>p95 {fmtS(detail.aggregates[k].p95)}</small></div>;
+    })}
+  </div></div>;
+}
+
 // Latency waterfall, trimmed to the most recent 3 turns (full-width strip).
 // Each turn is a stacked bar of the measured stages; the run-level median/p95
 // summary is shown inline so the whole thing stays one short band.
@@ -38,23 +48,6 @@ export default function Waterfall({ detail }: { detail: RunDetail }) {
               {s.label}
             </span>
           ))}
-        </div>
-        <div className="wf-aggs">
-          {STAGE_KEYS.map((k) => {
-            const s = detail.aggregates[k];
-            const label =
-              k === "e2e_s"
-                ? "E2E"
-                : SEGMENTS.find((x) => x.key === k)?.label ?? k;
-            return (
-              <span className="wf-agg" key={k} title={`median · p95`}>
-                <span className="muted">{label}</span>{" "}
-                <span className="mono">
-                  {fmtS(s.median)} / {fmtS(s.p95)}
-                </span>
-              </span>
-            );
-          })}
         </div>
       </div>
 

@@ -6,6 +6,8 @@ diagnostics already captured on disk.
 """
 
 import os
+import json
+import time
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -57,6 +59,23 @@ def state():
     }
 
 
+@app.get("/api/audio-activity")
+def audio_activity():
+    try:
+        with open("/dev/shm/me3-audio-activity.json", encoding="utf-8") as handle:
+            activity = json.load(handle)
+        age = time.time() - activity["updated_at"]
+        if not -1 <= age <= 2:
+            raise ValueError("stale activity")
+        user = activity.get("user_speaking")
+        bot = activity.get("bot_speaking")
+        if user not in (True, False, None) or type(bot) is not bool:
+            raise ValueError("invalid activity")
+        return {"available": True, "user_speaking": user, "bot_speaking": bot}
+    except (OSError, ValueError, TypeError, KeyError):
+        return {"available": False, "user_speaking": None, "bot_speaking": None}
+
+
 @app.get("/api/runs")
 def runs():
     return [r.summary() for r in _load_all()]
@@ -64,7 +83,9 @@ def runs():
 
 @app.get("/api/runs/{run_id}")
 def run_detail(run_id: str):
-    return _find(run_id).detail()
+    detail = _find(run_id).detail()
+    detail["server_time_ms"] = time.time() * 1000
+    return detail
 
 
 @app.get("/api/runs/{run_id}/turns")

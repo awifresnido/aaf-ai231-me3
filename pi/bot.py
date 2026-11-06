@@ -57,6 +57,7 @@ from pipecat.services.nvidia.stt import NvidiaSTTService
 from pipecat.services.nvidia.tts import NvidiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_output import BaseOutputTransport
+from pipecat.processors.frame_processor import FrameDirection
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
 from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
@@ -163,7 +164,7 @@ def build_speech_services(*, timing_observer=None):
     elif ASR_BACKEND == "nemotron":
         stt = NvidiaSTTService(
             server=ASR_SERVER, use_ssl=False, model_function_map={},
-            sample_rate=16000, audio_channel_count=1, stop_history=320)
+            sample_rate=16000, audio_channel_count=1, stop_history=int(os.getenv("NEMOTRON_STOP_HISTORY_MS", "600")))
     else:
         raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio, voxtral_mini or whisper")
     if TTS_BACKEND == "dgx_qwen":
@@ -233,6 +234,17 @@ class PacatAudioOutput(BaseOutputTransport):
         self.timing_observer = None
         self._last_playback_context = None
         self._last_write_at = float("-inf")
+        self._interrupt_at = 0.0
+        self._interrupt_burst = -1
+        self._interrupt_pending = 0.0
+        # Backchannel echo gate: measured playback state (never frame events).
+        self._playback_pending_s = 0.0
+        self._playback_bytes_at = 0.0
+        self.playback_busy_until = 0.0
+        # Backchannel burst id: increments each time playback goes
+        # idle->active, so the backchannel can tell "filler played, silence
+        # since" from "the real answer played" without frame-event guessing.
+        self._playback_burst_id = 0
 
     async def setup(self, setup):
         # Run BaseOutputTransport.setup for resampler/chunking init, but do NOT
@@ -259,13 +271,88 @@ class PacatAudioOutput(BaseOutputTransport):
         await BaseOutputTransport.start(self, frame)
         await self.set_transport_ready(frame)
 
+    async def process_frame(self, frame, direction=FrameDirection.DOWNSTREAM):
+        if type(frame).__name__ == "InterruptionFrame":
+            now = time.monotonic()
+            pending = max(0.0, self._playback_pending_s -
+                          (now - self._playback_bytes_at))
+            if self.timing_observer:
+                self.timing_observer.record(
+                    "bc_interrupt", pending_s=round(pending, 3),
+                    busy_until_in_ms=round(max(0.0, self.playback_busy_until - now) * 1000),
+                    burst_id=self._playback_burst_id)
+            # remember for the post-interrupt drain measurement
+            self._interrupt_at = now
+            self._interrupt_burst = self._playback_burst_id
+            self._interrupt_pending = pending
+            # Hard flush: SIGKILL pacat so buffered-but-unplayed audio dies
+            # with the pipe. Respawned lazily on the next write.
+            if pending > 0.05 and self._proc is not None:
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_flush", killed_pending_s=round(pending, 3))
+                try:
+                    self._proc.kill()
+                    await self._proc.wait()
+                    if self.timing_observer:
+                        self.timing_observer.record(
+                            "bc_flush_pacat_gone", exit_code=self._proc.returncode)
+                except Exception:
+                    pass
+                self._proc = None
+        return await super().process_frame(frame, direction)
+
+    async def _spawn_pacat(self):
+        self._proc = await asyncio.create_subprocess_exec(
+            "pacat",
+            "--playback",
+            "--raw",
+            "--format=s16le",
+            f"--rate={self.sample_rate}",
+            f"--channels={self._params.audio_out_channels}",
+            f"--latency-msec={PACAT_LATENCY_MS}",
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.DEVNULL,
+        )
+
     async def write_audio_frame(self, frame) -> bool:
         if self._proc is None or self._proc.stdin is None:
-            return False
+            if frame.audio:
+                try:
+                    await self._spawn_pacat()
+                except Exception as exc:
+                    logger.error("pacat respawn failed: {}", exc)
+                    return False
+            else:
+                return False
         try:
             self._proc.stdin.write(frame.audio)
             await self._proc.stdin.drain()
             now = time.monotonic()
+            # Measured playback accounting: a DRAINING bucket. Each write
+            # adds seconds of pending audio; wall-clock time drains it.
+            # (Run 079d8d8b7f bug: a cumulative byte total made
+            # playback_busy_until creep forward forever, blocking fillers.)
+            n = len(frame.audio)
+            rate = self.sample_rate or 24000
+            channels = self._params.audio_out_channels or 1
+            elapsed = now - self._playback_bytes_at
+            pending = max(0.0, self._playback_pending_s - elapsed)
+            if pending <= 0.001 and n > 0:
+                self._playback_burst_id += 1
+            pending += n / (rate * channels * 2)
+            self._playback_pending_s = pending
+            self._playback_bytes_at = now
+            self.playback_busy_until = now + pending + 0.15
+            if (self._interrupt_at and now - self._interrupt_at > 0.9
+                    and (self._playback_burst_id > self._interrupt_burst or pending <= 0.001)):
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_drain", after_interrupt_s=round(now - self._interrupt_at, 3),
+                        predicted_pending_s=round(self._interrupt_pending, 3),
+                        new_burst=self._playback_burst_id > self._interrupt_burst)
+                self._interrupt_at = 0.0
             context_id = getattr(frame, "context_id", None)
             first = (context_id is not None and context_id != self._last_playback_context) or (context_id is None and now - self._last_write_at > 0.5)
             self._last_write_at = now
@@ -333,7 +420,7 @@ def build_local_transport() -> BaseTransport:
     )
 
 
-async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
+async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, benchmark_mode: bool = False) -> None:
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
     experiment = os.getenv("VAD_EXPERIMENT", f"vad-{VAD_STOP_SECS}")
     timing = TurnTimingObserver(experiment=experiment)
@@ -455,7 +542,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
             from speculative_laya import SpeculativeLaya
             from spec_tap import SpecTap
             spec_layer = SpeculativeLaya(timing=timing)
-            spec_tap = SpecTap(spec_layer, timing_observer=timing)
+            spec_tap = SpecTap(spec_layer, timing_observer=timing, stt=stt)
             logger.info("Speculative Laya enabled (min_audio_s={})", spec_layer.min_audio_s)
         except Exception as exc:
             logger.warning("Speculative Laya unavailable: {}", type(exc).__name__)
@@ -509,10 +596,22 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
             llm_stages.insert(0, router)
             logger.info("Two-brain routing enabled: classifier={}, GLM={}", llm_stages[0].router_model, OLLAMA_MODEL)
 
+    bc_processor = None
+    if os.getenv("BACKCHANNEL", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        try:
+            from backchannel import BackchannelProcessor
+            bc_processor = BackchannelProcessor(
+                timing_observer=timing, output_transport=transport.output())
+            logger.info("Backchannel processor enabled")
+        except Exception as exc:
+            logger.warning("Backchannel processor unavailable: {}", type(exc).__name__)
+            bc_processor = None
+
     pipeline = Pipeline([
         transport.input(),
         *( [spec_tap] if spec_layer is not None else [] ),
         stt,
+        *( [bc_processor] if bc_processor is not None else [] ),
         user_aggregator,
         *llm_stages,
         tts,
@@ -534,7 +633,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     async def on_client_ready(rtvi):
         await worker.queue_frames([TTSSpeakFrame(text=GREETING_TEXT)])
 
-    if TRANSPORT_MODE == "local":
+    if TRANSPORT_MODE == "local" and not benchmark_mode:
         # Local audio has no RTVI client, so on_client_ready never fires.
         # Queue the greeting ourselves once the output stream is actually open.
         async def _local_greeting():
@@ -557,10 +656,42 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         logger.info("Client disconnected")
         await runner.cancel()
 
+    if os.getenv("BC_FLUSH_TEST", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        async def _flush_test():
+            out = transport.output()
+            # wait until the greeting is ACTIVELY queued in the pacat pipe
+            # (v1 waited for first write + 1 s, by which time the short
+            # greeting had drained -> pending was 0 and the kill never fired)
+            for _ in range(200):
+                if getattr(out, "_playback_pending_s", 0.0) > 1.0:
+                    break
+                await asyncio.sleep(0.1)
+            from pipecat.frames.frames import InterruptionFrame
+            await out.process_frame(InterruptionFrame(), FrameDirection.DOWNSTREAM)
+            timing.record("bc_flush_test", stage="interrupt_pushed")
+            await asyncio.sleep(2.0)
+            await worker.queue_frames([TTSSpeakFrame(
+                text="Flush test complete. If you hear this, respawn works.")])
+            timing.record("bc_flush_test", stage="respawn_speech_queued")
+
+        asyncio.create_task(_flush_test())
+        logger.info("BC_FLUSH_TEST armed: interrupt at greeting+1s, respawn check at +3s")
+
     monitor = asyncio.create_task(diagnostics.monitor_loop(lambda: timing.turn)) if diagnostics else None
+    activity_monitor = None
+    if TRANSPORT_MODE == "local" and not benchmark_mode:
+        from audio_activity import publish_activity
+        activity_monitor = asyncio.create_task(publish_activity(transport.output(), bc_processor))
     try:
         await runner.run()
+    except asyncio.CancelledError:
+        await runner.cancel()
+        raise
     finally:
+        if activity_monitor:
+            activity_monitor.cancel()
+            with suppress(asyncio.CancelledError):
+                await activity_monitor
         if monitor:
             monitor.cancel()
             with suppress(asyncio.CancelledError):

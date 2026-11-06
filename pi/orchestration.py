@@ -81,6 +81,10 @@ def explicit_route_hint(text):
     """Recover an explicit reminder request when ASR prefixes it with filler."""
     if re.search(r"\b(?:remind me to|(?:add|create|set|make|great) (?:a )?reminder (?:to|for|that))\b", text, re.I):
         return "add_reminder"
+    if re.search(r"\b(?:call|phone)\s+(?:mom|dad|john)\b", text, re.I):
+        return "place_call"
+    if re.search(r"\b(?:message|text)\s+(?:mom|dad|john)\b|\b(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(?:mom|dad|john)\b", text, re.I):
+        return "send_message"
     return None
 
 
@@ -150,12 +154,18 @@ def _music_source_answer(text):
 
 def direct_arguments(tool, text):
     lowered = text.lower().replace(".", "")
+    if tool == "place_call":
+        match = re.search(r"\b(?:call|phone)\s+(mom|dad|john)\b", text, re.I)
+        return {"to": match[1].capitalize()} if match else None
+    if tool == "send_message":
+        match = re.search(r"\b(?:(?:message|text)\s+(mom|dad|john)|(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(mom|dad|john))\s*(?:saying|that|:)?\s+(.+)$", text, re.I)
+        return {"to": (match[1] or match[2]).capitalize(), "text": match[3].strip(' .?!"')} if match else None
     if tool == "get_time":
         if re.search(r"\b(time|clock|hour|o'clock)\b", lowered):
             return {}
         return None
     if tool == "list_reminders":
-        if re.search(r"\b(reminder|reminders|remind)\b", lowered):
+        if re.search(r"\b(?:list|show|read|what|which)\b", lowered) and re.search(r"\breminders?\b", lowered):
             return {}
         return None
     if tool == "get_weather":
@@ -229,6 +239,10 @@ def direct_arguments(tool, text):
 
 
 def validate_arguments(tool, arguments):
+    if tool == "send_message" and isinstance(arguments, dict) and set(arguments) == {"text", "to"}:
+        return (isinstance(arguments["text"], str) and 1 <= len(arguments["text"].strip()) <= 500
+                and "\n" not in arguments["text"] and isinstance(arguments["to"], str)
+                and arguments["to"].lower() in {"mom", "dad", "john"})
     if tool == "get_weather":
         # place is optional: {} -> default location; {"place": "City"} -> named.
         if not isinstance(arguments, dict) or set(arguments) - {"place"}:
@@ -575,6 +589,11 @@ class TwoBrainRouter(FrameProcessor):
             if owner is not None:
                 owner["owner"] = "glm"
             await self.push_frame(frame, direction)
+            return
+        if re.search(r"\b(?:delete|remove|complete|clear)\b.*\breminders?\b", text, re.I):
+            if owner is not None:
+                owner["owner"] = "handled"
+            await self._speak("I can't delete or complete reminders yet.")
             return
         pending = self._pending_music
         self._pending_music = False

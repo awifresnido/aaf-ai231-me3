@@ -79,7 +79,7 @@ class ProfiledToolServer(MCPServer):
             call_id = uuid.uuid4().hex
         with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name, arguments=arguments) as end_fields:
             result = await super().call_tool(name, arguments, ctx)
-            if name in {"play_music", "playback_control"}:
+            if name in {"play_music", "playback_control", "list_reminders", "send_message", "set_timer", "set_alarm"}:
                 payload = getattr(result, "structured_content", None)
                 if payload is None:
                     content = getattr(result, "content", [])
@@ -613,7 +613,9 @@ def list_reminders() -> dict:
     if not rows:
         return {"ok": True, "spoken": "You have no reminders.", "reminders": []}
     texts = [r[1] for r in rows]
-    return {"ok": True, "spoken": "You have " + ", ".join(texts) + ".", "reminders": texts}
+    recent = texts[:3]
+    prefix = f"You have {len(texts)} reminders. The latest three are " if len(texts) > 3 else "Your reminders are "
+    return {"ok": True, "spoken": prefix + ", ".join(recent) + ".", "reminders": texts}
 
 
 # ------------------------------------------------------- thermostat/lights --
@@ -679,7 +681,13 @@ def control_lights(action: str, value: str = "") -> dict:
     ),
 )
 @trace_tool
-def send_message(text: str) -> dict:
+def send_message(text: str, to: str = "") -> dict:
+    if to.strip().lower() in {"mom", "dad", "john"}:
+        contact = to.strip().capitalize()
+        _set_state("message", {"status": "simulated", "to": contact, "text": text, "at": time.time()})
+        return {"ok": True, "spoken": f"Simulated message to {contact}: {text}", "simulated": True, "to": contact, "text": text}
+    if to.strip():
+        return {"ok": False, "spoken": "I can only simulate messages to Mom, Dad, or John."}
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return {"ok": False, "spoken": "Messaging is not configured yet.",
                 "error": "missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID"}
@@ -741,7 +749,7 @@ def send_email(to: str, subject: str, body: str) -> dict:
 @trace_tool
 def place_call(to: str = "") -> dict:
     _set_state("call", {"status": "calling", "to": to or "default", "at": time.time()})
-    return {"ok": True, "spoken": f"Calling {to or 'your default contact'}.",
+    return {"ok": True, "spoken": f"Simulating a call to {to or 'your default contact'}.",
             "note": "carrier integration is pending UI (see milestone-5)"}
 
 

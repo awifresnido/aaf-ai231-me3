@@ -60,7 +60,7 @@ TOOL_JSON_PROPERTIES = {
         "action": {"type": "string", "enum": ["stop", "pause", "resume", "next", "volume_up", "volume_down"]},
     },
     "play_music": {"query": {"type": "string", "description": "genre, mood, artist or title"}},
-    "send_message": {"text": {"type": "string", "description": "the message body"}},
+    "send_message": {"text": {"type": "string", "description": "the message body"}, "to": {"type": "string", "description": "simulated recipient Mom, Dad or John, or omit for Telegram"}},
     "send_email": {
         "to": {"type": "string", "description": "recipient"},
         "subject": {"type": "string", "description": "subject line"},

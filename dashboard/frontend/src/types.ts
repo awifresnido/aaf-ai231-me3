@@ -96,6 +96,7 @@ export interface DeviceState {
   alarms: { time_str: string }[];
   reminders: { text: string; created_ms: number | null }[];
   call: { status: string; to: string | null; at: number | null };
+  message: { status: string; to: string | null; text: string | null; at: number | null };
 }
 
 export interface DeviceEvent {
@@ -114,6 +115,8 @@ export interface Devices {
 }
 
 export interface RunDetail {
+  server_time_ms: number;
+  received_monotonic_ms: number;
   run_id: string;
   started_at: number | null;
   ended_at: number | null;

@@ -27,12 +27,13 @@ INITIAL = {
     "alarms": [],       # [{time_str}]
     "reminders": [],    # [{text, created_ms}]
     "call": {"status": "idle", "to": None, "at": None},
+    "message": {"status": "idle", "to": None, "text": None, "at": None},
 }
 
 # Tools that mutate device state, and which they touch (for the activity feed).
 STATE_TOOLS = {
     "control_lights", "set_thermostat", "play_music", "playback_control",
-    "set_timer", "set_alarm", "add_reminder", "place_call",
+    "set_timer", "set_alarm", "add_reminder", "list_reminders", "place_call", "send_message",
 }
 
 
@@ -90,10 +91,16 @@ def _apply(state, tool, args, at, result=None):
                    "volume_down": f"volume {vol + 1}/5"}.get(action, action or "control")
     elif tool == "set_timer":
         dur = args.get("duration_s")
-        ends_at = (at + dur) if (at is not None and isinstance(dur, (int, float))) else None
+        if isinstance(result, dict) and result.get("ok") is False:
+            return "timer not set"
+        ends_at = result.get("ends_at") if isinstance(result, dict) else None
+        if not isinstance(ends_at, (int, float)):
+            ends_at = (at + dur) if (at is not None and isinstance(dur, (int, float))) else None
         state["timers"].append({"label": f"{dur}s", "ends_at": ends_at})
         summary = f"timer {dur}s"
     elif tool == "set_alarm":
+        if isinstance(result, dict) and result.get("ok") is False:
+            return "alarm not set"
         t = str(args.get("time_str", "")).strip()
         state["alarms"].append({"time_str": t})
         summary = f"alarm {t}"
@@ -102,10 +109,21 @@ def _apply(state, tool, args, at, result=None):
         state["reminders"].append(
             {"text": text, "created_ms": at * 1000 if at is not None else None})
         summary = f"reminder “{text}”"
+    elif tool == "list_reminders":
+        if isinstance(result, dict) and result.get("ok") and isinstance(result.get("reminders"), list):
+            state["reminders"] = [{"text": str(text), "created_ms": None} for text in result["reminders"]]
+        summary = "listed reminders"
     elif tool == "place_call":
         to = str(args.get("to", "")).strip() or "default"
         state["call"] = {"status": "calling", "to": to, "at": at}
         summary = f"call {to}"
+    elif tool == "send_message":
+        if isinstance(result, dict) and result.get("simulated"):
+            to = str(result.get("to", ""))
+            state["message"] = {"status": "simulated", "to": to, "text": result.get("text", ""), "at": at}
+            summary = f"simulated message to {to}"
+        else:
+            summary = "message sent" if isinstance(result, dict) and result.get("ok") else "message not confirmed"
     else:
         summary = tool
 

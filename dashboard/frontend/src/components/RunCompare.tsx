@@ -10,7 +10,7 @@ export default function RunCompare({ runs }: { runs: RunSummary[] }) {
     const ma = a.median_e2e_s ?? Number.POSITIVE_INFINITY;
     const mb = b.median_e2e_s ?? Number.POSITIVE_INFINITY;
     return ma - mb;
-  });
+  }).slice(0, 3);
 
   return (
     <div className="panel">
