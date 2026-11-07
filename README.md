@@ -25,6 +25,29 @@ flowchart LR
 
 Routing depends on the request, confidence, and safety/fallback rules; this diagram shows possible paths, not a claim that every turn uses every component. The current direct-socket speech setup differs from the separately evaluated Pi-hosted ASR/TTS MCP proxy setup. Model names refer to the configurations in the November 2026 experiments; older runbooks describe earlier configurations.
 
+## Live demo and generated dashboard
+
+The demonstration asks the agent to describe its models and tools, interrupts it to request a web dashboard, and then has it create, serve, and send a link to Telegram. The user subsequently asked it to add the pipeline and rearrange the page. The [final generated HTML snapshot](docs/portfolio/demo/dashboard.html) preserves that revised two-column page: system cards on the left, pipeline on the right. Private LAN endpoint addresses in the snapshot are replaced with descriptive labels. GitHub displays HTML source; to view the rendered snapshot locally, from the repository root run:
+
+```bash
+python3 -m http.server 8080 --directory docs/portfolio/demo
+```
+
+Open <http://127.0.0.1:8080/dashboard.html>. This is a static demo artifact, separate from the operational dashboard described below. It represents startup configuration and is not a live health display. The original page on the Pi is available on the cluster at `http://192.168.5.12:8000/dashboard.html` while its temporary server is running.
+
+| Demo result | Observed evidence |
+| --- | --- |
+| Inventory | The live retest named the active models and three registered MCP servers; the inventory call took 3.2 ms. |
+| Interruption | A retest interrupted with 1.888 s of queued audio; flush initiation followed the turn-start event by about 21 ms. This is not measured acoustic stop latency. |
+| Create and deliver | The user confirmed the Telegram link worked. Later edits were accepted by Telegram; an edit failure was recovered by rewriting the file. |
+| Slow response | The neutral third progress clip fired at 18 s in a subsequent live request; a repeat was skipped after an answer. |
+
+See the [stage-by-stage demo evidence](docs/runbooks/demo-evidence-20261107.md) for the ASR race, task-completion times, and what remains unverified.
+
+## Fine-tuning Laya v2
+
+The local router is a fine-tuned **Laya v2 nine-group classifier**. Its [model and training report](Laya%20finetuning/v2/README.md) connects the checkpoint to its [pipeline contract](pi/laya_contract_v2.py), training data, calibration, held-out evaluation, and limitations. The broader [Laya fine-tuning folder](Laya%20finetuning/README.md) also documents the earlier v4 model; weights and datasets are not bundled.
+
 ## Evaluation snapshot
 
 In one matched benchmark session, 10 phrases were repeated three times per configuration with natural local/cloud routing and filler audio disabled. The table reports mean / p95, with the number of recorded observations in parentheses. Targets are project goals, not claims of compliance.
@@ -49,7 +72,7 @@ A separate interruption test recorded **0.32 s mean / 0.53 s p95** stop time for
 
 For concrete live-demo failures, fixes, and evidence, see the [demo analysis](docs/runbooks/demo-evidence-20261107.md). For component boundaries and operational caveats, see the [architecture and operations notes](docs/portfolio/architecture.md).
 
-## Explore the dashboard locally
+## Explore the operational dashboard locally
 
 The dashboard can be explored without the Pi or model servers using the committed sample diagnostics. From the repository root:
 

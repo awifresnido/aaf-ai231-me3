@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Agent System Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --accent: #7c5cff;
+    --accent2: #2dd4bf;
+    --text: #e8eaf2;
+    --muted: #8b90a3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #232741 0%, var(--bg) 55%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; }
+  header { margin-bottom: 28px; }
+  h1 {
+    font-size: 1.6rem;
+    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .sub { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
+
+  /* Two-column layout: system cards left, pipeline right */
+  .layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .col-left { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .col-right { position: sticky; top: 20px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid #262a3a;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .card h2 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+  .row {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 7px 0; border-bottom: 1px dashed #262a3a;
+    font-size: 0.92rem;
+  }
+  .row:last-child { border-bottom: none; }
+  .k { color: var(--muted); }
+  .v { font-weight: 600; text-align: right; }
+  .endpoint { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    background: #232838; border: 1px solid #333a52; color: var(--text);
+    padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+  }
+
+  /* Pipeline architecture: vertical flow in the right column */
+  .pipeline .flow { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+  .stage {
+    background: #20243a; border: 1px solid #333a52; border-radius: 10px;
+    padding: 10px 12px; text-align: center;
+  }
+  .stage .st { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); }
+  .stage .sn { font-size: 0.85rem; font-weight: 700; margin-top: 3px; }
+  .stage .sd { font-size: 0.68rem; color: var(--muted); margin-top: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .arrow { align-self: center; color: var(--accent); font-weight: 700; font-size: 1rem; line-height: 1; }
+  .pipe-note { margin-top: 12px; color: var(--muted); font-size: 0.75rem; text-align: center; }
+
+  .note {
+    margin-top: 22px; color: var(--muted); font-size: 0.8rem;
+    text-align: center;
+  }
+  footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+
+  /* Stack columns on narrow screens */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .col-right { position: static; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Voice Agent System Dashboard</h1>
+    <div class="sub">Running on Raspberry Pi &middot; startup configuration</div>
+  </header>
+
+  <div class="layout">
+    <!-- LEFT: voice agent system configuration -->
+    <div class="col-left">
+      <div class="card">
+        <h2>Core</h2>
+        <div class="row"><span class="k">Harness</span><span class="v">Pipecat</span></div>
+        <div class="row"><span class="k">Host</span><span class="v">Raspberry Pi</span></div>
+        <div class="row"><span class="k">Speech transport</span><span class="v">Direct</span></div>
+        <div class="row"><span class="k">VAD model</span><span class="v">Silero</span></div>
+      </div>
+
+      <div class="card">
+        <h2>Speech recognition (ASR)</h2>
+        <div class="row"><span class="k">Backend</span><span class="v">Whisper</span></div>
+        <div class="row"><span class="k">Model</span><span class="v">whisper-large-v3-turbo</span></div>
+        <div class="row"><span class="k">Endpoint</span><span class="v endpoint">Jetson · ASR</span></div>
+      </div>
+
+      <div class="card">
+        <h2>Router</h2>
+        <div class="row"><span class="k">Model</span><span class="v">laya</span></div>
+        <div class="row"><span class="k">Endpoint</span><span class="v endpoint">Jetson · router</span></div>
+      </div>
+
+      <div class="card">
+        <h2>Local LLM</h2>
+        <div class="row"><span class="k">Model</span><span class="v">meta-llama/Llama-3.2-3B-Instruct</span></div>
+        <div class="row"><span class="k">Endpoint</span><span class="v endpoint">Jetson · LLM</span></div>
+      </div>
+
+      <div class="card">
+        <h2>Cloud LLM</h2>
+        <div class="row"><span class="k">Model</span><span class="v">z-ai/glm-5.3-flash</span></div>
+      </div>
+
+      <div class="card">
+        <h2>Text-to-speech (TTS)</h2>
+        <div class="row"><span class="k">Backend</span><span class="v">dgx_qwen</span></div>
+        <div class="row"><span class="k">Model</span><span class="v">Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice</span></div>
+        <div class="row"><span class="k">Voice</span><span class="v">aiden</span></div>
+      </div>
+
+      <div class="card">
+        <h2>MCP Servers</h2>
+        <div class="chips">
+          <span class="chip">voice_tools</span>
+          <span class="chip">workspace_tools</span>
+          <span class="chip">onit_tools</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: pipeline architecture -->
+    <div class="col-right">
+      <div class="card pipeline">
+        <h2>Pipeline architecture</h2>
+        <div class="flow">
+          <div class="stage"><div class="st">Input</div><div class="sn">Mic audio</div><div class="sd">direct</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Stage 1</div><div class="sn">VAD</div><div class="sd">silero</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Stage 2</div><div class="sn">ASR</div><div class="sd">whisper-large-v3-turbo</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Stage 3</div><div class="sn">Router</div><div class="sd">laya</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Stage 4</div><div class="sn">LLM</div><div class="sd">llama-3.2-3b / glm-5.3-flash</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Stage 5</div><div class="sn">TTS</div><div class="sd">qwen3-tts &middot; aiden</div></div>
+          <div class="arrow">&#8595;</div>
+          <div class="stage"><div class="st">Output</div><div class="sn">Speaker audio</div><div class="sd">direct</div></div>
+        </div>
+        <p class="pipe-note">Audio flows top to bottom; the router picks the local or cloud LLM at stage 4.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">Values shown are from the agent's startup configuration &mdash; they describe what is configured, not a live health check.</p>
+  <footer>Voice Agent Dashboard</footer>
+</div>
+</body>
+</html>

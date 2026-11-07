@@ -1,0 +1,52 @@
+{
+  "seed": 20261101,
+  "holdout_method": "text_disjointness (phrase_family_id is empty in manifest)",
+  "paraphrase_rows_total": 2183,
+  "paraphrase_dupes_removed": 254,
+  "paraphrase_holdout_rows": 1473,
+  "train_before_aug": 10303,
+  "train_after_aug": 9039,
+  "train_after_balance": 6069,
+  "augmented_counts": {
+    "small_talk": 926,
+    "other_hard": 350,
+    "val_adds": 17
+  },
+  "downsampled": {
+    "control_lights": 1441,
+    "set_alarm": 180,
+    "set_thermostat": 318,
+    "set_timer": 305,
+    "other": 27,
+    "add_reminder": 333,
+    "playback_control": 366
+  },
+  "route_counts_final_train": {
+    "list_reminders": 306,
+    "playback_control": 666,
+    "control_lights": 666,
+    "play_music": 275,
+    "add_reminder": 666,
+    "set_timer": 666,
+    "other": 666,
+    "small_talk": 316,
+    "get_weather": 288,
+    "set_thermostat": 666,
+    "get_time": 222,
+    "set_alarm": 666
+  },
+  "route_counts_final_val": {
+    "play_music": 106,
+    "other": 215,
+    "get_weather": 104,
+    "get_time": 106,
+    "control_lights": 928,
+    "playback_control": 529,
+    "list_reminders": 106,
+    "set_timer": 318,
+    "set_alarm": 314,
+    "set_thermostat": 318,
+    "add_reminder": 318,
+    "small_talk": 17
+  }
+}

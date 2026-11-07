@@ -1,0 +1,20 @@
+{
+  "route": {
+    "type": "choice",
+    "instructions": "Which single route should handle this utterance?",
+    "criteria": {
+      "get_time": "Ask for the current local clock time",
+      "get_weather": "Ask for current weather, including for a stated location",
+      "list_reminders": "Ask to list existing reminders",
+      "add_reminder": "Create one reminder with stated note text, such as 'remind me to study'",
+      "set_thermostat": "Set the thermostat to one explicit Celsius temperature",
+      "control_lights": "Turn lights on or off, set one light color, or set light brightness",
+      "set_timer": "Start one countdown with an explicit duration",
+      "set_alarm": "Set one alarm with an explicit clock time and AM or PM",
+      "playback_control": "Pause, stop, resume, skip, or change volume of current music",
+      "play_music": "Start playing music using a stated genre, mood, artist, or title",
+      "small_talk": "A brief greeting, thanks, or simple conversational reply that needs no tool",
+      "other": "Complex or multiple actions, forecasts, ambiguous follow-ups, factual questions, messaging, or calls"
+    }
+  }
+}

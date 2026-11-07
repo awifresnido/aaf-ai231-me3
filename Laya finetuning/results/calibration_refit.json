@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "temperature": [
+    1.9951245784759521,
+    1.0,
+    1.0
+  ],
+  "temperature_by_options": {},
+  "model_id_or_path": "/home/aldwin.fresnido/projects/laya-router/laya-router-v4-softce",
+  "subfolder": null,
+  "config": null
+}

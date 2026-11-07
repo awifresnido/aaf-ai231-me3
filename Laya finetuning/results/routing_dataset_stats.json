@@ -1,0 +1,123 @@
+{
+  "manifest": "/home/aldwin.fresnido/projects/tiny-vcm/data/manifests/me2_gold_v1.csv",
+  "manifest_sha256": "f81867392d20e3a23cbbcd2b77559c3b357e943f10e3095b65f7aa1b6171cdb2",
+  "seed": 20261101,
+  "rows_read": 19200,
+  "records_kept": 15786,
+  "dropped": {
+    "unmapped:UNKNOWN": 461,
+    "silence_or_empty": 2953
+  },
+  "split_sizes": {
+    "train": 10303,
+    "val": 3362,
+    "calibration": 1005,
+    "test": 279,
+    "personal_awi": 930
+  },
+  "route_counts": {
+    "train": {
+      "play_music": 332,
+      "get_weather": 330,
+      "other": 688,
+      "get_time": 333,
+      "control_lights": 2663,
+      "playback_control": 1665,
+      "list_reminders": 333,
+      "set_timer": 999,
+      "set_alarm": 962,
+      "set_thermostat": 999,
+      "add_reminder": 999
+    },
+    "val": {
+      "play_music": 106,
+      "other": 215,
+      "get_weather": 104,
+      "get_time": 106,
+      "control_lights": 928,
+      "playback_control": 529,
+      "list_reminders": 106,
+      "set_timer": 318,
+      "set_alarm": 314,
+      "set_thermostat": 318,
+      "add_reminder": 318
+    },
+    "calibration": {
+      "play_music": 35,
+      "other": 71,
+      "get_weather": 34,
+      "get_time": 35,
+      "control_lights": 200,
+      "playback_control": 176,
+      "list_reminders": 35,
+      "set_timer": 105,
+      "set_alarm": 104,
+      "set_thermostat": 105,
+      "add_reminder": 105
+    },
+    "test": {
+      "play_music": 9,
+      "playback_control": 45,
+      "get_weather": 9,
+      "get_time": 9,
+      "control_lights": 72,
+      "other": 18,
+      "list_reminders": 9,
+      "set_timer": 27,
+      "set_alarm": 27,
+      "set_thermostat": 27,
+      "add_reminder": 27
+    },
+    "personal_awi": {
+      "set_alarm": 90,
+      "control_lights": 240,
+      "other": 60,
+      "add_reminder": 90,
+      "list_reminders": 30,
+      "playback_control": 150,
+      "play_music": 30,
+      "set_thermostat": 90,
+      "set_timer": 90,
+      "get_time": 30,
+      "get_weather": 30
+    }
+  },
+  "leaf_counts_train": {
+    "PLAY_MUSIC": 332,
+    "WEATHER": 333,
+    "TIME": 333,
+    "LIGHT_ON": 333,
+    "LIGHT_OFF": 333,
+    "PAUSE": 333,
+    "STOP": 333,
+    "NEXT": 333,
+    "VOLUME_UP": 333,
+    "VOLUME_DOWN": 333,
+    "CALL": 326,
+    "MESSAGE": 322,
+    "LIST_REMINDERS": 333,
+    "TIMER": 999,
+    "ALARM": 999,
+    "TEMPERATURE": 999,
+    "BRIGHTNESS": 998,
+    "COLOR": 999,
+    "CREATE_REMINDER": 999
+  },
+  "hard_negative_counts": {
+    "weather_out_of_scope": 48,
+    "capability_question": 3,
+    "negated_command": 1
+  },
+  "speaker_leakage": {
+    "train_speakers": 278,
+    "test_speakers_after": 5,
+    "overlap_found": 0,
+    "records_moved_to_val": 0
+  },
+  "calibration_min_per_route": 0,
+  "routes_missing_in_train": [
+    "play_radio",
+    "small_talk"
+  ],
+  "personal_awi_excluded_from_train": true
+}

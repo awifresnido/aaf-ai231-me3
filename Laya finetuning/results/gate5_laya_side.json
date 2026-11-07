@@ -1,0 +1,79 @@
+{
+  "paraphrase_holdout": {
+    "items": 200,
+    "accuracy_overall": 0.915,
+    "gates": {
+      "tau0.9_gap0.2": {
+        "accept_rate": 0.785,
+        "correct_fastpath": 0.785,
+        "safe_other": 0.0,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      },
+      "tau0.5_gap0.05": {
+        "accept_rate": 0.985,
+        "correct_fastpath": 0.905,
+        "safe_other": 0.08,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      }
+    }
+  },
+  "latency_ms": {
+    "paraphrase_holdout": {
+      "p50": 30.1,
+      "p95": 39.3,
+      "mean": 47.6
+    },
+    "test": {
+      "p50": 30.0,
+      "p95": 34.1,
+      "mean": 30.1
+    },
+    "personal_awi": {
+      "p50": 29.1,
+      "p95": 34.3,
+      "mean": 29.8
+    }
+  },
+  "test": {
+    "items": 200,
+    "accuracy_overall": 1.0,
+    "gates": {
+      "tau0.9_gap0.2": {
+        "accept_rate": 0.995,
+        "correct_fastpath": 0.995,
+        "safe_other": 0.0,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      },
+      "tau0.5_gap0.05": {
+        "accept_rate": 1.0,
+        "correct_fastpath": 1.0,
+        "safe_other": 0.0,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      }
+    }
+  },
+  "personal_awi": {
+    "items": 200,
+    "accuracy_overall": 1.0,
+    "gates": {
+      "tau0.9_gap0.2": {
+        "accept_rate": 1.0,
+        "correct_fastpath": 1.0,
+        "safe_other": 0.0,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      },
+      "tau0.5_gap0.05": {
+        "accept_rate": 1.0,
+        "correct_fastpath": 1.0,
+        "safe_other": 0.0,
+        "unsafe_of_accepted": 0.0,
+        "unsafe_rate": 0.0
+      }
+    }
+  }
+}
