@@ -8,22 +8,38 @@ The project is a working research prototype, not a production service. Its main 
 
 ```mermaid
 flowchart LR
-    Mic[Speakerphone] --> VAD[Silero VAD<br/>Raspberry Pi 4]
-    VAD --> ASR[Whisper large-v3-turbo<br/>Jetson Orin]
-    ASR --> Router[Laya router<br/>Jetson Orin]
-    Router --> Local[Llama 3.2 3B<br/>Jetson Orin]
-    Router --> Cloud[GLM 5.3 Flash<br/>cloud]
-    Local --> Tools[MCP tools<br/>Raspberry Pi]
-    Cloud --> Tools
-    Local --> TTS[Qwen3-TTS Aiden<br/>DGX]
-    Cloud --> TTS
-    Tools --> TTS
-    TTS --> Speaker[Speakerphone]
-    VAD -. turn and timing events .-> Obs[Diagnostics + dashboard]
-    Tools -. tool spans .-> Obs
+    Mic([Microphone]) --> VAD
+    subgraph PI["Raspberry Pi 4 · on-device"]
+        direction LR
+        VAD["Silero VAD"] --> ASRMCP["ASR MCP server<br/>Pi-hosted proxy"]
+        ASRMCP --> Agent["Voice agent / MCP client<br/>Pipecat harness"]
+        Agent --> TTSMCP["TTS MCP server<br/>Pi-hosted proxy"]
+        TTSMCP --> Playback["Audio playback"]
+        Agent <--> ToolMCP["Project MCP servers<br/>voice · workspace · Onit tools"]
+        VAD -. "barge-in" .-> Cancel["Interrupt handler"]
+        Cancel -. "stop / flush" .-> Playback
+        Cancel -. "cancel LLM stream" .-> Agent
+    end
+    Playback --> Speaker([Speaker])
+    subgraph EDGE["Jetson Orin · local network"]
+        ASRModel["Whisper ASR"]
+        Router["Laya v2 router"]
+        LocalLLM["Llama 3.2 3B"]
+    end
+    subgraph REMOTE["Remote inference"]
+        CloudLLM["Commercial LLM API<br/>GLM 5.3 Flash"]
+        TTSModel["DGX Qwen3-TTS Aiden"]
+    end
+    ASRMCP <-->|"transcription"| ASRModel
+    Agent <-->|"routing"| Router
+    Agent <-->|"local response"| LocalLLM
+    Agent <-->|"stream / cancel"| CloudLLM
+    TTSMCP <-->|"synthesis"| TTSModel
 ```
 
-Routing depends on the request, confidence, and safety/fallback rules; this diagram shows possible paths, not a claim that every turn uses every component. The current direct-socket speech setup differs from the separately evaluated Pi-hosted ASR/TTS MCP proxy setup. Model names refer to the configurations in the November 2026 experiments; older runbooks describe earlier configurations.
+**Deployment boundary:** The diagram shows the evaluated Pi-hosted speech MCP configuration: our ASR, TTS, and application MCP servers execute on the Pi, while ASR inference runs on the Jetson and TTS inference runs on the DGX. The **normal live configuration uses direct speech connections** to the same inference services instead of the two speech MCP proxies; application MCP servers remain on the Pi. Pipecat is the harness actually used here; Onit refers to an MCP tool server, not a second harness. Laya can route requests to the local Llama model or the commercial GLM API, subject to confidence and fallback rules.
+
+When a user interrupts during speech, the Pi interruption handler requests that playback be stopped and queued audio flushed, and cancels the active LLM response stream. See the [demo evidence](docs/runbooks/demo-evidence-20261107.md) for observed interruption behavior and the remaining ASR timing limitation. Model names refer to the November 2026 experiments; older runbooks describe earlier configurations.
 
 ## Live demo and generated dashboard
 
