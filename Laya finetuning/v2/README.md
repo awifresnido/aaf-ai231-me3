@@ -1,0 +1,9 @@
+# Laya v2: the nine-group router used by ME3
+
+The deployed `laya_v2` checkpoint is the **v5c nine-group fine-tune**, trained on 3 November 2026 from `convaiinnovations/laya`. This folder preserves the [training report](REPORT.md), [original model card](README-source.md), and selected dataset, evaluation, and inference scripts. The original [`Laya finetuning` README](../README.md) describes the earlier **v4 twelve-label model**, not this deployment.
+
+The v2 classifier chooses among home, clock, reminders, media, weather, comms, knowledge, workspace and chitchat. Its integration uses the pinned [question block](../../pi/laya_questions_v2.json) and [runtime contract](../../pi/laya_contract_v2.py). The current contract sets a 0.85 confidence threshold and a 0.05 gap; rejected or invalid distributions are escalated. The model card's historical 0.90 default is a different operating point and its held-out figures must not be attributed to the 0.85 gate.
+
+The source report documents soft cross-entropy fine-tuning and calibration, a 6,970-row training set, and held-out evaluation by phrasing and synthetic template. Reported held-out accuracy was 97.01% on the VCM unseen-phrasing slice and 95.34% on unseen synthetic templates; these are dataset-specific results, not a guarantee for live voice traffic. The report also identifies weaker media and communications groups.
+
+**Artifacts:** the 842 MB model weights, tokenizer, calibration file and datasets are not included in this repository. The model card lists the original DGX checkpoint and Jetson deployment locations. The included `use_router_v2.py` expects the complete checkpoint alongside it; it is provided for provenance and is not runnable from this folder alone. The pipeline's checked-in runtime integration is in [`pi/`](../../pi/).

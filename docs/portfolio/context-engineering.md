@@ -1,0 +1,23 @@
+# Context engineering
+
+The agent coordinates conversation history, speech events, and tool results across a Pipecat pipeline. The table distinguishes model-facing context from events that control when that context is ready.
+
+| Input or event | How ME3 handles it |
+| --- | --- |
+| System prompt and persona | The cloud voice model receives the [versioned voice instruction](../../prompts/voice-system-v1.0.0.txt); Telegram has a separate [text instruction](../../prompts/telegram-system-v1.0.0.txt). The runtime Python strings remain authoritative. |
+| ASR partials and finals | Whisper can emit rolling interim transcripts when streaming is enabled. Completed transcripts feed turn processing; optional partial promotion is disabled by default. The latest-segment guard can hold turn completion until pending Whisper output arrives. Availability depends on the selected ASR mode. |
+| VAD turn events | Silero VAD and SmartTurn mark speech and turn boundaries; these are pipeline control and timing events, not necessarily literal messages in the LLM prompt. |
+| MCP tool results | The Pipecat MCP client executes registered tools and makes their results available to the LLM conversation when a model-driven tool call is used. Some fast routes execute validated tools and speak their result directly, without another model call. |
+| Memory / RAG | Optional, not claimed as a general persistent memory or RAG subsystem. Conversation context and tool-backed state are distinct from a retrieval-augmented memory system. |
+
+## Managing a turn
+
+The interaction can be understood as **idle → listen → think → speak**, with VAD, turn analysis, routing, model/tool processing and audio output driving transitions. This is an explanatory lifecycle rather than a claim that the implementation has one explicit four-state machine. A barge-in interrupts playback, flushes queued stale audio and requests cancellation of the active response; see the [live evidence and remaining ASR race limitation](../runbooks/demo-evidence-20261107.md).
+
+- **Budget and trimming:** The cloud LLM request sets a **4,096-token maximum completion** (`LLM_MAX_COMPLETION_TOKENS`). Conversation history has a **24,000-character soft limit** (`LLM_HISTORY_MAX_CHARS`): oldest complete user turns are dropped, keeping each tool call with its results. The newest turn is preserved intact even if it exceeds the limit; the system prompt and tool schemas are separate. This is not an exact input-token cap or automatic summarization. The separate `local_vcm` trial retains six recent messages capped at 600 characters each.
+- **Stable-prefix caching:** For OpenRouter, a stable run-specific `session_id` is sent with requests to encourage provider stickiness; the versioned system instruction and tool schemas form a reusable prefix. [OpenRouter documents automatic prompt caching for supported providers](https://openrouter.ai/blog/tutorials/prompt-caching-sticky-routing/), but eligibility and hits are provider-dependent. `cached_tokens > 0` is the evidence of a hit; no live hit or TTFT improvement has yet been demonstrated. Do not confuse cached filler audio with model prompt caching.
+- **Per-run context logging:** The cloud client records `llm_context_size` (message count, retained/removed characters and limit status) and `llm_token_usage` (provider-reported input, output, total and cached tokens when supplied) in the existing run diagnostics, without logging message content. Interrupted streams or providers may not return usage; missing cache counts are not zero. The logger is deployed and unit-tested, but no live cloud request has yet been measured after deployment because the Pi had no default network route/DNS access to OpenRouter.
+- **Earlier context measurement:** In the direct 6 November benchmark, reported prompt-token median was **1,867**, maximum **3,549**, first-to-last **1,331 → 2,335**; message counts were median **31**, maximum **63**, first-to-last **1 → 63**. These predate the new limits and logging and are a single run's reported measurements, not evidence of cache hits. Raw benchmark artifacts remain local; see [evaluation provenance](evaluation.md).
+
+Rollback on the Pi: `~/voice-agent/rollback/context-20261107/rollback.sh` (restores the prior bot and timing files and restarts the voice service).
+Code references: [`pi/bot.py`](../../pi/bot.py), [`pi/whisper_stt.py`](../../pi/whisper_stt.py), [`pi/whisper_turn_stop.py`](../../pi/whisper_turn_stop.py), [`pi/orchestration.py`](../../pi/orchestration.py), [`pi/local_vcm.py`](../../pi/local_vcm.py), and [`pi/backchannel.py`](../../pi/backchannel.py).

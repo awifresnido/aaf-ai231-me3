@@ -83,7 +83,7 @@ def explicit_route_hint(text):
         return "add_reminder"
     if re.search(r"\b(?:call|phone)\s+(?:mom|dad|john)\b", text, re.I):
         return "place_call"
-    if re.search(r"\b(?:message|text)\s+(?:mom|dad|john)\b|\b(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(?:mom|dad|john)\b", text, re.I):
+    if re.search(r"\b(?:message|text)\s+(?:mom|dad|john|telegram)\b|\b(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(?:mom|dad|john|telegram)\b", text, re.I):
         return "send_message"
     return None
 
@@ -158,7 +158,7 @@ def direct_arguments(tool, text):
         match = re.search(r"\b(?:call|phone)\s+(mom|dad|john)\b", text, re.I)
         return {"to": match[1].capitalize()} if match else None
     if tool == "send_message":
-        match = re.search(r"\b(?:(?:message|text)\s+(mom|dad|john)|(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(mom|dad|john))\s*(?:saying|that|:)?\s+(.+)$", text, re.I)
+        match = re.search(r"\b(?:(?:message|text)\s+(mom|dad|john|telegram)|(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(mom|dad|john|telegram))\s*(?:saying|that|:)?\s+(.+)$", text, re.I)
         return {"to": (match[1] or match[2]).capitalize(), "text": match[3].strip(' .?!"')} if match else None
     if tool == "get_time":
         if re.search(r"\b(time|clock|hour|o'clock)\b", lowered):
@@ -242,7 +242,7 @@ def validate_arguments(tool, arguments):
     if tool == "send_message" and isinstance(arguments, dict) and set(arguments) == {"text", "to"}:
         return (isinstance(arguments["text"], str) and 1 <= len(arguments["text"].strip()) <= 500
                 and "\n" not in arguments["text"] and isinstance(arguments["to"], str)
-                and arguments["to"].lower() in {"mom", "dad", "john"})
+                and arguments["to"].lower() in {"mom", "dad", "john", "telegram"})
     if tool == "get_weather":
         # place is optional: {} -> default location; {"place": "City"} -> named.
         if not isinstance(arguments, dict) or set(arguments) - {"place"}:

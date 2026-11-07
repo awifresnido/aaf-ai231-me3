@@ -151,7 +151,7 @@ function RemindersCard({ reminders }: { reminders: Devices["final"]["reminders"]
 
 function CallCard({ call, message }: { call: Devices["final"]["call"]; message: Devices["final"]["message"] }) {
   return (
-    <Card title="Calls & messages · simulated">
+    <Card title="Calls & messages">
       <div className="sc-list">
         {call.status === "idle" ? (
           <p className="muted">No call placed.</p>
@@ -162,7 +162,8 @@ function CallCard({ call, message }: { call: Devices["final"]["call"]; message: 
           </div>
         )}
         {message.status === "simulated" && <div className="sc-row"><span>Message to {message.to}</span><span>{message.text}</span></div>}
-        <p className="muted small">Contacts: Mom · Dad · John</p>
+        {message.status === "sent" && <div className="sc-row"><span>Sent to {message.to}</span><span>{message.text}</span></div>}
+        <p className="muted small">Telegram · Mom, Dad, John (simulated)</p>
       </div>
     </Card>
   );

@@ -675,9 +675,8 @@ def control_lights(action: str, value: str = "") -> dict:
 @server.tool(
     name="send_message",
     description=(
-        "Send a text message via Telegram Bot API (open HTTP API, free). "
-        "Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID. Returns the "
-        "Telegram message id."
+        "Send a text message or link to the Telegram contact, or simulate a "
+        "message to Mom, Dad, or John. Telegram requires configured credentials."
     ),
 )
 @trace_tool
@@ -686,26 +685,38 @@ def send_message(text: str, to: str = "") -> dict:
         contact = to.strip().capitalize()
         _set_state("message", {"status": "simulated", "to": contact, "text": text, "at": time.time()})
         return {"ok": True, "spoken": f"Simulated message to {contact}: {text}", "simulated": True, "to": contact, "text": text}
-    if to.strip():
-        return {"ok": False, "spoken": "I can only simulate messages to Mom, Dad, or John."}
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+    if to.strip() and to.strip().lower() != "telegram":
+        return {"ok": False, "spoken": "I know Telegram, Mom, Dad, and John as contacts."}
+    if re.search(r"https?://<device-ip>", text, re.I):
+        return {"ok": False, "spoken": "That link still has a device-address placeholder. I need the actual server address before sending it."}
+    def credential(env_value, filename):
+        if env_value:
+            return env_value.strip()
+        try:
+            return (Path.home() / filename).read_text(encoding="utf-8").strip()
+        except OSError:
+            return ""
+    token = credential(TELEGRAM_BOT_TOKEN, ".voice-agent-telegram-token")
+    chat_id = credential(TELEGRAM_CHAT_ID, ".voice-agent-telegram-chat-id")
+    if not token or not chat_id:
         return {"ok": False, "spoken": "Messaging is not configured yet.",
                 "error": "missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID"}
     try:
-        url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+        url = f"https://api.telegram.org/bot{token}/sendMessage"
         body = urllib.parse.urlencode(
-            {"chat_id": TELEGRAM_CHAT_ID, "text": text}
+            {"chat_id": chat_id, "text": text}
         ).encode()
         req = urllib.request.Request(url, data=body)
         with urllib.request.urlopen(req, timeout=6.0) as r:
             data = json.loads(r.read().decode())
     except Exception as exc:
-        return {"ok": False, "spoken": "I could not send that message.", "error": str(exc)}
+        return {"ok": False, "spoken": "I could not send that message.", "error": type(exc).__name__}
     if not data.get("ok"):
         return {"ok": False, "spoken": "The message service rejected that.",
                 "error": data.get("description")}
     msg_id = data["result"]["message_id"]
-    return {"ok": True, "spoken": "Message sent.", "message_id": msg_id}
+    return {"ok": True, "spoken": "Message sent to Telegram.", "message_id": msg_id,
+            "to": "Telegram", "text": text}
 
 
 @server.tool(

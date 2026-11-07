@@ -52,6 +52,8 @@ class RouteTests(unittest.TestCase):
         self.assertEqual(direct_arguments("control_lights", "set lights to 80%"), {"action": "brightness", "value": "80"})
         self.assertEqual(direct_arguments("set_alarm", "set an alarm for nine PM"), {"time_str": "09:00 PM"})
         self.assertEqual(direct_arguments("add_reminder", "remind me to study"), {"text": "study"})
+        self.assertEqual(direct_arguments("send_message", "send a message to Telegram saying https://example.com/test"),
+                         {"to": "Telegram", "text": "https://example.com/test"})
         self.assertEqual(direct_arguments("playback_control", "lower the volume of the music"), {"action": "volume_down"})
         self.assertEqual(direct_arguments("playback_control", "stop the music"), {"action": "stop"})
         self.assertEqual(direct_arguments("play_music", "play some jazz music"), {"query": "jazz"})

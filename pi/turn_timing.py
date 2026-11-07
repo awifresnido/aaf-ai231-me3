@@ -72,6 +72,14 @@ class TurnTimingObserver(BaseObserver):
             self.record("bot_started", since_speech_end_ms=self._since_speech_end())
         elif isinstance(frame, MetricsFrame):
             for metric in frame.data:
+                value = getattr(metric, "value", None)
+                if all(hasattr(value, name) for name in ("prompt_tokens", "completion_tokens", "total_tokens")):
+                    self.record("llm_token_usage", processor=getattr(metric, "processor", None),
+                                model=getattr(metric, "model", None),
+                                prompt_tokens=value.prompt_tokens, completion_tokens=value.completion_tokens,
+                                total_tokens=value.total_tokens,
+                                cached_tokens=getattr(value, "cache_read_input_tokens", None),
+                                cache_write_tokens=getattr(value, "cache_creation_input_tokens", None))
                 if hasattr(metric, "is_complete") and hasattr(metric, "e2e_processing_time_ms"):
                     values = {key: getattr(metric, key) for key in
                               ("processor", "is_complete", "probability", "e2e_processing_time_ms",
