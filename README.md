@@ -82,6 +82,12 @@ A separate interruption test recorded **0.32 s mean / 0.53 s p95** stop time for
 
 The [prompt index](prompts/README.md) links the versioned voice and Telegram instructions to their runtime sources. Routing and safety checks are also implemented in code; prompt snapshots are tested against the instructions actually sent to the model.
 
+## Context engineering
+
+The voice agent combines a [versioned system prompt](prompts/README.md), conversation turns and MCP results with VAD and ASR events that control when a turn is ready. Whisper supports rolling partials and final transcripts; interruptions stop stale playback and cancel the active response. Memory/RAG is optional and is not claimed as a general subsystem.
+
+The separate local VCM trial limits history to six messages of at most 600 characters each; the normal cloud path has no verified global token-budget or summarization policy. Explicit stable-prefix caching has not been established. In one direct benchmark run, reported prompt context was **1,867 tokens median / 3,549 maximum** and **31 messages median / 63 maximum**. See [context engineering](docs/portfolio/context-engineering.md) for scope, implementation references, and measurement limits.
+
 ## MLOps work demonstrated
 
 - **Serving and orchestration:** separate ASR, router, local LLM, cloud LLM, and TTS services connected by the Pi-hosted pipeline, with an alternative speech MCP deployment for placement experiments.
