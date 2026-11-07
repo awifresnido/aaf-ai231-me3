@@ -78,6 +78,10 @@ In one matched benchmark session, 10 phrases were repeated three times per confi
 
 A separate interruption test recorded **0.32 s mean / 0.53 s p95** stop time for 25 measurable overlaps, against a 0.8 s target. It attempted 30 clips: 27 overlapped playback and two of those did not yield a measurable stop time. These results are not a general guarantee: the phrases were repeated, the comparison was not randomized, and a physical speakerphone check was limited to one functional example. See the [evaluation notes](docs/portfolio/evaluation.md) for definitions, sample gaps, and provenance.
 
+## Versioned system prompts
+
+The [prompt index](prompts/README.md) links the versioned voice and Telegram instructions to their runtime sources. Routing and safety checks are also implemented in code; prompt snapshots are tested against the instructions actually sent to the model.
+
 ## MLOps work demonstrated
 
 - **Serving and orchestration:** separate ASR, router, local LLM, cloud LLM, and TTS services connected by the Pi-hosted pipeline, with an alternative speech MCP deployment for placement experiments.
