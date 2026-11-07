@@ -58,7 +58,7 @@ Open <http://127.0.0.1:8080/dashboard.html>. This is a static demo artifact, sep
 | Create and deliver | The user confirmed the Telegram link worked. Later edits were accepted by Telegram; an edit failure was recovered by rewriting the file. |
 | Slow response | The neutral third progress clip fired at 18 s in a subsequent live request; a repeat was skipped after an answer. |
 
-See the [stage-by-stage demo evidence](docs/runbooks/demo-evidence-20261107.md) for the ASR race, task-completion times, and what remains unverified.
+See the [live demo report and latency chart](docs/portfolio/demo-results/live-demo-report.md) and the [stage-by-stage demo evidence](docs/runbooks/demo-evidence-20261107.md) for the ASR race, task-completion times, and what remains unverified.
 
 ## Fine-tuning Laya v2
 
