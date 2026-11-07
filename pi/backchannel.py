@@ -136,6 +136,9 @@ class BackchannelProcessor(FrameProcessor):
         self.long_wait_s = float(os.getenv("BACKCHANNEL_LONG_WAIT_S", "8"))
         self.long_clip_name = os.getenv("BACKCHANNEL_LONG_CLIP", "still_working")
         self._long_task = None
+        self.final_wait_s = float(os.getenv("BACKCHANNEL_FINAL_WAIT_S", "18"))
+        self.final_clip_name = os.getenv("BACKCHANNEL_FINAL_CLIP", "response_delayed")
+        self._final_task = None
         self._filler_burst_prev = None
         # Interruptibility trial: RMS-based barge-in bypassing the AEC.
         # Calibrated on run 3deabb0044 (207 windows during playback):
@@ -170,7 +173,7 @@ class BackchannelProcessor(FrameProcessor):
         AND a skip-last counter settled into a 3-clip cycle (mm_hm: 0/25)."""
         # Shuffled-deck rotation EXCLUDES the long-wait clip: "still working"
         # only ever plays as the Phase 3 follow-up, never as a first filler.
-        names = sorted(n for n in self.clips if n != self.long_clip_name)
+        names = sorted(n for n in self.clips if n not in {self.long_clip_name, self.final_clip_name})
         if not names:
             return None
         if not self._deck:
@@ -293,7 +296,7 @@ class BackchannelProcessor(FrameProcessor):
             return
         if self._long_task is not None and not self._long_task.done():
             self._long_task.cancel()
-        delay = self.long_wait_s + (time.monotonic() - speech_end_mono)
+        delay = max(0, self.long_wait_s - (time.monotonic() - speech_end_mono))
         self._long_task = asyncio.get_event_loop().create_task(self._fire_long(delay))
 
     async def _fire_long(self, delay_s):
@@ -328,13 +331,38 @@ class BackchannelProcessor(FrameProcessor):
             if self.output is not None:
                 await self.output.queue_frame(OutputAudioRawFrame(
                     audio=pcm, sample_rate=24000, num_channels=1))
+                if self.final_wait_s > self.long_wait_s and self.final_clip_name in self.clips:
+                    burst = getattr(self.output, "_playback_burst_id", None)
+                    delay = max(dur + .2, self.final_wait_s - (time.monotonic() - (self._speech_end_mono or now)))
+                    self._final_task = asyncio.create_task(self._fire_final(delay, burst))
         except Exception as exc:
             self.record("bc_error", error=type(exc).__name__)
+
+    async def _fire_final(self, delay, previous_burst):
+        try:
+            await asyncio.sleep(delay)
+        except asyncio.CancelledError:
+            return
+        now = time.monotonic()
+        if self._user_speaking or not self._filled_this_turn or self.output is None:
+            return
+        if getattr(self.output, "playback_busy_until", 0) > now - .05:
+            return
+        burst = getattr(self.output, "_playback_burst_id", None)
+        if previous_burst is not None and burst is not None and burst > previous_burst + 1:
+            self.record("bc_skip_final", reason="answer_played")
+            return
+        pcm, dur = self.clips[self.final_clip_name]
+        self.record("bc_fired_final", clip=self.final_clip_name, duration_s=round(dur, 3))
+        await self.output.queue_frame(OutputAudioRawFrame(audio=pcm, sample_rate=24000, num_channels=1))
 
     def _cancel_long(self):
         if self._long_task is not None and not self._long_task.done():
             self._long_task.cancel()
         self._long_task = None
+        if self._final_task is not None and not self._final_task.done():
+            self._final_task.cancel()
+        self._final_task = None
 
     # ---------- frame handling ----------
 
@@ -428,6 +456,14 @@ class BackchannelProcessor(FrameProcessor):
             if (frame.text or "").strip():
                 self._turn_transcript = True
                 self._cancel_task()
+                # If ASR completed before the first filler, still monitor the
+                # answer: a stalled TTS must not leave this turn silent forever.
+                if (self.enabled and not self._filled_this_turn and not self._user_speaking
+                        and self._speech_end_mono is not None and self.output is not None):
+                    self._filled_this_turn = True
+                    burst = getattr(self.output, "_playback_burst_id", None)
+                    self._filler_burst_prev = burst - 1 if burst is not None else None
+                    self._arm_long_wait(self._speech_end_mono)
             await self.push_frame(frame, direction)
             return
 

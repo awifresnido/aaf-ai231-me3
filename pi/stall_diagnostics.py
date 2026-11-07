@@ -107,8 +107,9 @@ class Diagnostics:
         usage = resource.getrusage(resource.RUSAGE_SELF)
         self.emit("span_start", phase=phase, span_id=span_id, **fields)
         error = None
+        end_fields = {}
         try:
-            yield
+            yield end_fields
         except BaseException as exc:
             error = type(exc).__name__
             raise
@@ -123,7 +124,7 @@ class Diagnostics:
                       input_blocks=after.ru_inblock - usage.ru_inblock,
                       output_blocks=after.ru_oublock - usage.ru_oublock,
                       major_faults=after.ru_majflt - usage.ru_majflt,
-                      error=error, **fields)
+                      error=error, **fields, **end_fields)
 
     async def monitor_loop(self, get_turn=lambda: None):
         loop = asyncio.get_running_loop()

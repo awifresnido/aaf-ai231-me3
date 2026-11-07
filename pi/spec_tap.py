@@ -38,7 +38,7 @@ class SpecTap(FrameProcessor):
             # Streaming ASR partial: classify the partial text directly —
             # no extra ASR round-trip needed.
             text = (getattr(frame, "text", "") or "").strip()
-            if text:
+            if text and hasattr(self.spec, "push_partial_text"):
                 self.spec.push_partial_text(text)
         elif isinstance(frame, VADUserStartedSpeakingFrame):
             turn = self.timing.turn if self.timing else None

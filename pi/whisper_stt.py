@@ -41,8 +41,8 @@ class WhisperSTTService(SegmentedSTTService):
         self.base_url = os.getenv("WHISPER_ASR_BASE", "http://192.168.5.11:8090").rstrip("/")
         self.path = os.getenv("WHISPER_ASR_PATH", "/inference")
         self.language = os.getenv("WHISPER_ASR_LANG", "en")
-        self.streaming = os.getenv("WHISPER_STREAM", "1")
-        self.promote = os.getenv("WHISPER_PROMOTE", "0").strip() == "1".strip() == "1"
+        self.streaming = os.getenv("WHISPER_STREAM", "1").strip() == "1"
+        self.promote = os.getenv("WHISPER_PROMOTE", "0").strip() == "1"
         self.partial_interval_s = float(os.getenv("WHISPER_PARTIAL_INTERVAL_S", "0.8"))
         self.promote_max_age_s = float(os.getenv("WHISPER_PROMOTE_MAX_AGE_S", "1.0"))
         trailing = float(os.getenv("WHISPER_TRAILING_SILENCE_SECS", "0.15"))

@@ -26,6 +26,7 @@ class QwenTTSService(TTSService):
             raise ValueError("DGX_API_KEY is required for Qwen TTS")
         super().__init__(sample_rate=SAMPLE_RATE, push_start_frame=True,
                          push_stop_frames=True,
+                         stop_frame_timeout_s=float(os.getenv("DGX_TTS_CONTEXT_IDLE_S", "20")),
                          settings=TTSSettings(model=self.model_name, voice=self.voice_name, language=None), **kwargs)
         self.client = client if client is not None else httpx.AsyncClient(
             timeout=httpx.Timeout(float(os.getenv("DGX_TTS_TIMEOUT_SECS", "15")), connect=5),
@@ -39,7 +40,7 @@ class QwenTTSService(TTSService):
         self._revive_task = None
         self.add_event_handler("on_usable_changed", self._on_usable_changed)
 
-    async def _on_usable_changed(self, is_usable: bool):
+    async def _on_usable_changed(self, _service, is_usable: bool):
         self.record("tts_usable_changed", self.timing.turn if self.timing else None,
                     usable=is_usable)
         if is_usable:
@@ -70,6 +71,9 @@ class QwenTTSService(TTSService):
                                tts_model=self.model_name, **fields)
 
     async def cleanup(self):
+        if self._revive_task is not None:
+            self._revive_task.cancel()
+            await asyncio.gather(self._revive_task, return_exceptions=True)
         await self.client.aclose()
         await super().cleanup()
 

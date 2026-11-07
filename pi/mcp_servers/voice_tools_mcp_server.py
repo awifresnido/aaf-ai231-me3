@@ -41,9 +41,11 @@ import asyncio
 import json
 import os
 import re
+import socket
 import sqlite3
 import subprocess
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.request
@@ -75,8 +77,21 @@ class ProfiledToolServer(MCPServer):
             call_id = ""
         if not isinstance(call_id, str) or not re.fullmatch(r"[0-9a-f]{32}", call_id):
             call_id = uuid.uuid4().hex
-        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name):
-            return await super().call_tool(name, arguments, ctx)
+        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name, arguments=arguments) as end_fields:
+            result = await super().call_tool(name, arguments, ctx)
+            if name in {"play_music", "playback_control", "list_reminders", "send_message", "set_timer", "set_alarm"}:
+                payload = getattr(result, "structured_content", None)
+                if payload is None:
+                    content = getattr(result, "content", [])
+                    payload = getattr(content[0], "text", None) if content else None
+                if isinstance(payload, str):
+                    try:
+                        payload = json.loads(payload)
+                    except ValueError:
+                        payload = None
+                if isinstance(payload, dict):
+                    end_fields["result"] = payload
+            return result
 
     async def run_stdio_async(self):
         if diagnostics is None:
@@ -118,6 +133,13 @@ SMTP_FROM = os.getenv("SMTP_FROM", SMTP_USER)
 
 DEFAULT_LAT = float(os.getenv("WEATHER_LAT", "10.7"))       # default: Leyte, PH
 DEFAULT_LON = float(os.getenv("WEATHER_LON", "124.97"))
+
+# ---- music playback (mpv → PulseAudio voice sink → JV801P speakerphone) --
+MPV_SOCKET = "/tmp/me3_music.sock"                          # mpv IPC control socket
+VOLUME_LEVELS = 5                                           # 0..4 inclusive
+DEFAULT_VOLUME = 3                                          # 90%
+VOLUME_PCT = (0, 60, 75, 90, 100)                           # level 1 is audible at PCM 60%
+MUSIC_DIR = os.getenv("MUSIC_DIR", str(Path.home() / "music"))
 
 server = ProfiledToolServer(
     name="voice-agent-tools",
@@ -185,17 +207,150 @@ def _archive_search(query: str, limit: int = 5) -> dict | None:
         return None
 
 
+def _archive_audio_url(identifier: str) -> str | None:
+    """Resolve a direct, playable audio file URL for an archive.org item."""
+    try:
+        meta = _http_json(f"https://archive.org/metadata/{identifier}")
+    except Exception:
+        return None
+    for f in meta.get("files", []) or []:
+        name = f.get("name", "")
+        fmt = (f.get("format") or "").lower()
+        if name.lower().endswith((".mp3", ".ogg", ".m4a", ".flac", ".wav")) or fmt in ("vbr mp3", "mp3", "ogg vorbis"):
+            return f"https://archive.org/download/{identifier}/{urllib.parse.quote(name)}"
+    return None
+
+
+def _volume_pct(level: int) -> int:
+    return VOLUME_PCT[max(0, min(VOLUME_LEVELS - 1, int(level)))]
+
+
+def _mpv_send(command: list) -> bool:
+    """Send a JSON command to the running mpv over its IPC socket."""
+    try:
+        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        s.settimeout(1.0)
+        s.connect(MPV_SOCKET)
+        s.sendall((json.dumps({"command": command}) + "\n").encode())
+        s.close()
+        return True
+    except Exception:
+        return False
+
+
+def _mpv_stop() -> None:
+    _mpv_send(["quit"])
+    with suppress(FileNotFoundError):
+        Path(MPV_SOCKET).unlink()
+
+
+def _mpv_play(url: str, volume: int) -> None:
+    _mpv_stop()
+    env = dict(os.environ)
+    env["PULSE_SINK"] = "voice_agent_aec_sink"
+    env["PULSE_SERVER"] = f"unix:/run/user/{os.getuid()}/pulse/native"
+    cmd = [
+        "mpv", "--no-video", "--no-terminal", "--ao=pulse",
+        f"--input-ipc-server={MPV_SOCKET}",
+        f"--volume={_volume_pct(volume)}",
+        "--", url,
+    ]
+    with open("/tmp/me3_mpv.err", "ab") as mpv_errors:
+        process = subprocess.Popen(cmd, env=env, stdout=subprocess.DEVNULL, stderr=mpv_errors,
+                                   start_new_session=True)
+    threading.Thread(target=process.wait, name="mpv-reaper", daemon=True).start()
+
+
+def _local_tracks() -> list:
+    d = Path(MUSIC_DIR)
+    if not d.is_dir():
+        return []
+    exts = {".mp3", ".flac", ".m4a", ".wav", ".ogg", ".aac", ".opus"}
+    return sorted(p for p in d.rglob("*") if p.is_file() and p.suffix.lower() in exts)
+
+
+def _local_queue(query: str) -> list[Path]:
+    """Queue matching local files in filename order, or all files if none match."""
+    tracks = _local_tracks()
+    if not tracks:
+        return []
+    words = [w for w in re.findall(r"[a-z0-9']+", (query or "").lower()) if len(w) > 2]
+    if not words:
+        return tracks
+    def score(p):
+        name = p.stem.lower()
+        return sum(1 for w in words if w in name)
+    matched = [p for p in tracks if score(p) > 0]
+    return matched or tracks
+
+
+def _detect_source(text: str) -> str:
+    t = (text or "").lower()
+    local = r"\b(?:my\s+)?(?:files?|folder|local|offline|stored|library|downloaded)\b"
+    net = r"\b(?:internet|online|stream|web|cloud|jamendo|archive)\b"
+    has_local = bool(re.search(local, t))
+    has_net = bool(re.search(net, t))
+    if has_local and not has_net:
+        return "local"
+    if has_net and not has_local:
+        return "internet"
+    return ""
+
+
+def _clean_query(text: str) -> str:
+    q = re.sub(r"\b(?:from|on|via|the|some|my|me)\b", " ", text, flags=re.I)
+    q = re.sub(r"\b(?:local\s+)?(?:files?|folder|offline|stored|library|downloaded)\b", " ", q, flags=re.I)
+    q = re.sub(r"\b(?:internet|online|stream|web|cloud|jamendo|archive)\b", " ", q, flags=re.I)
+    q = re.sub(r"\b(?:music|songs?|tracks?|play|put\s+on|listen\s+to)\b", " ", q, flags=re.I)
+    return re.sub(r"\s+", " ", q).strip()
+
+
 @server.tool(
     name="play_music",
     description=(
-        "Play music. Picks a track from an open-licensed music catalog "
-        "(Jamendo; Internet Archive fallback) for the given free-form query "
-        "(genre, mood, artist, or title). Returns track title and stream URL."
+        "Play music. Pass source='local' to play a file from the user's local "
+        "music folder, or source='internet' to stream from an open-licensed "
+        "catalog (Jamendo / Internet Archive). If the user did not say which, "
+        "call this tool with no source and it will ask them to choose."
     ),
 )
 @trace_tool
-def play_music(query: str) -> dict:
-    j = _jamendo_search(query)
+def play_music(query: str, source: str = "") -> dict:
+    q = (query or "").strip()
+    src = (source or "").strip().lower()
+    if not src:
+        src = _detect_source(q)
+    q_clean = _clean_query(q)
+    if not src:
+        # Ambiguous: ask, and remember the genre/title for the follow-up answer.
+        _set_state("music_pending", {"query": q_clean or "music"})
+        return {"ok": True, "ask_source": True,
+                "spoken": "Would you like me to play from your local files or from the internet?"}
+    if not q_clean:
+        pending = _get_state("music_pending") or {}
+        q_clean = pending.get("query") or "music"
+    _set_state("music_pending", {})
+
+    if src == "local":
+        queue = _local_queue(q_clean)
+        if not queue:
+            return {"ok": False, "spoken": "I don't see any music in your local folder yet."}
+        path = queue[0]
+        prev = _get_state("media") or {}
+        volume = int(prev.get("volume", DEFAULT_VOLUME))
+        try:
+            _mpv_play(str(path), volume)
+        except Exception as exc:
+            return {"ok": False, "spoken": "I could not start playback.", "error": str(exc)}
+        title = path.stem
+        media = {"mode": "music", "title": title, "artist": "", "url": str(path),
+                 "source": "local", "status": "playing", "volume": volume,
+                 "queue": [str(p) for p in queue], "queue_pos": 0}
+        _set_state("media", media)
+        return {"ok": True, "spoken": f"Now playing {title} from your files.",
+                "track": {"title": title, "source": "local"}, "media": media}
+
+    j = _jamendo_search(q_clean)
     if j:
         t = j["results"][0]
         track = {
@@ -205,65 +360,150 @@ def play_music(query: str) -> dict:
             "source": "jamendo",
         }
     else:
-        a = _archive_search(query)
+        a = _archive_search(q_clean)
         if not a or not a.get("response", {}).get("docs"):
             return {"ok": False, "spoken": "I could not find any music for that."}
         d = a["response"]["docs"][0]
         ident = d["identifier"]
+        audio_url = _archive_audio_url(ident)
+        if not audio_url:
+            return {"ok": False, "spoken": "I found a match but it has no playable audio."}
         track = {
             "title": d.get("title", ident),
             "artist": "",
-            "url": f"https://archive.org/download/{ident}/",
+            "url": audio_url,
             "source": "internet-archive",
         }
-    _set_state("media", {"mode": "music", "title": track["title"], "url": track["url"]})
-    return {"ok": True, "spoken": f"Now playing {track['title']}.", "track": track}
+    if not track["url"]:
+        return {"ok": False, "spoken": "I could not resolve a playable stream for that."}
+    prev = _get_state("media") or {}
+    volume = int(prev.get("volume", DEFAULT_VOLUME))
+    try:
+        _mpv_play(track["url"], volume)
+    except Exception as exc:
+        return {"ok": False, "spoken": "I could not start playback.", "error": str(exc)}
+    media = {"mode": "music", "title": track["title"], "artist": track["artist"],
+             "url": track["url"], "source": track["source"], "status": "playing",
+             "volume": volume, "queue": [track["url"]], "queue_pos": 0}
+    _set_state("media", media)
+    return {"ok": True, "spoken": f"Now playing {track['title']}.", "track": track,
+            "media": media}
 
 
 @server.tool(
     name="playback_control",
     description=(
-        "Control the currently playing music: pause, stop, resume, "
-        "next, volume_up, volume_down. These are the ME2 PAUSE/STOP/NEXT/"
-        "VOLUME_UP/VOLUME_DOWN commands."
+        "Control the currently playing music: pause, stop, resume, next, "
+        "volume_up, volume_down. Volume has five levels."
     ),
 )
 @trace_tool
 def playback_control(action: str) -> dict:
-    spoken = {
-        "pause": "Paused.",
-        "stop": "Stopped.",
-        "resume": "Resumed.",
-        "next": "Skipping to the next track.",
-        "volume_up": "Volume up.",
-        "volume_down": "Volume down.",
-    }.get(action)
-    if spoken is None:
-        return {"ok": False, "spoken": f"Unknown playback action: {action}"}
-    media = STATE_STORE.dispatch("patch_state", {"key": "media", "changes": {"status": action},
-                                                "defaults": {}, "require_existing": True})
+    media = _get_state("media")
     if media is None:
         return {"ok": False, "spoken": "Nothing is playing right now."}
+    a = (action or "").strip().lower()
+    level = int(media.get("volume", DEFAULT_VOLUME))
+    status = media.get("status", "playing")
+    if a == "pause":
+        _mpv_send(["set_property", "pause", True])
+        status, spoken = "paused", "Paused."
+    elif a == "resume":
+        _mpv_send(["set_property", "pause", False])
+        status, spoken = "playing", "Resumed."
+    elif a == "stop":
+        _mpv_stop()
+        status, spoken = "stopped", "Stopped."
+    elif a == "next":
+        queue = media.get("queue") or []
+        if media.get("source") != "local" or len(queue) < 2:
+            spoken = "There is no next track in the queue."
+        else:
+            pos = (int(media.get("queue_pos", 0)) + 1) % len(queue)
+            path = Path(queue[pos])
+            try:
+                _mpv_play(str(path), level)
+            except Exception as exc:
+                return {"ok": False, "spoken": "I could not skip to the next track.",
+                        "error": str(exc)}
+            media.update(queue_pos=pos, title=path.stem, url=str(path))
+            status = "playing"
+            spoken = f"Now playing {path.stem}."
+    elif a == "volume_up":
+        level = min(VOLUME_LEVELS - 1, level + 1)
+        _mpv_send(["set_property", "volume", _volume_pct(level)])
+        spoken = f"Volume {level + 1} of {VOLUME_LEVELS}."
+    elif a == "volume_down":
+        level = max(0, level - 1)
+        _mpv_send(["set_property", "volume", _volume_pct(level)])
+        spoken = f"Volume {level + 1} of {VOLUME_LEVELS}."
+    else:
+        return {"ok": False, "spoken": f"Unknown playback action: {action}"}
+    media["status"] = status
+    media["volume"] = level
+    _set_state("media", media)
     return {"ok": True, "spoken": spoken, "media": media}
 
 
 # ---------------------------------------------------------------- weather ---
+def _geocode(place: str) -> dict | None:
+    """Resolve a place name to coordinates via Open-Meteo's free geocoding API.
+
+    Returns ``{"name", "latitude", "longitude", "country", "admin1"}`` for the
+    top hit, or ``None`` if the place can't be resolved (or the API is down).
+    """
+    if not place or not place.strip():
+        return None
+    try:
+        url = (
+            "https://geocoding-api.open-meteo.com/v1/search?"
+            + urllib.parse.urlencode(
+                {"name": place.strip(), "count": 1, "language": "en", "format": "json"}
+            )
+        )
+        data = _http_json(url)
+        results = data.get("results") or []
+    except Exception:
+        return None
+    if not results:
+        return None
+    r = results[0]
+    return {
+        "name": r.get("name") or place.strip(),
+        "latitude": float(r["latitude"]),
+        "longitude": float(r["longitude"]),
+        "country": r.get("country"),
+        "admin1": r.get("admin1"),
+    }
+
+
 @server.tool(
     name="get_weather",
     description=(
-        "Current weather for a place. Open-Meteo, no API key. Same provider "
-        "as the ME2 weather service. Optionally pass place latitude/longitude."
+        "Current weather for a place. Pass the place NAME as a string "
+        "(e.g. 'Manila', 'Baguio', 'London') and it is geocoded automatically. "
+        "Pass latitude/longitude only if you already have coordinates."
     ),
 )
 @trace_tool
-def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -> dict:
+def get_weather(place: str = "", latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -> dict:
+    label = place.strip() if place else None
+    lat, lon = latitude, longitude
+    if label:
+        geo = _geocode(label)
+        if geo is None:
+            return {"ok": False, "spoken": f"I couldn't find the weather for {label}."}
+        lat, lon = geo["latitude"], geo["longitude"]
+        label = geo["name"]
+        if geo.get("country") and geo["country"].lower() != geo["name"].lower():
+            label = f"{geo['name']}, {geo['country']}"
     try:
         url = (
             "https://api.open-meteo.com/v1/forecast?"
             + urllib.parse.urlencode(
                 {
-                    "latitude": latitude,
-                    "longitude": longitude,
+                    "latitude": lat,
+                    "longitude": lon,
                     "current": "temperature_2m,apparent_temperature,"
                                "relative_humidity_2m,weather_code,wind_speed_10m",
                     "timezone": "auto",
@@ -282,8 +522,13 @@ def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -
     }
     code = int(cur.get("weather_code", 0))
     temp = cur.get("temperature_2m")
-    spoken = f"It's {temp} degrees with {wmo.get(code, 'unknown conditions')} right now."
-    return {"ok": True, "spoken": spoken, "current": cur, "provider": "open-meteo"}
+    cond = wmo.get(code, "unknown conditions")
+    spoken = (
+        f"In {label}, it's {temp} degrees with {cond} right now."
+        if label
+        else f"It's {temp} degrees with {cond} right now."
+    )
+    return {"ok": True, "spoken": spoken, "place": label, "current": cur, "provider": "open-meteo"}
 
 
 @server.tool(
@@ -368,7 +613,9 @@ def list_reminders() -> dict:
     if not rows:
         return {"ok": True, "spoken": "You have no reminders.", "reminders": []}
     texts = [r[1] for r in rows]
-    return {"ok": True, "spoken": "You have " + ", ".join(texts) + ".", "reminders": texts}
+    recent = texts[:3]
+    prefix = f"You have {len(texts)} reminders. The latest three are " if len(texts) > 3 else "Your reminders are "
+    return {"ok": True, "spoken": prefix + ", ".join(recent) + ".", "reminders": texts}
 
 
 # ------------------------------------------------------- thermostat/lights --
@@ -434,7 +681,13 @@ def control_lights(action: str, value: str = "") -> dict:
     ),
 )
 @trace_tool
-def send_message(text: str) -> dict:
+def send_message(text: str, to: str = "") -> dict:
+    if to.strip().lower() in {"mom", "dad", "john"}:
+        contact = to.strip().capitalize()
+        _set_state("message", {"status": "simulated", "to": contact, "text": text, "at": time.time()})
+        return {"ok": True, "spoken": f"Simulated message to {contact}: {text}", "simulated": True, "to": contact, "text": text}
+    if to.strip():
+        return {"ok": False, "spoken": "I can only simulate messages to Mom, Dad, or John."}
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return {"ok": False, "spoken": "Messaging is not configured yet.",
                 "error": "missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID"}
@@ -496,7 +749,7 @@ def send_email(to: str, subject: str, body: str) -> dict:
 @trace_tool
 def place_call(to: str = "") -> dict:
     _set_state("call", {"status": "calling", "to": to or "default", "at": time.time()})
-    return {"ok": True, "spoken": f"Calling {to or 'your default contact'}.",
+    return {"ok": True, "spoken": f"Simulating a call to {to or 'your default contact'}.",
             "note": "carrier integration is pending UI (see milestone-5)"}
 
 

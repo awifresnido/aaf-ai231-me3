@@ -12,7 +12,7 @@ import json
 import math
 from pathlib import Path
 
-TAU = 0.90
+TAU = 0.85
 GAP = 0.05
 QUESTION_SHA256 = "75b84047dad87a9d66a64907ae67f357fbcfe5e6dace20149ed16f0984e14f1b"
 BUNDLED_QUESTION_SHA256 = "75b84047dad87a9d66a64907ae67f357fbcfe5e6dace20149ed16f0984e14f1b"

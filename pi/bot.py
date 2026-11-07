@@ -420,7 +420,7 @@ def build_local_transport() -> BaseTransport:
     )
 
 
-async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
+async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, benchmark_mode: bool = False) -> None:
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
     experiment = os.getenv("VAD_EXPERIMENT", f"vad-{VAD_STOP_SECS}")
     timing = TurnTimingObserver(experiment=experiment)
@@ -633,7 +633,7 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     async def on_client_ready(rtvi):
         await worker.queue_frames([TTSSpeakFrame(text=GREETING_TEXT)])
 
-    if TRANSPORT_MODE == "local":
+    if TRANSPORT_MODE == "local" and not benchmark_mode:
         # Local audio has no RTVI client, so on_client_ready never fires.
         # Queue the greeting ourselves once the output stream is actually open.
         async def _local_greeting():
@@ -678,9 +678,20 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         logger.info("BC_FLUSH_TEST armed: interrupt at greeting+1s, respawn check at +3s")
 
     monitor = asyncio.create_task(diagnostics.monitor_loop(lambda: timing.turn)) if diagnostics else None
+    activity_monitor = None
+    if TRANSPORT_MODE == "local" and not benchmark_mode:
+        from audio_activity import publish_activity
+        activity_monitor = asyncio.create_task(publish_activity(transport.output(), bc_processor))
     try:
         await runner.run()
+    except asyncio.CancelledError:
+        await runner.cancel()
+        raise
     finally:
+        if activity_monitor:
+            activity_monitor.cancel()
+            with suppress(asyncio.CancelledError):
+                await activity_monitor
         if monitor:
             monitor.cancel()
             with suppress(asyncio.CancelledError):

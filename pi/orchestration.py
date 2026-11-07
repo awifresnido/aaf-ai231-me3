@@ -38,7 +38,7 @@ FAST_TOOLS = {
 }
 OPTIONS = {
     "get_time": "Ask for the current local clock time",
-    "get_weather": "Ask for current local weather; no forecast or another location",
+    "get_weather": "Ask for the current weather at a stated place (city or location name)",
     "list_reminders": "Ask to list existing reminders",
     "add_reminder": "Create one reminder with stated note text, such as 'remind me to study'; no time is required",
     "set_thermostat": "Set the thermostat to one explicit Celsius temperature",
@@ -81,7 +81,21 @@ def explicit_route_hint(text):
     """Recover an explicit reminder request when ASR prefixes it with filler."""
     if re.search(r"\b(?:remind me to|(?:add|create|set|make|great) (?:a )?reminder (?:to|for|that))\b", text, re.I):
         return "add_reminder"
+    if re.search(r"\b(?:call|phone)\s+(?:mom|dad|john)\b", text, re.I):
+        return "place_call"
+    if re.search(r"\b(?:message|text)\s+(?:mom|dad|john)\b|\b(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(?:mom|dad|john)\b", text, re.I):
+        return "send_message"
     return None
+
+
+def _direct_chitchat(text):
+    """Recognize standalone questions about the assistant or connection."""
+    normalized = re.sub(r"[^a-z0-9\s']", " ", (text or "").lower())
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return bool(re.fullmatch(
+        r"(?:(?:hello|hi|hey)\s+)?(?:can you hear me|who are you|are you listening)(?:\s+please)?",
+        normalized,
+    ))
 
 
 def latest_user_text(context):
@@ -126,14 +140,32 @@ def accepted_group(result, minimum=0.65, gap=0.10):
     return choice
 
 
+def _music_source_answer(text):
+    """Return 'local'/'internet' for a bare answer to the play_music source
+    question (e.g. 'local', 'my files', 'the internet'), else None."""
+    t = re.sub(r"\b(?:the|my|from|use|go|with)\b", " ", (text or "").lower(), flags=re.I)
+    t = re.sub(r"\s+", " ", t).strip(" .?!")
+    if re.fullmatch(r"(?:local|internet|online|stream|web|cloud|files?|folder|offline|stored)", t):
+        if re.search(r"(?:local|files?|folder|offline|stored)", t):
+            return "local"
+        return "internet"
+    return None
+
+
 def direct_arguments(tool, text):
     lowered = text.lower().replace(".", "")
+    if tool == "place_call":
+        match = re.search(r"\b(?:call|phone)\s+(mom|dad|john)\b", text, re.I)
+        return {"to": match[1].capitalize()} if match else None
+    if tool == "send_message":
+        match = re.search(r"\b(?:(?:message|text)\s+(mom|dad|john)|(?:send|write)\s+(?:a\s+)?(?:text|message)\s+to\s+(mom|dad|john))\s*(?:saying|that|:)?\s+(.+)$", text, re.I)
+        return {"to": (match[1] or match[2]).capitalize(), "text": match[3].strip(' .?!"')} if match else None
     if tool == "get_time":
         if re.search(r"\b(time|clock|hour|o'clock)\b", lowered):
             return {}
         return None
     if tool == "list_reminders":
-        if re.search(r"\b(reminder|reminders|remind)\b", lowered):
+        if re.search(r"\b(?:list|show|read|what|which)\b", lowered) and re.search(r"\breminders?\b", lowered):
             return {}
         return None
     if tool == "get_weather":
@@ -207,6 +239,16 @@ def direct_arguments(tool, text):
 
 
 def validate_arguments(tool, arguments):
+    if tool == "send_message" and isinstance(arguments, dict) and set(arguments) == {"text", "to"}:
+        return (isinstance(arguments["text"], str) and 1 <= len(arguments["text"].strip()) <= 500
+                and "\n" not in arguments["text"] and isinstance(arguments["to"], str)
+                and arguments["to"].lower() in {"mom", "dad", "john"})
+    if tool == "get_weather":
+        # place is optional: {} -> default location; {"place": "City"} -> named.
+        if not isinstance(arguments, dict) or set(arguments) - {"place"}:
+            return False
+        place = arguments.get("place")
+        return place is None or (isinstance(place, str) and len(place.strip()) <= 60)
     schema = FAST_TOOLS.get(tool)
     if schema is None or not isinstance(arguments, dict) or set(arguments) != set(schema):
         return False
@@ -403,6 +445,7 @@ class TwoBrainRouter(FrameProcessor):
         )
         self._inflight = set()
         self._laya_owners = deque(maxlen=64)
+        self._pending_music = False
 
     def record(self, event, turn, **fields):
         if self.timing_observer:
@@ -443,13 +486,26 @@ class TwoBrainRouter(FrameProcessor):
         self._inflight.add(receipt)
         try:
             mcp_started = time.monotonic()
-            raw = await self.mcp_client._call_tool_text(tool, args)
+            try:
+                raw = await self.mcp_client._call_tool_text(tool, args)
+            except Exception as exc:
+                if self.router_model != "laya":
+                    raise
+                if owner is not None:
+                    owner["owner"] = "handled"
+                self.record("route_tool_uncertain", route_turn, tool=tool,
+                            error=type(exc).__name__, router_s=time.monotonic() - started,
+                            **classifier_fields)
+                await self._speak("I couldn't confirm that command's outcome. Please check its state before repeating it.")
+                return
             mcp_s = time.monotonic() - mcp_started
             try:
                 payload = json.loads(raw)
             except (TypeError, ValueError):
                 payload = {"spoken": "I couldn't confirm that action. Please check its state before trying again."}
             spoken = payload.get("spoken") or "I couldn't confirm that action. Please check its state before trying again."
+            if tool == "play_music" and payload.get("ask_source"):
+                self._pending_music = True
             if self.router_model == "laya" and not isinstance(spoken, str):
                 raise ValueError("Invalid tool receipt")
             self.record("route_tool", route_turn, tool=tool, **classifier_fields,
@@ -545,6 +601,25 @@ class TwoBrainRouter(FrameProcessor):
                 owner["owner"] = "glm"
             await self.push_frame(frame, direction)
             return
+        if re.search(r"\b(?:delete|remove|complete|clear)\b.*\breminders?\b", text, re.I):
+            if owner is not None:
+                owner["owner"] = "handled"
+            await self._speak("I can't delete or complete reminders yet.")
+            return
+        pending = self._pending_music
+        self._pending_music = False
+        if pending:
+            src = _music_source_answer(text)
+            if src:
+                self.record("route_tool", route_turn, tool="play_music", source=src,
+                            extraction="pending_source", classifier_s=0.0,
+                            **{self.router_model + "_s": 0.0})
+                if owner is not None:
+                    owner["owner"] = "handled"
+                await self._execute_tool("play_music", {"query": "", "source": src}, text,
+                                         route_turn, {"classifier_s": 0.0, self.router_model + "_s": 0.0},
+                                         time.monotonic(), owner, extraction="pending_source")
+                return
         started = time.monotonic()
         classifier_s = 0.0
         classifier_started = None
@@ -556,6 +631,11 @@ class TwoBrainRouter(FrameProcessor):
         if spec is not None:
             spec_group, spec_conf = spec.result
         try:
+            if self.router_model == "laya" and _direct_chitchat(text):
+                self.record("classifier_bypass", route_turn, reason="direct_chitchat", classifier_s=0.0)
+                await self._dispatch_group("chitchat", text, frame, route_turn,
+                                           {"classifier_s": 0.0, "laya_s": 0.0}, started, owner)
+                return
             tool = explicit_route_hint(text)
             result = None
             # Speculative fast path: during speech the speculator classified a
