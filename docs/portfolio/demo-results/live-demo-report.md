@@ -2,7 +2,9 @@
 
 **Run:** `cd0cf4c88e` · **Date:** 7 November 2026, approximately 05:34, Asia/Manila (UTC+8) · **Task:** interrupt the model inventory response and ask the agent to create an HTML dashboard and send its link to Telegram. This is one live demo, not the 30-sample benchmark. The user confirmed the Telegram link worked. The later dashboard rearrangement requests are summarized separately below.
 
-![Live demo milestone chart](live-demo-latency.png)
+![Live demo latency waterfall](live-demo-latency.png)
+
+The waterfall places recorded spans at their observed start and end times; diamonds mark instantaneous events. Overlaps are possible, and blank time is not an inferred LLM latency.
 
 [Download vector chart (SVG)](live-demo-latency.svg) · [Chart script](plot_demo.py) · [Full stage-by-stage demo analysis](../../runbooks/demo-evidence-20261107.md)
 
