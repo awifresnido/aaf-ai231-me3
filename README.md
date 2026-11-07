@@ -1,6 +1,6 @@
 # ME3 | Full-duplex voice agent on an edge–cloud cluster
 
-A **Master of Engineering in AI course project** exploring how to operate, observe, and evaluate an interruptible voice agent across constrained edge hardware and remote inference services. A Raspberry Pi 4 runs the Pipecat audio pipeline and MCP tool servers; a Jetson Orin serves speech recognition, routing, and a local language model; a cloud model handles more complex requests; and a DGX serves streaming speech synthesis.
+An **MLOps course project** exploring how to operate, observe, and evaluate an interruptible voice agent across constrained edge hardware and remote inference services. A Raspberry Pi 4 runs the Pipecat audio pipeline and MCP tool servers; a Jetson Orin serves speech recognition, routing, and a local language model; a cloud model handles more complex requests; and a DGX serves streaming speech synthesis.
 
 The project is a working research prototype, not a production service. Its main contribution is the integration and operational evaluation of these components: turn-taking, confidence-aware routing, tool execution, service placement, diagnostics, and repeatable latency experiments.
 
