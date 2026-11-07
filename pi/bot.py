@@ -595,11 +595,16 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments, *, ben
                     llm_stages[0].model_host)
     else:
         ollama_key = os.getenv("OLLAMA_API_KEY")
-        llm = OpenAILLMService(
+        from context_management import ContextManagedLLM
+        llm = ContextManagedLLM(
+            timing=timing,
+            history_chars=int(os.getenv("LLM_HISTORY_MAX_CHARS", "24000")),
             api_key=ollama_key,
             base_url=OLLAMA_BASE_URL,
             settings=OpenAILLMService.Settings(
                 model=OLLAMA_MODEL,
+                max_completion_tokens=int(os.getenv("LLM_MAX_COMPLETION_TOKENS", "4096")),
+                extra={"extra_body": {"session_id": timing.run}} if "openrouter.ai" in OLLAMA_BASE_URL else {},
                 system_instruction=(
                     "You are a friendly voice assistant running on a Raspberry "
                     "Pi. Keep replies short (1-3 spoken sentences), no lists or "

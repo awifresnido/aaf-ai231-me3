@@ -86,7 +86,7 @@ The [prompt index](prompts/README.md) links the versioned voice and Telegram ins
 
 The voice agent combines a [versioned system prompt](prompts/README.md), conversation turns and MCP results with VAD and ASR events that control when a turn is ready. Whisper supports rolling partials and final transcripts; interruptions stop stale playback and cancel the active response. Memory/RAG is optional and is not claimed as a general subsystem.
 
-The separate local VCM trial limits history to six messages of at most 600 characters each; the normal cloud path has no verified global token-budget or summarization policy. Explicit stable-prefix caching has not been established. In one direct benchmark run, reported prompt context was **1,867 tokens median / 3,549 maximum** and **31 messages median / 63 maximum**. See [context engineering](docs/portfolio/context-engineering.md) for scope, implementation references, and measurement limits.
+The cloud path limits completions to 4,096 tokens and trims old turns against a 24,000-character soft history limit; this is not a hard input-token cap. Per-run logs record context size and provider token usage. OpenRouter requests include a stable session ID for prefix reuse, but an actual cache hit and TTFT improvement remain unverified. In one direct benchmark run, reported prompt context was **1,867 tokens median / 3,549 maximum** and **31 messages median / 63 maximum**. See [context engineering](docs/portfolio/context-engineering.md) for scope, implementation references, and measurement limits.
 
 ## MLOps work demonstrated
 
