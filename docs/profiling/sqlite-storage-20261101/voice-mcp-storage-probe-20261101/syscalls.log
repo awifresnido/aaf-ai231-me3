@@ -1,0 +1,273 @@
+35555 1793524412.060174 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_GETFD) = 0 <0.000025>
+35555 1793524412.060499 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+35555 1793524412.075661 fcntl(3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc>, F_GETFD) = 0x1 (flags FD_CLOEXEC) <0.000039>
+35555 1793524412.096405 fcntl(0<pipe:[106955]>, F_GETFD) = 0 <0.000056>
+35555 1793524412.097135 fcntl(1<pipe:[106956]>, F_GETFD) = 0 <0.000037>
+35555 1793524412.097648 fcntl(2</dev/shm/voice-mcp-storage-probe-20261101/client.log>, F_GETFD) = 0 <0.000036>
+35563 1793524416.482868 fcntl(2</dev/shm/voice-mcp-storage-probe-20261101/client.log>, F_GETFD) = 0 <0.000019>
+35563 1793524416.497046 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_GETFD) = 0 <0.000026>
+35563 1793524416.497226 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_SETFD, FD_CLOEXEC) = 0 <0.000016>
+35563 1793524416.505643 fcntl(3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc>, F_GETFD) = 0x1 (flags FD_CLOEXEC) <0.000019>
+35563 1793524416.514980 fcntl(0<pipe:[108899]>, F_GETFD) = 0 <0.000026>
+35563 1793524416.515412 fcntl(1<pipe:[108900]>, F_GETFD) = 0 <0.000020>
+35563 1793524416.515763 fcntl(2</dev/shm/voice-mcp-storage-probe-20261101/client.log>, F_GETFD) = 0 <0.000050>
+35563 1793524419.742085 fcntl(0<pipe:[108899]>, F_DUPFD_CLOEXEC, 3) = 7<pipe:[108899]> <0.000022>
+35563 1793524419.742723 fcntl(1<pipe:[108900]>, F_DUPFD_CLOEXEC, 3) = 8<pipe:[108900]> <0.000018>
+35563 1793524419.742832 fcntl(2</dev/shm/voice-mcp-storage-probe-20261101/client.log>, F_DUPFD_CLOEXEC, 0) = 9</dev/shm/voice-mcp-storage-probe-20261101/client.log> <0.000015>
+35569 1793524419.832671 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000147>
+35569 1793524419.833077 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000182>
+35569 1793524419.833390 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35569 1793524419.834299 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000036>
+35569 1793524419.834942 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+35569 1793524419.835122 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000022>
+35569 1793524419.835228 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000031>
+35569 1793524419.835585 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000021>
+35569 1793524419.836814 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000041>
+35569 1793524419.837028 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35569 1793524419.837211 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.039605>
+35569 1793524419.877097 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000017>
+35569 1793524419.877356 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.002193>
+35569 1793524419.879794 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.012572>
+35569 1793524419.892723 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35569 1793524419.892885 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000037>
+35569 1793524419.893000 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35569 1793524419.894045 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35569 1793524419.894197 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35569 1793524419.894300 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35569 1793524419.894536 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000018>
+35569 1793524419.895296 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000023>
+35569 1793524419.895406 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35569 1793524419.895520 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.009672>
+35569 1793524419.905359 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000017>
+35569 1793524419.905581 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.004936>
+35569 1793524419.910730 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.012488>
+35569 1793524419.923566 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35569 1793524419.923726 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35569 1793524419.923809 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35569 1793524419.924540 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+35569 1793524419.924666 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35569 1793524419.924733 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35569 1793524419.924938 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+35569 1793524419.925697 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35569 1793524419.925814 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35569 1793524419.925926 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.007473>
+35569 1793524419.933645 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000030>
+35569 1793524419.933925 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.004548>
+35569 1793524419.938728 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.012840>
+35569 1793524419.951955 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35569 1793524419.952115 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35569 1793524419.952199 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35569 1793524419.953346 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+35569 1793524419.953489 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35569 1793524419.953566 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35569 1793524419.953780 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+35569 1793524419.954646 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35569 1793524419.954823 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35569 1793524419.954943 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.007994>
+35569 1793524419.963099 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000018>
+35569 1793524419.963339 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.004658>
+35569 1793524419.968167 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.012476>
+35569 1793524419.980989 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35569 1793524419.981191 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35569 1793524419.981296 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35569 1793524419.982582 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35569 1793524419.982753 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000021>
+35569 1793524419.982861 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35569 1793524419.983141 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000027>
+35569 1793524419.986235 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+35569 1793524419.986397 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35569 1793524419.986465 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35569 1793524419.986917 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+35569 1793524419.987050 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35569 1793524419.987128 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35569 1793524419.987202 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35569 1793524419.987410 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000018>
+35569 1793524419.988370 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+35569 1793524419.988568 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+35569 1793524419.991020 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+35569 1793524419.991467 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000041>
+35569 1793524419.992958 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+35569 1793524419.993181 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000022>
+35569 1793524419.993329 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35569 1793524419.993696 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35569 1793524419.994643 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35569 1793524419.994801 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35569 1793524419.994874 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35569 1793524419.995118 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35569 1793524419.995947 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35569 1793524419.996064 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35569 1793524419.996130 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35569 1793524419.996429 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000026>
+35569 1793524419.997739 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35569 1793524419.997909 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000041>
+35569 1793524419.998175 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.008942>
+35569 1793524420.007285 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000017>
+35569 1793524420.007484 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.005187>
+35569 1793524420.012940 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.008443>
+35569 1793524420.021804 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35569 1793524420.022012 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000019>
+35569 1793524420.022103 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35569 1793524430.048667 +++ exited with 0 +++
+35589 1793524430.054899 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000042>
+35589 1793524430.055485 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000073>
+35589 1793524430.055836 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+35589 1793524430.056633 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000059>
+35589 1793524430.057023 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000058>
+35589 1793524430.057196 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000030>
+35589 1793524430.057315 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+35589 1793524430.057995 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000025>
+35589 1793524430.058865 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35589 1793524430.058978 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35589 1793524430.059044 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35589 1793524430.059252 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35589 1793524430.059925 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+35589 1793524430.060039 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35589 1793524430.060109 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35589 1793524430.060320 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35589 1793524430.060917 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35589 1793524430.061013 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35589 1793524430.061078 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35589 1793524430.061293 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35589 1793524430.062174 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+35589 1793524430.062290 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000014>
+35589 1793524430.062357 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35589 1793524430.063235 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35589 1793524430.065801 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35589 1793524430.066030 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000013>
+35589 1793524430.066132 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35589 1793524430.066591 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000022>
+35589 1793524430.066754 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35589 1793524430.066833 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35589 1793524430.066909 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35589 1793524430.067113 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35589 1793524430.067588 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35589 1793524430.067684 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35589 1793524430.067763 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35589 1793524430.067980 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000018>
+35589 1793524430.068570 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35589 1793524430.068664 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000011>
+35589 1793524430.068727 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35589 1793524430.068929 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35589 1793524430.069606 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000023>
+35589 1793524430.069717 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+35589 1793524430.069796 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+35589 1793524430.070049 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35589 1793524430.073116 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+35589 1793524430.073329 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000023>
+35589 1793524430.073446 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35589 1793524430.074338 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000043>
+35589 1793524430.076248 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35589 1793524430.076464 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000019>
+35589 1793524430.076786 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.009855>
+35589 1793524430.086825 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000018>
+35589 1793524430.087053 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.004696>
+35589 1793524430.091949 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.008633>
+35589 1793524430.100977 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35589 1793524430.101141 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000018>
+35589 1793524430.101226 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35589 1793524440.129815 +++ exited with 0 +++
+35594 1793524440.137381 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000058>
+35594 1793524440.137712 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35594 1793524440.137866 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000079>
+35594 1793524440.138736 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000041>
+35594 1793524440.139014 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35594 1793524440.139173 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35594 1793524440.139323 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35594 1793524440.139724 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35594 1793524440.140970 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+35594 1793524440.141155 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35594 1793524440.141302 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+35594 1793524440.141728 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35594 1793524440.142956 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+35594 1793524440.143164 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35594 1793524440.143295 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+35594 1793524440.143700 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35594 1793524440.144867 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+35594 1793524440.145022 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35594 1793524440.145159 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35594 1793524440.145568 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35594 1793524440.148221 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000054>
+35594 1793524440.148530 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+35594 1793524440.148725 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35594 1793524440.149176 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000039>
+35594 1793524440.151521 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000061>
+35594 1793524440.151824 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.001255>
+35594 1793524440.154941 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.025824>
+35594 1793524440.181232 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000028>
+35594 1793524440.181573 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.005051>
+35594 1793524440.187311 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.008502>
+35594 1793524440.196366 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000037>
+35594 1793524440.196580 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000028>
+35594 1793524440.196716 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000027>
+35594 1793524450.233835 +++ exited with 0 +++
+35615 1793524450.238280 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35615 1793524450.238485 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000013>
+35615 1793524450.238573 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000012>
+35615 1793524450.239025 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+35615 1793524450.239197 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35615 1793524450.239278 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35615 1793524450.239352 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35615 1793524450.239554 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35615 1793524450.240418 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35615 1793524450.240519 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35615 1793524450.240593 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35615 1793524450.240801 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35615 1793524450.241645 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35615 1793524450.241817 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35615 1793524450.241902 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000053>
+35615 1793524450.242270 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000027>
+35615 1793524450.243149 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+35615 1793524450.243342 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000013>
+35615 1793524450.243430 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35615 1793524450.243675 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000031>
+35615 1793524450.244724 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35615 1793524450.244903 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000028>
+35615 1793524450.245030 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000093>
+35615 1793524450.247202 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35615 1793524450.250230 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35615 1793524450.250414 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35615 1793524450.250484 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000011>
+35615 1793524450.250984 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+35615 1793524450.251123 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35615 1793524450.251201 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35615 1793524450.251275 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35615 1793524450.251477 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35615 1793524450.252336 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000013>
+35615 1793524450.252429 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35615 1793524450.252503 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35615 1793524450.252709 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35615 1793524450.253430 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35615 1793524450.253520 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35615 1793524450.253594 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35615 1793524450.253798 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35615 1793524450.255388 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35615 1793524450.255560 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35615 1793524450.255632 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35615 1793524450.255886 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35615 1793524450.256697 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+35615 1793524450.256819 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000012>
+35615 1793524450.256884 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000013>
+35615 1793524450.257092 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+35615 1793524450.258167 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+35615 1793524450.258291 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35615 1793524450.258539 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <3.099516>
+35615 1793524453.358407 fdatasync(11</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>) = 0 <0.000069>
+35615 1793524453.358982 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <0.007577>
+35615 1793524453.366853 fdatasync(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>) = 0 <0.009192>
+35615 1793524453.376407 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000038>
+35615 1793524453.376561 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35615 1793524453.376646 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35568 1793524453.395866 +++ exited with 0 +++
+35567 1793524453.397643 +++ exited with 0 +++
+35615 1793524453.398243 +++ exited with 0 +++
+35563 1793524453.870707 +++ exited with 0 +++
+35555 1793524453.870803 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=35563, si_uid=1000, si_status=0, si_utime=325 /* 3.25 s */, si_stime=37 /* 0.37 s */} ---
+35562 1793524453.881347 +++ exited with 0 +++
+35555 1793524453.881626 fcntl(8</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>, F_DUPFD_CLOEXEC, 0) = 9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw> <0.000017>
+35555 1793524453.881793 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>, F_GETFL) = 0x20800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE) <0.000015>
+35555 1793524453.881881 fcntl(9</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+35561 1793524453.884195 +++ exited with 0 +++
+35559 1793524454.511125 +++ exited with 0 +++
+35560 1793524454.511264 +++ exited with 0 +++
+35558 1793524454.511284 +++ exited with 0 +++
+35555 1793524454.525424 +++ exited with 0 +++

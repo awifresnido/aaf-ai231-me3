@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "host": "aldwinrpi4@192.168.5.12",
+  "base_commit": "81cbbb8",
+  "sqlite_version": "3.46.1",
+  "purpose": "Compare synthetic DELETE/FULL and WAL/FULL with fresh and reusable connections, including checkpoints",
+  "runs": [
+    {
+      "directory": ".",
+      "started": "2026-11-01T17:35:53.631104+08:00",
+      "ended": "2026-11-01T17:37:01.345278+08:00",
+      "transactions_per_case": 12,
+      "verified_databases": 8,
+      "interval_secs": 5.0,
+      "checkpoint_every": 4
+    },
+    {
+      "directory": "followup",
+      "started": "2026-11-01T17:38:32.695951+08:00",
+      "ended": "2026-11-01T17:39:17.929526+08:00",
+      "transactions_per_case": 8,
+      "verified_databases": 8,
+      "interval_secs": 5.0,
+      "checkpoint_every": 4
+    }
+  ],
+  "live_database_modified": false,
+  "private_data_copied": false,
+  "bot_model_or_audio_changed": false,
+  "serialization": "One connection per database; all operations serial",
+  "trace_initial": "fsync,fdatasync,fcntl,unlink,clock_nanosleep",
+  "trace_followup": "Initial filter plus openat,close,ftruncate,pwrite64,pread64,mmap,msync; -e raw=pwrite64,pread64 hides buffer payloads",
+  "sha256": {
+    "bot-after.txt": "1a64c0f9616b95fcf87123da802f36cff85f9974d46169c1f7a5e3d66c61c92b",
+    "bot-before.txt": "1a64c0f9616b95fcf87123da802f36cff85f9974d46169c1f7a5e3d66c61c92b",
+    "events.jsonl": "2fcade50a3acfe2da23b9b61ee94634dcabbbbf2300279533423531f03bcff60",
+    "followup/events.jsonl": "984857da7e6274a098bcf1a393c8cc1e410dbcdcc2ddf93e5c10ff1c69a6c82d",
+    "followup/progress.log": "50361d72a9779040a31bdf1820fac60273f02501276c82075bbfbeed10c3bea1",
+    "followup/summary.json": "abffd56ba7ea7cb63bedc05a814af0daced714bbb73c0830659e7844c5fd3a1d",
+    "followup/syscalls.log": "2150b7915628fbe8ab2a28b25c7708307e57c091204ee10e46b0deed29f43ea1",
+    "live-postcheck.txt": "3ff67bd3884185d00c4803848ac7a4f7fb9bd266bb0075119f244897b7ab7bca",
+    "progress.log": "7b57a1b3055f6699d073085082a10b63deb9b44a0cca3595c5296deaea7443c5",
+    "summary.json": "67944282b304379acdd8e95633c039997de833e12104729a816739749e0e0a2d",
+    "syscalls.log": "240e0256fef942ee6f834120ba00238f8967e73f4c556321e79664922cae3845"
+  },
+  "source_sha256": {
+    "scripts/compare_sqlite_journals.py": "d5f5dd2d88b0f25e9cd30eb51a867d27ba2dc7db9b6b561a66cb0c6739960947",
+    "scripts/summarize_sqlite_journals.py": "725b4617decb478d4d0443d552b3aab6daf65561218bbb90ee75ab52119dfd68",
+    "scripts/diagnose_sqlite_storage.py": "bec5dbb1748c0e3f8bfd8de49c90205c07c94d28dc8b278b65e9f47bc1e17012"
+  }
+}

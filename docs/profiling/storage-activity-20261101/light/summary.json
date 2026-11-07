@@ -1,0 +1,719 @@
+{
+  "capture": {
+    "event": "capture_started",
+    "at": 1793526735.5662267,
+    "mono_ns": 29327352294707,
+    "device": "sda",
+    "period_secs": 0.1,
+    "process_period_secs": 1.0,
+    "clock_ticks": 100,
+    "page_size": 4096,
+    "baseline_secs": 10.0,
+    "tail_secs": 10.0,
+    "vm_settings": {
+      "dirty_background_ratio": "10",
+      "dirty_ratio": "20",
+      "dirty_background_bytes": "0",
+      "dirty_bytes": "0",
+      "dirty_expire_centisecs": "3000",
+      "dirty_writeback_centisecs": "500"
+    },
+    "queue": {
+      "scheduler": "none [mq-deadline] kyber bfq",
+      "write_cache": "write through",
+      "nr_requests": "2",
+      "rotational": "1"
+    },
+    "journal_before": "2074 transactions (449 requested), each up to 5461 blocks\naverage: \n  0ms waiting for transaction\n  40ms request delay\n  4968ms running transaction\n  0ms transaction was being locked\n  4ms flushing data (in ordered mode)\n  468ms logging transaction\n  55718us average transaction commit time\n  6 handles per transaction\n  2 blocks per transaction\n  4 logged blocks per transaction"
+  },
+  "completed": {
+    "event": "capture_completed",
+    "at": 1793526793.3690643,
+    "mono_ns": 29385155113676,
+    "probe_exit_code": 0,
+    "journal_after": "2090 transactions (464 requested), each up to 5461 blocks\naverage: \n  0ms waiting for transaction\n  36ms request delay\n  4948ms running transaction\n  0ms transaction was being locked\n  4ms flushing data (in ordered mode)\n  468ms logging transaction\n  286978us average transaction commit time\n  6 handles per transaction\n  2 blocks per transaction\n  4 logged blocks per transaction"
+  },
+  "sample_count": 579,
+  "sample_cost_ms": {
+    "count": 579,
+    "min": 1.899725,
+    "median": 2.457911,
+    "max": 97.698669
+  },
+  "full_scan_cost_ms": {
+    "count": 53,
+    "min": 40.21211,
+    "median": 44.213815,
+    "max": 97.698669
+  },
+  "watched_scan_cost_ms": {
+    "count": 526,
+    "min": 1.899725,
+    "median": 2.410087,
+    "max": 7.907994
+  },
+  "process_io_coverage": {
+    "readable": {
+      "count": 53,
+      "min": 15,
+      "median": 17,
+      "max": 20
+    },
+    "total": {
+      "count": 53,
+      "min": 165,
+      "median": 166,
+      "max": 170
+    }
+  },
+  "baseline": {
+    "sample_start_at": 1793526735.6118636,
+    "sample_end_at": 1793526745.5704865,
+    "sample_seconds": 9.958622496,
+    "read_ios": 0,
+    "write_ios": 1,
+    "written_kib": 4.0,
+    "write_ms": 1562,
+    "write_await_ms": 1562.0,
+    "io_ticks_ms": 1560,
+    "weighted_io_ms": 1562,
+    "sampled_block_inflight_max": 0,
+    "scsi_pending_requests": {
+      "count": 101,
+      "min": 0,
+      "median": 0,
+      "max": 1
+    },
+    "scsi_pending_sample_count": 13,
+    "dirty_kib_max": 4,
+    "writeback_kib_max": 4,
+    "mem_available_kib_min": 3303916,
+    "dirty_background_threshold_kib_min": 330068.0,
+    "swap_in_pages": 0,
+    "swap_out_pages": 0,
+    "cpu_iowait_percent": 1.002055498458376,
+    "cpu_busy_percent": 12.461459403905447,
+    "blocked_samples": [
+      {
+        "pid": "152",
+        "comm": "usb-storage",
+        "wchan": "0",
+        "count": 11
+      }
+    ],
+    "readable_process_write_byte_deltas": []
+  },
+  "probe": {
+    "sample_start_at": 1793526745.5088863,
+    "sample_end_at": 1793526783.3681228,
+    "sample_seconds": 37.859235753,
+    "read_ios": 0,
+    "write_ios": 66,
+    "written_kib": 644.0,
+    "write_ms": 8104,
+    "write_await_ms": 122.78787878787878,
+    "io_ticks_ms": 6784,
+    "weighted_io_ms": 8104,
+    "sampled_block_inflight_max": 0,
+    "scsi_pending_requests": {
+      "count": 380,
+      "min": 0,
+      "median": 0.0,
+      "max": 1
+    },
+    "scsi_pending_sample_count": 70,
+    "dirty_kib_max": 52,
+    "writeback_kib_max": 12,
+    "mem_available_kib_min": 3293080,
+    "dirty_background_threshold_kib_min": 328984.0,
+    "swap_in_pages": 0,
+    "swap_out_pages": 0,
+    "cpu_iowait_percent": 7.294751009421265,
+    "cpu_busy_percent": 13.492597577388963,
+    "blocked_samples": [
+      {
+        "pid": "152",
+        "comm": "usb-storage",
+        "wchan": "0",
+        "count": 65
+      },
+      {
+        "pid": "179",
+        "comm": "jbd2/sda2-8",
+        "wchan": "0",
+        "count": 46
+      },
+      {
+        "pid": "38610",
+        "comm": "python",
+        "wchan": "do_get_write_access",
+        "count": 45
+      },
+      {
+        "pid": "38610",
+        "comm": "python",
+        "wchan": "folio_wait_bit_common",
+        "count": 15
+      },
+      {
+        "pid": "38610",
+        "comm": "python",
+        "wchan": "blk_mq_get_tag",
+        "count": 8
+      },
+      {
+        "pid": "36447",
+        "comm": "kworker/0:0+events_freezable",
+        "wchan": "0",
+        "count": 5
+      },
+      {
+        "pid": "36447",
+        "comm": "kworker/0:0+events_freezable_pwr_efficient",
+        "wchan": "0",
+        "count": 4
+      },
+      {
+        "pid": "38607",
+        "comm": "strace",
+        "wchan": "wait_task_inactive",
+        "count": 1
+      }
+    ],
+    "readable_process_write_byte_deltas": [
+      {
+        "pid": "38610",
+        "comm": "python",
+        "write_bytes": 139264
+      },
+      {
+        "pid": "1121",
+        "comm": "bash",
+        "write_bytes": 4096
+      }
+    ]
+  },
+  "tail": {
+    "sample_start_at": 1793526783.269394,
+    "sample_end_at": 1793526793.3680072,
+    "sample_seconds": 10.098612254,
+    "read_ios": 0,
+    "write_ios": 2,
+    "written_kib": 52.0,
+    "write_ms": 560,
+    "write_await_ms": 280.0,
+    "io_ticks_ms": 556,
+    "weighted_io_ms": 559,
+    "sampled_block_inflight_max": 0,
+    "scsi_pending_requests": {
+      "count": 102,
+      "min": 0,
+      "median": 0.0,
+      "max": 1
+    },
+    "scsi_pending_sample_count": 6,
+    "dirty_kib_max": 52,
+    "writeback_kib_max": 0,
+    "mem_available_kib_min": 3293156,
+    "dirty_background_threshold_kib_min": 328992.0,
+    "swap_in_pages": 0,
+    "swap_out_pages": 0,
+    "cpu_iowait_percent": 1.3646702047005308,
+    "cpu_busy_percent": 13.090725296942129,
+    "blocked_samples": [
+      {
+        "pid": "179",
+        "comm": "jbd2/sda2-8",
+        "wchan": "0",
+        "count": 6
+      },
+      {
+        "pid": "36447",
+        "comm": "kworker/0:0+events_freezable_pwr_efficient",
+        "wchan": "0",
+        "count": 1
+      }
+    ],
+    "readable_process_write_byte_deltas": [
+      {
+        "pid": "1121",
+        "comm": "bash",
+        "write_bytes": 4096
+      }
+    ]
+  },
+  "slow_syscalls_over_100ms": [
+    {
+      "at": 1793526750.913454,
+      "elapsed_ms": 1221.829,
+      "syscall": "pwrite64",
+      "case": "disk",
+      "phase": "sqlite_execute",
+      "iteration": 1,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal",
+      "line": "38610 1793526750.913454 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.221829>",
+      "activity": {
+        "sample_start_at": 1793526750.868521,
+        "sample_end_at": 1793526752.163796,
+        "sample_seconds": 1.295275646,
+        "read_ios": 0,
+        "write_ios": 7,
+        "written_kib": 80.0,
+        "write_ms": 1244,
+        "write_await_ms": 177.71428571428572,
+        "io_ticks_ms": 1244,
+        "weighted_io_ms": 1243,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 13,
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 11,
+        "dirty_kib_max": 48,
+        "writeback_kib_max": 4,
+        "mem_available_kib_min": 3295580,
+        "dirty_background_threshold_kib_min": 329236.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 38.3399209486166,
+        "cpu_busy_percent": 17.193675889328063,
+        "blocked_samples": [
+          {
+            "pid": "152",
+            "comm": "usb-storage",
+            "wchan": "0",
+            "count": 12
+          },
+          {
+            "pid": "179",
+            "comm": "jbd2/sda2-8",
+            "wchan": "0",
+            "count": 12
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "do_get_write_access",
+            "count": 11
+          },
+          {
+            "pid": "36447",
+            "comm": "kworker/0:0+events_freezable_pwr_efficient",
+            "wchan": "0",
+            "count": 1
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "folio_wait_bit_common",
+            "count": 1
+          }
+        ],
+        "readable_process_write_byte_deltas": [
+          {
+            "pid": "38610",
+            "comm": "python",
+            "write_bytes": 24576
+          }
+        ]
+      }
+    },
+    {
+      "at": 1793526757.193379,
+      "elapsed_ms": 1207.1750000000002,
+      "syscall": "pwrite64",
+      "case": "disk",
+      "phase": "sqlite_execute",
+      "iteration": 2,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal",
+      "line": "38610 1793526757.193379 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.207175>",
+      "activity": {
+        "sample_start_at": 1793526757.170712,
+        "sample_end_at": 1793526758.4684916,
+        "sample_seconds": 1.297778333,
+        "read_ios": 0,
+        "write_ios": 8,
+        "written_kib": 80.0,
+        "write_ms": 1234,
+        "write_await_ms": 154.25,
+        "io_ticks_ms": 1228,
+        "weighted_io_ms": 1233,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 14,
+          "min": 0,
+          "median": 1.0,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 12,
+        "dirty_kib_max": 52,
+        "writeback_kib_max": 0,
+        "mem_available_kib_min": 3295848,
+        "dirty_background_threshold_kib_min": 329264.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 38.188976377952756,
+        "cpu_busy_percent": 16.141732283464567,
+        "blocked_samples": [
+          {
+            "pid": "152",
+            "comm": "usb-storage",
+            "wchan": "0",
+            "count": 12
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "do_get_write_access",
+            "count": 12
+          },
+          {
+            "pid": "179",
+            "comm": "jbd2/sda2-8",
+            "wchan": "0",
+            "count": 12
+          }
+        ],
+        "readable_process_write_byte_deltas": []
+      }
+    },
+    {
+      "at": 1793526768.492941,
+      "elapsed_ms": 343.03499999999997,
+      "syscall": "pwrite64",
+      "case": "disk",
+      "phase": "sqlite_execute",
+      "iteration": 4,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal",
+      "line": "38610 1793526768.492941 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.343035>",
+      "activity": {
+        "sample_start_at": 1793526768.4703279,
+        "sample_end_at": 1793526768.8686666,
+        "sample_seconds": 0.398338058,
+        "read_ios": 0,
+        "write_ios": 8,
+        "written_kib": 84.0,
+        "write_ms": 370,
+        "write_await_ms": 46.25,
+        "io_ticks_ms": 368,
+        "weighted_io_ms": 370,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 5,
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 4,
+        "dirty_kib_max": 40,
+        "writeback_kib_max": 0,
+        "mem_available_kib_min": 3294704,
+        "dirty_background_threshold_kib_min": 329148.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 57.615894039735096,
+        "cpu_busy_percent": 19.867549668874172,
+        "blocked_samples": [
+          {
+            "pid": "179",
+            "comm": "jbd2/sda2-8",
+            "wchan": "0",
+            "count": 3
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "do_get_write_access",
+            "count": 3
+          },
+          {
+            "pid": "36447",
+            "comm": "kworker/0:0+events_freezable_pwr_efficient",
+            "wchan": "0",
+            "count": 1
+          }
+        ],
+        "readable_process_write_byte_deltas": []
+      }
+    },
+    {
+      "at": 1793526773.880023,
+      "elapsed_ms": 1897.4560000000001,
+      "syscall": "pwrite64",
+      "case": "disk",
+      "phase": "sqlite_execute",
+      "iteration": 5,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal",
+      "line": "38610 1793526773.880023 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.897456>",
+      "activity": {
+        "sample_start_at": 1793526773.8694239,
+        "sample_end_at": 1793526775.8689756,
+        "sample_seconds": 1.999551093,
+        "read_ios": 0,
+        "write_ios": 14,
+        "written_kib": 136.0,
+        "write_ms": 1940,
+        "write_await_ms": 138.57142857142858,
+        "io_ticks_ms": 1940,
+        "weighted_io_ms": 1941,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 21,
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 19,
+        "dirty_kib_max": 40,
+        "writeback_kib_max": 0,
+        "mem_available_kib_min": 3295104,
+        "dirty_background_threshold_kib_min": 329188.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 39.447236180904525,
+        "cpu_busy_percent": 15.703517587939698,
+        "blocked_samples": [
+          {
+            "pid": "152",
+            "comm": "usb-storage",
+            "wchan": "0",
+            "count": 19
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "do_get_write_access",
+            "count": 19
+          },
+          {
+            "pid": "179",
+            "comm": "jbd2/sda2-8",
+            "wchan": "0",
+            "count": 19
+          },
+          {
+            "pid": "36447",
+            "comm": "kworker/0:0+events_freezable_pwr_efficient",
+            "wchan": "0",
+            "count": 1
+          }
+        ],
+        "readable_process_write_byte_deltas": []
+      }
+    },
+    {
+      "at": 1793526780.833682,
+      "elapsed_ms": 1242.395,
+      "syscall": "fdatasync",
+      "case": "disk",
+      "phase": "raw_fdatasync",
+      "iteration": 1,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin",
+      "line": "38610 1793526780.833682 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <1.242395>",
+      "activity": {
+        "sample_start_at": 1793526780.7684085,
+        "sample_end_at": 1793526782.1688135,
+        "sample_seconds": 1.400405595,
+        "read_ios": 0,
+        "write_ios": 1,
+        "written_kib": 4.0,
+        "write_ms": 1243,
+        "write_await_ms": 1243.0,
+        "io_ticks_ms": 964,
+        "weighted_io_ms": 1242,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 15,
+          "min": 0,
+          "median": 1,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 14,
+        "dirty_kib_max": 40,
+        "writeback_kib_max": 8,
+        "mem_available_kib_min": 3295392,
+        "dirty_background_threshold_kib_min": 329216.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 25.985663082437277,
+        "cpu_busy_percent": 13.261648745519713,
+        "blocked_samples": [
+          {
+            "pid": "152",
+            "comm": "usb-storage",
+            "wchan": "0",
+            "count": 14
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "folio_wait_bit_common",
+            "count": 13
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "blk_mq_get_tag",
+            "count": 1
+          }
+        ],
+        "readable_process_write_byte_deltas": []
+      }
+    },
+    {
+      "at": 1793526782.076797,
+      "elapsed_ms": 879.972,
+      "syscall": "fsync",
+      "case": "disk",
+      "phase": "raw_fsync",
+      "iteration": 1,
+      "target": "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin",
+      "line": "38610 1793526782.076797 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.879972>",
+      "activity": {
+        "sample_start_at": 1793526782.069861,
+        "sample_end_at": 1793526782.9697127,
+        "sample_seconds": 0.899851518,
+        "read_ios": 0,
+        "write_ios": 5,
+        "written_kib": 24.0,
+        "write_ms": 3089,
+        "write_await_ms": 617.8,
+        "io_ticks_ms": 1844,
+        "weighted_io_ms": 3089,
+        "sampled_block_inflight_max": 0,
+        "scsi_pending_requests": {
+          "count": 10,
+          "min": 0,
+          "median": 1.0,
+          "max": 1
+        },
+        "scsi_pending_sample_count": 9,
+        "dirty_kib_max": 36,
+        "writeback_kib_max": 8,
+        "mem_available_kib_min": 3293080,
+        "dirty_background_threshold_kib_min": 328984.0,
+        "swap_in_pages": 0,
+        "swap_out_pages": 0,
+        "cpu_iowait_percent": 44.252873563218394,
+        "cpu_busy_percent": 12.64367816091954,
+        "blocked_samples": [
+          {
+            "pid": "152",
+            "comm": "usb-storage",
+            "wchan": "0",
+            "count": 9
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "blk_mq_get_tag",
+            "count": 8
+          },
+          {
+            "pid": "38610",
+            "comm": "python",
+            "wchan": "folio_wait_bit_common",
+            "count": 1
+          },
+          {
+            "pid": "36447",
+            "comm": "kworker/0:0+events_freezable_pwr_efficient",
+            "wchan": "0",
+            "count": 1
+          },
+          {
+            "pid": "38607",
+            "comm": "strace",
+            "wchan": "wait_task_inactive",
+            "count": 1
+          }
+        ],
+        "readable_process_write_byte_deltas": []
+      }
+    }
+  ],
+  "probe_phase_summary": {
+    "disk:seed_fsync": {
+      "count": 1,
+      "median_ms": 37.973672,
+      "min_ms": 37.973672,
+      "max_ms": 37.973672
+    },
+    "ram:seed_fsync": {
+      "count": 1,
+      "median_ms": 0.291482,
+      "min_ms": 0.291482,
+      "max_ms": 0.291482
+    },
+    "disk:sqlite_execute": {
+      "count": 6,
+      "median_ms": 778.470057,
+      "min_ms": 2.37304,
+      "max_ms": 1900.588664
+    },
+    "disk:sqlite_commit": {
+      "count": 6,
+      "median_ms": 25.913239500000003,
+      "min_ms": 24.462868,
+      "max_ms": 31.267085
+    },
+    "ram:sqlite_execute": {
+      "count": 6,
+      "median_ms": 1.65091,
+      "min_ms": 1.577299,
+      "max_ms": 3.682561
+    },
+    "ram:sqlite_commit": {
+      "count": 6,
+      "median_ms": 1.8262165000000001,
+      "min_ms": 1.595928,
+      "max_ms": 2.195077
+    },
+    "disk:raw_fdatasync": {
+      "count": 2,
+      "median_ms": 625.9771845,
+      "min_ms": 9.176698,
+      "max_ms": 1242.777671
+    },
+    "disk:raw_fsync": {
+      "count": 2,
+      "median_ms": 444.42978,
+      "min_ms": 8.524604,
+      "max_ms": 880.334956
+    },
+    "ram:raw_fdatasync": {
+      "count": 2,
+      "median_ms": 0.288778,
+      "min_ms": 0.276296,
+      "max_ms": 0.30126
+    },
+    "ram:raw_fsync": {
+      "count": 2,
+      "median_ms": 0.25534250000000003,
+      "min_ms": 0.2375,
+      "max_ms": 0.273185
+    },
+    "lock_control:seed_fsync": {
+      "count": 1,
+      "median_ms": 0.267167,
+      "min_ms": 0.267167,
+      "max_ms": 0.267167
+    },
+    "lock_control:sqlite_commit": {
+      "count": 1,
+      "median_ms": 333.589349,
+      "min_ms": 333.589349,
+      "max_ms": 333.589349
+    }
+  },
+  "scsi_error_counter_before": "0x1",
+  "scsi_error_counter_after": "0x1",
+  "limits": [
+    "Window boundaries are bracketed by samples; short I/O can be missed.",
+    "Most root-owned process I/O and wait channels are not readable.",
+    "Per-process counters can include waited children; do not sum parent/child write bytes.",
+    "Block inflight may read zero even while SCSI request/done counters show an outstanding command."
+  ]
+}

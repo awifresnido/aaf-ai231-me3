@@ -1,0 +1,29 @@
+{
+  "activated_at": "2026-11-02T10:23:32.091396+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/qwen-tts-20261102-102331",
+  "changed_settings": {
+    "SPEECH_MODE": "direct",
+    "TTS_BACKEND": "dgx_qwen",
+    "DGX_TTS_BASE": "http://127.0.0.1:18001",
+    "DGX_TTS_MODEL": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "DGX_TTS_VOICE": "vivian",
+    "DGX_TTS_TIMEOUT_SECS": "45",
+    "VAD_EXPERIMENT": "laya-glm-qwen-dgx-20261102"
+  },
+  "asr": "Jetson Nemotron streaming gRPC",
+  "routing": "Laya on ThinkPad CPU with GLM contextual fallback",
+  "source_sha256": {
+    "bot.py": "9806fc033c436ccc56f5d4951511f70527f12e821f21d64529584cd799455c9a",
+    "qwen_tts.py": "4b9599cf8a6cc26bad0661b707ecd495eb7ebcd0e336e9bda6bb40b7a409e57c"
+  },
+  "log_start_bytes": 4580795,
+  "tts_route": "Pi 127.0.0.1:18001 -> ThinkPad SSH reverse tunnel -> DGX 10.153.60.233:8001",
+  "validation": "92 tests passed; actual DGX direct-speak and GLM-text TTS pipeline preflights passed without speaker playback.",
+  "run": "147f31abef",
+  "pi_pid": 11068,
+  "pipeline_ready_at": "2026-11-02T10:23:46+08:00",
+  "greeting_first_audio_s": 0.16324152000015602,
+  "greeting_first_playback_at": "2026-11-02T10:24:02.348+08:00",
+  "greeting_request_s": 1.0555541810008435,
+  "live_voice_test": "Completed; analyzed 30 native timed replies (28 strict playback timings), initial checks, direct and context sets. See benchmark-summary.json."
+}

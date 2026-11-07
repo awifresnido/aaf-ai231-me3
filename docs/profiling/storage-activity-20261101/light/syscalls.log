@@ -1,0 +1,1108 @@
+38610 1793526745.572005 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b9ac000 <0.000032>
+38610 1793526745.572298 openat(AT_FDCWD</home/aldwinrpi4>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache> <0.000025>
+38610 1793526745.572574 mmap(NULL, 53968, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x7f8b99e000 <0.000067>
+38610 1793526745.572700 close(3</etc/ld.so.cache>) = 0 <0.000016>
+38610 1793526745.572786 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libm.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libm.so.6> <0.000024>
+38610 1793526745.572953 mmap(NULL, 720920, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8b8c5000 <0.000039>
+38610 1793526745.573042 mmap(0x7f8b8d0000, 655384, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libm.so.6>, 0) = 0x7f8b8d0000 <0.000042>
+38610 1793526745.573258 mmap(0x7f8b96f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libm.so.6>, 0x8f000) = 0x7f8b96f000 <0.000024>
+38610 1793526745.573410 close(3</usr/lib/aarch64-linux-gnu/libm.so.6>) = 0 <0.000017>
+38610 1793526745.573494 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libz.so.1", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libz.so.1.3.1> <0.000169>
+38610 1793526745.573869 mmap(NULL, 262560, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8b88f000 <0.000028>
+38610 1793526745.574006 mmap(0x7f8b890000, 197024, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libz.so.1.3.1>, 0) = 0x7f8b890000 <0.000036>
+38610 1793526745.574238 mmap(0x7f8b8bf000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libz.so.1.3.1>, 0x1f000) = 0x7f8b8bf000 <0.000029>
+38610 1793526745.574391 close(3</usr/lib/aarch64-linux-gnu/libz.so.1.3.1>) = 0 <0.000018>
+38610 1793526745.574485 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libexpat.so.1", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libexpat.so.1.12.3> <0.000035>
+38610 1793526745.574689 mmap(NULL, 327888, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8b83f000 <0.000047>
+38610 1793526745.574789 mmap(0x7f8b840000, 262352, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libexpat.so.1.12.3>, 0) = 0x7f8b840000 <0.000040>
+38610 1793526745.575004 mmap(0x7f8b87e000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libexpat.so.1.12.3>, 0x2e000) = 0x7f8b87e000 <0.000027>
+38610 1793526745.575139 close(3</usr/lib/aarch64-linux-gnu/libexpat.so.1.12.3>) = 0 <0.000018>
+38610 1793526745.575223 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libc.so.6> <0.000029>
+38610 1793526745.575441 mmap(NULL, 1892368, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8b671000 <0.000041>
+38610 1793526745.575549 mmap(0x7f8b680000, 1826832, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libc.so.6>, 0) = 0x7f8b680000 <0.000040>
+38610 1793526745.575794 mmap(0x7f8b82d000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libc.so.6>, 0x19d000) = 0x7f8b82d000 <0.000032>
+38610 1793526745.575926 mmap(0x7f8b832000, 49168, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f8b832000 <0.000029>
+38610 1793526745.576052 close(3</usr/lib/aarch64-linux-gnu/libc.so.6>) = 0 <0.000019>
+38610 1793526745.576175 mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b974000 <0.000035>
+38610 1793526745.577173 openat(AT_FDCWD</home/aldwinrpi4>, "/proc/sys/vm/overcommit_memory", O_RDONLY) = 3</proc/sys/vm/overcommit_memory> <0.000069>
+38610 1793526745.577543 close(3</proc/sys/vm/overcommit_memory>) = 0 <0.000091>
+38610 1793526745.578346 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3</usr/lib/locale/locale-archive> <0.000058>
+38610 1793526745.578771 mmap(NULL, 3063072, PROT_READ, MAP_PRIVATE, 3</usr/lib/locale/locale-archive>, 0) = 0x7f8b394000 <0.000050>
+38610 1793526745.578920 close(3</usr/lib/locale/locale-archive>) = 0 <0.000018>
+38610 1793526745.579244 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/aarch64-linux-gnu/gconv/gconv-modules.cache", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/gconv/gconv-modules.cache> <0.000052>
+38610 1793526745.579502 mmap(NULL, 27028, PROT_READ, MAP_SHARED, 3</usr/lib/aarch64-linux-gnu/gconv/gconv-modules.cache>, 0) = 0x7f8b9a5000 <0.000048>
+38610 1793526745.579687 close(3</usr/lib/aarch64-linux-gnu/gconv/gconv-modules.cache>) = 0 <0.000028>
+38610 1793526745.580034 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_DROPPABLE|MAP_ANONYMOUS, -1, 0) = 0x7f8b9a4000 <0.000037>
+38610 1793526745.580141 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b9a3000 <0.000020>
+38610 1793526745.580964 mmap(NULL, 1048576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b294000 <0.000049>
+38610 1793526745.581122 mmap(NULL, 266240, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b253000 <0.000025>
+38610 1793526745.581214 mmap(NULL, 135168, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b232000 <0.000021>
+38610 1793526745.585007 mmap(NULL, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b99f000 <0.000053>
+38610 1793526745.587388 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg", O_RDONLY) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg> <0.000040>
+38610 1793526745.587656 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_GETFD) = 0 <0.000018>
+38610 1793526745.587736 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+38610 1793526745.587918 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>) = 0 <0.000026>
+38610 1793526745.588264 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python._pth", O_RDONLY) = -1 ENOENT (No such file or directory) <0.000022>
+38610 1793526745.588529 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/bin/python3.13._pth", O_RDONLY) = -1 ENOENT (No such file or directory) <0.000019>
+38610 1793526745.588642 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/bin/pybuilddir.txt", O_RDONLY) = -1 ENOENT (No such file or directory) <0.000018>
+38610 1793526745.591963 mmap(NULL, 1048576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b132000 <0.000055>
+38610 1793526745.593707 openat(AT_FDCWD</home/aldwinrpi4>, "/etc/localtime", O_RDONLY|O_CLOEXEC) = 3</usr/share/zoneinfo/Asia/Manila> <0.000042>
+38610 1793526745.594123 close(3</usr/share/zoneinfo/Asia/Manila>) = 0 <0.000022>
+38610 1793526745.595154 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13> <0.000033>
+38610 1793526745.595799 close(3</usr/lib/python3.13>) = 0 <0.000065>
+38610 1793526745.596641 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc> <0.000040>
+38610 1793526745.596831 fcntl(3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc>, F_GETFD) = 0x1 (flags FD_CLOEXEC) <0.000016>
+38610 1793526745.597233 close(3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000037>
+38610 1793526745.600979 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/encodings", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/encodings> <0.000041>
+38610 1793526745.602125 close(3</usr/lib/python3.13/encodings>) = 0 <0.000052>
+38610 1793526745.602818 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/encodings/__pycache__/aliases.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/encodings/__pycache__/aliases.cpython-313.pyc> <0.000035>
+38610 1793526745.603295 close(3</usr/lib/python3.13/encodings/__pycache__/aliases.cpython-313.pyc>) = 0 <0.000021>
+38610 1793526745.604709 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/encodings/__pycache__/utf_8.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/encodings/__pycache__/utf_8.cpython-313.pyc> <0.000033>
+38610 1793526745.605131 close(3</usr/lib/python3.13/encodings/__pycache__/utf_8.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.609009 fcntl(0<pipe:[119203]>, F_GETFD) = 0 <0.000024>
+38610 1793526745.609395 fcntl(1</dev/shm/voice-storage-activity-20261101-light/probe-output.log>, F_GETFD) = 0 <0.000016>
+38610 1793526745.609719 fcntl(2</dev/shm/voice-storage-activity-20261101-light/probe-output.log>, F_GETFD) = 0 <0.000015>
+38610 1793526745.617770 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg", O_RDONLY|O_CLOEXEC) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg> <0.000037>
+38610 1793526745.618346 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>) = 0 <0.000022>
+38610 1793526745.618697 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages> <0.000040>
+38610 1793526745.619365 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages>) = 0 <0.000052>
+38610 1793526745.619801 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth", O_RDONLY|O_CLOEXEC) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth> <0.000037>
+38610 1793526745.620235 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth>) = 0 <0.000021>
+38610 1793526745.620868 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/encodings/__pycache__/utf_8_sig.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/encodings/__pycache__/utf_8_sig.cpython-313.pyc> <0.000035>
+38610 1793526745.621293 close(3</usr/lib/python3.13/encodings/__pycache__/utf_8_sig.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.624510 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/lib-dynload> <0.000049>
+38610 1793526745.624915 close(3</usr/lib/python3.13/lib-dynload>) = 0 <0.000027>
+38610 1793526745.625208 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages> <0.000022>
+38610 1793526745.625753 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages>) = 0 <0.000035>
+38610 1793526745.626371 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/_distutils_hack/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/_distutils_hack/__pycache__/__init__.cpython-313.pyc> <0.000029>
+38610 1793526745.626807 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/_distutils_hack/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.627949 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages> <0.000031>
+38610 1793526745.628555 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages>) = 0 <0.000050>
+38610 1793526745.628801 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth", O_RDONLY|O_CLOEXEC) = 3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth> <0.000025>
+38610 1793526745.629170 close(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/lib/python3.13/site-packages/distutils-precedence.pth>) = 0 <0.000017>
+38610 1793526745.630308 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/sitecustomize.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/sitecustomize.cpython-313.pyc> <0.000029>
+38610 1793526745.630733 close(3</usr/lib/python3.13/__pycache__/sitecustomize.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.631306 openat(AT_FDCWD</home/aldwinrpi4>, "/tmp/diagnose_sqlite_storage.py", O_RDONLY|O_CLOEXEC) = 3</tmp/diagnose_sqlite_storage.py> <0.000023>
+38610 1793526745.632019 close(3</tmp/diagnose_sqlite_storage.py>) = 0 <0.000018>
+38610 1793526745.632378 openat(AT_FDCWD</home/aldwinrpi4>, "/tmp/diagnose_sqlite_storage.py", O_RDONLY) = 3</tmp/diagnose_sqlite_storage.py> <0.000022>
+38610 1793526745.638398 close(3</tmp/diagnose_sqlite_storage.py>) = 0 <0.000102>
+38610 1793526745.642091 openat(AT_FDCWD</home/aldwinrpi4>, "/tmp", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</tmp> <0.000029>
+38610 1793526745.642403 close(3</tmp>)  = 0 <0.000020>
+38610 1793526745.642817 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/argparse.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/argparse.cpython-313.pyc> <0.000025>
+38610 1793526745.643243 close(3</usr/lib/python3.13/__pycache__/argparse.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.645362 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/re/__pycache__/__init__.cpython-313.pyc> <0.000035>
+38610 1793526745.645825 close(3</usr/lib/python3.13/re/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.646728 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/enum.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/enum.cpython-313.pyc> <0.000029>
+38610 1793526745.647162 close(3</usr/lib/python3.13/__pycache__/enum.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.649015 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/functools.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/functools.cpython-313.pyc> <0.000032>
+38610 1793526745.649482 close(3</usr/lib/python3.13/__pycache__/functools.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.650220 mmap(NULL, 1048576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b032000 <0.000052>
+38610 1793526745.651227 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/collections/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/collections/__pycache__/__init__.cpython-313.pyc> <0.000032>
+38610 1793526745.651731 close(3</usr/lib/python3.13/collections/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.653846 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/keyword.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/keyword.cpython-313.pyc> <0.000063>
+38610 1793526745.654340 close(3</usr/lib/python3.13/__pycache__/keyword.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.655018 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/operator.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/operator.cpython-313.pyc> <0.000026>
+38610 1793526745.655391 close(3</usr/lib/python3.13/__pycache__/operator.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.657999 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/reprlib.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/reprlib.cpython-313.pyc> <0.000033>
+38610 1793526745.658442 close(3</usr/lib/python3.13/__pycache__/reprlib.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.661679 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/types.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/types.cpython-313.pyc> <0.000033>
+38610 1793526745.662163 close(3</usr/lib/python3.13/__pycache__/types.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.667208 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/re> <0.000145>
+38610 1793526745.667845 close(3</usr/lib/python3.13/re>) = 0 <0.000047>
+38610 1793526745.668502 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re/__pycache__/_compiler.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/re/__pycache__/_compiler.cpython-313.pyc> <0.000070>
+38610 1793526745.669308 close(3</usr/lib/python3.13/re/__pycache__/_compiler.cpython-313.pyc>) = 0 <0.000022>
+38610 1793526745.670799 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re/__pycache__/_parser.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/re/__pycache__/_parser.cpython-313.pyc> <0.000035>
+38610 1793526745.671327 close(3</usr/lib/python3.13/re/__pycache__/_parser.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.672395 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re/__pycache__/_constants.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/re/__pycache__/_constants.cpython-313.pyc> <0.000031>
+38610 1793526745.672796 close(3</usr/lib/python3.13/re/__pycache__/_constants.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.674211 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/re/__pycache__/_casefix.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/re/__pycache__/_casefix.cpython-313.pyc> <0.000030>
+38610 1793526745.674618 close(3</usr/lib/python3.13/re/__pycache__/_casefix.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.676262 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/copyreg.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/copyreg.cpython-313.pyc> <0.000031>
+38610 1793526745.676671 close(3</usr/lib/python3.13/__pycache__/copyreg.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.677750 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/gettext.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/gettext.cpython-313.pyc> <0.000049>
+38610 1793526745.678384 close(3</usr/lib/python3.13/__pycache__/gettext.cpython-313.pyc>) = 0 <0.000026>
+38610 1793526745.678928 mmap(NULL, 208896, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8afff000 <0.000055>
+38610 1793526745.685579 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/json/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/json/__pycache__/__init__.cpython-313.pyc> <0.000034>
+38610 1793526745.686115 close(3</usr/lib/python3.13/json/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.686717 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/json", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/json> <0.000025>
+38610 1793526745.686962 close(3</usr/lib/python3.13/json>) = 0 <0.000019>
+38610 1793526745.687251 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/json/__pycache__/decoder.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/json/__pycache__/decoder.cpython-313.pyc> <0.000023>
+38610 1793526745.687597 close(3</usr/lib/python3.13/json/__pycache__/decoder.cpython-313.pyc>) = 0 <0.000032>
+38610 1793526745.688312 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/json/__pycache__/scanner.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/json/__pycache__/scanner.cpython-313.pyc> <0.000029>
+38610 1793526745.688710 close(3</usr/lib/python3.13/json/__pycache__/scanner.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.691107 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/json/__pycache__/encoder.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/json/__pycache__/encoder.cpython-313.pyc> <0.000036>
+38610 1793526745.691579 close(3</usr/lib/python3.13/json/__pycache__/encoder.cpython-313.pyc>) = 0 <0.000107>
+38610 1793526745.694047 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/multiprocessing/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/multiprocessing/__pycache__/__init__.cpython-313.pyc> <0.000039>
+38610 1793526745.694544 close(3</usr/lib/python3.13/multiprocessing/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000022>
+38610 1793526745.695140 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/multiprocessing", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/multiprocessing> <0.000033>
+38610 1793526745.695494 close(3</usr/lib/python3.13/multiprocessing>) = 0 <0.000073>
+38610 1793526745.696333 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/multiprocessing/__pycache__/context.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/multiprocessing/__pycache__/context.cpython-313.pyc> <0.000059>
+38610 1793526745.697030 close(3</usr/lib/python3.13/multiprocessing/__pycache__/context.cpython-313.pyc>) = 0 <0.000027>
+38610 1793526745.698488 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/threading.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/threading.cpython-313.pyc> <0.000080>
+38610 1793526745.699242 close(3</usr/lib/python3.13/__pycache__/threading.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.700806 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/warnings.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/warnings.cpython-313.pyc> <0.000032>
+38610 1793526745.701243 close(3</usr/lib/python3.13/__pycache__/warnings.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.702583 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/_weakrefset.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/_weakrefset.cpython-313.pyc> <0.000031>
+38610 1793526745.702998 close(3</usr/lib/python3.13/__pycache__/_weakrefset.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.704610 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/multiprocessing/__pycache__/process.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/multiprocessing/__pycache__/process.cpython-313.pyc> <0.000035>
+38610 1793526745.705085 close(3</usr/lib/python3.13/multiprocessing/__pycache__/process.cpython-313.pyc>) = 0 <0.000023>
+38610 1793526745.706309 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/signal.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/signal.cpython-313.pyc> <0.000031>
+38610 1793526745.706762 close(3</usr/lib/python3.13/__pycache__/signal.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.708728 mmap(NULL, 1048576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8aeff000 <0.000047>
+38610 1793526745.709479 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/multiprocessing/__pycache__/reduction.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/multiprocessing/__pycache__/reduction.cpython-313.pyc> <0.000031>
+38610 1793526745.710008 close(3</usr/lib/python3.13/multiprocessing/__pycache__/reduction.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.710937 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/pickle.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/pickle.cpython-313.pyc> <0.000029>
+38610 1793526745.711484 close(3</usr/lib/python3.13/__pycache__/pickle.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.714480 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/struct.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/struct.cpython-313.pyc> <0.000034>
+38610 1793526745.714932 close(3</usr/lib/python3.13/__pycache__/struct.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.715854 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/_compat_pickle.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/_compat_pickle.cpython-313.pyc> <0.000028>
+38610 1793526745.716234 close(3</usr/lib/python3.13/__pycache__/_compat_pickle.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.718867 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/socket.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/socket.cpython-313.pyc> <0.000037>
+38610 1793526745.719406 close(3</usr/lib/python3.13/__pycache__/socket.cpython-313.pyc>) = 0 <0.000022>
+38610 1793526745.721898 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/selectors.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/selectors.cpython-313.pyc> <0.000045>
+38610 1793526745.722462 close(3</usr/lib/python3.13/__pycache__/selectors.cpython-313.pyc>) = 0 <0.000023>
+38610 1793526745.725032 close(3<anon_inode:[eventpoll]>) = 0 <0.000029>
+38610 1793526745.730266 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/pathlib/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/pathlib/__pycache__/__init__.cpython-313.pyc> <0.000032>
+38610 1793526745.730744 close(3</usr/lib/python3.13/pathlib/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.731169 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/pathlib", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/pathlib> <0.000024>
+38610 1793526745.731528 close(3</usr/lib/python3.13/pathlib>) = 0 <0.000020>
+38610 1793526745.731844 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/pathlib/__pycache__/_abc.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/pathlib/__pycache__/_abc.cpython-313.pyc> <0.000024>
+38610 1793526745.732251 close(3</usr/lib/python3.13/pathlib/__pycache__/_abc.cpython-313.pyc>) = 0 <0.000017>
+38610 1793526745.733650 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/glob.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/glob.cpython-313.pyc> <0.000051>
+38610 1793526745.734247 close(3</usr/lib/python3.13/__pycache__/glob.cpython-313.pyc>) = 0 <0.000025>
+38610 1793526745.735547 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/contextlib.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/contextlib.cpython-313.pyc> <0.000041>
+38610 1793526745.736076 close(3</usr/lib/python3.13/__pycache__/contextlib.cpython-313.pyc>) = 0 <0.000023>
+38610 1793526745.740764 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/fnmatch.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/fnmatch.cpython-313.pyc> <0.000033>
+38610 1793526745.741208 close(3</usr/lib/python3.13/__pycache__/fnmatch.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.742965 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/pathlib/__pycache__/_local.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/pathlib/__pycache__/_local.cpython-313.pyc> <0.000031>
+38610 1793526745.743445 close(3</usr/lib/python3.13/pathlib/__pycache__/_local.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.749135 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload/resource.cpython-313-aarch64-linux-gnu.so", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/lib-dynload/resource.cpython-313-aarch64-linux-gnu.so> <0.000033>
+38610 1793526745.749401 mmap(NULL, 197544, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8aece000 <0.000055>
+38610 1793526745.749549 mmap(0x7f8aed0000, 132008, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/resource.cpython-313-aarch64-linux-gnu.so>, 0) = 0x7f8aed0000 <0.000042>
+38610 1793526745.749769 mmap(0x7f8aeef000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/resource.cpython-313-aarch64-linux-gnu.so>, 0xf000) = 0x7f8aeef000 <0.000022>
+38610 1793526745.749889 close(3</usr/lib/python3.13/lib-dynload/resource.cpython-313-aarch64-linux-gnu.so>) = 0 <0.000017>
+38610 1793526745.750898 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/sqlite3/__pycache__/__init__.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/sqlite3/__pycache__/__init__.cpython-313.pyc> <0.000031>
+38610 1793526745.751300 close(3</usr/lib/python3.13/sqlite3/__pycache__/__init__.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.751722 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/sqlite3", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3</usr/lib/python3.13/sqlite3> <0.000023>
+38610 1793526745.752066 close(3</usr/lib/python3.13/sqlite3>) = 0 <0.000019>
+38610 1793526745.752341 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/sqlite3/__pycache__/dbapi2.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/sqlite3/__pycache__/dbapi2.cpython-313.pyc> <0.000023>
+38610 1793526745.752718 close(3</usr/lib/python3.13/sqlite3/__pycache__/dbapi2.cpython-313.pyc>) = 0 <0.000022>
+38610 1793526745.753532 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/datetime.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/datetime.cpython-313.pyc> <0.000074>
+38610 1793526745.754101 close(3</usr/lib/python3.13/__pycache__/datetime.cpython-313.pyc>) = 0 <0.000022>
+38610 1793526745.755387 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-aarch64-linux-gnu.so", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-aarch64-linux-gnu.so> <0.000042>
+38610 1793526745.755724 mmap(NULL, 269192, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8ae8e000 <0.000045>
+38610 1793526745.755835 mmap(0x7f8ae90000, 203656, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-aarch64-linux-gnu.so>, 0) = 0x7f8ae90000 <0.000045>
+38610 1793526745.756075 mmap(0x7f8aebf000, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-aarch64-linux-gnu.so>, 0x1f000) = 0x7f8aebf000 <0.000027>
+38610 1793526745.756221 close(3</usr/lib/python3.13/lib-dynload/_sqlite3.cpython-313-aarch64-linux-gnu.so>) = 0 <0.000019>
+38610 1793526745.756313 openat(AT_FDCWD</home/aldwinrpi4>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache> <0.000029>
+38610 1793526745.756460 mmap(NULL, 53968, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x7f8b8c2000 <0.000034>
+38610 1793526745.756557 close(3</etc/ld.so.cache>) = 0 <0.000021>
+38610 1793526745.756699 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libsqlite3.so.0", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libsqlite3.so.0.8.6> <0.000031>
+38610 1793526745.756898 mmap(NULL, 1722840, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8aceb000 <0.000043>
+38610 1793526745.757008 mmap(0x7f8acf0000, 1657304, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libsqlite3.so.0.8.6>, 0) = 0x7f8acf0000 <0.000090>
+38610 1793526745.757493 mmap(0x7f8ae7a000, 45056, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libsqlite3.so.0.8.6>, 0x17a000) = 0x7f8ae7a000 <0.000082>
+38610 1793526745.757819 close(3</usr/lib/aarch64-linux-gnu/libsqlite3.so.0.8.6>) = 0 <0.000036>
+38610 1793526745.761736 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/statistics.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/statistics.cpython-313.pyc> <0.000035>
+38610 1793526745.762340 close(3</usr/lib/python3.13/__pycache__/statistics.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.763913 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/numbers.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/numbers.cpython-313.pyc> <0.000033>
+38610 1793526745.764367 close(3</usr/lib/python3.13/__pycache__/numbers.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.765823 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/random.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/random.cpython-313.pyc> <0.000031>
+38610 1793526745.766295 close(3</usr/lib/python3.13/__pycache__/random.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.768978 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/bisect.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/bisect.cpython-313.pyc> <0.000033>
+38610 1793526745.769467 close(3</usr/lib/python3.13/__pycache__/bisect.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.769616 mmap(NULL, 1048576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8abf0000 <0.000071>
+38610 1793526745.771153 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/fractions.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/fractions.cpython-313.pyc> <0.000030>
+38610 1793526745.771637 close(3</usr/lib/python3.13/__pycache__/fractions.cpython-313.pyc>) = 0 <0.000020>
+38610 1793526745.772795 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/decimal.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/decimal.cpython-313.pyc> <0.000030>
+38610 1793526745.773189 close(3</usr/lib/python3.13/__pycache__/decimal.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.773724 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload/_decimal.cpython-313-aarch64-linux-gnu.so", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/lib-dynload/_decimal.cpython-313-aarch64-linux-gnu.so> <0.000030>
+38610 1793526745.774011 mmap(NULL, 467840, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8ab7d000 <0.000061>
+38610 1793526745.774139 mmap(0x7f8ab80000, 402304, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_decimal.cpython-313-aarch64-linux-gnu.so>, 0) = 0x7f8ab80000 <0.000046>
+38610 1793526745.774378 mmap(0x7f8abdf000, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_decimal.cpython-313-aarch64-linux-gnu.so>, 0x4f000) = 0x7f8abdf000 <0.000024>
+38610 1793526745.774517 close(3</usr/lib/python3.13/lib-dynload/_decimal.cpython-313-aarch64-linux-gnu.so>) = 0 <0.000017>
+38610 1793526745.781816 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/tempfile.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/tempfile.cpython-313.pyc> <0.000066>
+38610 1793526745.782374 close(3</usr/lib/python3.13/__pycache__/tempfile.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.784006 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/shutil.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/shutil.cpython-313.pyc> <0.000033>
+38610 1793526745.784594 close(3</usr/lib/python3.13/__pycache__/shutil.cpython-313.pyc>) = 0 <0.000042>
+38610 1793526745.786525 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/bz2.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/bz2.cpython-313.pyc> <0.000067>
+38610 1793526745.786992 close(3</usr/lib/python3.13/__pycache__/bz2.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.787896 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/_compression.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/_compression.cpython-313.pyc> <0.000031>
+38610 1793526745.788310 close(3</usr/lib/python3.13/__pycache__/_compression.cpython-313.pyc>) = 0 <0.000019>
+38610 1793526745.789322 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload/_bz2.cpython-313-aarch64-linux-gnu.so", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/lib-dynload/_bz2.cpython-313-aarch64-linux-gnu.so> <0.000028>
+38610 1793526745.789532 mmap(NULL, 197808, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8ab4f000 <0.000042>
+38610 1793526745.789622 mmap(0x7f8ab50000, 132272, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_bz2.cpython-313-aarch64-linux-gnu.so>, 0) = 0x7f8ab50000 <0.000050>
+38610 1793526745.789861 mmap(0x7f8ab6f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_bz2.cpython-313-aarch64-linux-gnu.so>, 0xf000) = 0x7f8ab6f000 <0.000024>
+38610 1793526745.790029 close(3</usr/lib/python3.13/lib-dynload/_bz2.cpython-313-aarch64-linux-gnu.so>) = 0 <0.000019>
+38610 1793526745.790115 openat(AT_FDCWD</home/aldwinrpi4>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache> <0.000023>
+38610 1793526745.790252 mmap(NULL, 53968, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x7f8b8c2000 <0.000025>
+38610 1793526745.790331 close(3</etc/ld.so.cache>) = 0 <0.000014>
+38610 1793526745.790407 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/libbz2.so.1.0", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/libbz2.so.1.0.4> <0.000022>
+38610 1793526745.790580 mmap(NULL, 199696, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8ab1f000 <0.000025>
+38610 1793526745.790674 mmap(0x7f8ab20000, 134160, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libbz2.so.1.0.4>, 0) = 0x7f8ab20000 <0.000032>
+38610 1793526745.790869 mmap(0x7f8ab3f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/libbz2.so.1.0.4>, 0xf000) = 0x7f8ab3f000 <0.000021>
+38610 1793526745.790975 close(3</usr/lib/aarch64-linux-gnu/libbz2.so.1.0.4>) = 0 <0.000015>
+38610 1793526745.792077 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/lzma.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/lzma.cpython-313.pyc> <0.000029>
+38610 1793526745.792477 close(3</usr/lib/python3.13/__pycache__/lzma.cpython-313.pyc>) = 0 <0.000018>
+38610 1793526745.793281 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/lib-dynload/_lzma.cpython-313-aarch64-linux-gnu.so", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/lib-dynload/_lzma.cpython-313-aarch64-linux-gnu.so> <0.000027>
+38610 1793526745.793587 mmap(NULL, 198456, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8aaef000 <0.000072>
+38610 1793526745.793714 mmap(0x7f8aaf0000, 132920, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_lzma.cpython-313-aarch64-linux-gnu.so>, 0) = 0x7f8aaf0000 <0.000054>
+38610 1793526745.793946 mmap(0x7f8ab0f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/python3.13/lib-dynload/_lzma.cpython-313-aarch64-linux-gnu.so>, 0xf000) = 0x7f8ab0f000 <0.000027>
+38610 1793526745.794107 close(3</usr/lib/python3.13/lib-dynload/_lzma.cpython-313-aarch64-linux-gnu.so>) = 0 <0.000016>
+38610 1793526745.794185 openat(AT_FDCWD</home/aldwinrpi4>, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3</etc/ld.so.cache> <0.000022>
+38610 1793526745.794313 mmap(NULL, 53968, PROT_READ, MAP_PRIVATE, 3</etc/ld.so.cache>, 0) = 0x7f8b8c2000 <0.000023>
+38610 1793526745.794388 close(3</etc/ld.so.cache>) = 0 <0.000014>
+38610 1793526745.794462 openat(AT_FDCWD</home/aldwinrpi4>, "/lib/aarch64-linux-gnu/liblzma.so.5", O_RDONLY|O_CLOEXEC) = 3</usr/lib/aarch64-linux-gnu/liblzma.so.5.8.1> <0.000022>
+38610 1793526745.794633 mmap(NULL, 327704, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0x7f8aa9f000 <0.000026>
+38610 1793526745.794703 mmap(0x7f8aaa0000, 262168, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/liblzma.so.5.8.1>, 0) = 0x7f8aaa0000 <0.000028>
+38610 1793526745.794890 mmap(0x7f8aadf000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3</usr/lib/aarch64-linux-gnu/liblzma.so.5.8.1>, 0x2f000) = 0x7f8aadf000 <0.000021>
+38610 1793526745.794989 close(3</usr/lib/aarch64-linux-gnu/liblzma.so.5.8.1>) = 0 <0.000015>
+38610 1793526745.797156 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/weakref.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/weakref.cpython-313.pyc> <0.000032>
+38610 1793526745.797626 close(3</usr/lib/python3.13/__pycache__/weakref.cpython-313.pyc>) = 0 <0.000034>
+38610 1793526745.801896 openat(AT_FDCWD</home/aldwinrpi4>, "/usr/lib/python3.13/__pycache__/locale.cpython-313.pyc", O_RDONLY|O_CLOEXEC) = 3</usr/lib/python3.13/__pycache__/locale.cpython-313.pyc> <0.000043>
+38610 1793526745.802519 close(3</usr/lib/python3.13/__pycache__/locale.cpython-313.pyc>) = 0 <0.000023>
+38610 1793526745.809582 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-storage-activity-20261101-light/events.jsonl", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0666) = 3</dev/shm/voice-storage-activity-20261101-light/events.jsonl> <0.000061>
+38610 1793526745.813304 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0666) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000117>
+38610 1793526745.814321 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.037427>
+38610 1793526745.852513 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000026>
+38610 1793526745.852971 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000030>
+38610 1793526745.853207 pread64(0x4, 0x7fe8e6f4e0, 0x64, 0) = 0x64 <0.000020>
+38610 1793526745.853488 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+38610 1793526745.853592 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526745.853683 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.854041 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000022>
+38610 1793526745.854343 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000022>
+38610 1793526745.854739 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000022>
+38610 1793526745.855332 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0666) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000058>
+38610 1793526745.855913 fsync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000016>
+38610 1793526745.856228 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000018>
+38610 1793526745.856501 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000023>
+38610 1793526745.856761 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000021>
+38610 1793526745.857119 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+38610 1793526745.857273 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526745.857351 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526745.857543 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000025>
+38610 1793526745.857981 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000040>
+38610 1793526745.858515 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000025>
+38610 1793526745.859450 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000039>
+38610 1793526745.859811 pread64(0x4, 0x7fe8e6f4e0, 0x64, 0) = 0x64 <0.000022>
+38610 1793526745.860131 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+38610 1793526745.860310 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526745.860398 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526745.860587 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000025>
+38610 1793526745.860993 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000055>
+38610 1793526745.861455 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000115>
+38610 1793526745.861804 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000027>
+38610 1793526745.862043 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+38610 1793526745.862255 pread64(0x4, 0x7fe8e6f398, 0x10, 0x18) = 0x10 <0.000023>
+38610 1793526745.862434 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000024>
+38610 1793526745.862654 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000100>
+38610 1793526745.862859 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000022>
+38610 1793526745.862971 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+38610 1793526745.863111 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000021>
+38610 1793526745.863276 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000038>
+38610 1793526745.863521 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+38610 1793526745.863651 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526745.863743 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.863864 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000022>
+38610 1793526745.864012 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526745.864158 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.864235 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526745.864309 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526745.864414 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526745.864554 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526745.865018 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+38610 1793526745.865120 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526745.865194 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526745.865300 pread64(0x4, 0x7fe8e6f398, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526745.865423 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526745.865504 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526745.865572 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526745.865732 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000113>
+38610 1793526745.866099 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/urandom", O_RDONLY|O_CLOEXEC) = 6</dev/urandom<char 1:9>> <0.000030>
+38610 1793526745.866275 close(6</dev/urandom<char 1:9>>) = 0 <0.000018>
+38610 1793526745.866351 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000087>
+38610 1793526745.866484 pwrite64(0x5, 0x7fe8e6f2d0, 0x4, 0x200) = 0x4 <0.000017>
+38610 1793526745.866544 pwrite64(0x5, 0x130b1318, 0x1000, 0x204) = 0x1000 <0.000028>
+38610 1793526745.866618 pwrite64(0x5, 0x7fe8e6f2d0, 0x4, 0x1204) = 0x4 <0.000056>
+38610 1793526745.866730 pwrite64(0x5, 0x7fe8e6f2d0, 0x4, 0x1208) = 0x4 <0.000017>
+38610 1793526745.866792 pwrite64(0x5, 0x130b2428, 0x1000, 0x120c) = 0x1000 <0.000031>
+38610 1793526745.866872 pwrite64(0x5, 0x7fe8e6f2d0, 0x4, 0x220c) = 0x4 <0.000016>
+38610 1793526745.867489 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+38610 1793526745.867626 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000020>
+38610 1793526745.867764 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x2210) = 0x4 <0.000025>
+38610 1793526745.867839 pwrite64(0x5, 0x130b3538, 0x1000, 0x2214) = 0x1000 <0.000043>
+38610 1793526745.867927 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x3214) = 0x4 <0.000017>
+38610 1793526745.867989 pread64(0x5, 0x7fe8e6f360, 0x8, 0x3400) = 0 <0.000017>
+38610 1793526745.868052 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.013123>
+38610 1793526745.881291 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000032>
+38610 1793526745.881481 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000017>
+38610 1793526745.881576 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000021>
+38610 1793526745.881670 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000045>
+38610 1793526745.881761 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.005085>
+38610 1793526745.886941 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000055>
+38610 1793526745.887075 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000021>
+38610 1793526745.887154 pwrite64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000020>
+38610 1793526745.887219 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008359>
+38610 1793526745.895673 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000023>
+38610 1793526745.895971 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+38610 1793526745.896095 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+38610 1793526745.896177 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000018>
+38610 1793526745.896773 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000022>
+38610 1793526745.897226 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000027>
+38610 1793526745.897441 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000020>
+38610 1793526745.897714 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+38610 1793526745.897829 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526745.897915 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000069>
+38610 1793526745.898180 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000023>
+38610 1793526745.898516 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000037>
+38610 1793526745.899141 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+38610 1793526745.899327 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526745.899417 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.899545 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000018>
+38610 1793526745.899745 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000022>
+38610 1793526745.899936 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+38610 1793526745.900035 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526745.900119 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.900239 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000019>
+38610 1793526745.900384 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+38610 1793526745.900545 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+38610 1793526745.900635 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000021>
+38610 1793526745.900740 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526745.900862 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526745.901000 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+38610 1793526745.901192 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+38610 1793526745.901284 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526745.901361 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526745.901473 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526745.901606 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000068>
+38610 1793526745.902312 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000054>
+38610 1793526745.902610 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000104>
+38610 1793526745.902903 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000054>
+38610 1793526745.903342 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000049>
+38610 1793526745.903692 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000045>
+38610 1793526745.903935 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000026>
+38610 1793526745.904079 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000027>
+38610 1793526745.904554 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000068>
+38610 1793526745.904917 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000043>
+38610 1793526745.905019 pwrite64(0x5, 0x7fe8e6f330, 0x4, 0x200) = 0x4 <0.000016>
+38610 1793526745.905076 pwrite64(0x5, 0x130b1318, 0x1000, 0x204) = 0x1000 <0.000025>
+38610 1793526745.905142 pwrite64(0x5, 0x7fe8e6f330, 0x4, 0x1204) = 0x4 <0.000015>
+38610 1793526745.905209 pwrite64(0x5, 0x7fe8e6f330, 0x4, 0x1208) = 0x4 <0.000015>
+38610 1793526745.905265 pwrite64(0x5, 0x130b2428, 0x1000, 0x120c) = 0x1000 <0.000021>
+38610 1793526745.905327 pwrite64(0x5, 0x7fe8e6f330, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526745.905909 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+38610 1793526745.906109 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526745.906196 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x2210) = 0x4 <0.000017>
+38610 1793526745.906256 pwrite64(0x5, 0x130b3538, 0x1000, 0x2214) = 0x1000 <0.000027>
+38610 1793526745.906325 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x3214) = 0x4 <0.000015>
+38610 1793526745.906384 pread64(0x5, 0x7fe8e6f360, 0x8, 0x3400) = 0 <0.000018>
+38610 1793526745.906444 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526745.906516 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000026>
+38610 1793526745.906613 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000050>
+38610 1793526745.906720 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000020>
+38610 1793526745.906791 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000017>
+38610 1793526745.906851 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000014>
+38610 1793526745.906917 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000018>
+38610 1793526745.906976 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000018>
+38610 1793526745.907035 pwrite64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526745.907096 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000014>
+38610 1793526745.907163 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526745.907310 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526745.907388 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000016>
+38610 1793526745.907464 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526745.907955 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000018>
+38610 1793526745.908117 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29342, tv_nsec=694145955}, NULL) = 0 <5.000048>
+38610 1793526750.908701 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000033>
+38610 1793526750.909001 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000023>
+38610 1793526750.909290 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+38610 1793526750.909401 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526750.909478 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526750.909652 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000020>
+38610 1793526750.909932 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000024>
+38610 1793526750.910134 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526750.910217 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526750.910291 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526750.910396 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000019>
+38610 1793526750.910528 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+38610 1793526750.910664 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526750.910745 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526750.910819 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526750.910943 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526750.911066 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526750.911168 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526750.911244 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526750.911317 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526750.911420 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526750.911540 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526750.911640 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526750.911715 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526750.911787 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526750.911891 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000048>
+38610 1793526750.912041 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526750.912481 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526750.912575 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526750.912658 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526750.912765 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526750.912886 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526750.912969 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526750.913036 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526750.913204 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000100>
+38610 1793526750.913454 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.221829>
+38610 1793526752.135493 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000082>
+38610 1793526752.135721 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000075>
+38610 1793526752.135901 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000038>
+38610 1793526752.138021 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000067>
+38610 1793526752.138424 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000048>
+38610 1793526752.138672 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000081>
+38610 1793526752.138862 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000098>
+38610 1793526752.139070 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000053>
+38610 1793526752.139262 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000043>
+38610 1793526752.139409 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.009585>
+38610 1793526752.149201 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000053>
+38610 1793526752.149489 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000036>
+38610 1793526752.149642 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000040>
+38610 1793526752.149801 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000093>
+38610 1793526752.150066 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.004696>
+38610 1793526752.154989 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000089>
+38610 1793526752.155210 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000041>
+38610 1793526752.155345 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008582>
+38610 1793526752.164083 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000024>
+38610 1793526752.164408 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000027>
+38610 1793526752.164547 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000018>
+38610 1793526752.165699 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000232>
+38610 1793526752.170438 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000074>
+38610 1793526752.171179 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000041>
+38610 1793526752.171534 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000027>
+38610 1793526752.171931 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+38610 1793526752.172130 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000023>
+38610 1793526752.172236 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526752.172448 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000021>
+38610 1793526752.172819 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000023>
+38610 1793526752.173010 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+38610 1793526752.173094 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526752.173168 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526752.173298 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526752.173426 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526752.173526 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000059>
+38610 1793526752.173644 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526752.173717 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526752.173825 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526752.173948 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+38610 1793526752.174102 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526752.174178 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526752.174251 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526752.174358 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526752.174491 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526752.174611 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526752.174686 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526752.174759 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526752.174867 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526752.174987 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526752.175409 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+38610 1793526752.175501 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526752.175574 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526752.175685 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526752.175808 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526752.175890 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000020>
+38610 1793526752.175958 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526752.176125 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000049>
+38610 1793526752.176314 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000037>
+38610 1793526752.176396 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000016>
+38610 1793526752.176453 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000023>
+38610 1793526752.176524 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000015>
+38610 1793526752.177069 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526752.177161 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526752.177240 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000016>
+38610 1793526752.177298 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000024>
+38610 1793526752.177363 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526752.177422 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000016>
+38610 1793526752.177480 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526752.177550 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000072>
+38610 1793526752.177711 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000016>
+38610 1793526752.177790 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000021>
+38610 1793526752.177869 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000020>
+38610 1793526752.177934 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000025>
+38610 1793526752.178041 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000022>
+38610 1793526752.178110 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526752.178174 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000015>
+38610 1793526752.178248 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000018>
+38610 1793526752.178406 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+38610 1793526752.178513 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000020>
+38610 1793526752.178604 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000023>
+38610 1793526752.179288 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000025>
+38610 1793526752.179552 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29348, tv_nsec=965584716}, NULL) = 0 <5.000073>
+38610 1793526757.180699 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000068>
+38610 1793526757.181301 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000048>
+38610 1793526757.181949 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000069>
+38610 1793526757.182310 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000043>
+38610 1793526757.182513 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000040>
+38610 1793526757.182930 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000047>
+38610 1793526757.183561 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000067>
+38610 1793526757.184101 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000084>
+38610 1793526757.184440 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000069>
+38610 1793526757.184747 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000067>
+38610 1793526757.185445 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000076>
+38610 1793526757.185938 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000068>
+38610 1793526757.186552 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000058>
+38610 1793526757.186822 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000037>
+38610 1793526757.187002 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+38610 1793526757.187409 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000047>
+38610 1793526757.187740 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000064>
+38610 1793526757.188122 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000042>
+38610 1793526757.188320 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000036>
+38610 1793526757.188490 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+38610 1793526757.188737 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000052>
+38610 1793526757.189046 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000039>
+38610 1793526757.189303 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+38610 1793526757.189480 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000039>
+38610 1793526757.189648 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+38610 1793526757.189888 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000072>
+38610 1793526757.190215 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000038>
+38610 1793526757.191056 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000043>
+38610 1793526757.191256 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000038>
+38610 1793526757.191426 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+38610 1793526757.191724 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000040>
+38610 1793526757.192011 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000043>
+38610 1793526757.192236 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000041>
+38610 1793526757.192386 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000040>
+38610 1793526757.192757 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000186>
+38610 1793526757.193379 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.207175>
+38610 1793526758.400691 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000041>
+38610 1793526758.400828 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000058>
+38610 1793526758.400939 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000018>
+38610 1793526758.402010 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000070>
+38610 1793526758.402294 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000021>
+38610 1793526758.402440 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000060>
+38610 1793526758.402549 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000092>
+38610 1793526758.402707 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000018>
+38610 1793526758.402786 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000018>
+38610 1793526758.402848 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.008772>
+38610 1793526758.411747 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000032>
+38610 1793526758.411935 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000017>
+38610 1793526758.412004 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000020>
+38610 1793526758.412078 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000046>
+38610 1793526758.412167 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.004477>
+38610 1793526758.416706 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000031>
+38610 1793526758.416785 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000020>
+38610 1793526758.416851 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008398>
+38610 1793526758.425363 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000024>
+38610 1793526758.425695 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+38610 1793526758.425805 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+38610 1793526758.425887 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526758.426484 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000022>
+38610 1793526758.426990 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000029>
+38610 1793526758.427256 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000023>
+38610 1793526758.427586 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+38610 1793526758.427738 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.427816 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526758.428034 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000021>
+38610 1793526758.428371 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+38610 1793526758.428544 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526758.428628 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.428703 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526758.428815 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526758.428943 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526758.429042 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526758.429118 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.429192 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526758.429299 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000015>
+38610 1793526758.429421 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526758.429520 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526758.429595 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.429668 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526758.429774 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526758.429895 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526758.430034 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526758.430116 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.430190 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526758.430298 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526758.430422 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526758.430916 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+38610 1793526758.431056 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.431148 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526758.431265 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526758.431391 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+38610 1793526758.431475 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526758.431545 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000019>
+38610 1793526758.431715 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000052>
+38610 1793526758.431909 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000032>
+38610 1793526758.431986 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000016>
+38610 1793526758.432044 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000023>
+38610 1793526758.432108 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000016>
+38610 1793526758.432645 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526758.432739 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526758.432819 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000017>
+38610 1793526758.432878 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000025>
+38610 1793526758.432944 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526758.433003 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000043>
+38610 1793526758.433089 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000016>
+38610 1793526758.433159 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000023>
+38610 1793526758.433252 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000014>
+38610 1793526758.433316 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000019>
+38610 1793526758.433385 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000018>
+38610 1793526758.433445 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000014>
+38610 1793526758.433512 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000018>
+38610 1793526758.433572 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000017>
+38610 1793526758.433632 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000014>
+38610 1793526758.433698 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526758.433843 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526758.433920 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000019>
+38610 1793526758.434020 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526758.434501 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000018>
+38610 1793526758.434646 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29355, tv_nsec=220680843}, NULL) = 0 <5.000056>
+38610 1793526763.435241 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000036>
+38610 1793526763.435549 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000020>
+38610 1793526763.435834 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+38610 1793526763.435962 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.436040 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.436217 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000020>
+38610 1793526763.436494 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+38610 1793526763.436649 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526763.436728 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.436802 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.436908 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526763.437034 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.437131 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526763.437207 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.437281 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000031>
+38610 1793526763.437421 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526763.437548 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000022>
+38610 1793526763.437682 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526763.437771 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.437847 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.437975 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000020>
+38610 1793526763.438107 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526763.438216 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526763.438293 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.438367 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.438484 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526763.438604 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.439075 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+38610 1793526763.439166 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.439240 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.439348 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526763.439468 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+38610 1793526763.439552 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526763.439620 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526763.439787 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000099>
+38610 1793526763.440031 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.002669>
+38610 1793526763.442760 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000023>
+38610 1793526763.442836 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000027>
+38610 1793526763.442906 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000016>
+38610 1793526763.443491 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+38610 1793526763.443608 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.443690 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000021>
+38610 1793526763.443754 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000032>
+38610 1793526763.443830 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000016>
+38610 1793526763.443895 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000017>
+38610 1793526763.443953 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.010294>
+38610 1793526763.454356 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000032>
+38610 1793526763.454543 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000016>
+38610 1793526763.454612 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000021>
+38610 1793526763.454686 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000048>
+38610 1793526763.454777 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.005224>
+38610 1793526763.460113 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000117>
+38610 1793526763.460330 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000029>
+38610 1793526763.460425 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008477>
+38610 1793526763.469044 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000024>
+38610 1793526763.469389 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+38610 1793526763.469544 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000018>
+38610 1793526763.469635 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+38610 1793526763.470213 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000022>
+38610 1793526763.470709 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000028>
+38610 1793526763.470932 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000020>
+38610 1793526763.471184 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+38610 1793526763.471341 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000035>
+38610 1793526763.471448 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+38610 1793526763.471657 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000023>
+38610 1793526763.471982 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000039>
+38610 1793526763.472283 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+38610 1793526763.472399 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.472474 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.472591 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000019>
+38610 1793526763.472726 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.472829 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526763.472905 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.472977 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.473084 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526763.473227 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.473346 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526763.473421 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.473493 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526763.473601 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000015>
+38610 1793526763.473723 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.473836 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526763.473912 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000053>
+38610 1793526763.474026 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.474137 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526763.474274 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526763.474728 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526763.474825 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526763.474898 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526763.475008 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526763.475129 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526763.475211 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000041>
+38610 1793526763.475304 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000019>
+38610 1793526763.475481 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000055>
+38610 1793526763.475694 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000039>
+38610 1793526763.475782 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000016>
+38610 1793526763.475839 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000024>
+38610 1793526763.475904 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000015>
+38610 1793526763.476633 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000031>
+38610 1793526763.476820 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526763.476920 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000018>
+38610 1793526763.476984 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000036>
+38610 1793526763.477064 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526763.477127 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000019>
+38610 1793526763.477189 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000016>
+38610 1793526763.477275 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000030>
+38610 1793526763.477394 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000015>
+38610 1793526763.477463 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000020>
+38610 1793526763.477535 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000019>
+38610 1793526763.477599 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526763.477672 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000019>
+38610 1793526763.477756 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000024>
+38610 1793526763.477835 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000017>
+38610 1793526763.477917 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000048>
+38610 1793526763.478180 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000031>
+38610 1793526763.478372 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000018>
+38610 1793526763.478470 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526763.479039 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000025>
+38610 1793526763.479300 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29360, tv_nsec=265271718}, NULL) = 0 <4.999970>
+38610 1793526768.480235 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000085>
+38610 1793526768.480895 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000118>
+38610 1793526768.481542 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000056>
+38610 1793526768.481829 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000081>
+38610 1793526768.482066 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+38610 1793526768.482461 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000043>
+38610 1793526768.483010 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000056>
+38610 1793526768.483412 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000043>
+38610 1793526768.483616 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+38610 1793526768.483772 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+38610 1793526768.484002 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000038>
+38610 1793526768.484284 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000036>
+38610 1793526768.484541 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000039>
+38610 1793526768.484711 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+38610 1793526768.484865 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+38610 1793526768.485124 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000051>
+38610 1793526768.485524 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000056>
+38610 1793526768.486087 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000075>
+38610 1793526768.486407 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000648>
+38610 1793526768.487347 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000066>
+38610 1793526768.487784 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000048>
+38610 1793526768.488149 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000066>
+38610 1793526768.488677 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000045>
+38610 1793526768.488920 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000038>
+38610 1793526768.489094 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+38610 1793526768.489610 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000048>
+38610 1793526768.489987 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000053>
+38610 1793526768.490947 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000049>
+38610 1793526768.491200 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+38610 1793526768.491353 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+38610 1793526768.491571 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000038>
+38610 1793526768.491819 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000033>
+38610 1793526768.491983 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000037>
+38610 1793526768.492116 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000037>
+38610 1793526768.492447 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000179>
+38610 1793526768.492941 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.343035>
+38610 1793526768.836143 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000031>
+38610 1793526768.836267 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000073>
+38610 1793526768.836384 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000017>
+38610 1793526768.837007 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+38610 1793526768.837146 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526768.837233 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000021>
+38610 1793526768.837297 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000033>
+38610 1793526768.837373 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000016>
+38610 1793526768.837434 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000017>
+38610 1793526768.837494 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.009113>
+38610 1793526768.846720 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000034>
+38610 1793526768.846922 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000018>
+38610 1793526768.846993 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000021>
+38610 1793526768.847068 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000051>
+38610 1793526768.847164 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.004680>
+38610 1793526768.851905 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000032>
+38610 1793526768.851984 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000021>
+38610 1793526768.852051 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008427>
+38610 1793526768.860592 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000024>
+38610 1793526768.860962 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+38610 1793526768.861073 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+38610 1793526768.861156 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526768.861720 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000020>
+38610 1793526768.862219 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000027>
+38610 1793526768.862451 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000020>
+38610 1793526768.862713 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000024>
+38610 1793526768.862808 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526768.862883 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526768.863064 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000018>
+38610 1793526768.863338 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+38610 1793526768.863487 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526768.863566 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526768.863639 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526768.863747 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526768.863872 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526768.863970 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526768.864044 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526768.864117 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526768.864240 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526768.864362 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526768.864462 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526768.864537 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526768.864610 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526768.864716 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000015>
+38610 1793526768.864838 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526768.864935 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526768.865008 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+38610 1793526768.865080 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526768.865188 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000015>
+38610 1793526768.865308 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526768.865771 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+38610 1793526768.865863 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526768.865935 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526768.866072 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526768.866195 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526768.866277 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526768.866344 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526768.866512 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000051>
+38610 1793526768.866706 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000037>
+38610 1793526768.866794 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000015>
+38610 1793526768.866851 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000025>
+38610 1793526768.866919 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000015>
+38610 1793526768.867491 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+38610 1793526768.867619 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526768.867709 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000020>
+38610 1793526768.867773 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000032>
+38610 1793526768.867847 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526768.867909 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000018>
+38610 1793526768.867978 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000016>
+38610 1793526768.868057 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000021>
+38610 1793526768.868157 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000014>
+38610 1793526768.868223 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000016>
+38610 1793526768.868290 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000019>
+38610 1793526768.868353 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000014>
+38610 1793526768.868420 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000019>
+38610 1793526768.868483 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000018>
+38610 1793526768.868546 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000015>
+38610 1793526768.868619 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000016>
+38610 1793526768.868776 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+38610 1793526768.868875 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+38610 1793526768.868957 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526768.869623 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000024>
+38610 1793526768.870010 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29365, tv_nsec=655882900}, NULL) = 0 <4.999912>
+38610 1793526773.870813 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite> <0.000062>
+38610 1793526773.871500 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000064>
+38610 1793526773.872062 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000048>
+38610 1793526773.872290 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+38610 1793526773.872448 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+38610 1793526773.872797 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000039>
+38610 1793526773.873282 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000040>
+38610 1793526773.873589 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+38610 1793526773.873749 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+38610 1793526773.873899 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000046>
+38610 1793526773.874172 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000035>
+38610 1793526773.874423 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000035>
+38610 1793526773.874634 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+38610 1793526773.874813 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+38610 1793526773.874962 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+38610 1793526773.875174 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000032>
+38610 1793526773.875415 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+38610 1793526773.875616 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+38610 1793526773.875767 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+38610 1793526773.875914 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+38610 1793526773.876124 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000031>
+38610 1793526773.876362 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+38610 1793526773.876565 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+38610 1793526773.876715 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+38610 1793526773.876863 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+38610 1793526773.877072 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000031>
+38610 1793526773.877311 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+38610 1793526773.878100 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000044>
+38610 1793526773.878298 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+38610 1793526773.878448 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+38610 1793526773.878661 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000036>
+38610 1793526773.878904 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000033>
+38610 1793526773.879067 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000036>
+38610 1793526773.879200 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000036>
+38610 1793526773.879577 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal> <0.000153>
+38610 1793526773.880023 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <1.897456>
+38610 1793526775.777608 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000041>
+38610 1793526775.777744 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000059>
+38610 1793526775.777874 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000018>
+38610 1793526775.778665 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+38610 1793526775.778893 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+38610 1793526775.779033 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000077>
+38610 1793526775.779257 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000080>
+38610 1793526775.779419 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000052>
+38610 1793526775.779570 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000027>
+38610 1793526775.779665 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.008840>
+38610 1793526775.788660 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_CLOEXEC) = 6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000032>
+38610 1793526775.788848 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000017>
+38610 1793526775.788919 close(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000021>
+38610 1793526775.788993 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000041>
+38610 1793526775.789078 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.005143>
+38610 1793526775.794293 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000037>
+38610 1793526775.794389 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000020>
+38610 1793526775.794456 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.008405>
+38610 1793526775.802981 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite-journal>) = 0 <0.000025>
+38610 1793526775.803374 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000028>
+38610 1793526775.803517 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000028>
+38610 1793526775.803631 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+38610 1793526775.804240 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/synthetic.sqlite>) = 0 <0.000023>
+38610 1793526775.804746 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite> <0.000028>
+38610 1793526775.804967 pread64(0x4, 0x7fe8e6f540, 0x64, 0) = 0x64 <0.000020>
+38610 1793526775.805243 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+38610 1793526775.805369 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526775.805450 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526775.805644 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000021>
+38610 1793526775.806015 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000028>
+38610 1793526775.806276 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+38610 1793526775.806381 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526775.806457 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526775.806572 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000019>
+38610 1793526775.806705 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526775.806807 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526775.806883 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526775.806956 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526775.807064 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526775.807186 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+38610 1793526775.807287 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526775.807362 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526775.807435 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526775.807542 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000015>
+38610 1793526775.807664 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526775.807763 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+38610 1793526775.807838 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526775.807910 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+38610 1793526775.808016 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000016>
+38610 1793526775.808138 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526775.808576 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+38610 1793526775.808666 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526775.808739 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+38610 1793526775.808849 pread64(0x4, 0x7fe8e6f3f8, 0x10, 0x18) = 0x10 <0.000017>
+38610 1793526775.808972 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+38610 1793526775.809053 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526775.809122 pread64(0x4, 0x130b1318, 0x1000, 0x4000) = 0x1000 <0.000019>
+38610 1793526775.809290 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal> <0.000050>
+38610 1793526775.809538 pwrite64(0x5, 0x1306f098, 0x200, 0) = 0x200 <0.000029>
+38610 1793526775.809612 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x200) = 0x4 <0.000016>
+38610 1793526775.809669 pwrite64(0x5, 0x130b2428, 0x1000, 0x204) = 0x1000 <0.000022>
+38610 1793526775.809733 pwrite64(0x5, 0x7fe8e6f2e0, 0x4, 0x1204) = 0x4 <0.000015>
+38610 1793526775.810268 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000021>
+38610 1793526775.810365 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526775.810446 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x1208) = 0x4 <0.000017>
+38610 1793526775.810504 pwrite64(0x5, 0x130b3538, 0x1000, 0x120c) = 0x1000 <0.000025>
+38610 1793526775.810571 pwrite64(0x5, 0x7fe8e6f310, 0x4, 0x220c) = 0x4 <0.000015>
+38610 1793526775.810630 pread64(0x5, 0x7fe8e6f360, 0x8, 0x2400) = 0 <0.000017>
+38610 1793526775.810688 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526775.810758 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 6</dev/shm/voice-sqlite-probe-aklyuim_> <0.000022>
+38610 1793526775.810852 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000014>
+38610 1793526775.810916 close(6</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000020>
+38610 1793526775.810986 pwrite64(0x5, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000018>
+38610 1793526775.811046 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000014>
+38610 1793526775.811112 pwrite64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000017>
+38610 1793526775.811171 pwrite64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000018>
+38610 1793526775.811232 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000014>
+38610 1793526775.811300 close(5</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite-journal>) = 0 <0.000015>
+38610 1793526775.811443 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+38610 1793526775.811520 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000016>
+38610 1793526775.811596 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526775.812041 close(4</dev/shm/voice-sqlite-probe-aklyuim_/synthetic.sqlite>) = 0 <0.000019>
+38610 1793526775.812342 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin", O_RDWR|O_CREAT|O_CLOEXEC, 0600) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin> <0.000112>
+38610 1793526775.812976 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.008776>
+38610 1793526775.822581 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.008114>
+38610 1793526775.831252 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.000026>
+38610 1793526775.831512 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin", O_RDWR|O_CREAT|O_CLOEXEC, 0600) = 4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin> <0.000059>
+38610 1793526775.831951 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000016>
+38610 1793526775.832452 fsync(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000015>
+38610 1793526775.832732 close(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000018>
+38610 1793526775.832811 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=29372, tv_nsec=618846965}, NULL) = 0 <5.000056>
+38610 1793526780.833115 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin", O_RDWR|O_CREAT|O_CLOEXEC, 0600) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin> <0.000038>
+38610 1793526780.833682 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <1.242395>
+38610 1793526782.076797 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.879972>
+38610 1793526782.957328 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6/raw-flush.bin>) = 0 <0.000023>
+38610 1793526782.957583 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin", O_RDWR|O_CREAT|O_CLOEXEC, 0600) = 4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin> <0.000033>
+38610 1793526782.957991 fdatasync(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000017>
+38610 1793526782.958509 fsync(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000027>
+38610 1793526782.958850 close(4</dev/shm/voice-sqlite-probe-aklyuim_/raw-flush.bin>) = 0 <0.000018>
+38610 1793526782.959007 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0666) = 4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite> <0.000052>
+38610 1793526782.959495 fsync(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>) = 0 <0.000016>
+38610 1793526782.959791 close(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>) = 0 <0.000018>
+38610 1793526782.960088 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite> <0.000024>
+38610 1793526782.960309 pread64(0x4, 0x7fe8e6f4e0, 0x64, 0) = 0x64 <0.000021>
+38610 1793526782.960674 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+38610 1793526782.960816 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+38610 1793526782.960893 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+38610 1793526782.961094 pread64(0x4, 0x130b3538, 0x1000, 0) = 0x1000 <0.000025>
+38610 1793526782.961451 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000030>
+38610 1793526782.961710 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000022>
+38610 1793526782.961825 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+38610 1793526782.961904 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+38610 1793526782.962064 pread64(0x4, 0x7fe8e6f398, 0x10, 0x18) = 0x10 <0.000021>
+38610 1793526782.962209 pread64(0x4, 0x130b2428, 0x1000, 0x3000) = 0x1000 <0.000020>
+38610 1793526782.962554 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0644) = 5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite> <0.000031>
+38610 1793526782.962807 pread64(0x5, 0x7fe8e6f4e0, 0x64, 0) = 0x64 <0.000020>
+38610 1793526782.963479 pread64(0x5, 0x130d4618, 0x1000, 0) = 0x1000 <0.000035>
+38610 1793526782.964029 pread64(0x5, 0x7fe8e6f398, 0x10, 0x18) = 0x10 <0.000032>
+38610 1793526782.964225 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000028>
+38610 1793526782.964381 pread64(0x5, 0x130d3508, 0x1000, 0x3000) = 0x1000 <0.000022>
+38610 1793526782.964482 pread64(0x5, 0x130d23f8, 0x1000, 0x4000) = 0x1000 <0.000019>
+38610 1793526782.964656 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite-journal", O_RDWR|O_CREAT|O_NOFOLLOW|O_CLOEXEC, 0600) = 6</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite-journal> <0.000070>
+38610 1793526782.964933 pwrite64(0x6, 0x13077608, 0x200, 0) = 0x200 <0.000122>
+38610 1793526782.965223 pwrite64(0x6, 0x7fe8e6f2d0, 0x4, 0x200) = 0x4 <0.000031>
+38610 1793526782.965358 pwrite64(0x6, 0x130d23f8, 0x1000, 0x204) = 0x1000 <0.000045>
+38610 1793526782.965467 pwrite64(0x6, 0x7fe8e6f2d0, 0x4, 0x1204) = 0x4 <0.000018>
+38610 1793526782.965556 pwrite64(0x6, 0x7fe8e6f2d0, 0x4, 0x1208) = 0x4 <0.000018>
+38610 1793526782.965621 pwrite64(0x6, 0x130d3508, 0x1000, 0x120c) = 0x1000 <0.000034>
+38610 1793526782.965702 pwrite64(0x6, 0x7fe8e6f2d0, 0x4, 0x220c) = 0x4 <0.000020>
+38610 1793526782.966226 mmap(NULL, 8454144, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK, -1, 0) = 0x7f8a290000 <0.000057>
+38655 1793526782.967032 mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f82290000 <0.000080>
+38655 1793526782.967608 mmap(NULL, 16384, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f8b8cc000 <0.000044>
+38610 1793526782.972474 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+38610 1793526782.972655 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=1000000}, NULL) = 0 <0.001076>
+38610 1793526782.973786 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=2000000}, NULL) = 0 <0.002083>
+38610 1793526782.975935 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=5000000}, NULL) = 0 <0.005082>
+38610 1793526782.981120 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010106>
+38610 1793526782.991348 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=15000000}, NULL) = 0 <0.015109>
+38610 1793526783.006627 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=20000000}, NULL) = 0 <0.020142>
+38610 1793526783.027333 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025127>
+38610 1793526783.052654 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025107>
+38610 1793526783.077929 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025095>
+38610 1793526783.103212 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=50000000}, NULL) = 0 <0.050108>
+38610 1793526783.153496 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=50000000}, NULL) = 0 <0.050105>
+38610 1793526783.203772 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+38655 1793526783.222762 +++ exited with 0 +++
+38610 1793526783.303985 <... clock_nanosleep resumed>NULL) = 0 <0.100108>
+38610 1793526783.304103 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000035>
+38610 1793526783.304271 pwrite64(0x6, 0x7fe8e6f310, 0x4, 0x2210) = 0x4 <0.000034>
+38610 1793526783.304360 pwrite64(0x6, 0x130d4618, 0x1000, 0x2214) = 0x1000 <0.000036>
+38610 1793526783.304443 pwrite64(0x6, 0x7fe8e6f310, 0x4, 0x3214) = 0x4 <0.000016>
+38610 1793526783.304505 pread64(0x6, 0x7fe8e6f360, 0x8, 0x3400) = 0 <0.000018>
+38610 1793526783.304566 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite-journal>) = 0 <0.000015>
+38610 1793526783.304648 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_CLOEXEC) = 7</dev/shm/voice-sqlite-probe-aklyuim_> <0.000028>
+38610 1793526783.304771 fdatasync(7</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000014>
+38610 1793526783.304837 close(7</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000019>
+38610 1793526783.304907 pwrite64(0x6, 0x7fe8e6f368, 0xc, 0) = 0xc <0.000018>
+38610 1793526783.304967 fdatasync(6</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite-journal>) = 0 <0.000015>
+38610 1793526783.305041 pwrite64(0x5, 0x130d4618, 0x1000, 0) = 0x1000 <0.000018>
+38610 1793526783.305102 pwrite64(0x5, 0x130d3508, 0x1000, 0x3000) = 0x1000 <0.000019>
+38610 1793526783.305163 pwrite64(0x5, 0x130d23f8, 0x1000, 0x4000) = 0x1000 <0.000018>
+38610 1793526783.305226 fdatasync(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>) = 0 <0.000014>
+38610 1793526783.305296 close(6</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite-journal>) = 0 <0.000016>
+38610 1793526783.305461 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000021>
+38610 1793526783.305545 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+38610 1793526783.305625 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+38610 1793526783.306372 close(5</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>) = 0 <0.000019>
+38610 1793526783.306720 close(4</dev/shm/voice-sqlite-probe-aklyuim_/lock-control.sqlite>) = 0 <0.000016>
+38610 1793526783.307029 openat(AT_FDCWD</home/aldwinrpi4>, "/dev/shm/voice-sqlite-probe-aklyuim_", O_RDONLY|O_NONBLOCK|O_CLOEXEC) = 4</dev/shm/voice-sqlite-probe-aklyuim_> <0.000025>
+38610 1793526783.307253 fcntl(4</dev/shm/voice-sqlite-probe-aklyuim_>, F_DUPFD_CLOEXEC, 0) = 5</dev/shm/voice-sqlite-probe-aklyuim_> <0.000017>
+38610 1793526783.307373 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_>, F_GETFL) = 0x20800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE) <0.000014>
+38610 1793526783.307441 fcntl(5</dev/shm/voice-sqlite-probe-aklyuim_>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+38610 1793526783.307638 close(5</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000016>
+38610 1793526783.307934 close(4</dev/shm/voice-sqlite-probe-aklyuim_>) = 0 <0.000017>
+38610 1793526783.308160 openat(AT_FDCWD</home/aldwinrpi4>, "/home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6", O_RDONLY|O_NONBLOCK|O_CLOEXEC) = 4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000024>
+38610 1793526783.308310 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>, F_DUPFD_CLOEXEC, 0) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6> <0.000016>
+38610 1793526783.308420 fcntl(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>, F_GETFL) = 0x20800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE) <0.000014>
+38610 1793526783.308486 fcntl(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>, F_SETFD, FD_CLOEXEC) = 0 <0.000014>
+38610 1793526783.308675 close(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000016>
+38610 1793526783.309000 close(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-nontjta6>) = 0 <0.000020>
+38610 1793526783.309753 close(3</dev/shm/voice-storage-activity-20261101-light/events.jsonl>) = 0 <0.000020>
+38610 1793526783.347294 +++ exited with 0 +++

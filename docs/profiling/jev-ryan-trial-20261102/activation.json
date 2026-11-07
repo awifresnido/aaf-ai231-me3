@@ -1,0 +1,40 @@
+{
+  "activated_at": "2026-11-02T11:03:13.456082+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/jev-ryan-20261102-110313",
+  "changed_settings": {
+    "DGX_TTS_VOICE": "ryan",
+    "VAD_EXPERIMENT": "jev-glm-qwen-ryan-20261102"
+  },
+  "log_start_bytes": 5648153,
+  "tts_backend": "dgx_qwen",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "tts_voice": "ryan",
+  "router_model": "jev",
+  "jev_model": "jev-1.14.0",
+  "jev_deadline_ms": "1200",
+  "source_sha256": {
+    "bot.py": "9806fc033c436ccc56f5d4951511f70527f12e821f21d64529584cd799455c9a",
+    "qwen_tts.py": "4b9599cf8a6cc26bad0661b707ecd495eb7ebcd0e336e9bda6bb40b7a409e57c",
+    "orchestration.py": "97cd3363d88b262cd995c33d78f5730eac6f0da64d38d1bd34b9c33e29f207fa"
+  },
+  "preflight": {
+    "preflight": "Ryan PCM without speaker playback",
+    "first_pcm_s": 0.231985975000498,
+    "request_s": 0.7178006089998235,
+    "audio_bytes": 165120,
+    "audio_s": 3.44,
+    "success": true
+  },
+  "preserved": "Jev, GLM, Llama, Jetson ASR/SQLite, Pi MCP, speakerphone/AEC, VAD and streaming TTS transport unchanged.",
+  "live_voice_trial": "Completed; 23 timed replies, direct median 2.668 s, context median 4.975 s, fast-tool median 1.317 s. One missing-ASR segment; no Jev timeouts or captured Qwen errors.",
+  "run": "9576b0bcb6",
+  "pi_pid": 14126,
+  "service_status": "active",
+  "pipeline_ready_log": [
+    "2026-11-02 11:03:27.000 | DEBUG    | pipecat.registry.registry:register:132 - Worker 'PipelineWorker#0' ready (local)"
+  ],
+  "greeting_first_pcm_s": 0.33721521100051177,
+  "greeting_first_playback_at": 1793588622.2926147,
+  "greeting_request_s": 2.0752843570007826,
+  "startup_errors": []
+}

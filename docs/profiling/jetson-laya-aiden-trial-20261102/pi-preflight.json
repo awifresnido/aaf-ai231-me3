@@ -1,0 +1,58 @@
+{
+  "kind": "Synthetic classifier and Aiden without tool execution or speaker playback",
+  "classifier_rows": [
+    {
+      "case": "What time is it?",
+      "raw_choice": "get_time",
+      "accepted": true,
+      "server_s": 0.11433966100048565,
+      "pi_wait_s": 0.12103085800117697,
+      "top_prob": 0.9876
+    },
+    {
+      "case": "Turn on the lights",
+      "raw_choice": "control_lights",
+      "accepted": true,
+      "server_s": 0.1218150529984996,
+      "pi_wait_s": 0.1293145790004928,
+      "top_prob": 0.9731
+    },
+    {
+      "case": "Set the lights to blue",
+      "raw_choice": "control_lights",
+      "accepted": true,
+      "server_s": 0.12312160600049538,
+      "pi_wait_s": 0.1301208349996159,
+      "top_prob": 0.9446
+    },
+    {
+      "case": "Set the thermostat to twenty five degrees",
+      "raw_choice": "other",
+      "accepted": true,
+      "server_s": 0.09026659600021958,
+      "pi_wait_s": 0.09576288500102237,
+      "top_prob": 0.9301
+    },
+    {
+      "case": "It is dark here in my room",
+      "raw_choice": "other",
+      "accepted": true,
+      "server_s": 0.09913158299968927,
+      "pi_wait_s": 0.10528763600086677,
+      "top_prob": 0.5779
+    }
+  ],
+  "concurrent_classifier": {
+    "case": "What time is it?",
+    "raw_choice": "get_time",
+    "accepted": true,
+    "server_s": 0.12592108599892526,
+    "pi_wait_s": 0.13449833300001046,
+    "top_prob": 0.9876
+  },
+  "aiden_tts": {
+    "first_pcm_s": 0.16064646899940271,
+    "request_s": 0.6006583339985809,
+    "audio_bytes": 122880
+  }
+}

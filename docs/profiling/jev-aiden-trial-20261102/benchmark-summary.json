@@ -1,0 +1,933 @@
+{
+  "run": "f0c87b3a33",
+  "router": "jev-1.14.0",
+  "tts_model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+  "voice": "aiden",
+  "user_observation": "Very responsive so far.",
+  "bounds": {
+    "direct": [
+      1,
+      13
+    ],
+    "transition": [
+      14,
+      14
+    ],
+    "context": [
+      15,
+      26
+    ]
+  },
+  "boundary_note": "Direct/context sets inferred from command content; hearing check at 14 separated as transition.",
+  "counts": {
+    "speech_start_events": 26,
+    "timed_replies": 23,
+    "asr_missing_turns": [
+      22,
+      23
+    ],
+    "interrupted_after_tool_before_spoken_reply": [
+      25
+    ],
+    "successful_jev_results": 20,
+    "jev_timeouts": 2,
+    "classifier_bypass": 1,
+    "compound_bypass": 1,
+    "jev_route_tool": 9,
+    "jev_route_smalltalk": 2,
+    "route_glm_events": 13,
+    "successful_human_qwen_requests": 30,
+    "failed_human_qwen_http_requests": 0,
+    "late_context_recreation_turns": [
+      16
+    ]
+  },
+  "groups": {
+    "direct": {
+      "native_e2e_s": {
+        "count": 13,
+        "p50": 1.477433443069458,
+        "p95_nearest_rank": 4.323714971542358,
+        "min": 1.073314905166626,
+        "max": 4.323714971542358,
+        "mean": 2.1088431981893687
+      },
+      "first_playback_e2e_s": {
+        "count": 13,
+        "p50": 1.4737799999999999,
+        "p95_nearest_rank": 4.3215200000000005,
+        "min": 1.07052,
+        "max": 4.3215200000000005,
+        "mean": 2.106366153846154
+      },
+      "jev_client_s": {
+        "count": 10,
+        "p50": 0.2882080235003741,
+        "p95_nearest_rank": 0.41389304699987406,
+        "min": 0.26104773499901057,
+        "max": 0.41389304699987406,
+        "mean": 0.2949421297000299
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 13,
+        "p50": 0.1645454219997191,
+        "p95_nearest_rank": 0.18099628200070583,
+        "min": 0.10557792899999185,
+        "max": 0.18099628200070583,
+        "mean": 0.14943043353825766
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 15,
+        "p50": 0.1613375270007964,
+        "p95_nearest_rank": 0.18099628200070583,
+        "min": 0.10557792899999185,
+        "max": 0.18099628200070583,
+        "mean": 0.14477480173312263
+      },
+      "qwen_all_request_complete_s": {
+        "count": 15,
+        "p50": 0.5563324150007247,
+        "p95_nearest_rank": 0.7986919700015278,
+        "min": 0.22102455499953066,
+        "max": 0.7986919700015278,
+        "mean": 0.5194590868002706
+      }
+    },
+    "transition": {
+      "native_e2e_s": {
+        "count": 1,
+        "p50": 2.5593886375427246,
+        "p95_nearest_rank": 2.5593886375427246,
+        "min": 2.5593886375427246,
+        "max": 2.5593886375427246,
+        "mean": 2.5593886375427246
+      },
+      "first_playback_e2e_s": {
+        "count": 1,
+        "p50": 2.55703,
+        "p95_nearest_rank": 2.55703,
+        "min": 2.55703,
+        "max": 2.55703,
+        "mean": 2.55703
+      },
+      "jev_client_s": {
+        "count": 1,
+        "p50": 0.2741812710009981,
+        "p95_nearest_rank": 0.2741812710009981,
+        "min": 0.2741812710009981,
+        "max": 0.2741812710009981,
+        "mean": 0.2741812710009981
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 1,
+        "p50": 0.16852901700076472,
+        "p95_nearest_rank": 0.16852901700076472,
+        "min": 0.16852901700076472,
+        "max": 0.16852901700076472,
+        "mean": 0.16852901700076472
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 2,
+        "p50": 0.13824786650093301,
+        "p95_nearest_rank": 0.16852901700076472,
+        "min": 0.1079667160011013,
+        "max": 0.16852901700076472,
+        "mean": 0.13824786650093301
+      },
+      "qwen_all_request_complete_s": {
+        "count": 2,
+        "p50": 0.45369120400118845,
+        "p95_nearest_rank": 0.6099887760010461,
+        "min": 0.29739363200133084,
+        "max": 0.6099887760010461,
+        "mean": 0.45369120400118845
+      }
+    },
+    "context": {
+      "native_e2e_s": {
+        "count": 9,
+        "p50": 4.960083484649658,
+        "p95_nearest_rank": 12.085700750350952,
+        "min": 2.4063048362731934,
+        "max": 12.085700750350952,
+        "mean": 5.627757761213514
+      },
+      "first_playback_e2e_s": {
+        "count": 9,
+        "p50": 4.95773,
+        "p95_nearest_rank": 12.08301,
+        "min": 2.4039200000000003,
+        "max": 12.08301,
+        "mean": 5.625384444444444
+      },
+      "jev_client_s": {
+        "count": 9,
+        "p50": 0.27316850300121587,
+        "p95_nearest_rank": 0.484857422999994,
+        "min": 0.2556472249998478,
+        "max": 0.484857422999994,
+        "mean": 0.3013312971108664
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 9,
+        "p50": 0.19171447000007902,
+        "p95_nearest_rank": 3.7193421899992245,
+        "min": 0.16171594899969932,
+        "max": 3.7193421899992245,
+        "mean": 0.7555284869997396
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 13,
+        "p50": 0.17239810199862404,
+        "p95_nearest_rank": 3.7193421899992245,
+        "min": 0.10819795400129806,
+        "max": 3.7193421899992245,
+        "mean": 0.5619273569999887
+      },
+      "qwen_all_request_complete_s": {
+        "count": 13,
+        "p50": 0.8893350679991272,
+        "p95_nearest_rank": 4.418930889998592,
+        "min": 0.24436150200017437,
+        "max": 4.418930889998592,
+        "mean": 1.1676818816153032
+      }
+    },
+    "all_human": {
+      "native_e2e_s": {
+        "count": 23,
+        "p50": 2.5593886375427246,
+        "p95_nearest_rank": 7.277637958526611,
+        "min": 1.073314905166626,
+        "max": 12.085700750350952,
+        "mean": 3.50539869847505
+      },
+      "first_playback_e2e_s": {
+        "count": 23,
+        "p50": 2.55703,
+        "p95_nearest_rank": 7.27523,
+        "min": 1.07052,
+        "max": 12.08301,
+        "mean": 3.502967391304348
+      },
+      "jev_client_s": {
+        "count": 20,
+        "p50": 0.2826670029990055,
+        "p95_nearest_rank": 0.41389304699987406,
+        "min": 0.2556472249998478,
+        "max": 0.484857422999994,
+        "mean": 0.2967792120999547
+      },
+      "qwen_first_request_pcm_s": {
+        "count": 23,
+        "p50": 0.16852901700076472,
+        "p95_nearest_rank": 1.4091754199998832,
+        "min": 0.10557792899999185,
+        "max": 3.7193421899992245,
+        "mean": 0.38742961026068573
+      },
+      "qwen_all_request_first_pcm_s": {
+        "count": 30,
+        "p50": 0.16472217599948635,
+        "p95_nearest_rank": 1.4091754199998832,
+        "min": 0.10557792899999185,
+        "max": 3.7193421899992245,
+        "mean": 0.325105779999952
+      },
+      "qwen_all_request_complete_s": {
+        "count": 30,
+        "p50": 0.6164119895001932,
+        "p95_nearest_rank": 1.7577942009993421,
+        "min": 0.22102455499953066,
+        "max": 4.418930889998592,
+        "mean": 0.7959711057001793
+      }
+    }
+  },
+  "by_route": {
+    "route_tool": {
+      "turns": [
+        2,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        26
+      ],
+      "native_e2e_s": {
+        "count": 9,
+        "p50": 1.3134315013885498,
+        "p95_nearest_rank": 2.4063048362731934,
+        "min": 1.073314905166626,
+        "max": 2.4063048362731934,
+        "mean": 1.487540192074246
+      }
+    },
+    "route_smalltalk": {
+      "turns": [
+        6,
+        17
+      ],
+      "native_e2e_s": {
+        "count": 2,
+        "p50": 2.01846182346344,
+        "p95_nearest_rank": 2.4820549488067627,
+        "min": 1.5548686981201172,
+        "max": 2.4820549488067627,
+        "mean": 2.01846182346344
+      }
+    },
+    "route_glm": {
+      "turns": [
+        1,
+        5,
+        8,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        21,
+        24
+      ],
+      "native_e2e_s": {
+        "count": 12,
+        "p50": 4.428309440612793,
+        "p95_nearest_rank": 12.085700750350952,
+        "min": 2.5593886375427246,
+        "max": 12.085700750350952,
+        "mean": 5.266615390777588
+      }
+    }
+  },
+  "issues": [
+    {
+      "run": "f0c87b3a33",
+      "experiment": "jev-glm-qwen-aiden-20261102",
+      "turn": 5,
+      "event": "classifier_failure",
+      "at": 1793587654.6862912,
+      "router_model": "jev",
+      "classifier_s": 1.2016013190004742,
+      "status": "timeout",
+      "error": "TimeoutError"
+    },
+    {
+      "run": "f0c87b3a33",
+      "experiment": "jev-glm-qwen-aiden-20261102",
+      "turn": 20,
+      "event": "classifier_failure",
+      "at": 1793587851.5216777,
+      "router_model": "jev",
+      "classifier_s": 1.2013345319992368,
+      "status": "timeout",
+      "error": "TimeoutError"
+    },
+    {
+      "turn": 16,
+      "event": "late_tts_context_recreation",
+      "first_pcm_s": 3.7193421899992245,
+      "http_headers_s": 3.6679782339997473,
+      "e2e_s": 7.2309441566467285,
+      "note": "Pipecat declared empty context at about 3 seconds; late audio recreated context and played."
+    },
+    {
+      "turn": 24,
+      "event": "slow_glm_reply",
+      "e2e_s": 12.085700750350952,
+      "glm_generation_s": [
+        8.172,
+        2.028
+      ],
+      "qwen_first_pcm_s": 0.4946804319988587,
+      "note": "GLM before/after volume tool dominates; MCP call about 39 ms."
+    },
+    {
+      "turn": 25,
+      "event": "interrupted_before_spoken_reply",
+      "note": "GLM executed pause after consent, but next utterance interrupted before spoken acknowledgement; tool action is not counted as failed."
+    }
+  ],
+  "previous_run_comparison": {
+    "run": "147f31abef",
+    "changed_factors": [
+      "router: Laya to Jev",
+      "speaker: Vivian to Aiden"
+    ],
+    "direct_previous_s": 3.808502197265625,
+    "direct_current_s": 1.477433443069458,
+    "context_previous_s": 4.6677751541137695,
+    "context_current_s": 4.960083484649658,
+    "previous_classifier_client_s": 0.76607336699999,
+    "current_classifier_client_s": 0.2826670029990055,
+    "note": "Observational comparison, not exactly matched replay. Wording, state, downstream route and speaker changed; medians exclude silent/uncompleted replies."
+  },
+  "correctness_notes": [
+    "Message-body follow-up was routed as small talk and spoken as a greeting; no send_message tool was invoked for it.",
+    "Heat complaint was routed as small talk; subsequent room-specific follow-up reached GLM and invoked thermostat.",
+    "Context too-bright and alarm-six choices were below Jev confidence threshold and reached GLM.",
+    "Forecast question reached GLM, which reported current-weather-only capability.",
+    "Response timing does not establish tool or conversation correctness."
+  ],
+  "measurement_limits": [
+    "Estimated speech end to software bot start/playback, not independent acoustic onset.",
+    "Jev time is full client wait including network; isolated Jev model inference not exposed.",
+    "TTS client waits include network/server and full request may include generator backpressure.",
+    "P95 is nearest rank with small samples.",
+    "Two missing-ASR segments and one interrupted reply are counted separately from reply latency.",
+    "No recorded waveform or acoustic voice-quality measurement."
+  ],
+  "per_turn": [
+    {
+      "turn": 0,
+      "case": "startup_greeting",
+      "group": "startup",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1603684780002368,
+      "qwen_complete_requests": 1,
+      "asr_frames": 0,
+      "routes": []
+    },
+    {
+      "turn": 1,
+      "case": "hearing_check_direct",
+      "group": "direct",
+      "native_e2e_s": 3.4811131954193115,
+      "first_playback_e2e_s": 3.47891,
+      "jev_client_s": 0.2948577949991886,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17583007599932898,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2948577949991886,
+          "router_s": 0.2966376099993795
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "case": "lights_on",
+      "group": "direct",
+      "native_e2e_s": 1.477433443069458,
+      "first_playback_e2e_s": 1.4737799999999999,
+      "jev_client_s": 0.41389304699987406,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.1645454219997191,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.41389304699987406,
+          "router_s": 0.4536765819993889
+        }
+      ]
+    },
+    {
+      "turn": 3,
+      "case": "color_green",
+      "group": "direct",
+      "native_e2e_s": 1.2294108867645264,
+      "first_playback_e2e_s": 1.22763,
+      "jev_client_s": 0.295944273000714,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.10557792899999185,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.295944273000714,
+          "router_s": 0.31720088200017926
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "case": "thermostat_seventeen",
+      "group": "direct",
+      "native_e2e_s": 1.1963164806365967,
+      "first_playback_e2e_s": 1.19426,
+      "jev_client_s": 0.26104773499901057,
+      "jev_choice": "set_thermostat",
+      "accepted_choice": "set_thermostat",
+      "qwen_first_request_pcm_s": 0.1613375270007964,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "set_thermostat",
+          "classifier_s": 0.26104773499901057,
+          "router_s": 0.28387649299838813
+        }
+      ]
+    },
+    {
+      "turn": 5,
+      "case": "message_request_no_body",
+      "group": "direct",
+      "native_e2e_s": 3.6421029567718506,
+      "first_playback_e2e_s": 3.63957,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.16930582099848834,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 1.2016013190004742,
+          "router_s": 1.2026829149999685
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "case": "message_body_misrouted_greeting",
+      "group": "direct",
+      "native_e2e_s": 1.5548686981201172,
+      "first_playback_e2e_s": 1.55243,
+      "jev_client_s": 0.2655266630008555,
+      "jev_choice": "small_talk",
+      "accepted_choice": "small_talk",
+      "qwen_first_request_pcm_s": 0.11441550800009281,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_smalltalk",
+          "tool": null,
+          "classifier_s": 0.2655266630008555,
+          "router_s": null
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "case": "reminder_drink_water",
+      "group": "direct",
+      "native_e2e_s": 1.073314905166626,
+      "first_playback_e2e_s": 1.07052,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.18099628200070583,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "add_reminder",
+          "classifier_s": 0.0,
+          "router_s": 0.024011771000004956
+        }
+      ]
+    },
+    {
+      "turn": 8,
+      "case": "music_catalog",
+      "group": "direct",
+      "native_e2e_s": 4.323714971542358,
+      "first_playback_e2e_s": 4.3215200000000005,
+      "jev_client_s": 0.29714306599998963,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1684108740009833,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.29714306599998963,
+          "router_s": 0.2983810680016177
+        }
+      ]
+    },
+    {
+      "turn": 9,
+      "case": "color_blue",
+      "group": "direct",
+      "native_e2e_s": 1.3232955932617188,
+      "first_playback_e2e_s": 1.32108,
+      "jev_client_s": 0.2849152500002674,
+      "jev_choice": "control_lights",
+      "accepted_choice": "control_lights",
+      "qwen_first_request_pcm_s": 0.15277457400043204,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "control_lights",
+          "classifier_s": 0.2849152500002674,
+          "router_s": 0.3074475880002865
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "case": "volume_up",
+      "group": "direct",
+      "native_e2e_s": 1.274176836013794,
+      "first_playback_e2e_s": 1.27191,
+      "jev_client_s": 0.26404288400044607,
+      "jev_choice": "playback_control",
+      "accepted_choice": "playback_control",
+      "qwen_first_request_pcm_s": 0.10724091799966118,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "playback_control",
+          "classifier_s": 0.26404288400044607,
+          "router_s": 0.2865921869997692
+        }
+      ]
+    },
+    {
+      "turn": 11,
+      "case": "weather_direct",
+      "group": "direct",
+      "native_e2e_s": 2.09417724609375,
+      "first_playback_e2e_s": 2.09112,
+      "jev_client_s": 0.2915007970004808,
+      "jev_choice": "get_weather",
+      "accepted_choice": "get_weather",
+      "qwen_first_request_pcm_s": 0.10738287299864169,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_weather",
+          "classifier_s": 0.2915007970004808,
+          "router_s": 1.1742438049986959
+        }
+      ]
+    },
+    {
+      "turn": 12,
+      "case": "time_direct",
+      "group": "direct",
+      "native_e2e_s": 1.3134315013885498,
+      "first_playback_e2e_s": 1.31107,
+      "jev_client_s": 0.2805497869994724,
+      "jev_choice": "get_time",
+      "accepted_choice": "get_time",
+      "qwen_first_request_pcm_s": 0.1698789019992546,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "get_time",
+          "classifier_s": 0.2805497869994724,
+          "router_s": 0.29055249500015634
+        }
+      ]
+    },
+    {
+      "turn": 13,
+      "case": "compound_stop_music_lights_off",
+      "group": "direct",
+      "native_e2e_s": 3.4316048622131348,
+      "first_playback_e2e_s": 3.42896,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.1648989299992536,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.0,
+          "router_s": 0.0
+        }
+      ]
+    },
+    {
+      "turn": 14,
+      "case": "hearing_check_transition",
+      "group": "transition",
+      "native_e2e_s": 2.5593886375427246,
+      "first_playback_e2e_s": 2.55703,
+      "jev_client_s": 0.2741812710009981,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.16852901700076472,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.2741812710009981,
+          "router_s": 0.2756831800015789
+        }
+      ]
+    },
+    {
+      "turn": 15,
+      "case": "dark_room",
+      "group": "context",
+      "native_e2e_s": 4.5329039096832275,
+      "first_playback_e2e_s": 4.531149999999999,
+      "jev_client_s": 0.3050015650005662,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17239810199862404,
+      "qwen_complete_requests": 3,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.3050015650005662,
+          "router_s": 0.3061469220010622
+        }
+      ]
+    },
+    {
+      "turn": 16,
+      "case": "room_too_bright_tts_stall",
+      "group": "context",
+      "native_e2e_s": 7.2309441566467285,
+      "first_playback_e2e_s": 7.22783,
+      "jev_client_s": 0.26176737999958277,
+      "jev_choice": "control_lights",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 3.7193421899992245,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.26176737999958277,
+          "router_s": 0.26306616199872224
+        }
+      ]
+    },
+    {
+      "turn": 17,
+      "case": "heat_complaint_smalltalk",
+      "group": "context",
+      "native_e2e_s": 2.4820549488067627,
+      "first_playback_e2e_s": 2.47991,
+      "jev_client_s": 0.27316850300121587,
+      "jev_choice": "small_talk",
+      "accepted_choice": "small_talk",
+      "qwen_first_request_pcm_s": 0.16171594899969932,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_smalltalk",
+          "tool": null,
+          "classifier_s": 0.27316850300121587,
+          "router_s": null
+        }
+      ]
+    },
+    {
+      "turn": 18,
+      "case": "stay_in_room_thermostat",
+      "group": "context",
+      "native_e2e_s": 7.277637958526611,
+      "first_playback_e2e_s": 7.27523,
+      "jev_client_s": 0.28478421899853856,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.30733232500097074,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.28478421899853856,
+          "router_s": 0.28661345900036395
+        }
+      ]
+    },
+    {
+      "turn": 19,
+      "case": "alarm_tomorrow_six",
+      "group": "context",
+      "native_e2e_s": 4.16043496131897,
+      "first_playback_e2e_s": 4.15821,
+      "jev_client_s": 0.31477920999896014,
+      "jev_choice": "set_alarm",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.17971002999911434,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.31477920999896014,
+          "router_s": 0.31598801300060586
+        }
+      ]
+    },
+    {
+      "turn": 20,
+      "case": "green_preference",
+      "group": "context",
+      "native_e2e_s": 4.960083484649658,
+      "first_playback_e2e_s": 4.95773,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.16368746500120324,
+      "qwen_complete_requests": 1,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 1.2013345319992368,
+          "router_s": 1.202490575999036
+        }
+      ]
+    },
+    {
+      "turn": 21,
+      "case": "rain_tomorrow",
+      "group": "context",
+      "native_e2e_s": 5.513754844665527,
+      "first_playback_e2e_s": 5.51147,
+      "jev_client_s": 0.26276627500010363,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.19171447000007902,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.26276627500010363,
+          "router_s": 0.2640478550001717
+        }
+      ]
+    },
+    {
+      "turn": 22,
+      "case": "no_final_asr",
+      "group": "context",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "asr_frames": 0,
+      "routes": []
+    },
+    {
+      "turn": 23,
+      "case": "no_final_asr",
+      "group": "context",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": null,
+      "jev_choice": null,
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "asr_frames": 0,
+      "routes": []
+    },
+    {
+      "turn": 24,
+      "case": "music_too_loud_glm_tail",
+      "group": "context",
+      "native_e2e_s": 12.085700750350952,
+      "first_playback_e2e_s": 12.08301,
+      "jev_client_s": 0.484857422999994,
+      "jev_choice": "other",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": 0.4946804319988587,
+      "qwen_complete_requests": 2,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.484857422999994,
+          "router_s": 0.4861037270002271
+        }
+      ]
+    },
+    {
+      "turn": 25,
+      "case": "pause_consent_interrupted_before_reply",
+      "group": "context",
+      "native_e2e_s": null,
+      "first_playback_e2e_s": null,
+      "jev_client_s": 0.26920987399898877,
+      "jev_choice": "small_talk",
+      "accepted_choice": null,
+      "qwen_first_request_pcm_s": null,
+      "qwen_complete_requests": 0,
+      "asr_frames": 2,
+      "routes": [
+        {
+          "route": "route_glm",
+          "tool": null,
+          "classifier_s": 0.26920987399898877,
+          "router_s": 0.2706484720001754
+        }
+      ]
+    },
+    {
+      "turn": 26,
+      "case": "volume_down_direct_rephrase",
+      "group": "context",
+      "native_e2e_s": 2.4063048362731934,
+      "first_playback_e2e_s": 2.4039200000000003,
+      "jev_client_s": 0.2556472249998478,
+      "jev_choice": "playback_control",
+      "accepted_choice": "playback_control",
+      "qwen_first_request_pcm_s": 1.4091754199998832,
+      "qwen_complete_requests": 1,
+      "asr_frames": 1,
+      "routes": [
+        {
+          "route": "route_tool",
+          "tool": "playback_control",
+          "classifier_s": 0.2556472249998478,
+          "router_s": 0.27729033900141076
+        }
+      ]
+    }
+  ]
+}

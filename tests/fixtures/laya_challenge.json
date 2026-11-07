@@ -1,0 +1,222 @@
+[
+  {
+    "text": "What time is it now?",
+    "route": "get_time",
+    "arguments": {}
+  },
+  {
+    "text": "Turn on the lights",
+    "route": "control_lights",
+    "arguments": {
+      "action": "on",
+      "value": ""
+    }
+  },
+  {
+    "text": "Set the lights to blue",
+    "route": "control_lights",
+    "arguments": {
+      "action": "color",
+      "value": "Blue"
+    }
+  },
+  {
+    "text": "Turn off the lights",
+    "route": "control_lights",
+    "arguments": {
+      "action": "off",
+      "value": ""
+    }
+  },
+  {
+    "text": "Set the lights to eighty percent brightness",
+    "route": "control_lights",
+    "arguments": {
+      "action": "brightness",
+      "value": "80"
+    }
+  },
+  {
+    "text": "Set the thermostat to twenty six degrees",
+    "route": "set_thermostat",
+    "arguments": {
+      "degrees": 26
+    }
+  },
+  {
+    "text": "Set the room temperature to twenty eight degrees",
+    "route": "set_thermostat",
+    "arguments": {
+      "degrees": 28
+    }
+  },
+  {
+    "text": "Set a five minute timer",
+    "route": "set_timer",
+    "arguments": {
+      "duration_s": 300
+    }
+  },
+  {
+    "text": "Start a ten second timer",
+    "route": "set_timer",
+    "arguments": {
+      "duration_s": 10
+    }
+  },
+  {
+    "text": "Set an alarm for nine PM",
+    "route": "set_alarm",
+    "arguments": {
+      "time_str": "09:00 PM"
+    }
+  },
+  {
+    "text": "Remind me to Review Laya Results",
+    "route": "add_reminder",
+    "arguments": {
+      "text": "Review Laya Results"
+    }
+  },
+  {
+    "text": "List my reminders",
+    "route": "list_reminders",
+    "arguments": {}
+  },
+  {
+    "text": "What is the weather today?",
+    "route": "get_weather",
+    "arguments": {}
+  },
+  {
+    "text": "Stop the music",
+    "route": "playback_control",
+    "arguments": {
+      "action": "stop"
+    }
+  },
+  {
+    "text": "Lower the volume",
+    "route": "playback_control",
+    "arguments": {
+      "action": "volume_down"
+    }
+  },
+  {
+    "text": "Play some jazz music",
+    "route": "play_music",
+    "arguments": {
+      "query": "jazz"
+    }
+  },
+  {
+    "text": "Hello",
+    "route": "small_talk",
+    "arguments": null
+  },
+  {
+    "text": "Thank you",
+    "route": "small_talk",
+    "arguments": null
+  },
+  {
+    "text": "Can you hear me?",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Set the thermostat",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Set the thermostat to ninety nine degrees",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Set a timer",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Set an alarm for nine",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Do not turn on the lights",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Do not set an alarm",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Turn the lights green and lower the volume",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Stop music and turn off the lights",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "What is the weather tomorrow?",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Set an alarm tomorrow at six AM",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Send a message to my contact",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Call my brother",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Play news radio",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "zqx blarg forty six",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "What is the capital of France?",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "Can you control the lights?",
+    "route": "other",
+    "arguments": null
+  },
+  {
+    "text": "What is the weather in Cebu?",
+    "route": "get_weather",
+    "arguments": null
+  },
+  {
+    "text": "Set a 1.5 minute timer",
+    "route": "set_timer",
+    "arguments": null
+  },
+  {
+    "text": "Set the thermostat to 26 Fahrenheit",
+    "route": "other",
+    "arguments": null
+  }
+]

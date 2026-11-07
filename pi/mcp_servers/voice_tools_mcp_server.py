@@ -7,7 +7,6 @@ same commands become free-form (e.g. "Play some chill jazz" -> play_music).
 
 Command -> tool map (from me2 configs/ontology.json):
   PLAY_MUSIC            -> play_music (ME2: local mpv; here: open music APIs)
-  (new)                 -> play_radio (new: Radio Browser API)
   WEATHER               -> get_weather (Open-Meteo, no key, same as ME2)
   TIME                  -> get_time (local tz, no network)
   TIMER / ALARM         -> set_timer / set_alarm (me2 parse_duration_s/next_alarm logic)
@@ -24,8 +23,6 @@ Command -> tool map (from me2 configs/ontology.json):
 Open-source APIs used (all free, no vendor lock-in):
   Music   : Jamendo Client API (open-licensed, needs a free client id) with
             Internet Archive as the no-key fallback.
-  Radio   : Radio Browser API (https://api.radio-browser.info) — community,
-            open-source, no key.
   Weather : Open-Meteo (no key).
   Time    : local time via zoneinfo (no network).
   Messages: Telegram Bot API (open HTTP API, free bot token).
@@ -40,23 +37,75 @@ Env: see env.example block in docs/runbooks/milestone-5.md.
 from __future__ import annotations
 
 import base64
+import asyncio
 import json
 import os
 import re
 import sqlite3
 import subprocess
+import sys
 import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta
+from contextlib import nullcontext, suppress
+from functools import wraps
 from pathlib import Path
 from zoneinfo import ZoneInfo
+import uuid
 
 from mcp.server.mcpserver import MCPServer
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from stall_diagnostics import Diagnostics, META_KEY
+from vcm_state import state_store_from_env
+
+diagnostics = Diagnostics.from_env("mcp")
+
+
+class ProfiledToolServer(MCPServer):
+    async def call_tool(self, name, arguments, context=None):
+        if diagnostics is None:
+            return await super().call_tool(name, arguments, context)
+        ctx = context if context is not None else self.get_context()
+        try:
+            meta = ctx.request_context.meta or {}
+            call_id = meta.get(META_KEY, "")
+        except (ValueError, AttributeError):
+            call_id = ""
+        if not isinstance(call_id, str) or not re.fullmatch(r"[0-9a-f]{32}", call_id):
+            call_id = uuid.uuid4().hex
+        with diagnostics.call(call_id), diagnostics.span("mcp_server_call", tool=name):
+            return await super().call_tool(name, arguments, ctx)
+
+    async def run_stdio_async(self):
+        if diagnostics is None:
+            return await super().run_stdio_async()
+        task = asyncio.create_task(diagnostics.monitor_loop())
+        try:
+            return await super().run_stdio_async()
+        finally:
+            task.cancel()
+            with suppress(asyncio.CancelledError):
+                await task
+
+
+def trace_tool(fn):
+    if diagnostics is None:
+        return fn
+    @wraps(fn)
+    def measured(*args, **kwargs):
+        with diagnostics.span("tool_execute", tool=fn.__name__):
+            return fn(*args, **kwargs)
+    return measured
+
 # ---------------------------------------------------------------- config ----
-DATA_DIR = Path(os.getenv("VOICE_TOOLS_DATA", Path.home() / "voice-agent-tools"))
-DB_PATH = DATA_DIR / "state.db"
+STATE_BACKEND = os.getenv("VCM_STATE_BACKEND", "jetson_sqlite").strip().lower()
+STATE_STORE = state_store_from_env(diagnostics=diagnostics)
+if diagnostics:
+    diagnostics.emit("vcm_server_configuration", tool_server_host=os.getenv("VCM_TOOL_SERVER_HOST", "pi"),
+                     state_backend=STATE_BACKEND,
+                     sqlite_version=sqlite3.sqlite_version if STATE_BACKEND == "local_sqlite" else None)
 TIMEZONE = os.getenv("VOICE_TOOLS_TZ", "Asia/Manila")
 JAMENDO_CLIENT_ID = os.getenv("JAMENDO_CLIENT_ID", "")
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -70,13 +119,11 @@ SMTP_FROM = os.getenv("SMTP_FROM", SMTP_USER)
 DEFAULT_LAT = float(os.getenv("WEATHER_LAT", "10.7"))       # default: Leyte, PH
 DEFAULT_LON = float(os.getenv("WEATHER_LON", "124.97"))
 
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-server = MCPServer(
+server = ProfiledToolServer(
     name="voice-agent-tools",
     version="0.1.0",
     instructions=(
-        "Tools for the voice agent: media playback (music/radio), weather, "
+        "Tools for the voice agent: music playback, weather, "
         "time, timer, alarm, reminders, thermostat, lights, and messaging. "
         "Call one tool per user command; all return a short dict that is "
         "safe to speak back to the user."
@@ -86,52 +133,19 @@ server = MCPServer(
 
 # ---------------------------------------------------------------- helpers ---
 def _http_json(url: str, timeout: float = 6.0) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "me3-voice-agent/0.1"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
-
-
-def _db() -> sqlite3.Connection:
-    db = sqlite3.connect(str(DB_PATH), check_same_thread=False)
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS reminders ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, text TEXT NOT NULL,"
-        " created_ms REAL NOT NULL, done INTEGER NOT NULL DEFAULT 0)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS device_state ("
-        " key TEXT PRIMARY KEY, value TEXT NOT NULL)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS timers ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, label TEXT NOT NULL,"
-        " ends_at REAL NOT NULL, fired INTEGER NOT NULL DEFAULT 0)"
-    )
-    db.execute(
-        "CREATE TABLE IF NOT EXISTS alarms ("
-        " id INTEGER PRIMARY KEY AUTOINCREMENT, time TEXT NOT NULL,"
-        " enabled INTEGER NOT NULL DEFAULT 1)"
-    )
-    db.commit()
-    return db
+    scope = diagnostics.span("http_request", host=urllib.parse.urlparse(url).hostname) if diagnostics else nullcontext()
+    with scope:
+        req = urllib.request.Request(url, headers={"User-Agent": "me3-voice-agent/0.1"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8"))
 
 
 def _set_state(key: str, value: dict) -> None:
-    db = _db()
-    db.execute(
-        "INSERT INTO device_state(key, value) VALUES (?, ?) "
-        "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
-        (key, json.dumps(value)),
-    )
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("set_state", {"key": key, "value": value})
 
 
 def _get_state(key: str) -> dict | None:
-    db = _db()
-    row = db.execute("SELECT value FROM device_state WHERE key=?", (key,)).fetchone()
-    db.close()
-    return json.loads(row[0]) if row else None
+    return STATE_STORE.dispatch("get_state", {"key": key})
 
 
 # ------------------------------------------------------------------ media ---
@@ -171,20 +185,6 @@ def _archive_search(query: str, limit: int = 5) -> dict | None:
         return None
 
 
-def _radio_search(query: str, limit: int = 5) -> list[dict]:
-    try:
-        url = (
-            "https://de1.api.radio-browser.info/json/stations/search?"
-            + urllib.parse.urlencode(
-                {"name": query, "limit": limit, "hidebroken": "true", "order": "votes"}
-            )
-        )
-        data = _http_json(url)
-        return data if isinstance(data, list) else []
-    except Exception:
-        return []
-
-
 @server.tool(
     name="play_music",
     description=(
@@ -193,6 +193,7 @@ def _radio_search(query: str, limit: int = 5) -> list[dict]:
         "(genre, mood, artist, or title). Returns track title and stream URL."
     ),
 )
+@trace_tool
 def play_music(query: str) -> dict:
     j = _jamendo_search(query)
     if j:
@@ -220,39 +221,15 @@ def play_music(query: str) -> dict:
 
 
 @server.tool(
-    name="play_radio",
-    description=(
-        "Play a radio station by name (e.g. 'Love Radio', 'news radio', "
-        "'jazz'). Uses the open Radio Browser API. Returns station name and "
-        "stream URL."
-    ),
-)
-def play_radio(query: str) -> dict:
-    stations = _radio_search(query, limit=3)
-    if not stations:
-        return {"ok": False, "spoken": f"I could not find a radio station named {query}."}
-    s = stations[0]
-    station = {
-        "name": s.get("name", "unknown"),
-        "url": s.get("url_resolved") or s.get("url", ""),
-        "source": "radio-browser",
-    }
-    _set_state("media", {"mode": "radio", "title": station["name"], "url": station["url"]})
-    return {"ok": True, "spoken": f"Tuning to {station['name']}.", "station": station}
-
-
-@server.tool(
     name="playback_control",
     description=(
-        "Control the currently playing music or radio: pause, stop, resume, "
+        "Control the currently playing music: pause, stop, resume, "
         "next, volume_up, volume_down. These are the ME2 PAUSE/STOP/NEXT/"
         "VOLUME_UP/VOLUME_DOWN commands."
     ),
 )
+@trace_tool
 def playback_control(action: str) -> dict:
-    media = _get_state("media") or {}
-    if not media:
-        return {"ok": False, "spoken": "Nothing is playing right now."}
     spoken = {
         "pause": "Paused.",
         "stop": "Stopped.",
@@ -263,8 +240,10 @@ def playback_control(action: str) -> dict:
     }.get(action)
     if spoken is None:
         return {"ok": False, "spoken": f"Unknown playback action: {action}"}
-    media["status"] = action
-    _set_state("media", media)
+    media = STATE_STORE.dispatch("patch_state", {"key": "media", "changes": {"status": action},
+                                                "defaults": {}, "require_existing": True})
+    if media is None:
+        return {"ok": False, "spoken": "Nothing is playing right now."}
     return {"ok": True, "spoken": spoken, "media": media}
 
 
@@ -276,6 +255,7 @@ def playback_control(action: str) -> dict:
         "as the ME2 weather service. Optionally pass place latitude/longitude."
     ),
 )
+@trace_tool
 def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -> dict:
     try:
         url = (
@@ -310,6 +290,7 @@ def get_weather(latitude: float = DEFAULT_LAT, longitude: float = DEFAULT_LON) -
     name="get_time",
     description="Current time (local timezone). No network needed.",
 )
+@trace_tool
 def get_time() -> dict:
     now = datetime.now(ZoneInfo(TIMEZONE))
     return {"ok": True, "spoken": now.strftime("It's %I:%M %p."), "iso": now.isoformat()}
@@ -329,14 +310,12 @@ _UNIT_S = {"second": 1, "minute": 60, "hour": 3600}
         "(e.g. '30 seconds' -> 30). Returns when the timer ends."
     ),
 )
+@trace_tool
 def set_timer(duration_s: int) -> dict:
     if not (1 <= duration_s <= 86400):
         return {"ok": False, "spoken": "Timers must be between 1 second and 1 day."}
     ends = time.time() + duration_s
-    db = _db()
-    db.execute("INSERT INTO timers(label, ends_at) VALUES (?, ?)", (f"{duration_s}s", ends))
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_timer", {"label": f"{duration_s}s", "ends_at": ends})
     mins = duration_s // 60
     secs = duration_s % 60
     spoken = f"Timer set for {mins} minute{'s' if mins != 1 else ''}" if secs == 0 else \
@@ -353,6 +332,7 @@ def set_timer(duration_s: int) -> dict:
         "when it will ring."
     ),
 )
+@trace_tool
 def set_alarm(time_str: str) -> dict:
     try:
         t = datetime.strptime(time_str.strip().upper(), "%I:%M %p").time()
@@ -362,10 +342,7 @@ def set_alarm(time_str: str) -> dict:
     cand = now.replace(hour=t.hour, minute=t.minute, second=0, microsecond=0)
     if cand <= now:
         cand += timedelta(days=1)
-    db = _db()
-    db.execute("INSERT INTO alarms(time, enabled) VALUES (?, 1)", (time_str, ))
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_alarm", {"time_str": time_str})
     return {"ok": True, "spoken": f"Alarm set for {time_str}.",
             "next_ring": cand.isoformat()}
 
@@ -375,14 +352,9 @@ def set_alarm(time_str: str) -> dict:
     name="add_reminder",
     description="Create a reminder (e.g. 'Drink water'). Persistent.",
 )
+@trace_tool
 def add_reminder(text: str) -> dict:
-    db = _db()
-    db.execute(
-        "INSERT INTO reminders(text, created_ms) VALUES (?, ?)",
-        (text.strip(), time.time() * 1000),
-    )
-    db.commit()
-    db.close()
+    STATE_STORE.dispatch("add_reminder", {"text": text.strip(), "created_ms": time.time() * 1000})
     return {"ok": True, "spoken": f"Reminder added: {text}"}
 
 
@@ -390,12 +362,9 @@ def add_reminder(text: str) -> dict:
     name="list_reminders",
     description="List outstanding reminders.",
 )
+@trace_tool
 def list_reminders() -> dict:
-    db = _db()
-    rows = db.execute(
-        "SELECT id, text FROM reminders WHERE done=0 ORDER BY id DESC"
-    ).fetchall()
-    db.close()
+    rows = STATE_STORE.dispatch("list_reminders", {})
     if not rows:
         return {"ok": True, "spoken": "You have no reminders.", "reminders": []}
     texts = [r[1] for r in rows]
@@ -410,6 +379,7 @@ def list_reminders() -> dict:
         "State is stored for the later dashboard UI."
     ),
 )
+@trace_tool
 def set_thermostat(degrees: int) -> dict:
     if not (16 <= degrees <= 32):
         return {"ok": False, "spoken": "Temperature must be between 16 and 32 degrees."}
@@ -424,13 +394,13 @@ def set_thermostat(degrees: int) -> dict:
         "'color'. value: 0-100 for brightness, or Red/Blue/Green for color."
     ),
 )
+@trace_tool
 def control_lights(action: str, value: str = "") -> dict:
-    state = _get_state("lights") or {"power": False, "brightness": "100", "color": None}
     if action == "on":
-        state["power"] = True
+        changes = {"power": True}
         spoken = "Lights on."
     elif action == "off":
-        state["power"] = False
+        changes = {"power": False}
         spoken = "Lights off."
     elif action == "brightness":
         try:
@@ -439,17 +409,18 @@ def control_lights(action: str, value: str = "") -> dict:
             return {"ok": False, "spoken": "Brightness must be a number like 60."}
         if not (0 <= pct <= 100):
             return {"ok": False, "spoken": "Brightness must be between 0 and 100."}
-        state["brightness"], state["power"] = str(pct), True
+        changes = {"brightness": str(pct), "power": True}
         spoken = f"Brightness set to {pct} percent."
     elif action == "color":
         color = value.strip().capitalize()
         if color not in {"Red", "Blue", "Green"}:
             return {"ok": False, "spoken": f"Color must be Red, Blue, or Green."}
-        state["color"], state["power"] = color, True
+        changes = {"color": color, "power": True}
         spoken = f"Lights set to {color}."
     else:
         return {"ok": False, "spoken": f"Unknown light action: {action}"}
-    _set_state("lights", state)
+    state = STATE_STORE.dispatch("patch_state", {"key": "lights", "changes": changes,
+        "defaults": {"power": False, "brightness": "100", "color": None}})
     return {"ok": True, "spoken": spoken, "lights": state}
 
 
@@ -462,6 +433,7 @@ def control_lights(action: str, value: str = "") -> dict:
         "Telegram message id."
     ),
 )
+@trace_tool
 def send_message(text: str) -> dict:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return {"ok": False, "spoken": "Messaging is not configured yet.",
@@ -491,6 +463,7 @@ def send_message(text: str) -> dict:
         "via Telegram if SMTP is not configured."
     ),
 )
+@trace_tool
 def send_email(to: str, subject: str, body: str) -> dict:
     if not SMTP_HOST or not SMTP_USER:
         return {"ok": False,
@@ -520,6 +493,7 @@ def send_email(to: str, subject: str, body: str) -> dict:
         "webhook-based carrier. This mirrors the ME2 simulated CALL."
     ),
 )
+@trace_tool
 def place_call(to: str = "") -> dict:
     _set_state("call", {"status": "calling", "to": to or "default", "at": time.time()})
     return {"ok": True, "spoken": f"Calling {to or 'your default contact'}.",
@@ -527,4 +501,11 @@ def place_call(to: str = "") -> dict:
 
 
 if __name__ == "__main__":
-    server.run("stdio")
+    try:
+        if hasattr(STATE_STORE, "start"):
+            STATE_STORE.start()
+        server.run("stdio")
+    finally:
+        STATE_STORE.close()
+        if diagnostics:
+            diagnostics.close()

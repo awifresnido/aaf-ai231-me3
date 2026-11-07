@@ -1,0 +1,21 @@
+Validation on 2026-11-01, branch laya-integration at b059cd4 plus uncommitted review changes.
+
+Pi isolated review checkout: /tmp/laya-review-20261101
+Interpreter: /home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python
+Command: python -m unittest discover -s tests
+Ran 74 tests in 7.653s
+OK
+
+Live Pi bot.py, local_vcm.py and orchestration.py SHA256 match b059cd4.
+Live me3-local-audio.service remains active; no live deployment or configuration changes.
+Existing Jetson speech containers and persistence worker were healthy on inspection.
+
+Real disposable integration preflight: 12/12 cases, seven MCP calls, six state writes; no duplicate calls.
+All SQLite spans on Jetson state component. No unfinished spans, incomplete lines or dropped events.
+Matched authored text challenge: 38 requests per engine, zero request errors; see text-comparison.json.
+Concurrent model-only probe: five paired requests; all five Laya completions exceed two-second voice deadline.
+Python compilation, git diff --check and systemd-analyze --user verify of new units passed.
+
+Not completed: independent calibration/holdout sweep (source data absent), matched human speakerphone passes, ASR/TTS/end-to-end comparison against 5.468-second historical baseline.
+Temporary ThinkPad Laya process and separate Pi reverse tunnel remain available; units were not installed.
+No implementation commit or push was created.

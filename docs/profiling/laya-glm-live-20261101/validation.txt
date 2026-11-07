@@ -1,0 +1,12 @@
+Pi isolated review checkout: /tmp/laya-glm-review-20261101
+Interpreter: /home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python
+Command: python -m unittest discover -s tests
+Ran 84 tests in 7.990s
+OK
+
+Four real resident-classifier/controller preflights passed without actual tool execution.
+Live run 26c376b1c3 completed direct and contextual sets.
+JSON/JSONL parsing, metadata correlation, git diff --check, Python compilation and systemd unit verification passed.
+Private environment, credentials, raw speech/audio, model weights and live databases remain outside Git.
+Known argument-guard coverage and pending-context failures are documented in the benchmark runbook.
+Jetson capacity assessment did not install or run Laya on CUDA.

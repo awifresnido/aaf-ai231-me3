@@ -1,0 +1,340 @@
+35118 1793524075.623853 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_GETFD) = 0 <0.000024>
+35118 1793524075.624178 fcntl(3</home/aldwinrpi4/pipecat-quickstart/server/.venv/pyvenv.cfg>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+35118 1793524075.631991 fcntl(3</usr/lib/python3.13/encodings/__pycache__/__init__.cpython-313.pyc>, F_GETFD) = 0x1 (flags FD_CLOEXEC) <0.000020>
+35118 1793524075.643234 fcntl(0<pipe:[106606]>, F_GETFD) = 0 <0.000029>
+35118 1793524075.643630 fcntl(1<pipe:[106607]>, F_GETFD) = 0 <0.000016>
+35118 1793524075.643871 fcntl(2<pipe:[106608]>, F_GETFD) = 0 <0.000016>
+35118 1793524075.795324 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>) = 0 <0.022915>
+35118 1793524075.819630 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35118 1793524075.819849 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.819930 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000055>
+35118 1793524075.820831 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000066>
+35118 1793524075.822405 fsync(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>) = 0 <0.000020>
+35118 1793524075.823537 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+35118 1793524075.823677 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.823754 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.824219 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524075.825654 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35118 1793524075.825796 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.825873 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.826332 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524075.826497 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524075.826579 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.826653 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.826855 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.826974 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524075.827071 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.827146 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.827344 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.827445 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.827520 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.827593 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.827790 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.827887 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.827999 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000030>
+35118 1793524075.828105 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.828361 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+35118 1793524075.828913 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+35118 1793524075.829099 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35118 1793524075.829181 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.829395 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000016>
+35118 1793524075.830857 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000025>
+35118 1793524075.830997 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35118 1793524075.831231 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.005885>
+35118 1793524075.837345 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>) = 0 <0.000041>
+35118 1793524075.837756 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.008088>
+35118 1793524075.846199 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>) = 0 <0.007711>
+35118 1793524075.854268 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000028>
+35118 1793524075.854433 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35118 1793524075.854519 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.856063 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000027>
+35118 1793524075.856230 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.856307 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.856740 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524075.856895 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524075.856989 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35118 1793524075.857065 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.857272 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.857372 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.857447 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.857520 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.857730 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524075.857828 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524075.857903 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000040>
+35118 1793524075.858033 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524075.858275 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+35118 1793524075.858435 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35118 1793524075.858521 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524075.858598 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524075.858865 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000028>
+35118 1793524075.859476 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+35118 1793524075.859654 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+35118 1793524075.859746 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000199>
+35118 1793524075.860219 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000025>
+35118 1793524075.862334 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000044>
+35118 1793524075.862604 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000029>
+35118 1793524075.862918 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000035>
+35118 1793524075.863121 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts>) = 0 <0.000021>
+35118 1793524075.863289 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000027>
+35118 1793524075.863520 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>) = 0 <0.000016>
+35118 1793524075.863756 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000024>
+35118 1793524075.863862 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35118 1793524075.863943 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000017>
+35118 1793524075.864646 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=26677, tv_nsec=650651911}, NULL) = 0 <10.000001>
+35118 1793524085.866495 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000066>
+35118 1793524085.866842 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000613>
+35118 1793524085.867945 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000098>
+35118 1793524085.869239 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000206>
+35118 1793524085.870096 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000068>
+35118 1793524085.870433 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000045>
+35118 1793524085.870638 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000040>
+35118 1793524085.871121 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000039>
+35118 1793524085.871426 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000040>
+35118 1793524085.871593 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524085.871768 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35118 1793524085.872171 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35118 1793524085.872381 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+35118 1793524085.872533 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+35118 1793524085.872682 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35118 1793524085.873077 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35118 1793524085.873273 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+35118 1793524085.873427 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+35118 1793524085.873581 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35118 1793524085.874061 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000035>
+35118 1793524085.874921 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000041>
+35118 1793524085.875107 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524085.875256 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35118 1793524085.875659 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000035>
+35118 1793524085.877718 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000045>
+35118 1793524085.877935 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000040>
+35118 1793524085.878450 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.011297>
+35118 1793524085.890156 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>) = 0 <0.000046>
+35118 1793524085.890662 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.005302>
+35118 1793524085.896361 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>) = 0 <0.007896>
+35118 1793524085.904910 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000042>
+35118 1793524085.905153 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000031>
+35118 1793524085.905323 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000030>
+35118 1793524085.907646 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000044>
+35118 1793524085.907895 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000030>
+35118 1793524085.908034 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35118 1793524085.908774 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35118 1793524085.909032 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35118 1793524085.909173 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000031>
+35118 1793524085.909308 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35118 1793524085.909677 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000030>
+35118 1793524085.909852 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000031>
+35118 1793524085.910026 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000030>
+35118 1793524085.910163 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35118 1793524085.910540 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35118 1793524085.910764 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+35118 1793524085.910912 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000030>
+35118 1793524085.911051 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35118 1793524085.911431 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000031>
+35118 1793524085.911635 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+35118 1793524085.911787 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+35118 1793524085.911935 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35118 1793524085.912313 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000032>
+35118 1793524085.913031 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+35118 1793524085.913195 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000029>
+35118 1793524085.913350 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000031>
+35118 1793524085.913736 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000030>
+35118 1793524085.915555 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000073>
+35118 1793524085.915873 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000039>
+35118 1793524085.916336 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000030>
+35118 1793524085.916611 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts>) = 0 <0.000029>
+35118 1793524085.916867 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000041>
+35118 1793524085.917215 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>) = 0 <0.000046>
+35118 1793524085.917693 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000045>
+35118 1793524085.917906 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000043>
+35118 1793524085.918126 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35118 1793524085.919466 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=26687, tv_nsec=705478747}, NULL) = 0 <9.999991>
+35118 1793524095.921147 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000077>
+35118 1793524095.921493 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000037>
+35118 1793524095.921692 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35118 1793524095.922615 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000054>
+35118 1793524095.923040 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000043>
+35118 1793524095.923244 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+35118 1793524095.923401 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35118 1793524095.923900 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000050>
+35118 1793524095.924265 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000058>
+35118 1793524095.924527 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000037>
+35118 1793524095.924725 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000045>
+35118 1793524095.925337 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000041>
+35118 1793524095.925679 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35118 1793524095.925845 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524095.926060 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000050>
+35118 1793524095.926541 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000040>
+35118 1793524095.926848 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000037>
+35118 1793524095.927018 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+35118 1793524095.927166 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35118 1793524095.927568 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000033>
+35118 1793524095.928433 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000058>
+35118 1793524095.928713 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000035>
+35118 1793524095.928879 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35118 1793524095.929301 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000066>
+35118 1793524095.931809 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000045>
+35118 1793524095.932072 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000035>
+35118 1793524095.932533 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.009728>
+35118 1793524095.942535 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>) = 0 <0.000033>
+35118 1793524095.942953 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.005195>
+35118 1793524095.948577 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>) = 0 <0.008019>
+35118 1793524095.957347 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000060>
+35118 1793524095.957661 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000042>
+35118 1793524095.957866 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.002003>
+35118 1793524095.963474 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000071>
+35118 1793524095.963814 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000037>
+35118 1793524095.964018 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000045>
+35118 1793524095.965056 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000070>
+35118 1793524095.965600 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000054>
+35118 1793524095.965849 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000081>
+35118 1793524095.966081 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000059>
+35118 1793524095.966873 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000047>
+35118 1793524095.967268 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000044>
+35118 1793524095.967463 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000034>
+35118 1793524095.967615 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35118 1793524095.968048 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35118 1793524095.968265 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000035>
+35118 1793524095.968419 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524095.968567 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000032>
+35118 1793524095.968976 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000037>
+35118 1793524095.969224 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35118 1793524095.969435 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524095.969585 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000033>
+35118 1793524095.970056 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000037>
+35118 1793524095.970935 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000047>
+35118 1793524095.971171 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000032>
+35118 1793524095.971319 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000034>
+35118 1793524095.971761 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000033>
+35118 1793524095.973632 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000042>
+35118 1793524095.973836 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000033>
+35118 1793524095.974300 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000030>
+35118 1793524095.974521 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts>) = 0 <0.000029>
+35118 1793524095.974775 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000029>
+35118 1793524095.975036 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>) = 0 <0.000029>
+35118 1793524095.975379 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000036>
+35118 1793524095.975535 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000032>
+35118 1793524095.975687 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000034>
+35118 1793524095.976737 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=26697, tv_nsec=762759045}, NULL) = 0 <10.000008>
+35118 1793524105.977672 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000029>
+35118 1793524105.977843 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524105.977923 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35118 1793524105.978392 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524105.978556 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35118 1793524105.978638 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524105.978713 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524105.978913 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524105.979013 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524105.979088 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000017>
+35118 1793524105.979163 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+35118 1793524105.979359 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524105.979476 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524105.979553 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+35118 1793524105.979626 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+35118 1793524105.979822 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524105.979919 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524105.979994 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524105.980067 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+35118 1793524105.980263 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524105.980681 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000020>
+35118 1793524105.980775 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524105.980849 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524105.981105 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+35118 1793524105.982314 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000041>
+35118 1793524105.982500 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000020>
+35118 1793524105.982793 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.009132>
+35118 1793524105.992098 fdatasync(6</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>) = 0 <0.000017>
+35118 1793524105.992312 fdatasync(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite-journal>) = 0 <0.004508>
+35118 1793524105.997033 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>) = 0 <0.007847>
+35118 1793524106.005324 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35118 1793524106.005487 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000017>
+35118 1793524106.005609 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524106.007132 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000038>
+35118 1793524106.007325 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000057>
+35118 1793524106.007446 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524106.007888 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524106.008046 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524106.008126 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524106.008199 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000040>
+35118 1793524106.008432 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524106.008533 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524106.008609 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000015>
+35118 1793524106.008681 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+35118 1793524106.008880 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524106.008978 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524106.009053 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524106.009126 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000015>
+35118 1793524106.009397 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+35118 1793524106.009573 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000019>
+35118 1793524106.009665 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524106.009742 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524106.009988 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000021>
+35118 1793524106.010660 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000036>
+35118 1793524106.010844 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000019>
+35118 1793524106.010937 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000017>
+35118 1793524106.011175 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000023>
+35118 1793524106.012554 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000030>
+35118 1793524106.012736 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+35118 1793524106.012982 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000016>
+35118 1793524106.013112 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts>) = 0 <0.000015>
+35118 1793524106.013252 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite-journal>) = 0 <0.000016>
+35118 1793524106.013404 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>) = 0 <0.000016>
+35118 1793524106.013647 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000026>
+35118 1793524106.013786 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000020>
+35118 1793524106.013893 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/synthetic.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000066>
+35118 1793524106.016518 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <0.008621>
+35118 1793524106.026024 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <0.009342>
+35118 1793524106.036641 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000018>
+35118 1793524106.038475 fsync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000017>
+35118 1793524106.038931 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=26707, tv_nsec=824966112}, NULL) = 0 <10.000031>
+35118 1793524116.039709 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <0.048235>
+35118 1793524116.088764 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <1.117201>
+35118 1793524117.208084 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000071>
+35118 1793524117.209310 fsync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000033>
+35118 1793524117.210094 clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, {tv_sec=26718, tv_nsec=996114589}, NULL) = 0 <9.999991>
+35118 1793524127.211246 fdatasync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <0.002103>
+35118 1793524127.214194 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <0.004801>
+35118 1793524127.220068 fdatasync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000018>
+35118 1793524127.220688 fsync(4</dev/shm/voice-sqlite-probe-i54jtlts/raw-flush.bin>) = 0 <0.000016>
+35118 1793524127.221579 fsync(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>) = 0 <0.000017>
+35118 1793524127.223329 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000028>
+35118 1793524127.223495 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000018>
+35118 1793524127.223576 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524127.224096 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000020>
+35118 1793524127.224311 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524127.224393 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524127.224481 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524127.224922 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000019>
+35118 1793524127.225048 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000018>
+35118 1793524127.225125 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000016>
+35118 1793524127.225199 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000016>
+35118 1793524127.225665 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741825, l_len=1}) = 0 <0.000017>
+35118 1793524127.227736 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=1}) = 0 <0.000026>
+35118 1793524127.227892 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=1000000}, NULL) = 0 <0.001114>
+35118 1793524127.229099 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=2000000}, NULL) = 0 <0.002112>
+35118 1793524127.231372 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=5000000}, NULL) = 0 <0.005108>
+35118 1793524127.236652 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=10000000}, NULL) = 0 <0.010116>
+35118 1793524127.246964 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=15000000}, NULL) = 0 <0.015164>
+35118 1793524127.262378 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=20000000}, NULL) = 0 <0.020105>
+35118 1793524127.282662 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025144>
+35118 1793524127.307985 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025111>
+35118 1793524127.333277 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=25000000}, NULL) = 0 <0.025118>
+35118 1793524127.358578 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=50000000}, NULL) = 0 <0.050109>
+35118 1793524127.408862 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=50000000}, NULL) = 0 <0.050113>
+35118 1793524127.459156 clock_nanosleep(CLOCK_REALTIME, 0, {tv_sec=0, tv_nsec=100000000},  <unfinished ...>
+35189 1793524127.478043 +++ exited with 0 +++
+35118 1793524127.559385 <... clock_nanosleep resumed>NULL) = 0 <0.100122>
+35118 1793524127.559505 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_WRLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000025>
+35118 1793524127.559804 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite-journal>) = 0 <0.000015>
+35118 1793524127.559925 fdatasync(7</dev/shm/voice-sqlite-probe-i54jtlts>) = 0 <0.000015>
+35118 1793524127.560073 fdatasync(6</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite-journal>) = 0 <0.000014>
+35118 1793524127.560243 fdatasync(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>) = 0 <0.000014>
+35118 1793524127.560447 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_RDLCK, l_whence=SEEK_SET, l_start=1073741826, l_len=510}) = 0 <0.000019>
+35118 1793524127.560530 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=1073741824, l_len=2}) = 0 <0.000016>
+35118 1793524127.560610 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts/lock-control.sqlite>, F_SETLK, {l_type=F_UNLCK, l_whence=SEEK_SET, l_start=0, l_len=0}) = 0 <0.000016>
+35118 1793524127.562031 fcntl(4</dev/shm/voice-sqlite-probe-i54jtlts>, F_DUPFD_CLOEXEC, 0) = 5</dev/shm/voice-sqlite-probe-i54jtlts> <0.000020>
+35118 1793524127.562233 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts>, F_GETFL) = 0x20800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE) <0.000102>
+35118 1793524127.562397 fcntl(5</dev/shm/voice-sqlite-probe-i54jtlts>, F_SETFD, FD_CLOEXEC) = 0 <0.000016>
+35118 1793524127.563143 fcntl(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>, F_DUPFD_CLOEXEC, 0) = 5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5> <0.000016>
+35118 1793524127.563268 fcntl(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>, F_GETFL) = 0x20800 (flags O_RDONLY|O_NONBLOCK|O_LARGEFILE) <0.000015>
+35118 1793524127.563349 fcntl(5</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5>, F_SETFD, FD_CLOEXEC) = 0 <0.000015>
+35118 1793524127.601049 +++ exited with 0 +++

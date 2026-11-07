@@ -30,6 +30,8 @@ Env: OLLAMA_API_KEY etc. in ~/.voice-agent-env (chmod 600, outside the repo).
 """
 import asyncio
 import os
+import time
+from contextlib import suppress
 
 from dotenv import load_dotenv
 
@@ -40,6 +42,7 @@ from loguru import logger
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
 from pipecat.frames.frames import TTSSpeakFrame
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.worker import PipelineParams, PipelineWorker
@@ -54,22 +57,35 @@ from pipecat.services.nvidia.stt import NvidiaSTTService
 from pipecat.services.nvidia.tts import NvidiaTTSService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.transports.base_output import BaseOutputTransport
+from pipecat.processors.frame_processor import FrameDirection
 from pipecat.transports.base_transport import BaseTransport, TransportParams
 from pipecat.workers.runner import WorkerRunner
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
+from pipecat.observers.user_bot_latency_observer import UserBotLatencyObserver
+from turn_timing import TurnTimingObserver
 
 load_dotenv(override=True)
 
+from queued_logging import configure_queued_logging
+
+QUEUED_LOGGING = configure_queued_logging()
+
 SPEECH_MODE = os.getenv("SPEECH_MODE", "direct")
 ASR_SERVER = os.getenv("ASR_SERVER", "192.168.5.11:50051")
+ASR_BACKEND = os.getenv("ASR_BACKEND", "nemotron").strip().lower()
 TTS_SERVER = os.getenv("TTS_SERVER", "192.168.5.11:50052")
 TTS_VOICE = os.getenv("TTS_VOICE", "0")
+TTS_BACKEND = os.getenv("TTS_BACKEND", "magpie").strip().lower()
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "https://ollama.com/v1")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:31b")
+ORCHESTRATION_MODE = os.getenv("ORCHESTRATION_MODE", "single").strip().lower()
 
-# Pi-local VAD policy: with the Jetson ASR container at stop_history_eou_ms=320,
-# finals arrive ~0.6s after speech end. 0.8s VAD silence lets the final land
-# inside the turn.
+# The private environment selects the active endpointing experiment.
 VAD_STOP_SECS = float(os.getenv("VAD_STOP_SECS", "0.8"))
+SMART_TURN_CPU_COUNT = int(os.getenv("SMART_TURN_CPU_COUNT", "1"))
+if SMART_TURN_CPU_COUNT < 1:
+    raise ValueError("SMART_TURN_CPU_COUNT must be at least 1")
 
 # Audio transport: "webrtc" (browser on the ThinkPad) or "local" (the Pi's own
 # sound card). Device specs are matched against PyAudio device names; use
@@ -89,16 +105,22 @@ AUDIO_OUTPUT_IMPL = os.getenv("AUDIO_OUTPUT_IMPL", "pacat").strip().lower()
 PACAT_LATENCY_MS = int(os.getenv("PACAT_LATENCY_MS", "150"))
 
 GREETING_TEXT = (
-    "Hello. This is the Raspberry Pi voice agent, "
-    "connected to Ollama Cloud. Say something and I will answer."
+    "Hello. This is your Raspberry Pi voice agent. "
+    "Say something and I will answer."
 )
+if ORCHESTRATION_MODE == "local_vcm":
+    from local_vcm import VOICE_OF_PI_GREETING
+    GREETING_TEXT = VOICE_OF_PI_GREETING
 
 
-def build_speech_services():
+
+def build_speech_services(*, timing_observer=None):
     """Return (stt, tts) for the configured SPEECH_MODE.
 
     Modes:
-      direct — Jetson Nemotron ASR + Magpie TTS over gRPC (streaming).
+      direct — independently select ASR_BACKEND and TTS_BACKEND.
+               Defaults are Nemotron ASR and Magpie TTS over Jetson gRPC.
+               dgx_qwen2_audio ASR is VAD-segmented; dgx_qwen TTS streams PCM.
       mcp    — same Jetson endpoints through local MCP servers (offline,
                per-utterance/per-sentence; smoother onsets, higher latency).
       deepgram — Deepgram cloud STT + TTS over WebSockets (streaming, needs
@@ -127,22 +149,38 @@ def build_speech_services():
         )
         return stt, tts
 
-    logger.info("Speech mode: direct (Jetson Riva gRPC streaming)")
-    stt = NvidiaSTTService(
-        server=ASR_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=16000,
-        audio_channel_count=1,
-        stop_history=320,
-    )
-    tts = NvidiaTTSService(
-        server=TTS_SERVER,
-        use_ssl=False,
-        model_function_map={},
-        sample_rate=22050,
-        voice_id=TTS_VOICE,
-    )
+    if ASR_BACKEND == "dgx_qwen2_audio":
+        from qwen_audio_stt import QwenAudioSTTService
+        stt = QwenAudioSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: DGX Qwen2-Audio, model={}", stt.model_name)
+    elif ASR_BACKEND == "voxtral_mini":
+        from voxtral_stt import VoxtralSTTService
+        stt = VoxtralSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: Jetson Voxtral Mini, model={}", stt.model_name)
+    elif ASR_BACKEND == "whisper":
+        from whisper_stt import WhisperSTTService
+        stt = WhisperSTTService(timing_observer=timing_observer)
+        logger.info("ASR backend: Jetson whisper.cpp, model={}", stt.model_name)
+    elif ASR_BACKEND == "nemotron":
+        stt = NvidiaSTTService(
+            server=ASR_SERVER, use_ssl=False, model_function_map={},
+            sample_rate=16000, audio_channel_count=1, stop_history=int(os.getenv("NEMOTRON_STOP_HISTORY_MS", "600")))
+    else:
+        raise ValueError("ASR_BACKEND must be nemotron, dgx_qwen2_audio, voxtral_mini or whisper")
+    if TTS_BACKEND == "dgx_qwen":
+        from qwen_tts import QwenTTSService
+        tts = QwenTTSService(timing_observer=timing_observer)
+        logger.info("TTS backend: DGX Qwen, model={}, voice={}", tts.model_name, tts.voice_name)
+    elif TTS_BACKEND == "mac_qwen":
+        from mac_qwen_tts import MacQwenTTSService
+        tts = MacQwenTTSService(timing_observer=timing_observer)
+        logger.info("TTS backend: Mac Qwen, model={}, voice={}", tts.model_name, tts.voice_name)
+    elif TTS_BACKEND == "magpie":
+        tts = NvidiaTTSService(
+            server=TTS_SERVER, use_ssl=False, model_function_map={},
+            sample_rate=22050, voice_id=TTS_VOICE)
+    else:
+        raise ValueError("TTS_BACKEND must be magpie, dgx_qwen or mac_qwen")
     return stt, tts
 
 
@@ -193,6 +231,20 @@ class PacatAudioOutput(BaseOutputTransport):
     def __init__(self, py_audio, params):
         super().__init__(params)
         self._proc = None
+        self.timing_observer = None
+        self._last_playback_context = None
+        self._last_write_at = float("-inf")
+        self._interrupt_at = 0.0
+        self._interrupt_burst = -1
+        self._interrupt_pending = 0.0
+        # Backchannel echo gate: measured playback state (never frame events).
+        self._playback_pending_s = 0.0
+        self._playback_bytes_at = 0.0
+        self.playback_busy_until = 0.0
+        # Backchannel burst id: increments each time playback goes
+        # idle->active, so the backchannel can tell "filler played, silence
+        # since" from "the real answer played" without frame-event guessing.
+        self._playback_burst_id = 0
 
     async def setup(self, setup):
         # Run BaseOutputTransport.setup for resampler/chunking init, but do NOT
@@ -219,12 +271,94 @@ class PacatAudioOutput(BaseOutputTransport):
         await BaseOutputTransport.start(self, frame)
         await self.set_transport_ready(frame)
 
+    async def process_frame(self, frame, direction=FrameDirection.DOWNSTREAM):
+        if type(frame).__name__ == "InterruptionFrame":
+            now = time.monotonic()
+            pending = max(0.0, self._playback_pending_s -
+                          (now - self._playback_bytes_at))
+            if self.timing_observer:
+                self.timing_observer.record(
+                    "bc_interrupt", pending_s=round(pending, 3),
+                    busy_until_in_ms=round(max(0.0, self.playback_busy_until - now) * 1000),
+                    burst_id=self._playback_burst_id)
+            # remember for the post-interrupt drain measurement
+            self._interrupt_at = now
+            self._interrupt_burst = self._playback_burst_id
+            self._interrupt_pending = pending
+            # Hard flush: SIGKILL pacat so buffered-but-unplayed audio dies
+            # with the pipe. Respawned lazily on the next write.
+            if pending > 0.05 and self._proc is not None:
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_flush", killed_pending_s=round(pending, 3))
+                try:
+                    self._proc.kill()
+                    await self._proc.wait()
+                    if self.timing_observer:
+                        self.timing_observer.record(
+                            "bc_flush_pacat_gone", exit_code=self._proc.returncode)
+                except Exception:
+                    pass
+                self._proc = None
+        return await super().process_frame(frame, direction)
+
+    async def _spawn_pacat(self):
+        self._proc = await asyncio.create_subprocess_exec(
+            "pacat",
+            "--playback",
+            "--raw",
+            "--format=s16le",
+            f"--rate={self.sample_rate}",
+            f"--channels={self._params.audio_out_channels}",
+            f"--latency-msec={PACAT_LATENCY_MS}",
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.DEVNULL,
+        )
+
     async def write_audio_frame(self, frame) -> bool:
         if self._proc is None or self._proc.stdin is None:
-            return False
+            if frame.audio:
+                try:
+                    await self._spawn_pacat()
+                except Exception as exc:
+                    logger.error("pacat respawn failed: {}", exc)
+                    return False
+            else:
+                return False
         try:
             self._proc.stdin.write(frame.audio)
             await self._proc.stdin.drain()
+            now = time.monotonic()
+            # Measured playback accounting: a DRAINING bucket. Each write
+            # adds seconds of pending audio; wall-clock time drains it.
+            # (Run 079d8d8b7f bug: a cumulative byte total made
+            # playback_busy_until creep forward forever, blocking fillers.)
+            n = len(frame.audio)
+            rate = self.sample_rate or 24000
+            channels = self._params.audio_out_channels or 1
+            elapsed = now - self._playback_bytes_at
+            pending = max(0.0, self._playback_pending_s - elapsed)
+            if pending <= 0.001 and n > 0:
+                self._playback_burst_id += 1
+            pending += n / (rate * channels * 2)
+            self._playback_pending_s = pending
+            self._playback_bytes_at = now
+            self.playback_busy_until = now + pending + 0.15
+            if (self._interrupt_at and now - self._interrupt_at > 0.9
+                    and (self._playback_burst_id > self._interrupt_burst or pending <= 0.001)):
+                if self.timing_observer:
+                    self.timing_observer.record(
+                        "bc_interrupt_drain", after_interrupt_s=round(now - self._interrupt_at, 3),
+                        predicted_pending_s=round(self._interrupt_pending, 3),
+                        new_burst=self._playback_burst_id > self._interrupt_burst)
+                self._interrupt_at = 0.0
+            context_id = getattr(frame, "context_id", None)
+            first = (context_id is not None and context_id != self._last_playback_context) or (context_id is None and now - self._last_write_at > 0.5)
+            self._last_write_at = now
+            self._last_playback_context = context_id
+            if first and self.timing_observer:
+                self.timing_observer.playback_write(context_id)
             return True
         except (BrokenPipeError, ConnectionResetError):
             logger.error("pacat pipe closed; playback stopped")
@@ -288,54 +422,198 @@ def build_local_transport() -> BaseTransport:
 
 async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> None:
     logger.info(f"Starting aaf-ai231-me3 voice agent (SPEECH_MODE={SPEECH_MODE})")
+    experiment = os.getenv("VAD_EXPERIMENT", f"vad-{VAD_STOP_SECS}")
+    timing = TurnTimingObserver(experiment=experiment)
+    from stall_diagnostics import Diagnostics
+    diagnostics = Diagnostics.from_env("pi", run=timing.run)
+    timing.diagnostics = diagnostics
+    from vcm_server_location import build_vcm_server
+    vcm_server = build_vcm_server(os.path.dirname(os.path.abspath(__file__)), diagnostics=diagnostics)
+    timing.record("configuration", vad_stop_secs=VAD_STOP_SECS, transport=TRANSPORT_MODE,
+                  smart_turn_cpu_count=SMART_TURN_CPU_COUNT, orchestration_mode=ORCHESTRATION_MODE,
+                  vcm_model_host=os.getenv("LOCAL_VCM_MODEL_HOST", "thinkpad") if ORCHESTRATION_MODE == "local_vcm" else None,
+                  router_model=os.getenv("ROUTER_MODEL", "llama" if ORCHESTRATION_MODE == "local_vcm" else "jev") if ORCHESTRATION_MODE in {"local_vcm", "two_brain_plusjev"} else None,
+                  laya_fallback_policy=os.getenv("LAYA_FALLBACK_POLICY", "clarify") if ORCHESTRATION_MODE == "local_vcm" and os.getenv("ROUTER_MODEL") == "laya" else None,
+                  classifier_timeout_s=float(os.getenv("LAYA_ROUTER_TIMEOUT_SECS", "2")) if os.getenv("ROUTER_MODEL") == "laya" else None,
+                  cloud_escalation=ORCHESTRATION_MODE == "two_brain_plusjev",
+                  asr_backend=ASR_BACKEND if SPEECH_MODE == "direct" else SPEECH_MODE,
+                  asr_model=(os.getenv("DGX_ASR_MODEL", "Qwen/Qwen2-Audio-7B-Instruct") if ASR_BACKEND == "dgx_qwen2_audio"
+                             else os.getenv("VOXTRAL_MODEL", "mistralai/Voxtral-Mini-3B-2507") if ASR_BACKEND == "voxtral_mini" else None),
+                  small_llm_primary_model=os.getenv("SMALL_LLM_PRIMARY_MODEL"),
+                  tts_backend=TTS_BACKEND if SPEECH_MODE == "direct" else SPEECH_MODE,
+                  tts_model=(os.getenv("DGX_TTS_MODEL", "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice") if TTS_BACKEND == "dgx_qwen"
+                             else "qwen3-tts-customvoice-mlx-4bit" if TTS_BACKEND == "mac_qwen" else None),
+                  tts_voice=(os.getenv("DGX_TTS_VOICE", "vivian") if TTS_BACKEND == "dgx_qwen"
+                             else os.getenv("MAC_TTS_VOICE", "Aiden") if TTS_BACKEND == "mac_qwen" else TTS_VOICE),
+                  diagnostics_dir=str(diagnostics.path.parent) if diagnostics else None,
+                  queued_logging=QUEUED_LOGGING,
+                  vcm_tool_server_host=vcm_server.host, vcm_tool_transport=vcm_server.transport,
+                  vcm_state_backend=vcm_server.state_backend,
+                  pulse_source=os.getenv("PULSE_SOURCE"), pulse_sink=os.getenv("PULSE_SINK"),
+                  pacat_latency_ms=PACAT_LATENCY_MS if TRANSPORT_MODE == "local" else None)
+    if isinstance(transport.output(), PacatAudioOutput):
+        transport.output().timing_observer = timing
+    latency = UserBotLatencyObserver()
 
-    ollama_key = os.getenv("OLLAMA_API_KEY")
-    llm = OpenAILLMService(
-        api_key=ollama_key,
-        base_url=OLLAMA_BASE_URL,
-        settings=OpenAILLMService.Settings(
-            model=OLLAMA_MODEL,
-            system_instruction=(
-                "You are a friendly voice assistant running on a Raspberry "
-                "Pi. Keep replies short (1-3 spoken sentences), no lists or "
-                "emojis, and speak naturally. You have tools available: when "
-                "the user asks for weather, time, timers, alarms, reminders, "
-                "music, radio, lights, thermostat, or messaging, call the "
-                "matching tool and then briefly speak its result. Never read "
-                "out code or URLs."
-            ),
-        ),
-    )
+    @latency.event_handler("on_latency_measured")
+    async def on_latency_measured(observer, seconds):
+        timing.record("native_user_bot_latency", seconds=seconds)
 
     # LLM tools via MCP: the voice-agent command tools server (M5). The
     # connection lives for the bot's lifetime; Pipecat closes it at teardown.
     from pipecat.services.mcp_service import MCPClient
-    from mcp import StdioServerParameters
 
-    tools_mcp = MCPClient(
-        server_params=StdioServerParameters(
-            command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
-            args=[os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_servers", "voice_tools_mcp_server.py")],
-        )
+    client_class = MCPClient
+    client_options = {}
+    if diagnostics:
+        from profiled_mcp import ProfiledMCPClient
+        client_class = ProfiledMCPClient
+        client_options["diagnostics"] = diagnostics
+
+    tools_mcp = client_class(
+        server_params=vcm_server.server_params(),
+        **client_options,
     )
     voice_tools = await tools_mcp.tools()
+    logger.info("VCM tool server: host={}, transport={}", vcm_server.host, vcm_server.transport)
+    if ORCHESTRATION_MODE == "local_vcm":
+        from pipecat.adapters.schemas.tools_schema import ToolsSchema
+        from orchestration import FAST_TOOLS
+        voice_tools = ToolsSchema([tool for tool in voice_tools.standard_tools if tool.name in FAST_TOOLS])
+    if os.getenv("ONIT_TOOLS_ENABLED", "1").strip() == "1":
+        # Optional second MCP server: the lean OnIt knowledge tools (search,
+        # fetch_content). Register them for the escalation LLM so the
+        # `knowledge` group has real web access. Non-fatal if it can't start.
+        try:
+            from mcp import StdioServerParameters
+            from pipecat.adapters.schemas.tools_schema import ToolsSchema
+            onit_server = StdioServerParameters(
+                command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
+                args=[os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "mcp_servers", "onit_tools_mcp_server.py")],
+                env={"PATH": os.getenv("PATH", "/usr/bin:/bin")},
+            )
+            onit_mcp = client_class(server_params=onit_server, **client_options)
+            onit_tools = await onit_mcp.tools()
+            existing = {tool.name for tool in voice_tools.standard_tools}
+            voice_tools = ToolsSchema(
+                list(voice_tools.standard_tools)
+                + [tool for tool in onit_tools.standard_tools if tool.name not in existing]
+            )
+            logger.info("OnIt knowledge tools registered: {}", [tool.name for tool in onit_tools.standard_tools])
+        except Exception as exc:
+            logger.warning("OnIt knowledge tools unavailable: {}", type(exc).__name__)
+    if os.getenv("WORKSPACE_TOOLS_ENABLED", "1").strip() == "1":
+        # Third MCP server: the workspace tools (files, shell, github) for the
+        # `workspace` group, which the router escalates to the cloud LLM.
+        # Non-fatal if it can't start.
+        try:
+            from mcp import StdioServerParameters
+            from pipecat.adapters.schemas.tools_schema import ToolsSchema
+            workspace_server = StdioServerParameters(
+                command=os.getenv("VENV_PY", "/home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python"),
+                args=[os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "mcp_servers", "workspace_tools_mcp_server.py")],
+                env={"PATH": os.getenv("PATH", "/usr/bin:/bin")},
+            )
+            workspace_mcp = client_class(server_params=workspace_server, **client_options)
+            workspace_tools = await workspace_mcp.tools()
+            existing = {tool.name for tool in voice_tools.standard_tools}
+            voice_tools = ToolsSchema(
+                list(voice_tools.standard_tools)
+                + [tool for tool in workspace_tools.standard_tools if tool.name not in existing]
+            )
+            logger.info("Workspace tools registered: {}", [tool.name for tool in workspace_tools.standard_tools])
+        except Exception as exc:
+            logger.warning("Workspace tools unavailable: {}", type(exc).__name__)
     logger.info(f"LLM tools registered: {[f.name for f in voice_tools.standard_tools]}")
 
-    stt, tts = build_speech_services()
+    stt, tts = build_speech_services(timing_observer=timing)
+
+    # Speculative Laya: classify partial audio while the user still speaks, so
+    # local-tool commands skip the serial ASR->classify wait. Toggle with
+    # SPECULATIVE_LAYA=0; a wrong speculation cannot fire a wrong tool (tier-2
+    # grammar still validates against the final transcript).
+    spec_layer = None
+    spec_tap = None
+    if (ORCHESTRATION_MODE == "two_brain_plusjev"
+            and os.getenv("SPECULATIVE_LAYA", "1").strip() == "1"):
+        try:
+            from speculative_laya import SpeculativeLaya
+            from spec_tap import SpecTap
+            spec_layer = SpeculativeLaya(timing=timing)
+            spec_tap = SpecTap(spec_layer, timing_observer=timing, stt=stt)
+            logger.info("Speculative Laya enabled (min_audio_s={})", spec_layer.min_audio_s)
+        except Exception as exc:
+            logger.warning("Speculative Laya unavailable: {}", type(exc).__name__)
+            spec_layer = None
 
     context = LLMContext(tools=voice_tools)
     user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
         context,
         user_params=LLMUserAggregatorParams(
-            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=VAD_STOP_SECS))
+            vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=VAD_STOP_SECS)),
+            user_turn_strategies=UserTurnStrategies(stop=[
+                TurnAnalyzerUserTurnStopStrategy(
+                    turn_analyzer=LocalSmartTurnAnalyzerV3(cpu_count=SMART_TURN_CPU_COUNT)
+                )
+            ]),
         ),
     )
 
+    if ORCHESTRATION_MODE not in {"single", "two_brain_plusjev", "local_vcm"}:
+        raise ValueError(f"Unknown ORCHESTRATION_MODE: {ORCHESTRATION_MODE}")
+    if ORCHESTRATION_MODE == "local_vcm":
+        from local_vcm import LocalVCMProcessor
+        llm_stages = [LocalVCMProcessor(tools_mcp, timing_observer=timing)]
+        logger.info("Local VCM trial: host={}; Jev, other model hosts, and GLM disabled",
+                    llm_stages[0].model_host)
+    else:
+        ollama_key = os.getenv("OLLAMA_API_KEY")
+        llm = OpenAILLMService(
+            api_key=ollama_key,
+            base_url=OLLAMA_BASE_URL,
+            settings=OpenAILLMService.Settings(
+                model=OLLAMA_MODEL,
+                system_instruction=(
+                    "You are a friendly voice assistant running on a Raspberry "
+                    "Pi. Keep replies short (1-3 spoken sentences), no lists or "
+                    "emojis, and speak naturally. You have tools available: when "
+                    "the user asks for weather, time, timers, alarms, reminders, "
+                    "music, lights, thermostat, or messaging, call the "
+                    "matching tool and then briefly speak its result. Never read "
+                    "out code or URLs. Radio playback is not supported."
+                ),
+            ),
+        )
+
+        llm_stages = [llm]
+        if ORCHESTRATION_MODE == "two_brain_plusjev":
+            from orchestration import TwoBrainRouter
+            router = TwoBrainRouter(tools_mcp, timing_observer=timing)
+            if spec_layer is not None:
+                router.spec_layer = spec_layer
+            llm_stages.insert(0, router)
+            logger.info("Two-brain routing enabled: classifier={}, GLM={}", llm_stages[0].router_model, OLLAMA_MODEL)
+
+    bc_processor = None
+    if os.getenv("BACKCHANNEL", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        try:
+            from backchannel import BackchannelProcessor
+            bc_processor = BackchannelProcessor(
+                timing_observer=timing, output_transport=transport.output())
+            logger.info("Backchannel processor enabled")
+        except Exception as exc:
+            logger.warning("Backchannel processor unavailable: {}", type(exc).__name__)
+            bc_processor = None
+
     pipeline = Pipeline([
         transport.input(),
+        *( [spec_tap] if spec_layer is not None else [] ),
         stt,
+        *( [bc_processor] if bc_processor is not None else [] ),
         user_aggregator,
-        llm,
+        *llm_stages,
         tts,
         transport.output(),
         assistant_aggregator,
@@ -344,7 +622,8 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
     worker = PipelineWorker(
         pipeline,
         params=PipelineParams(enable_metrics=True, enable_usage_metrics=True),
-        observers=[],
+        observers=[timing, latency],
+        idle_timeout_secs=None if TRANSPORT_MODE == "local" else 300,
     )
 
     runner = WorkerRunner(handle_sigint=runner_args.handle_sigint)
@@ -377,7 +656,39 @@ async def run_bot(transport: BaseTransport, runner_args: RunnerArguments) -> Non
         logger.info("Client disconnected")
         await runner.cancel()
 
-    await runner.run()
+    if os.getenv("BC_FLUSH_TEST", "0").strip() == "1" and TRANSPORT_MODE == "local":
+        async def _flush_test():
+            out = transport.output()
+            # wait until the greeting is ACTIVELY queued in the pacat pipe
+            # (v1 waited for first write + 1 s, by which time the short
+            # greeting had drained -> pending was 0 and the kill never fired)
+            for _ in range(200):
+                if getattr(out, "_playback_pending_s", 0.0) > 1.0:
+                    break
+                await asyncio.sleep(0.1)
+            from pipecat.frames.frames import InterruptionFrame
+            await out.process_frame(InterruptionFrame(), FrameDirection.DOWNSTREAM)
+            timing.record("bc_flush_test", stage="interrupt_pushed")
+            await asyncio.sleep(2.0)
+            await worker.queue_frames([TTSSpeakFrame(
+                text="Flush test complete. If you hear this, respawn works.")])
+            timing.record("bc_flush_test", stage="respawn_speech_queued")
+
+        asyncio.create_task(_flush_test())
+        logger.info("BC_FLUSH_TEST armed: interrupt at greeting+1s, respawn check at +3s")
+
+    monitor = asyncio.create_task(diagnostics.monitor_loop(lambda: timing.turn)) if diagnostics else None
+    try:
+        await runner.run()
+    finally:
+        if monitor:
+            monitor.cancel()
+            with suppress(asyncio.CancelledError):
+                await monitor
+        if QUEUED_LOGGING:
+            await logger.complete()
+        if diagnostics:
+            diagnostics.close()
 
 
 async def bot(runner_args: RunnerArguments):

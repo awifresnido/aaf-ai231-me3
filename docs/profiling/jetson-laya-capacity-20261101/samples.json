@@ -1,0 +1,1649 @@
+{
+  "started_at": 1793545810.680872,
+  "samples": [
+    {
+      "at": 1793545810.949519,
+      "elapsed_s": 0.2686479319963837,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 89300,
+        "MemAvailable": 1707060,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:10 RAM 5683/7485MB (lfb 5x2MB) SWAP 3/12288MB (cached 0MB) CPU [4%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@53.562C/53.562C soc2@52C/52C soc0@50.281C/50.281C gpu@52.343C/52.343C tj@53.562C/53.562C soc1@52.593C/52.593C VDD_IN 5971mW/5971mW/5971mW VDD_CPU_GPU_CV 1152mW/1152mW/1152mW VDD_SOC 1629mW/1629mW/1629mW"
+    },
+    {
+      "at": 1793545811.2055595,
+      "elapsed_s": 0.5246891369970399,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86776,
+        "MemAvailable": 1704536,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:11 RAM 5685/7485MB (lfb 4x2MB) SWAP 3/12288MB (cached 0MB) CPU [20%@729,11%@729,25%@729,26%@729,8%@729,0%@729] GR3D_FREQ 99% cpu@53.375C/53.562C soc2@52.062C/52.062C soc0@50.531C/50.531C gpu@52.468C/52.468C tj@53.375C/53.562C soc1@52.656C/52.656C VDD_IN 6319mW/6145mW/6319mW VDD_CPU_GPU_CV 1388mW/1270mW/1388mW VDD_SOC 1669mW/1649mW/1669mW"
+    },
+    {
+      "at": 1793545811.4613972,
+      "elapsed_s": 0.7805259199958527,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86992,
+        "MemAvailable": 1704984,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:11 RAM 5685/7485MB (lfb 4x2MB) SWAP 3/12288MB (cached 0MB) CPU [3%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@53.187C/53.562C soc2@52.062C/52.062C soc0@50.375C/50.531C gpu@52.687C/52.687C tj@53.187C/53.562C soc1@52.562C/52.656C VDD_IN 5971mW/6087mW/6319mW VDD_CPU_GPU_CV 1192mW/1244mW/1388mW VDD_SOC 1589mW/1629mW/1669mW"
+    },
+    {
+      "at": 1793545811.7169268,
+      "elapsed_s": 1.0360562299974845,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86992,
+        "MemAvailable": 1704984,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:11 RAM 5685/7485MB (lfb 4x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 7% cpu@53.312C/53.562C soc2@52C/52.062C soc0@50.25C/50.531C gpu@52.625C/52.687C tj@53.312C/53.562C soc1@52.875C/52.875C VDD_IN 6011mW/6068mW/6319mW VDD_CPU_GPU_CV 1192mW/1231mW/1388mW VDD_SOC 1629mW/1629mW/1669mW"
+    },
+    {
+      "at": 1793545811.9725606,
+      "elapsed_s": 1.2916896890019416,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86992,
+        "MemAvailable": 1704984,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:11 RAM 5685/7485MB (lfb 4x2MB) SWAP 3/12288MB (cached 0MB) CPU [3%@729,3%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 7% cpu@53.187C/53.562C soc2@52.093C/52.093C soc0@50.531C/50.531C gpu@52.437C/52.687C tj@53.187C/53.562C soc1@52.625C/52.875C VDD_IN 5772mW/6009mW/6319mW VDD_CPU_GPU_CV 1033mW/1191mW/1388mW VDD_SOC 1592mW/1622mW/1669mW"
+    },
+    {
+      "at": 1793545812.2286513,
+      "elapsed_s": 1.5477800849985215,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86992,
+        "MemAvailable": 1704984,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:12 RAM 5685/7485MB (lfb 4x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,3%@729,3%@729,3%@729,0%@729] GR3D_FREQ 5% cpu@53.406C/53.562C soc2@52.062C/52.093C soc0@50.312C/50.531C gpu@52.437C/52.687C tj@53.406C/53.562C soc1@52.562C/52.875C VDD_IN 5891mW/5989mW/6319mW VDD_CPU_GPU_CV 1112mW/1178mW/1388mW VDD_SOC 1589mW/1616mW/1669mW"
+    },
+    {
+      "at": 1793545812.4846342,
+      "elapsed_s": 1.8037639899994247,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82768,
+        "MemAvailable": 1700932,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:12 RAM 5689/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,0%@729,0%@729,0%@729,34%@729] GR3D_FREQ 99% cpu@53.343C/53.562C soc2@52.156C/52.156C soc0@50.25C/50.531C gpu@52.843C/52.843C tj@53.343C/53.562C soc1@52.75C/52.875C VDD_IN 6955mW/6127mW/6955mW VDD_CPU_GPU_CV 1745mW/1259mW/1745mW VDD_SOC 1748mW/1635mW/1748mW"
+    },
+    {
+      "at": 1793545812.7404573,
+      "elapsed_s": 2.059586743998807,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82768,
+        "MemAvailable": 1700932,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:12 RAM 5689/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [3%@729,0%@729,3%@729,3%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@53.562C/53.562C soc2@52.25C/52.25C soc0@50.375C/50.531C gpu@53C/53C tj@53.562C/53.562C soc1@52.562C/52.875C VDD_IN 7777mW/6333mW/7777mW VDD_CPU_GPU_CV 2218mW/1379mW/2218mW VDD_SOC 1864mW/1664mW/1864mW"
+    },
+    {
+      "at": 1793545812.9963624,
+      "elapsed_s": 2.315492183995957,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82768,
+        "MemAvailable": 1700932,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:12 RAM 5689/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,0%@729,11%@729,3%@729,8%@729] GR3D_FREQ 99% cpu@53.625C/53.625C soc2@52.25C/52.25C soc0@50.375C/50.531C gpu@53C/53C tj@53.625C/53.625C soc1@52.625C/52.875C VDD_IN 8253mW/6547mW/8253mW VDD_CPU_GPU_CV 2452mW/1498mW/2452mW VDD_SOC 1941mW/1694mW/1941mW"
+    },
+    {
+      "at": 1793545813.252122,
+      "elapsed_s": 2.5712511019955855,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86940,
+        "MemAvailable": 1695580,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:13 RAM 5694/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,3%@729,7%@729,0%@729,4%@729,4%@729] GR3D_FREQ 99% cpu@53.468C/53.625C soc2@52.25C/52.25C soc0@50.531C/50.531C gpu@53.187C/53.187C tj@53.593C/53.625C soc1@52.75C/52.875C VDD_IN 8636mW/6756mW/8636mW VDD_CPU_GPU_CV 2689mW/1617mW/2689mW VDD_SOC 2020mW/1727mW/2020mW"
+    },
+    {
+      "at": 1793545813.5081897,
+      "elapsed_s": 2.8273187410013634,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86688,
+        "MemAvailable": 1695328,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:13 RAM 5694/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,7%@729,3%@729,0%@729,4%@729,0%@729] GR3D_FREQ 97% cpu@53.906C/53.906C soc2@52.468C/52.468C soc0@50.468C/50.531C gpu@53.593C/53.593C tj@53.906C/53.906C soc1@52.625C/52.875C VDD_IN 9270mW/6984mW/9270mW VDD_CPU_GPU_CV 2882mW/1732mW/2882mW VDD_SOC 2175mW/1768mW/2175mW"
+    },
+    {
+      "at": 1793545813.7634988,
+      "elapsed_s": 3.0826282130001346,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80640,
+        "MemAvailable": 1689280,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:13 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [18%@1267,13%@1267,18%@1267,7%@1267,3%@729,4%@729] GR3D_FREQ 99% cpu@53.718C/53.906C soc2@52.531C/52.531C soc0@50.375C/50.531C gpu@53.343C/53.593C tj@53.718C/53.906C soc1@52.843C/52.875C VDD_IN 9729mW/7213mW/9729mW VDD_CPU_GPU_CV 3159mW/1851mW/3159mW VDD_SOC 2214mW/1805mW/2214mW"
+    },
+    {
+      "at": 1793545814.019411,
+      "elapsed_s": 3.338541263998195,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80504,
+        "MemAvailable": 1689144,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:14 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [12%@729,12%@729,8%@729,15%@729,7%@729,4%@729] GR3D_FREQ 99% cpu@53.531C/53.906C soc2@52.468C/52.531C soc0@50.656C/50.656C gpu@53.812C/53.812C tj@53.812C/53.906C soc1@52.718C/52.875C VDD_IN 9428mW/7383mW/9729mW VDD_CPU_GPU_CV 3119mW/1949mW/3159mW VDD_SOC 2135mW/1830mW/2214mW"
+    },
+    {
+      "at": 1793545814.2754261,
+      "elapsed_s": 3.594554852999863,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:14 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [8%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 97% cpu@53.687C/53.906C soc2@52.593C/52.593C soc0@50.562C/50.656C gpu@53.75C/53.812C tj@53.75C/53.906C soc1@52.687C/52.875C VDD_IN 9349mW/7524mW/9729mW VDD_CPU_GPU_CV 3040mW/2027mW/3159mW VDD_SOC 2135mW/1852mW/2214mW"
+    },
+    {
+      "at": 1793545814.5311801,
+      "elapsed_s": 3.850309021996509,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:14 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [4%@729,0%@729,7%@729,0%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@53.562C/53.906C soc2@52.531C/52.593C soc0@50.687C/50.687C gpu@53.593C/53.812C tj@53.593C/53.906C soc1@52.875C/52.875C VDD_IN 9151mW/7632mW/9729mW VDD_CPU_GPU_CV 3001mW/2092mW/3159mW VDD_SOC 2099mW/1869mW/2214mW"
+    },
+    {
+      "at": 1793545814.7867727,
+      "elapsed_s": 4.105900720998761,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:14 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [8%@729,3%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 95% cpu@53.843C/53.906C soc2@52.625C/52.625C soc0@50.625C/50.687C gpu@53.5C/53.812C tj@53.843C/53.906C soc1@52.718C/52.875C VDD_IN 9270mW/7735mW/9729mW VDD_CPU_GPU_CV 2961mW/2146mW/3159mW VDD_SOC 2135mW/1885mW/2214mW"
+    },
+    {
+      "at": 1793545815.0425856,
+      "elapsed_s": 4.3617139009948005,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:15 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [11%@729,0%@729,7%@729,0%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@53.625C/53.906C soc2@52.656C/52.656C soc0@50.562C/50.687C gpu@53.406C/53.812C tj@53.875C/53.906C soc1@52.625C/52.875C VDD_IN 9151mW/7818mW/9729mW VDD_CPU_GPU_CV 2922mW/2192mW/3159mW VDD_SOC 2099mW/1898mW/2214mW"
+    },
+    {
+      "at": 1793545815.2981162,
+      "elapsed_s": 4.617244396999013,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:15 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,11%@729,0%@729,0%@729,0%@729] GR3D_FREQ 95% cpu@53.656C/53.906C soc2@52.625C/52.656C soc0@50.687C/50.687C gpu@53.437C/53.812C tj@53.656C/53.906C soc1@52.906C/52.906C VDD_IN 9230mW/7896mW/9729mW VDD_CPU_GPU_CV 2961mW/2234mW/3159mW VDD_SOC 2096mW/1909mW/2214mW"
+    },
+    {
+      "at": 1793545815.5538657,
+      "elapsed_s": 4.872993929995573,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:15 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [11%@729,0%@729,7%@729,3%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@53.937C/53.937C soc2@52.625C/52.656C soc0@50.656C/50.687C gpu@53.343C/53.812C tj@53.937C/53.937C soc1@52.75C/52.906C VDD_IN 9111mW/7960mW/9729mW VDD_CPU_GPU_CV 2882mW/2268mW/3159mW VDD_SOC 2099mW/1919mW/2214mW"
+    },
+    {
+      "at": 1793545815.8095343,
+      "elapsed_s": 5.128662850998808,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:15 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [0%@729,0%@729,4%@729,0%@729,0%@729,0%@729] GR3D_FREQ 98% cpu@53.812C/53.937C soc2@52.656C/52.656C soc0@50.625C/50.687C gpu@53.781C/53.812C tj@53.812C/53.937C soc1@52.906C/52.906C VDD_IN 9151mW/8020mW/9729mW VDD_CPU_GPU_CV 2882mW/2299mW/3159mW VDD_SOC 2099mW/1928mW/2214mW"
+    },
+    {
+      "at": 1793545816.0653248,
+      "elapsed_s": 5.384453054000915,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:16 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [4%@729,3%@729,4%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@53.625C/53.937C soc2@52.718C/52.718C soc0@50.718C/50.718C gpu@53.843C/53.843C tj@53.843C/53.937C soc1@52.843C/52.906C VDD_IN 9032mW/8068mW/9729mW VDD_CPU_GPU_CV 2843mW/2325mW/3159mW VDD_SOC 2060mW/1934mW/2214mW"
+    },
+    {
+      "at": 1793545816.320994,
+      "elapsed_s": 5.640122232995054,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 80560,
+        "MemAvailable": 1689200,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:16 RAM 5700/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [11%@729,3%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@53.843C/53.937C soc2@52.656C/52.718C soc0@50.781C/50.781C gpu@53.5C/53.843C tj@53.843C/53.937C soc1@52.75C/52.906C VDD_IN 8992mW/8110mW/9729mW VDD_CPU_GPU_CV 2808mW/2347mW/3159mW VDD_SOC 2060mW/1940mW/2214mW"
+    },
+    {
+      "at": 1793545816.5770502,
+      "elapsed_s": 5.896179898001719,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 78544,
+        "MemAvailable": 1687188,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:16 RAM 5702/7485MB (lfb 3x2MB) SWAP 3/12288MB (cached 0MB) CPU [21%@729,20%@729,12%@729,40%@729,3%@729,4%@729] GR3D_FREQ 99% cpu@53.687C/53.937C soc2@52.687C/52.718C soc0@50.843C/50.843C gpu@53.718C/53.843C tj@53.718C/53.937C soc1@52.937C/52.937C VDD_IN 8992mW/8148mW/9729mW VDD_CPU_GPU_CV 2966mW/2374mW/3159mW VDD_SOC 1980mW/1942mW/2214mW"
+    },
+    {
+      "at": 1793545816.8327525,
+      "elapsed_s": 6.151881885001785,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 77340,
+        "MemAvailable": 1657212,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:16 RAM 5725/7485MB (lfb 1x4MB) SWAP 3/12288MB (cached 0MB) CPU [11%@1113,8%@1113,8%@1113,8%@1113,3%@729,0%@729] GR3D_FREQ 2% cpu@53.937C/53.937C soc2@52.656C/52.718C soc0@50.687C/50.843C gpu@53.312C/53.843C tj@53.937C/53.937C soc1@52.875C/52.937C VDD_IN 8531mW/8164mW/9729mW VDD_CPU_GPU_CV 2729mW/2389mW/3159mW VDD_SOC 1941mW/1942mW/2214mW"
+    },
+    {
+      "at": 1793545817.0880077,
+      "elapsed_s": 6.4071376329957275,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 203904,
+        "MemAvailable": 989124,
+        "SwapTotal": 12582908,
+        "SwapFree": 12579836
+      },
+      "tegrastats": "11-01-2026 23:10:17 RAM 6354/7485MB (lfb 1x2MB) SWAP 3/12288MB (cached 0MB) CPU [96%@1510,42%@1510,15%@1510,0%@1510,0%@1420,32%@1420] GR3D_FREQ 99% cpu@53.968C/53.968C soc2@52.687C/52.718C soc0@50.718C/50.843C gpu@53.687C/53.843C tj@53.968C/53.968C soc1@53.093C/53.093C VDD_IN 9349mW/8212mW/9729mW VDD_CPU_GPU_CV 3356mW/2427mW/3356mW VDD_SOC 1977mW/1943mW/2214mW"
+    },
+    {
+      "at": 1793545817.3440678,
+      "elapsed_s": 6.663197816997126,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 107944,
+        "MemAvailable": 970208,
+        "SwapTotal": 12582908,
+        "SwapFree": 12557052
+      },
+      "tegrastats": "11-01-2026 23:10:17 RAM 6401/7485MB (lfb 5x2MB) SWAP 25/12288MB (cached 16MB) CPU [34%@883,29%@883,20%@883,4%@883,3%@729,3%@729] GR3D_FREQ 97% cpu@54.281C/54.281C soc2@52.906C/52.906C soc0@50.906C/50.906C gpu@54.062C/54.062C tj@54.281C/54.281C soc1@53C/53.093C VDD_IN 10204mW/8288mW/10204mW VDD_CPU_GPU_CV 3705mW/2477mW/3705mW VDD_SOC 2175mW/1952mW/2214mW"
+    },
+    {
+      "at": 1793545817.599696,
+      "elapsed_s": 6.918825797001773,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 102388,
+        "MemAvailable": 989836,
+        "SwapTotal": 12582908,
+        "SwapFree": 12471292
+      },
+      "tegrastats": "11-01-2026 23:10:17 RAM 6382/7485MB (lfb 9x2MB) SWAP 109/12288MB (cached 89MB) CPU [20%@1344,42%@1344,38%@1344,3%@1344,0%@729,4%@729] GR3D_FREQ 74% cpu@54.093C/54.281C soc2@52.937C/52.937C soc0@50.781C/50.906C gpu@53.968C/54.062C tj@54.406C/54.406C soc1@52.937C/53.093C VDD_IN 10283mW/8362mW/10283mW VDD_CPU_GPU_CV 3784mW/2525mW/3784mW VDD_SOC 2214mW/1962mW/2214mW"
+    },
+    {
+      "at": 1793545817.8556318,
+      "elapsed_s": 7.174761876995035,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 76464,
+        "MemAvailable": 995412,
+        "SwapTotal": 12582908,
+        "SwapFree": 12421884
+      },
+      "tegrastats": "11-01-2026 23:10:17 RAM 6376/7485MB (lfb 8x1MB) SWAP 157/12288MB (cached 131MB) CPU [40%@729,8%@729,39%@729,3%@729,0%@729,11%@729] GR3D_FREQ 95% cpu@54.062C/54.281C soc2@53.062C/53.062C soc0@50.937C/50.937C gpu@53.906C/54.062C tj@54.062C/54.406C soc1@53.156C/53.156C VDD_IN 10125mW/8425mW/10283mW VDD_CPU_GPU_CV 3705mW/2567mW/3784mW VDD_SOC 2175mW/1969mW/2214mW"
+    },
+    {
+      "at": 1793545818.11161,
+      "elapsed_s": 7.430739570001606,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 106432,
+        "MemAvailable": 1007060,
+        "SwapTotal": 12582908,
+        "SwapFree": 12352252
+      },
+      "tegrastats": "11-01-2026 23:10:18 RAM 6364/7485MB (lfb 2x4MB) SWAP 225/12288MB (cached 188MB) CPU [25%@729,0%@729,50%@729,0%@729,32%@729,16%@729] GR3D_FREQ 67% cpu@54C/54.281C soc2@52.875C/53.062C soc0@50.937C/50.937C gpu@53.843C/54.062C tj@54C/54.406C soc1@52.968C/53.156C VDD_IN 9967mW/8478mW/10283mW VDD_CPU_GPU_CV 3627mW/2604mW/3784mW VDD_SOC 2135mW/1975mW/2214mW"
+    },
+    {
+      "at": 1793545818.367747,
+      "elapsed_s": 7.686876589999883,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 93176,
+        "MemAvailable": 1008916,
+        "SwapTotal": 12582908,
+        "SwapFree": 12331772
+      },
+      "tegrastats": "11-01-2026 23:10:18 RAM 6363/7485MB (lfb 1x2MB) SWAP 245/12288MB (cached 205MB) CPU [38%@1036,3%@1036,0%@1036,0%@1036,36%@729,8%@729] GR3D_FREQ 99% cpu@54.187C/54.281C soc2@52.968C/53.062C soc0@50.781C/50.937C gpu@54.25C/54.25C tj@54.25C/54.406C soc1@53.25C/53.25C VDD_IN 9729mW/8520mW/10283mW VDD_CPU_GPU_CV 3514mW/2634mW/3784mW VDD_SOC 2096mW/1979mW/2214mW"
+    },
+    {
+      "at": 1793545818.6228518,
+      "elapsed_s": 7.941982040996663,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 75980,
+        "MemAvailable": 1020804,
+        "SwapTotal": 12582908,
+        "SwapFree": 12211196
+      },
+      "tegrastats": "11-01-2026 23:10:18 RAM 6351/7485MB (lfb 1x2MB) SWAP 363/12288MB (cached 314MB) CPU [68%@1510,22%@1510,0%@1510,4%@1510,42%@960,0%@960] GR3D_FREQ 99% cpu@54.125C/54.281C soc2@53.125C/53.125C soc0@50.968C/50.968C gpu@54.343C/54.343C tj@54.343C/54.406C soc1@53.093C/53.25C VDD_IN 9888mW/8564mW/10283mW VDD_CPU_GPU_CV 3627mW/2666mW/3784mW VDD_SOC 2096mW/1983mW/2214mW"
+    },
+    {
+      "at": 1793545818.8786013,
+      "elapsed_s": 8.197730882995529,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 85712,
+        "MemAvailable": 1028292,
+        "SwapTotal": 12582908,
+        "SwapFree": 12177660
+      },
+      "tegrastats": "11-01-2026 23:10:18 RAM 6344/7485MB (lfb 1x2MB) SWAP 395/12288MB (cached 341MB) CPU [30%@1510,8%@1510,0%@1510,4%@1510,48%@729,0%@729] GR3D_FREQ 76% cpu@54.312C/54.312C soc2@52.968C/53.125C soc0@50.937C/50.968C gpu@54.218C/54.343C tj@54.312C/54.406C soc1@53.031C/53.25C VDD_IN 9888mW/8606mW/10283mW VDD_CPU_GPU_CV 3587mW/2695mW/3784mW VDD_SOC 2096mW/1986mW/2214mW"
+    },
+    {
+      "at": 1793545819.1348188,
+      "elapsed_s": 8.453948500995466,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 113296,
+        "MemAvailable": 1034452,
+        "SwapTotal": 12582908,
+        "SwapFree": 12125436
+      },
+      "tegrastats": "11-01-2026 23:10:19 RAM 6331/7485MB (lfb 1x1MB) SWAP 447/12288MB (cached 387MB) CPU [30%@1190,36%@1190,19%@1190,4%@1190,53%@729,7%@729] GR3D_FREQ 99% cpu@54.375C/54.375C soc2@52.968C/53.125C soc0@51.062C/51.062C gpu@54.062C/54.343C tj@54.375C/54.406C soc1@53.218C/53.25C VDD_IN 10006mW/8648mW/10283mW VDD_CPU_GPU_CV 3705mW/2725mW/3784mW VDD_SOC 2096mW/1990mW/2214mW"
+    },
+    {
+      "at": 1793545819.398166,
+      "elapsed_s": 8.717295731999911,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 169512,
+        "MemAvailable": 1038188,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:19 RAM 6324/7485MB (lfb 3x1MB) SWAP 535/12288MB (cached 464MB) CPU [24%@729,41%@729,38%@729,19%@729,62%@729,12%@729] GR3D_FREQ 99% cpu@54.343C/54.375C soc2@53C/53.125C soc0@51.062C/51.062C gpu@53.781C/54.343C tj@54.343C/54.406C soc1@53.093C/53.25C VDD_IN 9388mW/8670mW/10283mW VDD_CPU_GPU_CV 3435mW/2746mW/3784mW VDD_SOC 1980mW/1989mW/2214mW"
+    },
+    {
+      "at": 1793545819.6470208,
+      "elapsed_s": 8.96614984000189,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 168756,
+        "MemAvailable": 1037972,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:19 RAM 6324/7485MB (lfb 3x1MB) SWAP 535/12288MB (cached 464MB) CPU [3%@729,3%@729,0%@729,3%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@54.281C/54.375C soc2@52.968C/53.125C soc0@50.937C/51.062C gpu@53.875C/54.343C tj@54.281C/54.406C soc1@53.093C/53.25C VDD_IN 8953mW/8678mW/10283mW VDD_CPU_GPU_CV 3085mW/2756mW/3784mW VDD_SOC 1941mW/1988mW/2214mW"
+    },
+    {
+      "at": 1793545819.9030497,
+      "elapsed_s": 9.222179901997151,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 167096,
+        "MemAvailable": 1036424,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:19 RAM 6325/7485MB (lfb 4x4MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,0%@729,36%@729,0%@729,0%@729,8%@729] GR3D_FREQ 99% cpu@54.156C/54.375C soc2@53.062C/53.125C soc0@51.125C/51.125C gpu@53.812C/54.343C tj@54.156C/54.406C soc1@53.218C/53.25C VDD_IN 8794mW/8681mW/10283mW VDD_CPU_GPU_CV 2887mW/2760mW/3784mW VDD_SOC 1941mW/1987mW/2214mW"
+    },
+    {
+      "at": 1793545820.1588778,
+      "elapsed_s": 9.478008070000215,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 165332,
+        "MemAvailable": 1034696,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:20 RAM 6327/7485MB (lfb 4x4MB) SWAP 533/12288MB (cached 462MB) CPU [11%@729,3%@729,0%@729,7%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.406C/54.406C soc2@52.906C/53.125C soc0@50.937C/51.125C gpu@54.156C/54.343C tj@54.406C/54.406C soc1@53.062C/53.25C VDD_IN 8794mW/8684mW/10283mW VDD_CPU_GPU_CV 2768mW/2760mW/3784mW VDD_SOC 1980mW/1986mW/2214mW"
+    },
+    {
+      "at": 1793545820.4148355,
+      "elapsed_s": 9.733965576000628,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 159020,
+        "MemAvailable": 1028656,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:20 RAM 6333/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,3%@729,0%@729,7%@729,8%@729] GR3D_FREQ 99% cpu@54.031C/54.406C soc2@52.937C/53.125C soc0@50.906C/51.125C gpu@54.093C/54.343C tj@54.093C/54.406C soc1@53.281C/53.281C VDD_IN 8794mW/8687mW/10283mW VDD_CPU_GPU_CV 2729mW/2759mW/3784mW VDD_SOC 1980mW/1986mW/2214mW"
+    },
+    {
+      "at": 1793545820.670682,
+      "elapsed_s": 9.989811988001748,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 156752,
+        "MemAvailable": 1027520,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:20 RAM 6334/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,0%@729,4%@729,0%@729,0%@729,7%@729] GR3D_FREQ 99% cpu@54C/54.406C soc2@53.031C/53.125C soc0@51.156C/51.156C gpu@53.875C/54.343C tj@54C/54.406C soc1@53.281C/53.281C VDD_IN 8794mW/8690mW/10283mW VDD_CPU_GPU_CV 2689mW/2757mW/3784mW VDD_SOC 2020mW/1987mW/2214mW"
+    },
+    {
+      "at": 1793545820.92642,
+      "elapsed_s": 10.245548649996636,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 156752,
+        "MemAvailable": 1027520,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:20 RAM 6334/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,7%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.156C/54.406C soc2@52.937C/53.125C soc0@51C/51.156C gpu@53.812C/54.343C tj@54.156C/54.406C soc1@53.062C/53.281C VDD_IN 8715mW/8690mW/10283mW VDD_CPU_GPU_CV 2610mW/2754mW/3784mW VDD_SOC 2020mW/1988mW/2214mW"
+    },
+    {
+      "at": 1793545821.1821222,
+      "elapsed_s": 10.50125052799558,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 156752,
+        "MemAvailable": 1027576,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:21 RAM 6334/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@53.968C/54.406C soc2@52.937C/53.125C soc0@51C/51.156C gpu@53.656C/54.343C tj@53.968C/54.406C soc1@53.281C/53.281C VDD_IN 8636mW/8689mW/10283mW VDD_CPU_GPU_CV 2531mW/2748mW/3784mW VDD_SOC 2020mW/1989mW/2214mW"
+    },
+    {
+      "at": 1793545821.4378443,
+      "elapsed_s": 10.75697255099658,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 156752,
+        "MemAvailable": 1027768,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:21 RAM 6334/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [7%@729,0%@729,0%@729,0%@729,14%@729,0%@729] GR3D_FREQ 99% cpu@54.281C/54.406C soc2@52.968C/53.125C soc0@51.093C/51.156C gpu@53.812C/54.343C tj@54.281C/54.406C soc1@53.125C/53.281C VDD_IN 8755mW/8691mW/10283mW VDD_CPU_GPU_CV 2649mW/2746mW/3784mW VDD_SOC 2060mW/1990mW/2214mW"
+    },
+    {
+      "at": 1793545821.693508,
+      "elapsed_s": 11.012635924998904,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 156752,
+        "MemAvailable": 1027768,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:21 RAM 6334/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,3%@729,0%@729,4%@729,3%@729] GR3D_FREQ 99% cpu@54.031C/54.406C soc2@52.968C/53.125C soc0@50.937C/51.156C gpu@54.25C/54.343C tj@54.312C/54.406C soc1@53.187C/53.281C VDD_IN 8557mW/8687mW/10283mW VDD_CPU_GPU_CV 2570mW/2742mW/3784mW VDD_SOC 2020mW/1991mW/2214mW"
+    },
+    {
+      "at": 1793545821.9501889,
+      "elapsed_s": 11.269326809997438,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 149444,
+        "MemAvailable": 1020652,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:21 RAM 6341/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [12%@729,22%@729,30%@729,29%@729,12%@1113,4%@1113] GR3D_FREQ 99% cpu@54.218C/54.406C soc2@53.125C/53.125C soc0@51.093C/51.156C gpu@54.093C/54.343C tj@54.218C/54.406C soc1@53.281C/53.281C VDD_IN 8953mW/8694mW/10283mW VDD_CPU_GPU_CV 2808mW/2743mW/3784mW VDD_SOC 2060mW/1993mW/2214mW"
+    },
+    {
+      "at": 1793545822.2058592,
+      "elapsed_s": 11.52498784999625,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 149444,
+        "MemAvailable": 1020708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:22 RAM 6341/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [8%@729,3%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 96% cpu@54.375C/54.406C soc2@52.937C/53.125C soc0@51.093C/51.156C gpu@54.062C/54.343C tj@54.375C/54.406C soc1@53.125C/53.281C VDD_IN 8675mW/8693mW/10283mW VDD_CPU_GPU_CV 2729mW/2743mW/3784mW VDD_SOC 1980mW/1992mW/2214mW"
+    },
+    {
+      "at": 1793545822.4616551,
+      "elapsed_s": 11.78078386800189,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 149220,
+        "MemAvailable": 1020556,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:22 RAM 6341/7485MB (lfb 3x4MB) SWAP 533/12288MB (cached 462MB) CPU [8%@729,0%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.031C/54.406C soc2@52.875C/53.125C soc0@51C/51.156C gpu@54.031C/54.343C tj@54.031C/54.406C soc1@53.375C/53.375C VDD_IN 8570mW/8690mW/10283mW VDD_CPU_GPU_CV 2689mW/2742mW/3784mW VDD_SOC 1901mW/1990mW/2214mW"
+    },
+    {
+      "at": 1793545822.718061,
+      "elapsed_s": 12.037190942995949,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 136512,
+        "MemAvailable": 1008212,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:22 RAM 6353/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [34%@729,8%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.125C/54.406C soc2@53.031C/53.125C soc0@51.187C/51.187C gpu@54C/54.343C tj@54.125C/54.406C soc1@53.25C/53.375C VDD_IN 8794mW/8693mW/10283mW VDD_CPU_GPU_CV 2847mW/2744mW/3784mW VDD_SOC 1941mW/1989mW/2214mW"
+    },
+    {
+      "at": 1793545822.974271,
+      "elapsed_s": 12.293400705995737,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001168,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:22 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [11%@729,3%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.218C/54.406C soc2@52.968C/53.125C soc0@51C/51.187C gpu@53.843C/54.343C tj@54.218C/54.406C soc1@53.187C/53.375C VDD_IN 8675mW/8692mW/10283mW VDD_CPU_GPU_CV 2729mW/2744mW/3784mW VDD_SOC 1941mW/1988mW/2214mW"
+    },
+    {
+      "at": 1793545823.229963,
+      "elapsed_s": 12.549092987996119,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001328,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:23 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,4%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.093C/54.406C soc2@53C/53.125C soc0@51.093C/51.187C gpu@53.875C/54.343C tj@54.093C/54.406C soc1@53.312C/53.375C VDD_IN 8715mW/8693mW/10283mW VDD_CPU_GPU_CV 2689mW/2742mW/3784mW VDD_SOC 1980mW/1988mW/2214mW"
+    },
+    {
+      "at": 1793545823.4857187,
+      "elapsed_s": 12.804848544998094,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001328,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:23 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [4%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 98% cpu@54.312C/54.406C soc2@53.156C/53.156C soc0@51.093C/51.187C gpu@54.468C/54.468C tj@54.468C/54.468C soc1@53.218C/53.375C VDD_IN 9309mW/8705mW/10283mW VDD_CPU_GPU_CV 2922mW/2746mW/3784mW VDD_SOC 2135mW/1991mW/2214mW"
+    },
+    {
+      "at": 1793545823.7413049,
+      "elapsed_s": 13.060433683996962,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001328,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:23 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [4%@729,0%@729,4%@729,0%@729,0%@729,0%@729] GR3D_FREQ 97% cpu@54.343C/54.406C soc2@53.125C/53.156C soc0@51.031C/51.187C gpu@54.312C/54.468C tj@54.343C/54.468C soc1@53.125C/53.375C VDD_IN 9349mW/8718mW/10283mW VDD_CPU_GPU_CV 2961mW/2750mW/3784mW VDD_SOC 2135mW/1994mW/2214mW"
+    },
+    {
+      "at": 1793545823.996989,
+      "elapsed_s": 13.316117319001933,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001328,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:23 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,7%@729,4%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.125C/54.406C soc2@53.187C/53.187C soc0@51.281C/51.281C gpu@54.156C/54.468C tj@54.156C/54.468C soc1@53.375C/53.375C VDD_IN 9151mW/8726mW/10283mW VDD_CPU_GPU_CV 2922mW/2754mW/3784mW VDD_SOC 2099mW/1996mW/2214mW"
+    },
+    {
+      "at": 1793545824.2528934,
+      "elapsed_s": 13.57202171899553,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 129408,
+        "MemAvailable": 1001332,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:24 RAM 6360/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [7%@729,4%@729,3%@729,3%@729,0%@729,0%@729] GR3D_FREQ 83% cpu@54.437C/54.437C soc2@53.062C/53.187C soc0@51.125C/51.281C gpu@54.156C/54.468C tj@54.437C/54.468C soc1@53.187C/53.375C VDD_IN 9032mW/8732mW/10283mW VDD_CPU_GPU_CV 2882mW/2756mW/3784mW VDD_SOC 2060mW/1997mW/2214mW"
+    },
+    {
+      "at": 1793545824.508412,
+      "elapsed_s": 13.827541490994918,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 126636,
+        "MemAvailable": 998560,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:24 RAM 6363/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [8%@1510,14%@1510,17%@1510,0%@1510,0%@729,3%@729] GR3D_FREQ 99% cpu@54.312C/54.437C soc2@53.156C/53.187C soc0@51.312C/51.312C gpu@54.125C/54.468C tj@54.312C/54.468C soc1@53.437C/53.437C VDD_IN 9151mW/8740mW/10283mW VDD_CPU_GPU_CV 2961mW/2760mW/3784mW VDD_SOC 2060mW/1998mW/2214mW"
+    },
+    {
+      "at": 1793545824.7644982,
+      "elapsed_s": 14.08362810399558,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:24 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [15%@729,19%@729,15%@729,30%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.125C/54.437C soc2@53.156C/53.187C soc0@51.218C/51.312C gpu@54.343C/54.468C tj@54.125C/54.468C soc1@53.375C/53.437C VDD_IN 9190mW/8748mW/10283mW VDD_CPU_GPU_CV 3080mW/2766mW/3784mW VDD_SOC 2020mW/1999mW/2214mW"
+    },
+    {
+      "at": 1793545825.0202076,
+      "elapsed_s": 14.33933695199812,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:25 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,8%@729,0%@729,3%@729,3%@729,0%@729] GR3D_FREQ 78% cpu@54.312C/54.437C soc2@53.125C/53.187C soc0@51.156C/51.312C gpu@54.125C/54.468C tj@54.312C/54.468C soc1@53.593C/53.593C VDD_IN 9111mW/8754mW/10283mW VDD_CPU_GPU_CV 2961mW/2769mW/3784mW VDD_SOC 2060mW/2000mW/2214mW"
+    },
+    {
+      "at": 1793545825.275844,
+      "elapsed_s": 14.594972350001626,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:25 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,0%@729,7%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.25C/54.437C soc2@53.218C/53.218C soc0@51.25C/51.312C gpu@54.125C/54.468C tj@54.156C/54.468C soc1@53.375C/53.593C VDD_IN 8992mW/8758mW/10283mW VDD_CPU_GPU_CV 2922mW/2772mW/3784mW VDD_SOC 2020mW/2000mW/2214mW"
+    },
+    {
+      "at": 1793545825.5314863,
+      "elapsed_s": 14.850614463000966,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:25 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,4%@729,0%@729,7%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@54.375C/54.437C soc2@53.156C/53.218C soc0@51.156C/51.312C gpu@54.156C/54.468C tj@54.375C/54.468C soc1@53.312C/53.593C VDD_IN 9072mW/8764mW/10283mW VDD_CPU_GPU_CV 2961mW/2775mW/3784mW VDD_SOC 2020mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545825.7871222,
+      "elapsed_s": 15.106250562996138,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:25 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [7%@729,11%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 88% cpu@54.25C/54.437C soc2@53.156C/53.218C soc0@51.187C/51.312C gpu@54.125C/54.468C tj@54.25C/54.468C soc1@53.5C/53.593C VDD_IN 9032mW/8768mW/10283mW VDD_CPU_GPU_CV 2961mW/2778mW/3784mW VDD_SOC 2020mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545826.0431542,
+      "elapsed_s": 15.362283816000854,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:26 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,8%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.468C/54.468C soc2@53.218C/53.218C soc0@51.343C/51.343C gpu@54.625C/54.625C tj@54.625C/54.625C soc1@53.437C/53.593C VDD_IN 9111mW/8774mW/10283mW VDD_CPU_GPU_CV 2961mW/2781mW/3784mW VDD_SOC 2020mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545826.2989693,
+      "elapsed_s": 15.618098219994863,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:26 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [10%@729,8%@729,3%@729,0%@729,3%@729,0%@729] GR3D_FREQ 88% cpu@54.5C/54.5C soc2@53.218C/53.218C soc0@51.218C/51.343C gpu@54.406C/54.625C tj@54.5C/54.625C soc1@53.375C/53.593C VDD_IN 9072mW/8779mW/10283mW VDD_CPU_GPU_CV 2922mW/2784mW/3784mW VDD_SOC 2060mW/2002mW/2214mW"
+    },
+    {
+      "at": 1793545826.5546618,
+      "elapsed_s": 15.873791098994843,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:26 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,7%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.25C/54.5C soc2@53.218C/53.218C soc0@51.406C/51.406C gpu@54.437C/54.625C tj@54.437C/54.625C soc1@53.468C/53.593C VDD_IN 9032mW/8783mW/10283mW VDD_CPU_GPU_CV 2922mW/2786mW/3784mW VDD_SOC 2060mW/2003mW/2214mW"
+    },
+    {
+      "at": 1793545826.8103867,
+      "elapsed_s": 16.129515606000496,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:26 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,7%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 60% cpu@54.781C/54.781C soc2@53.218C/53.218C soc0@51.281C/51.406C gpu@54.187C/54.625C tj@54.781C/54.781C soc1@53.406C/53.593C VDD_IN 8953mW/8786mW/10283mW VDD_CPU_GPU_CV 2843mW/2787mW/3784mW VDD_SOC 2020mW/2003mW/2214mW"
+    },
+    {
+      "at": 1793545827.0660377,
+      "elapsed_s": 16.385166442996706,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 124648,
+        "MemAvailable": 996708,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:27 RAM 6364/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [11%@729,0%@729,0%@729,4%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@54.437C/54.781C soc2@53.25C/53.25C soc0@51.218C/51.406C gpu@54.125C/54.625C tj@54.437C/54.781C soc1@53.562C/53.593C VDD_IN 8992mW/8789mW/10283mW VDD_CPU_GPU_CV 2843mW/2788mW/3784mW VDD_SOC 2020mW/2004mW/2214mW"
+    },
+    {
+      "at": 1793545827.3225896,
+      "elapsed_s": 16.641719485996873,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 122140,
+        "MemAvailable": 994304,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:27 RAM 6367/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [8%@729,16%@729,34%@729,25%@729,0%@729,8%@729] GR3D_FREQ 75% cpu@54.406C/54.781C soc2@53.375C/53.375C soc0@51.312C/51.406C gpu@54.125C/54.625C tj@54.406C/54.781C soc1@53.5C/53.593C VDD_IN 9151mW/8795mW/10283mW VDD_CPU_GPU_CV 3080mW/2792mW/3784mW VDD_SOC 2020mW/2004mW/2214mW"
+    },
+    {
+      "at": 1793545827.5783038,
+      "elapsed_s": 16.897433553000155,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 122140,
+        "MemAvailable": 994304,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:27 RAM 6367/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [7%@729,8%@729,3%@729,0%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@54.5C/54.781C soc2@53.343C/53.375C soc0@51.218C/51.406C gpu@54.125C/54.625C tj@54.5C/54.781C soc1@53.437C/53.593C VDD_IN 8794mW/8795mW/10283mW VDD_CPU_GPU_CV 2887mW/2794mW/3784mW VDD_SOC 1941mW/2003mW/2214mW"
+    },
+    {
+      "at": 1793545827.8340669,
+      "elapsed_s": 17.153196645995195,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 111416,
+        "MemAvailable": 983580,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:27 RAM 6377/7485MB (lfb 1x4MB) SWAP 533/12288MB (cached 462MB) CPU [12%@806,11%@806,0%@806,7%@806,26%@729,0%@729] GR3D_FREQ 99% cpu@54.406C/54.781C soc2@53.187C/53.375C soc0@51.406C/51.406C gpu@54.625C/54.625C tj@54.625C/54.781C soc1@53.531C/53.593C VDD_IN 8596mW/8792mW/10283mW VDD_CPU_GPU_CV 2847mW/2794mW/3784mW VDD_SOC 1901mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545828.0899608,
+      "elapsed_s": 17.409090397995897,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95636,
+        "MemAvailable": 963360,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:28 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,0%@729,11%@729,0%@729,8%@729,0%@729] GR3D_FREQ 99% cpu@54.593C/54.781C soc2@53.343C/53.375C soc0@51.343C/51.406C gpu@54.375C/54.625C tj@54.593C/54.781C soc1@53.468C/53.593C VDD_IN 8715mW/8790mW/10283mW VDD_CPU_GPU_CV 2808mW/2795mW/3784mW VDD_SOC 1941mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545828.345939,
+      "elapsed_s": 17.66506753399881,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95540,
+        "MemAvailable": 963596,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:28 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,7%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.531C/54.781C soc2@53.218C/53.375C soc0@51.25C/51.406C gpu@54.25C/54.625C tj@54.531C/54.781C soc1@53.406C/53.593C VDD_IN 8715mW/8789mW/10283mW VDD_CPU_GPU_CV 2768mW/2794mW/3784mW VDD_SOC 1941mW/2000mW/2214mW"
+    },
+    {
+      "at": 1793545828.6016865,
+      "elapsed_s": 17.920815976001904,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95540,
+        "MemAvailable": 963596,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:28 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [7%@729,7%@729,4%@729,7%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.375C/54.781C soc2@53.343C/53.375C soc0@51.531C/51.531C gpu@54.312C/54.625C tj@54.375C/54.781C soc1@53.5C/53.593C VDD_IN 8953mW/8792mW/10283mW VDD_CPU_GPU_CV 2808mW/2794mW/3784mW VDD_SOC 2060mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545828.8573601,
+      "elapsed_s": 18.176489423996827,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95540,
+        "MemAvailable": 963596,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:28 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.843C/54.843C soc2@53.375C/53.375C soc0@51.312C/51.531C gpu@54.312C/54.625C tj@54.843C/54.843C soc1@53.5C/53.593C VDD_IN 9428mW/8801mW/10283mW VDD_CPU_GPU_CV 2961mW/2797mW/3784mW VDD_SOC 2135mW/2002mW/2214mW"
+    },
+    {
+      "at": 1793545829.1130114,
+      "elapsed_s": 18.432140102995618,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 94784,
+        "MemAvailable": 963892,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:29 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,0%@729,0%@729,0%@729,8%@729,3%@729] GR3D_FREQ 99% cpu@54.437C/54.843C soc2@53.312C/53.375C soc0@51.312C/51.531C gpu@54.156C/54.625C tj@54.437C/54.843C soc1@53.718C/53.718C VDD_IN 9230mW/8807mW/10283mW VDD_CPU_GPU_CV 3001mW/2800mW/3784mW VDD_SOC 2099mW/2004mW/2214mW"
+    },
+    {
+      "at": 1793545829.3686817,
+      "elapsed_s": 18.687809917995764,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 94784,
+        "MemAvailable": 963892,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:29 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [3%@729,0%@729,0%@729,0%@729,11%@729,0%@729] GR3D_FREQ 99% cpu@54.375C/54.843C soc2@53.437C/53.437C soc0@51.468C/51.531C gpu@54.5C/54.625C tj@54.375C/54.843C soc1@53.593C/53.718C VDD_IN 9230mW/8812mW/10283mW VDD_CPU_GPU_CV 3001mW/2802mW/3784mW VDD_SOC 2060mW/2005mW/2214mW"
+    },
+    {
+      "at": 1793545829.6243963,
+      "elapsed_s": 18.943524283000443,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 94784,
+        "MemAvailable": 963892,
+        "SwapTotal": 12582908,
+        "SwapFree": 12037116
+      },
+      "tegrastats": "11-01-2026 23:10:29 RAM 6393/7485MB (lfb 8x2MB) SWAP 533/12288MB (cached 462MB) CPU [0%@729,3%@729,3%@729,0%@729,4%@729,0%@729] GR3D_FREQ 99% cpu@54.531C/54.843C soc2@53.437C/53.437C soc0@51.468C/51.531C gpu@54.281C/54.625C tj@54.531C/54.843C soc1@53.468C/53.718C VDD_IN 9111mW/8816mW/10283mW VDD_CPU_GPU_CV 2961mW/2804mW/3784mW VDD_SOC 2060mW/2005mW/2214mW"
+    },
+    {
+      "at": 1793545829.879649,
+      "elapsed_s": 19.198778218997177,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 102848,
+        "MemAvailable": 985844,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:29 RAM 6385/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [8%@1420,20%@1420,12%@1420,15%@1420,11%@729,7%@729] GR3D_FREQ 99% cpu@54.656C/54.843C soc2@53.375C/53.437C soc0@51.593C/51.593C gpu@54.375C/54.625C tj@54.656C/54.843C soc1@53.593C/53.718C VDD_IN 9309mW/8823mW/10283mW VDD_CPU_GPU_CV 3119mW/2809mW/3784mW VDD_SOC 2056mW/2006mW/2214mW"
+    },
+    {
+      "at": 1793545830.1357431,
+      "elapsed_s": 19.454872643997078,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98324,
+        "MemAvailable": 982296,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:30 RAM 6389/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [22%@729,14%@729,4%@729,12%@729,3%@729,4%@729] GR3D_FREQ 95% cpu@54.625C/54.843C soc2@53.406C/53.437C soc0@51.406C/51.593C gpu@54.125C/54.625C tj@54.625C/54.843C soc1@53.593C/53.718C VDD_IN 9151mW/8827mW/10283mW VDD_CPU_GPU_CV 3040mW/2812mW/3784mW VDD_SOC 2020mW/2006mW/2214mW"
+    },
+    {
+      "at": 1793545830.3913474,
+      "elapsed_s": 19.710476169995673,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982512,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:30 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [4%@729,3%@729,0%@729,7%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.531C/54.843C soc2@53.375C/53.437C soc0@51.406C/51.593C gpu@54.656C/54.656C tj@54.656C/54.843C soc1@53.687C/53.718C VDD_IN 9190mW/8832mW/10283mW VDD_CPU_GPU_CV 2961mW/2814mW/3784mW VDD_SOC 2060mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545830.6470006,
+      "elapsed_s": 19.966129362001084,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:30 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [11%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 78% cpu@54.625C/54.843C soc2@53.5C/53.5C soc0@51.562C/51.593C gpu@54.531C/54.656C tj@54.625C/54.843C soc1@53.593C/53.718C VDD_IN 8953mW/8834mW/10283mW VDD_CPU_GPU_CV 2926mW/2815mW/3784mW VDD_SOC 1980mW/2006mW/2214mW"
+    },
+    {
+      "at": 1793545830.9027355,
+      "elapsed_s": 20.221864073995675,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:30 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [4%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.531C/54.843C soc2@53.468C/53.5C soc0@51.5C/51.593C gpu@54.562C/54.656C tj@54.75C/54.843C soc1@53.531C/53.718C VDD_IN 9072mW/8837mW/10283mW VDD_CPU_GPU_CV 2922mW/2816mW/3784mW VDD_SOC 2060mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545831.1583593,
+      "elapsed_s": 20.47748785699514,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:31 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [8%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.562C/54.843C soc2@53.437C/53.5C soc0@51.593C/51.593C gpu@54.5C/54.656C tj@54.562C/54.843C soc1@53.625C/53.718C VDD_IN 8953mW/8838mW/10283mW VDD_CPU_GPU_CV 2926mW/2818mW/3784mW VDD_SOC 2020mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545831.4140189,
+      "elapsed_s": 20.733147419996385,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:31 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [11%@729,3%@729,3%@729,0%@729,0%@729,7%@729] GR3D_FREQ 76% cpu@54.375C/54.843C soc2@53.562C/53.562C soc0@51.531C/51.593C gpu@54.437C/54.656C tj@54.437C/54.843C soc1@53.593C/53.718C VDD_IN 9151mW/8842mW/10283mW VDD_CPU_GPU_CV 2961mW/2820mW/3784mW VDD_SOC 2060mW/2008mW/2214mW"
+    },
+    {
+      "at": 1793545831.6696827,
+      "elapsed_s": 20.98881126899505,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:31 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [7%@729,0%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.531C/54.843C soc2@53.531C/53.562C soc0@51.5C/51.593C gpu@54.375C/54.656C tj@54.531C/54.843C soc1@53.781C/53.781C VDD_IN 9072mW/8845mW/10283mW VDD_CPU_GPU_CV 2922mW/2821mW/3784mW VDD_SOC 2020mW/2008mW/2214mW"
+    },
+    {
+      "at": 1793545831.9259732,
+      "elapsed_s": 21.245101918000728,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:31 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [8%@729,7%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 75% cpu@54.625C/54.843C soc2@53.593C/53.593C soc0@51.625C/51.625C gpu@54.375C/54.656C tj@54.625C/54.843C soc1@53.593C/53.781C VDD_IN 9190mW/8849mW/10283mW VDD_CPU_GPU_CV 2961mW/2822mW/3784mW VDD_SOC 2060mW/2009mW/2214mW"
+    },
+    {
+      "at": 1793545832.181649,
+      "elapsed_s": 21.5007781289969,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:32 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [8%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.656C/54.843C soc2@53.437C/53.593C soc0@51.593C/51.625C gpu@54.625C/54.656C tj@54.656C/54.843C soc1@53.625C/53.781C VDD_IN 9111mW/8852mW/10283mW VDD_CPU_GPU_CV 2922mW/2824mW/3784mW VDD_SOC 2020mW/2009mW/2214mW"
+    },
+    {
+      "at": 1793545832.4374325,
+      "elapsed_s": 21.75656147299742,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 98072,
+        "MemAvailable": 982620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:32 RAM 6388/7485MB (lfb 10x2MB) SWAP 535/12288MB (cached 464MB) CPU [7%@729,3%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.562C/54.843C soc2@53.5C/53.593C soc0@51.656C/51.656C gpu@54.656C/54.656C tj@54.656C/54.843C soc1@53.875C/53.875C VDD_IN 8992mW/8854mW/10283mW VDD_CPU_GPU_CV 2926mW/2825mW/3784mW VDD_SOC 2020mW/2009mW/2214mW"
+    },
+    {
+      "at": 1793545832.6934552,
+      "elapsed_s": 22.01258506099839,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 94292,
+        "MemAvailable": 978936,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:32 RAM 6392/7485MB (lfb 9x2MB) SWAP 535/12288MB (cached 464MB) CPU [24%@729,20%@729,33%@729,16%@729,11%@729,4%@729] GR3D_FREQ 99% cpu@54.875C/54.875C soc2@53.562C/53.593C soc0@51.531C/51.656C gpu@54.468C/54.656C tj@54.875C/54.875C soc1@53.687C/53.875C VDD_IN 8953mW/8855mW/10283mW VDD_CPU_GPU_CV 3045mW/2827mW/3784mW VDD_SOC 1941mW/2008mW/2214mW"
+    },
+    {
+      "at": 1793545832.9509945,
+      "elapsed_s": 22.27012412199838,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 90196,
+        "MemAvailable": 974840,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:32 RAM 6396/7485MB (lfb 7x2MB) SWAP 535/12288MB (cached 464MB) CPU [11%@883,0%@883,3%@883,3%@883,0%@729,28%@729] GR3D_FREQ 99% cpu@54.593C/54.875C soc2@53.5C/53.593C soc0@51.562C/51.656C gpu@54.656C/54.656C tj@54.656C/54.875C soc1@53.656C/53.875C VDD_IN 8873mW/8855mW/10283mW VDD_CPU_GPU_CV 3045mW/2830mW/3784mW VDD_SOC 1941mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545833.2070825,
+      "elapsed_s": 22.52621253799589,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:33 RAM 6399/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [7%@729,0%@729,0%@729,0%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.593C/54.875C soc2@53.406C/53.593C soc0@51.687C/51.687C gpu@54.437C/54.656C tj@54.593C/54.875C soc1@53.781C/53.875C VDD_IN 8755mW/8854mW/10283mW VDD_CPU_GPU_CV 2847mW/2830mW/3784mW VDD_SOC 1941mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545833.462693,
+      "elapsed_s": 22.78182086999732,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:33 RAM 6399/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [0%@729,3%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.906C/54.906C soc2@53.562C/53.593C soc0@51.656C/51.687C gpu@54.343C/54.656C tj@54.906C/54.906C soc1@53.718C/53.875C VDD_IN 8755mW/8853mW/10283mW VDD_CPU_GPU_CV 2768mW/2829mW/3784mW VDD_SOC 1941mW/2006mW/2214mW"
+    },
+    {
+      "at": 1793545833.7201264,
+      "elapsed_s": 23.039256119001948,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:33 RAM 6399/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [3%@729,3%@729,0%@729,0%@729,3%@729,4%@729] GR3D_FREQ 98% cpu@54.718C/54.906C soc2@53.531C/53.593C soc0@51.562C/51.687C gpu@55C/55C tj@55C/55C soc1@53.937C/53.937C VDD_IN 9072mW/8855mW/10283mW VDD_CPU_GPU_CV 2847mW/2830mW/3784mW VDD_SOC 2060mW/2007mW/2214mW"
+    },
+    {
+      "at": 1793545833.9746168,
+      "elapsed_s": 23.293745702001615,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:33 RAM 6399/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [0%@729,4%@729,3%@729,3%@729,0%@729,0%@729] GR3D_FREQ 94% cpu@54.593C/54.906C soc2@53.562C/53.593C soc0@51.656C/51.687C gpu@54.875C/55C tj@54.875C/55C soc1@53.75C/53.937C VDD_IN 9388mW/8861mW/10283mW VDD_CPU_GPU_CV 2961mW/2831mW/3784mW VDD_SOC 2135mW/2008mW/2214mW"
+    },
+    {
+      "at": 1793545834.2299979,
+      "elapsed_s": 23.549126070000057,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:34 RAM 6399/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [7%@729,0%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.718C/54.906C soc2@53.625C/53.625C soc0@51.593C/51.687C gpu@54.687C/55C tj@54.718C/55C soc1@53.718C/53.937C VDD_IN 9190mW/8865mW/10283mW VDD_CPU_GPU_CV 2922mW/2832mW/3784mW VDD_SOC 2060mW/2009mW/2214mW"
+    },
+    {
+      "at": 1793545834.4857721,
+      "elapsed_s": 23.804900170995097,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:34 RAM 6398/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [4%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.718C/54.906C soc2@53.531C/53.625C soc0@51.718C/51.718C gpu@54.718C/55C tj@54.718C/55C soc1@53.875C/53.937C VDD_IN 9151mW/8868mW/10283mW VDD_CPU_GPU_CV 2961mW/2833mW/3784mW VDD_SOC 2060mW/2009mW/2214mW"
+    },
+    {
+      "at": 1793545834.7414346,
+      "elapsed_s": 24.060562974998902,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:34 RAM 6398/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [11%@729,0%@729,0%@729,0%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.875C/54.906C soc2@53.625C/53.625C soc0@51.718C/51.718C gpu@54.937C/55C tj@54.937C/55C soc1@53.718C/53.937C VDD_IN 9111mW/8870mW/10283mW VDD_CPU_GPU_CV 2961mW/2835mW/3784mW VDD_SOC 2060mW/2010mW/2214mW"
+    },
+    {
+      "at": 1793545834.9969869,
+      "elapsed_s": 24.316116401998443,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 87392,
+        "MemAvailable": 972044,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:34 RAM 6398/7485MB (lfb 6x2MB) SWAP 535/12288MB (cached 464MB) CPU [0%@729,7%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.656C/54.906C soc2@53.562C/53.625C soc0@51.687C/51.718C gpu@54.812C/55C tj@54.875C/55C soc1@53.718C/53.937C VDD_IN 9111mW/8873mW/10283mW VDD_CPU_GPU_CV 2961mW/2836mW/3784mW VDD_SOC 2020mW/2010mW/2214mW"
+    },
+    {
+      "at": 1793545835.2530012,
+      "elapsed_s": 24.572130720996938,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 78432,
+        "MemAvailable": 963188,
+        "SwapTotal": 12582908,
+        "SwapFree": 12035068
+      },
+      "tegrastats": "11-01-2026 23:10:35 RAM 6408/7485MB (lfb 3x2MB) SWAP 535/12288MB (cached 464MB) CPU [16%@1267,20%@1267,18%@1267,19%@1267,3%@729,7%@729] GR3D_FREQ 96% cpu@54.875C/54.906C soc2@53.781C/53.781C soc0@51.718C/51.718C gpu@54.875C/55C tj@54.875C/55C soc1@53.75C/53.937C VDD_IN 9428mW/8879mW/10283mW VDD_CPU_GPU_CV 3198mW/2840mW/3784mW VDD_SOC 2056mW/2010mW/2214mW"
+    },
+    {
+      "at": 1793545835.5089138,
+      "elapsed_s": 24.82804339699942,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95348,
+        "MemAvailable": 979152,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:35 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [18%@729,4%@729,4%@729,7%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.968C/54.968C soc2@53.656C/53.781C soc0@51.656C/51.718C gpu@54.687C/55C tj@54.968C/55C soc1@53.75C/53.937C VDD_IN 9270mW/8883mW/10283mW VDD_CPU_GPU_CV 3080mW/2842mW/3784mW VDD_SOC 2060mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545835.7645802,
+      "elapsed_s": 25.08370990899857,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95348,
+        "MemAvailable": 979152,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:35 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,7%@729,0%@729,0%@729,0%@729] GR3D_FREQ 83% cpu@54.843C/54.968C soc2@53.656C/53.781C soc0@51.593C/51.718C gpu@54.593C/55C tj@54.843C/55C soc1@54C/54C VDD_IN 9151mW/8885mW/10283mW VDD_CPU_GPU_CV 2961mW/2844mW/3784mW VDD_SOC 2020mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545836.0205843,
+      "elapsed_s": 25.339713100001973,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95348,
+        "MemAvailable": 979152,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:36 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,8%@729,0%@729,0%@729,0%@729] GR3D_FREQ 88% cpu@54.625C/54.968C soc2@53.656C/53.781C soc0@51.781C/51.781C gpu@54.593C/55C tj@54.625C/55C soc1@53.875C/54C VDD_IN 9111mW/8888mW/10283mW VDD_CPU_GPU_CV 2922mW/2844mW/3784mW VDD_SOC 2060mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545836.276465,
+      "elapsed_s": 25.595593498997914,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:36 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [8%@729,0%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 98% cpu@54.75C/54.968C soc2@53.656C/53.781C soc0@51.718C/51.781C gpu@55.062C/55.062C tj@55.062C/55.062C soc1@53.75C/54C VDD_IN 9032mW/8889mW/10283mW VDD_CPU_GPU_CV 2922mW/2845mW/3784mW VDD_SOC 2020mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545836.5321972,
+      "elapsed_s": 25.851325438001368,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:36 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [4%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 76% cpu@54.625C/54.968C soc2@53.687C/53.781C soc0@51.781C/51.781C gpu@54.968C/55.062C tj@54.968C/55.062C soc1@53.843C/54C VDD_IN 9111mW/8891mW/10283mW VDD_CPU_GPU_CV 2882mW/2846mW/3784mW VDD_SOC 2020mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545836.787573,
+      "elapsed_s": 26.106701479999174,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:36 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [11%@729,3%@729,3%@729,0%@729,0%@729,7%@729] GR3D_FREQ 99% cpu@55C/55C soc2@53.625C/53.781C soc0@51.718C/51.781C gpu@54.812C/55.062C tj@55C/55.062C soc1@53.843C/54C VDD_IN 9072mW/8893mW/10283mW VDD_CPU_GPU_CV 2922mW/2846mW/3784mW VDD_SOC 2020mW/2012mW/2214mW"
+    },
+    {
+      "at": 1793545837.043565,
+      "elapsed_s": 26.362693618997582,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:37 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [8%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.656C/55C soc2@53.625C/53.781C soc0@51.687C/51.781C gpu@54.875C/55.062C tj@54.875C/55.062C soc1@54.062C/54.062C VDD_IN 9111mW/8895mW/10283mW VDD_CPU_GPU_CV 2922mW/2847mW/3784mW VDD_SOC 2060mW/2012mW/2214mW"
+    },
+    {
+      "at": 1793545837.2989893,
+      "elapsed_s": 26.618119221995585,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:37 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [11%@729,0%@729,0%@729,3%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.906C/55C soc2@53.687C/53.781C soc0@51.75C/51.781C gpu@54.718C/55.062C tj@54.906C/55.062C soc1@53.906C/54.062C VDD_IN 9111mW/8897mW/10283mW VDD_CPU_GPU_CV 2961mW/2848mW/3784mW VDD_SOC 2060mW/2013mW/2214mW"
+    },
+    {
+      "at": 1793545837.5548956,
+      "elapsed_s": 26.87402481400204,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 95148,
+        "MemAvailable": 978960,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:37 RAM 6392/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [4%@729,0%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@55.093C/55.093C soc2@53.656C/53.781C soc0@51.781C/51.781C gpu@54.718C/55.062C tj@55.093C/55.093C soc1@53.875C/54.062C VDD_IN 9111mW/8899mW/10283mW VDD_CPU_GPU_CV 2961mW/2849mW/3784mW VDD_SOC 2020mW/2013mW/2214mW"
+    },
+    {
+      "at": 1793545837.8101056,
+      "elapsed_s": 27.129234761996486,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92880,
+        "MemAvailable": 976692,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:37 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [12%@1510,11%@1510,4%@1510,0%@1510,3%@729,0%@729] GR3D_FREQ 99% cpu@54.906C/55.093C soc2@53.593C/53.781C soc0@51.875C/51.875C gpu@54.718C/55.062C tj@54.906C/55.093C soc1@53.906C/54.062C VDD_IN 8834mW/8899mW/10283mW VDD_CPU_GPU_CV 2887mW/2850mW/3784mW VDD_SOC 1941mW/2012mW/2214mW"
+    },
+    {
+      "at": 1793545838.066677,
+      "elapsed_s": 27.3858068979971,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 93084,
+        "MemAvailable": 976896,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:38 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [35%@729,14%@729,20%@729,19%@729,0%@729,7%@729] GR3D_FREQ 99% cpu@54.687C/55.093C soc2@53.843C/53.843C soc0@51.812C/51.875C gpu@54.843C/55.062C tj@54.843C/55.093C soc1@53.875C/54.062C VDD_IN 8755mW/8897mW/10283mW VDD_CPU_GPU_CV 2926mW/2850mW/3784mW VDD_SOC 1901mW/2011mW/2214mW"
+    },
+    {
+      "at": 1793545838.3222866,
+      "elapsed_s": 27.64141514399671,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92860,
+        "MemAvailable": 977244,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:38 RAM 6393/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 4% cpu@54.75C/55.093C soc2@53.593C/53.843C soc0@51.656C/51.875C gpu@54.281C/55.062C tj@54.75C/55.093C soc1@54.062C/54.062C VDD_IN 7301mW/8883mW/10283mW VDD_CPU_GPU_CV 2060mW/2843mW/3784mW VDD_SOC 1706mW/2008mW/2214mW"
+    },
+    {
+      "at": 1793545838.577704,
+      "elapsed_s": 27.896832295999047,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:38 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 4% cpu@54.593C/55.093C soc2@53.562C/53.843C soc0@51.781C/51.875C gpu@53.968C/55.062C tj@54.593C/55.093C soc1@53.968C/54.062C VDD_IN 6716mW/8863mW/10283mW VDD_CPU_GPU_CV 1666mW/2832mW/3784mW VDD_SOC 1669mW/2005mW/2214mW"
+    },
+    {
+      "at": 1793545838.8332627,
+      "elapsed_s": 28.152390809998906,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:38 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [4%@729,0%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@54.781C/55.093C soc2@53.406C/53.843C soc0@51.687C/51.875C gpu@53.875C/55.062C tj@54.781C/55.093C soc1@53.906C/54.062C VDD_IN 6239mW/8839mW/10283mW VDD_CPU_GPU_CV 1388mW/2819mW/3784mW VDD_SOC 1589mW/2001mW/2214mW"
+    },
+    {
+      "at": 1793545839.0888925,
+      "elapsed_s": 28.408021123999788,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:39 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,3%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@54.593C/55.093C soc2@53.5C/53.843C soc0@51.875C/51.875C gpu@54.125C/55.062C tj@54.593C/55.093C soc1@53.937C/54.062C VDD_IN 6041mW/8814mW/10283mW VDD_CPU_GPU_CV 1269mW/2805mW/3784mW VDD_SOC 1589mW/1997mW/2214mW"
+    },
+    {
+      "at": 1793545839.3447244,
+      "elapsed_s": 28.663852765996126,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:39 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 99% cpu@54.875C/55.093C soc2@53.468C/53.843C soc0@51.687C/51.875C gpu@54.187C/55.062C tj@54.875C/55.093C soc1@53.906C/54.062C VDD_IN 5971mW/8788mW/10283mW VDD_CPU_GPU_CV 1192mW/2791mW/3784mW VDD_SOC 1589mW/1994mW/2214mW"
+    },
+    {
+      "at": 1793545839.6006718,
+      "elapsed_s": 28.91980082399823,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:39 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [7%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@54.562C/55.093C soc2@53.375C/53.843C soc0@51.656C/51.875C gpu@53.937C/55.062C tj@54.562C/55.093C soc1@54.062C/54.062C VDD_IN 5811mW/8762mW/10283mW VDD_CPU_GPU_CV 1112mW/2776mW/3784mW VDD_SOC 1550mW/1990mW/2214mW"
+    },
+    {
+      "at": 1793545839.8563051,
+      "elapsed_s": 29.175433375996363,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92636,
+        "MemAvailable": 977020,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:39 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,3%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 4% cpu@54.937C/55.093C soc2@53.531C/53.843C soc0@51.687C/51.875C gpu@53.875C/55.062C tj@54.937C/55.093C soc1@53.937C/54.062C VDD_IN 5931mW/8737mW/10283mW VDD_CPU_GPU_CV 1152mW/2762mW/3784mW VDD_SOC 1589mW/1986mW/2214mW"
+    },
+    {
+      "at": 1793545840.1119215,
+      "elapsed_s": 29.431049979000818,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92384,
+        "MemAvailable": 976768,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:40 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,7%@729,0%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@54.531C/55.093C soc2@53.312C/53.843C soc0@51.656C/51.875C gpu@53.656C/55.062C tj@54.937C/55.093C soc1@53.843C/54.062C VDD_IN 5732mW/8711mW/10283mW VDD_CPU_GPU_CV 1033mW/2747mW/3784mW VDD_SOC 1552mW/1983mW/2214mW"
+    },
+    {
+      "at": 1793545840.3675764,
+      "elapsed_s": 29.686704863997875,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 92384,
+        "MemAvailable": 976768,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:40 RAM 6394/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,3%@729,0%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@54.531C/55.093C soc2@53.312C/53.843C soc0@51.781C/51.875C gpu@53.687C/55.062C tj@54.531C/55.093C soc1@54C/54.062C VDD_IN 5811mW/8686mW/10283mW VDD_CPU_GPU_CV 1073mW/2732mW/3784mW VDD_SOC 1550mW/1979mW/2214mW"
+    },
+    {
+      "at": 1793545840.623464,
+      "elapsed_s": 29.942594020001707,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 970720,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:40 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [28%@729,16%@729,16%@729,16%@729,3%@729,7%@729] GR3D_FREQ 99% cpu@54.656C/55.093C soc2@53.5C/53.843C soc0@51.656C/51.875C gpu@54.375C/55.062C tj@54.656C/55.093C soc1@53.812C/54.062C VDD_IN 6120mW/8664mW/10283mW VDD_CPU_GPU_CV 1309mW/2720mW/3784mW VDD_SOC 1589mW/1976mW/2214mW"
+    },
+    {
+      "at": 1793545840.8789978,
+      "elapsed_s": 30.198126826995576,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 970940,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:40 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,0%@729,0%@729] GR3D_FREQ 5% cpu@54.593C/55.093C soc2@53.25C/53.843C soc0@51.562C/51.875C gpu@53.968C/55.062C tj@54.593C/55.093C soc1@54.031C/54.062C VDD_IN 5931mW/8641mW/10283mW VDD_CPU_GPU_CV 1152mW/2707mW/3784mW VDD_SOC 1550mW/1972mW/2214mW"
+    },
+    {
+      "at": 1793545841.1345036,
+      "elapsed_s": 30.4536319109975,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 970940,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:41 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 0% cpu@54.468C/55.093C soc2@53.406C/53.843C soc0@51.687C/51.875C gpu@53.718C/55.062C tj@54.468C/55.093C soc1@53.968C/54.062C VDD_IN 5971mW/8618mW/10283mW VDD_CPU_GPU_CV 1152mW/2694mW/3784mW VDD_SOC 1589mW/1969mW/2214mW"
+    },
+    {
+      "at": 1793545841.3900094,
+      "elapsed_s": 30.709137394995196,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:41 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 7% cpu@54.75C/55.093C soc2@53.25C/53.843C soc0@51.562C/51.875C gpu@53.687C/55.062C tj@54.75C/55.093C soc1@53.75C/54.062C VDD_IN 5772mW/8595mW/10283mW VDD_CPU_GPU_CV 1073mW/2680mW/3784mW VDD_SOC 1550mW/1965mW/2214mW"
+    },
+    {
+      "at": 1793545841.645571,
+      "elapsed_s": 30.96469900899683,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:41 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,4%@729,0%@729] GR3D_FREQ 0% cpu@54.437C/55.093C soc2@53.281C/53.843C soc0@51.718C/51.875C gpu@53.906C/55.062C tj@54.437C/55.093C soc1@54C/54.062C VDD_IN 5851mW/8572mW/10283mW VDD_CPU_GPU_CV 1112mW/2667mW/3784mW VDD_SOC 1550mW/1962mW/2214mW"
+    },
+    {
+      "at": 1793545841.9021246,
+      "elapsed_s": 31.22125252999831,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:41 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 99% cpu@54.781C/55.093C soc2@53.312C/53.843C soc0@51.656C/51.875C gpu@54.125C/55.062C tj@54.781C/55.093C soc1@53.75C/54.062C VDD_IN 5971mW/8551mW/10283mW VDD_CPU_GPU_CV 1152mW/2655mW/3784mW VDD_SOC 1589mW/1959mW/2214mW"
+    },
+    {
+      "at": 1793545842.1580608,
+      "elapsed_s": 31.47718854699633,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:42 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 0% cpu@54.437C/55.093C soc2@53.343C/53.843C soc0@51.593C/51.875C gpu@53.812C/55.062C tj@54.437C/55.093C soc1@53.687C/54.062C VDD_IN 5772mW/8528mW/10283mW VDD_CPU_GPU_CV 1073mW/2642mW/3784mW VDD_SOC 1550mW/1955mW/2214mW"
+    },
+    {
+      "at": 1793545842.4135547,
+      "elapsed_s": 31.732682715999545,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:42 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 4% cpu@54.375C/55.093C soc2@53.343C/53.843C soc0@51.656C/51.875C gpu@53.812C/55.062C tj@54.375C/55.093C soc1@53.843C/54.062C VDD_IN 5891mW/8507mW/10283mW VDD_CPU_GPU_CV 1112mW/2629mW/3784mW VDD_SOC 1589mW/1952mW/2214mW"
+    },
+    {
+      "at": 1793545842.6692052,
+      "elapsed_s": 31.98833311999624,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:42 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 0% cpu@54.531C/55.093C soc2@53.218C/53.843C soc0@51.562C/51.875C gpu@53.593C/55.062C tj@54.343C/55.093C soc1@53.875C/54.062C VDD_IN 5692mW/8484mW/10283mW VDD_CPU_GPU_CV 1033mW/2617mW/3784mW VDD_SOC 1552mW/1949mW/2214mW"
+    },
+    {
+      "at": 1793545842.9247952,
+      "elapsed_s": 32.24392342899955,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 86336,
+        "MemAvailable": 971012,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:42 RAM 6400/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,3%@729,3%@729] GR3D_FREQ 4% cpu@54.468C/55.093C soc2@53.218C/53.843C soc0@51.812C/51.875C gpu@53.562C/55.062C tj@54.468C/55.093C soc1@53.906C/54.062C VDD_IN 5811mW/8463mW/10283mW VDD_CPU_GPU_CV 1073mW/2604mW/3784mW VDD_SOC 1550mW/1946mW/2214mW"
+    },
+    {
+      "at": 1793545843.181818,
+      "elapsed_s": 32.50094773100136,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 84068,
+        "MemAvailable": 968744,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:43 RAM 6402/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [4%@1267,11%@1267,4%@1267,11%@1267,0%@960,3%@960] GR3D_FREQ 99% cpu@54.531C/55.093C soc2@53.437C/53.843C soc0@51.625C/51.875C gpu@54.218C/55.062C tj@54.531C/55.093C soc1@53.812C/54.062C VDD_IN 6001mW/8444mW/10283mW VDD_CPU_GPU_CV 1190mW/2593mW/3784mW VDD_SOC 1589mW/1943mW/2214mW"
+    },
+    {
+      "at": 1793545843.43791,
+      "elapsed_s": 32.75703978000092,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82112,
+        "MemAvailable": 966864,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:43 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [11%@729,8%@729,11%@729,16%@729,3%@729,7%@729] GR3D_FREQ 0% cpu@54.562C/55.093C soc2@53.218C/53.843C soc0@51.5C/51.875C gpu@53.906C/55.062C tj@54.562C/55.093C soc1@53.781C/54.062C VDD_IN 5931mW/8424mW/10283mW VDD_CPU_GPU_CV 1192mW/2582mW/3784mW VDD_SOC 1550mW/1940mW/2214mW"
+    },
+    {
+      "at": 1793545843.693494,
+      "elapsed_s": 33.01262256799964,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82112,
+        "MemAvailable": 966864,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:43 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,0%@729,4%@729] GR3D_FREQ 4% cpu@54.468C/55.093C soc2@53.312C/53.843C soc0@51.718C/51.875C gpu@53.812C/55.062C tj@54.468C/55.093C soc1@54C/54.062C VDD_IN 5971mW/8405mW/10283mW VDD_CPU_GPU_CV 1192mW/2572mW/3784mW VDD_SOC 1589mW/1937mW/2214mW"
+    },
+    {
+      "at": 1793545843.9491627,
+      "elapsed_s": 33.26829113299755,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82112,
+        "MemAvailable": 966864,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:43 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 18% cpu@54.718C/55.093C soc2@53.25C/53.843C soc0@51.531C/51.875C gpu@53.656C/55.062C tj@54.718C/55.093C soc1@53.812C/54.062C VDD_IN 5772mW/8385mW/10283mW VDD_CPU_GPU_CV 1073mW/2560mW/3784mW VDD_SOC 1550mW/1934mW/2214mW"
+    },
+    {
+      "at": 1793545844.2061243,
+      "elapsed_s": 33.52525245699508,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 82112,
+        "MemAvailable": 966844,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:44 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,3%@729,0%@729,0%@729,3%@729] GR3D_FREQ 5% cpu@54.375C/55.093C soc2@53.125C/53.843C soc0@51.437C/51.875C gpu@53.656C/55.062C tj@54.375C/55.093C soc1@54C/54.062C VDD_IN 5851mW/8365mW/10283mW VDD_CPU_GPU_CV 1112mW/2549mW/3784mW VDD_SOC 1550mW/1932mW/2214mW"
+    },
+    {
+      "at": 1793545844.4619217,
+      "elapsed_s": 33.78104999399511,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:44 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,0%@729,0%@729,4%@729] GR3D_FREQ 99% cpu@54.812C/55.093C soc2@53.281C/53.843C soc0@51.656C/51.875C gpu@53.781C/55.062C tj@54.437C/55.093C soc1@53.875C/54.062C VDD_IN 5891mW/8347mW/10283mW VDD_CPU_GPU_CV 1112mW/2538mW/3784mW VDD_SOC 1589mW/1929mW/2214mW"
+    },
+    {
+      "at": 1793545844.7201614,
+      "elapsed_s": 34.03928961199563,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:44 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,3%@729,0%@729,3%@729,0%@729,0%@729] GR3D_FREQ 7% cpu@54.281C/55.093C soc2@53.187C/53.843C soc0@51.5C/51.875C gpu@53.718C/55.062C tj@54.281C/55.093C soc1@53.781C/54.062C VDD_IN 5732mW/8327mW/10283mW VDD_CPU_GPU_CV 1033mW/2527mW/3784mW VDD_SOC 1550mW/1926mW/2214mW"
+    },
+    {
+      "at": 1793545844.9762778,
+      "elapsed_s": 34.29540640200139,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:44 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,0%@729,0%@729,3%@729,0%@729] GR3D_FREQ 10% cpu@54.531C/55.093C soc2@53.25C/53.843C soc0@51.531C/51.875C gpu@53.656C/55.062C tj@54.531C/55.093C soc1@53.968C/54.062C VDD_IN 5851mW/8309mW/10283mW VDD_CPU_GPU_CV 1112mW/2516mW/3784mW VDD_SOC 1550mW/1923mW/2214mW"
+    },
+    {
+      "at": 1793545845.2316608,
+      "elapsed_s": 34.55078919699736,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:45 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,3%@729,0%@729,0%@729,0%@729,3%@729] GR3D_FREQ 40% cpu@54.343C/55.093C soc2@53.125C/53.843C soc0@51.656C/51.875C gpu@53.593C/55.062C tj@54.343C/55.093C soc1@53.843C/54.062C VDD_IN 5732mW/8290mW/10283mW VDD_CPU_GPU_CV 1033mW/2505mW/3784mW VDD_SOC 1550mW/1921mW/2214mW"
+    },
+    {
+      "at": 1793545845.4874651,
+      "elapsed_s": 34.80659397300042,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:45 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [0%@729,0%@729,3%@729,0%@729,0%@729,3%@729] GR3D_FREQ 4% cpu@54.437C/55.093C soc2@53.218C/53.843C soc0@51.625C/51.875C gpu@53.531C/55.062C tj@54.437C/55.093C soc1@53.656C/54.062C VDD_IN 5811mW/8271mW/10283mW VDD_CPU_GPU_CV 1073mW/2495mW/3784mW VDD_SOC 1550mW/1918mW/2214mW"
+    },
+    {
+      "at": 1793545845.7435515,
+      "elapsed_s": 35.062679750000825,
+      "meminfo_kib": {
+        "MemTotal": 7665088,
+        "MemFree": 81888,
+        "MemAvailable": 966620,
+        "SwapTotal": 12582908,
+        "SwapFree": 12030972
+      },
+      "tegrastats": "11-01-2026 23:10:45 RAM 6404/7485MB (lfb 8x2MB) SWAP 539/12288MB (cached 467MB) CPU [3%@729,0%@729,0%@729,3%@729,0%@729,3%@729] GR3D_FREQ 99% cpu@54.312C/55.093C soc2@53.218C/53.843C soc0@51.5C/51.875C gpu@54.125C/55.062C tj@54.312C/55.093C soc1@53.875C/54.062C VDD_IN 5931mW/8254mW/10283mW VDD_CPU_GPU_CV 1112mW/2485mW/3784mW VDD_SOC 1589mW/1915mW/2214mW"
+    }
+  ]
+}

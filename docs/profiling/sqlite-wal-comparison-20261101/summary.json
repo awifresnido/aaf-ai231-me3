@@ -1,0 +1,938 @@
+{
+  "probe": {
+    "event": "probe_started",
+    "at": 1793525753.6311038,
+    "mono_ns": 28345417171703,
+    "pid": 37162,
+    "sqlite_version": "3.46.1",
+    "transactions": 12,
+    "interval_secs": 5.0,
+    "checkpoint_every": 4,
+    "serial_single_connection_per_database": true
+  },
+  "cases": {
+    "disk:fresh:delete": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.6787653,
+        "mono_ns": 28345464814505,
+        "pid": 37162,
+        "case": "disk:fresh:delete",
+        "database": "/home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/fresh-delete.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "close": {
+          "count": 12,
+          "median_ms": 0.7052455,
+          "min_ms": 0.459404,
+          "max_ms": 1.008364,
+          "sum_ms": 9.052514
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 25.085358,
+          "min_ms": 22.364864,
+          "max_ms": 26.956076,
+          "sum_ms": 299.386256
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 40.764147,
+          "min_ms": 29.910516,
+          "max_ms": 1716.932033,
+          "sum_ms": 4439.677836
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 2.9573685000000003,
+          "min_ms": 1.557897,
+          "max_ms": 1679.122178,
+          "sum_ms": 4013.917054
+        },
+        "open": {
+          "count": 12,
+          "median_ms": 1.453592,
+          "min_ms": 0.694254,
+          "max_ms": 1.912802,
+          "sum_ms": 16.323724
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 6.4184280000000005,
+          "min_ms": 2.963795,
+          "max_ms": 8.024964,
+          "sum_ms": 71.428549
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 40.701628,
+          "min_ms": 40.701628,
+          "max_ms": 40.701628,
+          "sum_ms": 40.701628
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 44.389824,
+          "min_ms": 44.389824,
+          "max_ms": 44.389824,
+          "sum_ms": 44.389824
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 8.682534,
+          "min_ms": 8.682534,
+          "max_ms": 8.682534,
+          "sum_ms": 8.682534
+        }
+      },
+      "runtime_total_ms": 4439.677836,
+      "runtime_amortized_ms_per_write": 369.97315299999997,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 48,
+        "median_ms": 5.9535,
+        "min_ms": 0.02,
+        "max_ms": 11.122,
+        "sum_ms": 259.528
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 48
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "disk:fresh:wal": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7075813,
+        "mono_ns": 28345493630418,
+        "pid": 37162,
+        "case": "disk:fresh:wal",
+        "database": "/home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/fresh-wal.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "close": {
+          "count": 12,
+          "median_ms": 8.0304915,
+          "min_ms": 6.709417,
+          "max_ms": 8.928735,
+          "sum_ms": 95.345423
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 22.3866725,
+          "min_ms": 18.141061,
+          "max_ms": 31.621894,
+          "sum_ms": 275.194845
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 46.153814,
+          "min_ms": 35.042815,
+          "max_ms": 1196.000556,
+          "sum_ms": 2757.166866
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 1.5522025,
+          "min_ms": 0.604607,
+          "max_ms": 2.591593,
+          "sum_ms": 17.142695
+        },
+        "open": {
+          "count": 12,
+          "median_ms": 1.4465180000000002,
+          "min_ms": 0.752014,
+          "max_ms": 1.745581,
+          "sum_ms": 15.909355
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 9.581379,
+          "min_ms": 4.508599,
+          "max_ms": 1148.078106,
+          "sum_ms": 2321.121821
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 6.810842,
+          "min_ms": 6.810842,
+          "max_ms": 6.810842,
+          "sum_ms": 6.810842
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 28.40536,
+          "min_ms": 28.40536,
+          "max_ms": 28.40536,
+          "sum_ms": 28.40536
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 10.382411,
+          "min_ms": 10.382411,
+          "max_ms": 10.382411,
+          "sum_ms": 10.382411
+        }
+      },
+      "runtime_total_ms": 2757.166866,
+      "runtime_amortized_ms_per_write": 229.7639055,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 60,
+        "median_ms": 5.0615000000000006,
+        "min_ms": 0.017,
+        "max_ms": 19.319,
+        "sum_ms": 302.472
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 36,
+        "close": 24
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "disk:persistent:delete": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.722016,
+        "mono_ns": 28345508065689,
+        "pid": 37162,
+        "case": "disk:persistent:delete",
+        "database": "/home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-delete.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "commit": {
+          "count": 12,
+          "median_ms": 25.771816,
+          "min_ms": 22.428959,
+          "max_ms": 30.134127,
+          "sum_ms": 312.42481300000003
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 35.876858999999996,
+          "min_ms": 28.587768,
+          "max_ms": 1090.868393,
+          "sum_ms": 1561.150875
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 2.374289,
+          "min_ms": 1.183121,
+          "max_ms": 1057.211957,
+          "sum_ms": 1172.198913
+        },
+        "persistent_close": {
+          "count": 1,
+          "median_ms": 0.598274,
+          "min_ms": 0.598274,
+          "max_ms": 0.598274,
+          "sum_ms": 0.598274
+        },
+        "persistent_open": {
+          "count": 1,
+          "median_ms": 0.96492,
+          "min_ms": 0.96492,
+          "max_ms": 0.96492,
+          "sum_ms": 0.96492
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 4.581089,
+          "min_ms": 2.429372,
+          "max_ms": 5.984755,
+          "sum_ms": 53.307838
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 10.499224,
+          "min_ms": 10.499224,
+          "max_ms": 10.499224,
+          "sum_ms": 10.499224
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 13.963997,
+          "min_ms": 13.963997,
+          "max_ms": 13.963997,
+          "sum_ms": 13.963997
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 5.759183,
+          "min_ms": 5.759183,
+          "max_ms": 5.759183,
+          "sum_ms": 5.759183
+        }
+      },
+      "runtime_total_ms": 1562.7140689999999,
+      "runtime_amortized_ms_per_write": 130.22617241666666,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 48,
+        "median_ms": 6.415,
+        "min_ms": 0.016,
+        "max_ms": 12.055,
+        "sum_ms": 268.935
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 48
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "disk:persistent:wal": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7591453,
+        "mono_ns": 28345545194748,
+        "pid": 37162,
+        "case": "disk:persistent:wal",
+        "database": "/home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-wal.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "checkpoint_full": {
+          "count": 3,
+          "median_ms": 7.269191,
+          "min_ms": 6.440364,
+          "max_ms": 8.297684,
+          "sum_ms": 22.007239
+        },
+        "checkpoint_truncate": {
+          "count": 1,
+          "median_ms": 1.995135,
+          "min_ms": 1.995135,
+          "max_ms": 1.995135,
+          "sum_ms": 1.995135
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 10.9634715,
+          "min_ms": 4.75082,
+          "max_ms": 1792.213371,
+          "sum_ms": 3004.181345
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 16.994884499999998,
+          "min_ms": 7.525931,
+          "max_ms": 1799.183378,
+          "sum_ms": 3070.951057
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 0.8008554999999999,
+          "min_ms": 0.446052,
+          "max_ms": 1.780081,
+          "sum_ms": 11.364532
+        },
+        "persistent_close": {
+          "count": 1,
+          "median_ms": 2.136282,
+          "min_ms": 2.136282,
+          "max_ms": 2.136282,
+          "sum_ms": 2.136282
+        },
+        "persistent_open": {
+          "count": 1,
+          "median_ms": 1.247843,
+          "min_ms": 1.247843,
+          "max_ms": 1.247843,
+          "sum_ms": 1.247843
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 2.3113085,
+          "min_ms": 1.248399,
+          "max_ms": 4.496265,
+          "sum_ms": 31.317765
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 11.084128,
+          "min_ms": 11.084128,
+          "max_ms": 11.084128,
+          "sum_ms": 11.084128
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 36.705803,
+          "min_ms": 36.705803,
+          "max_ms": 36.705803,
+          "sum_ms": 36.705803
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 12.300862,
+          "min_ms": 12.300862,
+          "max_ms": 12.300862,
+          "sum_ms": 12.300862
+        }
+      },
+      "runtime_total_ms": 3098.337556,
+      "runtime_amortized_ms_per_write": 258.19479633333333,
+      "checkpoints": [
+        {
+          "event": "checkpoint_result",
+          "at": 1793525773.4715855,
+          "mono_ns": 28365257635224,
+          "pid": 37162,
+          "case": "disk:persistent:wal",
+          "iteration": 3,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 5,
+          "checkpointed_frames": 5
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525796.5057628,
+          "mono_ns": 28388291813462,
+          "pid": 37162,
+          "case": "disk:persistent:wal",
+          "iteration": 7,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 4,
+          "checkpointed_frames": 4
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525821.1024976,
+          "mono_ns": 28412888547218,
+          "pid": 37162,
+          "case": "disk:persistent:wal",
+          "iteration": 11,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 4,
+          "checkpointed_frames": 4
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525821.301428,
+          "mono_ns": 28413087477428,
+          "pid": 37162,
+          "case": "disk:persistent:wal",
+          "kind": "TRUNCATE",
+          "busy": 0,
+          "log_frames": 0,
+          "checkpointed_frames": 0
+        }
+      ],
+      "runtime_flushes": {
+        "count": 22,
+        "median_ms": 4.5355,
+        "min_ms": 0.017,
+        "max_ms": 1790.368,
+        "sum_ms": 2997.528
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 16,
+        "checkpoint_full": 6
+      },
+      "slow_runtime_flushes_over_100ms": [
+        {
+          "at": 1793525759.005225,
+          "syscall": "fdatasync",
+          "elapsed_ms": 1790.368,
+          "case": "disk:persistent:wal",
+          "phase": "commit",
+          "iteration": 1,
+          "line": "37162 1793525759.005225 fdatasync(8</home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-wal.sqlite-wal>) = 0 <1.790368>"
+        },
+        {
+          "at": 1793525819.983566,
+          "syscall": "fdatasync",
+          "elapsed_ms": 1107.6029999999998,
+          "case": "disk:persistent:wal",
+          "phase": "commit",
+          "iteration": 11,
+          "line": "37162 1793525819.983566 fdatasync(8</home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-wal.sqlite-wal>) = 0 <1.107603>"
+        }
+      ],
+      "verified": true
+    },
+    "ram:fresh:delete": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7625124,
+        "mono_ns": 28345548561669,
+        "pid": 37162,
+        "case": "ram:fresh:delete",
+        "database": "/dev/shm/voice-wal-compare-8x17osxk/fresh-delete.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "close": {
+          "count": 12,
+          "median_ms": 0.6634585,
+          "min_ms": 0.358164,
+          "max_ms": 1.141492,
+          "sum_ms": 8.286165
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 2.4099465,
+          "min_ms": 1.316195,
+          "max_ms": 4.879208,
+          "sum_ms": 32.299744
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 17.361816500000003,
+          "min_ms": 8.593126,
+          "max_ms": 20.761433,
+          "sum_ms": 188.407547
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 2.5193075,
+          "min_ms": 1.318862,
+          "max_ms": 2.905388,
+          "sum_ms": 27.676056
+        },
+        "open": {
+          "count": 12,
+          "median_ms": 1.2758435,
+          "min_ms": 0.713921,
+          "max_ms": 5.118632,
+          "sum_ms": 18.81454
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 5.5293790000000005,
+          "min_ms": 3.180127,
+          "max_ms": 9.119938,
+          "sum_ms": 72.699189
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 0.333961,
+          "min_ms": 0.333961,
+          "max_ms": 0.333961,
+          "sum_ms": 0.333961
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 2.654612,
+          "min_ms": 2.654612,
+          "max_ms": 2.654612,
+          "sum_ms": 2.654612
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 6.000978,
+          "min_ms": 6.000978,
+          "max_ms": 6.000978,
+          "sum_ms": 6.000978
+        }
+      },
+      "runtime_total_ms": 188.407547,
+      "runtime_amortized_ms_per_write": 15.700628916666666,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 48,
+        "median_ms": 0.0265,
+        "min_ms": 0.014,
+        "max_ms": 0.727,
+        "sum_ms": 2.169
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 48
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "ram:fresh:wal": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7673585,
+        "mono_ns": 28345553407710,
+        "pid": 37162,
+        "case": "ram:fresh:wal",
+        "database": "/dev/shm/voice-wal-compare-8x17osxk/fresh-wal.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "close": {
+          "count": 12,
+          "median_ms": 2.4256775,
+          "min_ms": 1.288195,
+          "max_ms": 3.969733,
+          "sum_ms": 27.253572
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 2.0791899999999996,
+          "min_ms": 1.070492,
+          "max_ms": 3.167534,
+          "sum_ms": 24.19332
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 18.631013,
+          "min_ms": 9.526176,
+          "max_ms": 19.96966,
+          "sum_ms": 202.058085
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 1.144511,
+          "min_ms": 0.614181,
+          "max_ms": 1.624322,
+          "sum_ms": 13.842682
+        },
+        "open": {
+          "count": 12,
+          "median_ms": 1.207251,
+          "min_ms": 0.675014,
+          "max_ms": 1.645952,
+          "sum_ms": 13.868796
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 8.403182999999999,
+          "min_ms": 4.192027,
+          "max_ms": 10.162672,
+          "sum_ms": 95.272073
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 0.397072,
+          "min_ms": 0.397072,
+          "max_ms": 0.397072,
+          "sum_ms": 0.397072
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 4.460932,
+          "min_ms": 4.460932,
+          "max_ms": 4.460932,
+          "sum_ms": 4.460932
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 6.660029,
+          "min_ms": 6.660029,
+          "max_ms": 6.660029,
+          "sum_ms": 6.660029
+        }
+      },
+      "runtime_total_ms": 202.058085,
+      "runtime_amortized_ms_per_write": 16.83817375,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 60,
+        "median_ms": 0.027,
+        "min_ms": 0.014,
+        "max_ms": 0.19699999999999998,
+        "sum_ms": 1.831
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 36,
+        "close": 24
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "ram:persistent:delete": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7703805,
+        "mono_ns": 28345556429856,
+        "pid": 37162,
+        "case": "ram:persistent:delete",
+        "database": "/dev/shm/voice-wal-compare-8x17osxk/persistent-delete.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "delete",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "commit": {
+          "count": 12,
+          "median_ms": 2.5567975,
+          "min_ms": 1.300769,
+          "max_ms": 5.93044,
+          "sum_ms": 33.44229
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 11.353802,
+          "min_ms": 5.586462,
+          "max_ms": 15.13823,
+          "sum_ms": 129.060026
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 2.288096,
+          "min_ms": 1.094919,
+          "max_ms": 3.268033,
+          "sum_ms": 26.456153
+        },
+        "persistent_close": {
+          "count": 1,
+          "median_ms": 0.48533,
+          "min_ms": 0.48533,
+          "max_ms": 0.48533,
+          "sum_ms": 0.48533
+        },
+        "persistent_open": {
+          "count": 1,
+          "median_ms": 0.657125,
+          "min_ms": 0.657125,
+          "max_ms": 0.657125,
+          "sum_ms": 0.657125
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 4.0990735,
+          "min_ms": 2.215763,
+          "max_ms": 5.706572,
+          "sum_ms": 48.200635000000005
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 0.357368,
+          "min_ms": 0.357368,
+          "max_ms": 0.357368,
+          "sum_ms": 0.357368
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 2.674796,
+          "min_ms": 2.674796,
+          "max_ms": 2.674796,
+          "sum_ms": 2.674796
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 4.076787,
+          "min_ms": 4.076787,
+          "max_ms": 4.076787,
+          "sum_ms": 4.076787
+        }
+      },
+      "runtime_total_ms": 130.202481,
+      "runtime_amortized_ms_per_write": 10.85020675,
+      "checkpoints": [],
+      "runtime_flushes": {
+        "count": 48,
+        "median_ms": 0.0265,
+        "min_ms": 0.014,
+        "max_ms": 0.087,
+        "sum_ms": 1.369
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 48
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    },
+    "ram:persistent:wal": {
+      "settings": {
+        "event": "case_settings",
+        "at": 1793525753.7765226,
+        "mono_ns": 28345562572850,
+        "pid": 37162,
+        "case": "ram:persistent:wal",
+        "database": "/dev/shm/voice-wal-compare-8x17osxk/persistent-wal.sqlite",
+        "seed_bytes": 28672,
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 1000
+      },
+      "phases": {
+        "checkpoint_full": {
+          "count": 3,
+          "median_ms": 2.561057,
+          "min_ms": 2.058689,
+          "max_ms": 3.991602,
+          "sum_ms": 8.611348
+        },
+        "checkpoint_truncate": {
+          "count": 1,
+          "median_ms": 0.819661,
+          "min_ms": 0.819661,
+          "max_ms": 0.819661,
+          "sum_ms": 0.819661
+        },
+        "commit": {
+          "count": 12,
+          "median_ms": 1.083132,
+          "min_ms": 0.507775,
+          "max_ms": 2.454483,
+          "sum_ms": 14.976992000000001
+        },
+        "cycle": {
+          "count": 12,
+          "median_ms": 6.798,
+          "min_ms": 2.914332,
+          "max_ms": 11.07385,
+          "sum_ms": 80.068732
+        },
+        "execute": {
+          "count": 12,
+          "median_ms": 0.868133,
+          "min_ms": 0.399256,
+          "max_ms": 1.735248,
+          "sum_ms": 10.795909
+        },
+        "persistent_close": {
+          "count": 1,
+          "median_ms": 1.023308,
+          "min_ms": 1.023308,
+          "max_ms": 1.023308,
+          "sum_ms": 1.023308
+        },
+        "persistent_open": {
+          "count": 1,
+          "median_ms": 0.60981,
+          "min_ms": 0.60981,
+          "max_ms": 0.60981,
+          "sum_ms": 0.60981
+        },
+        "prepare": {
+          "count": 12,
+          "median_ms": 2.2597435,
+          "min_ms": 1.170659,
+          "max_ms": 6.621176,
+          "sum_ms": 30.461922
+        },
+        "seed_fsync": {
+          "count": 1,
+          "median_ms": 0.333091,
+          "min_ms": 0.333091,
+          "max_ms": 0.333091,
+          "sum_ms": 0.333091
+        },
+        "setup": {
+          "count": 1,
+          "median_ms": 5.655887,
+          "min_ms": 5.655887,
+          "max_ms": 5.655887,
+          "sum_ms": 5.655887
+        },
+        "verify": {
+          "count": 1,
+          "median_ms": 5.899478,
+          "min_ms": 5.899478,
+          "max_ms": 5.899478,
+          "sum_ms": 5.899478
+        }
+      },
+      "runtime_total_ms": 91.132859,
+      "runtime_amortized_ms_per_write": 7.594404916666666,
+      "checkpoints": [
+        {
+          "event": "checkpoint_result",
+          "at": 1793525773.3927171,
+          "mono_ns": 28365178766764,
+          "pid": 37162,
+          "case": "ram:persistent:wal",
+          "iteration": 3,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 5,
+          "checkpointed_frames": 5
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525796.4351873,
+          "mono_ns": 28388221237461,
+          "pid": 37162,
+          "case": "ram:persistent:wal",
+          "iteration": 7,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 4,
+          "checkpointed_frames": 4
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525821.2430441,
+          "mono_ns": 28413029093601,
+          "pid": 37162,
+          "case": "ram:persistent:wal",
+          "iteration": 11,
+          "kind": "FULL",
+          "busy": 0,
+          "log_frames": 4,
+          "checkpointed_frames": 4
+        },
+        {
+          "event": "checkpoint_result",
+          "at": 1793525821.3365998,
+          "mono_ns": 28413122649319,
+          "pid": 37162,
+          "case": "ram:persistent:wal",
+          "kind": "TRUNCATE",
+          "busy": 0,
+          "log_frames": 0,
+          "checkpointed_frames": 0
+        }
+      ],
+      "runtime_flushes": {
+        "count": 22,
+        "median_ms": 0.028,
+        "min_ms": 0.015000000000000001,
+        "max_ms": 0.068,
+        "sum_ms": 0.611
+      },
+      "runtime_flush_count_by_phase": {
+        "commit": 16,
+        "checkpoint_full": 6
+      },
+      "slow_runtime_flushes_over_100ms": [],
+      "verified": true
+    }
+  },
+  "failed_kernel_lock_requests": [],
+  "all_flush_count": 380,
+  "slow_other_syscalls_over_100ms": [],
+  "slow_flushes_over_100ms_including_setup": [
+    {
+      "at": 1793525759.005225,
+      "syscall": "fdatasync",
+      "elapsed_ms": 1790.368,
+      "case": "disk:persistent:wal",
+      "phase": "commit",
+      "iteration": 1,
+      "line": "37162 1793525759.005225 fdatasync(8</home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-wal.sqlite-wal>) = 0 <1.790368>"
+    },
+    {
+      "at": 1793525819.983566,
+      "syscall": "fdatasync",
+      "elapsed_ms": 1107.6029999999998,
+      "case": "disk:persistent:wal",
+      "phase": "commit",
+      "iteration": 11,
+      "line": "37162 1793525819.983566 fdatasync(8</home/aldwinrpi4/voice-agent-tools/voice-wal-compare-k50cqy31/persistent-wal.sqlite-wal>) = 0 <1.107603>"
+    }
+  ],
+  "runtime_definition": "sum(cycle + persistent_open + checkpoints + persistent_close); excludes setup, verify, deliberate sleeps; nested spans are not added twice"
+}

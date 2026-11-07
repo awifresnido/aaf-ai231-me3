@@ -1,0 +1,66 @@
+{
+  "kind": "synthetic_direct_grpc_capacity_probe_no_speaker_playback_no_tools",
+  "started_at": 1793545812.270303,
+  "finished_at": 1793545838.0669403,
+  "source_sample_rate": 16000,
+  "calls": [
+    {
+      "kind": "tts",
+      "started_at": 1793545812.2727602,
+      "finished_at": 1793545816.8276095,
+      "audio_bytes": 127802
+    },
+    {
+      "kind": "asr",
+      "started_at": 1793545816.8333323,
+      "finished_at": 1793545820.581161,
+      "result_count": 1,
+      "nonempty_text": true
+    },
+    {
+      "kind": "tts",
+      "started_at": 1793545816.8368332,
+      "finished_at": 1793545822.5455506,
+      "audio_bytes": 142664
+    },
+    {
+      "kind": "asr",
+      "started_at": 1793545822.5458436,
+      "finished_at": 1793545823.339423,
+      "result_count": 1,
+      "nonempty_text": true
+    },
+    {
+      "kind": "tts",
+      "started_at": 1793545822.5465658,
+      "finished_at": 1793545827.7866464,
+      "audio_bytes": 154552
+    },
+    {
+      "kind": "asr",
+      "started_at": 1793545827.787697,
+      "finished_at": 1793545828.6139176,
+      "result_count": 1,
+      "nonempty_text": true
+    },
+    {
+      "kind": "tts",
+      "started_at": 1793545827.789106,
+      "finished_at": 1793545832.9103441,
+      "audio_bytes": 151580
+    },
+    {
+      "kind": "asr",
+      "started_at": 1793545832.910804,
+      "finished_at": 1793545833.738981,
+      "result_count": 1,
+      "nonempty_text": true
+    },
+    {
+      "kind": "tts",
+      "started_at": 1793545832.9117427,
+      "finished_at": 1793545838.0662816,
+      "audio_bytes": 154552
+    }
+  ]
+}

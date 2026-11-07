@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-01",
+  "timezone": "Asia/Manila",
+  "purpose": "Isolate SQLite flush/lock waits on disposable databases only",
+  "live_database_modified": false,
+  "private_data_copied": false,
+  "bot_model_or_audio_changed": false,
+  "sql_policy": "DELETE/FULL in all synthetic SQLite cases; RAM is diagnostic only",
+  "sha256": {
+    "voice-sqlite-probe-20261101-1702/events.jsonl": "c2508475c6063b7eb6fdb5095c238b29e26b373c986337090bc35bf9b475d7a4",
+    "voice-sqlite-probe-20261101-1702/syscalls.log": "75e9c5921600fff2f25ea45fb57809c04907811ba7547569299d306c71215fec",
+    "voice-sqlite-probe-20261101-spaced/events.jsonl": "f461c6375b76fd354bd4ab018bfa13180d6f2946aa71250227dbf0c95105fc4d",
+    "voice-sqlite-probe-20261101-spaced/syscalls.log": "5d709d15db9d3c901cd44bbedc718a4f7577c7c34bf3bc44976d094e408ee720",
+    "voice-sqlite-probe-20261101-crosslock/events.jsonl": "14254cddf1d6d744892ffed8f8da15dd8b7a91a407bc175e6bd848577b25ec01",
+    "voice-sqlite-probe-20261101-crosslock/syscalls.log": "9155ebfc7427bd021d08ae7414afeccc403955b4d6120f9345c661342d2cd66e",
+    "voice-mcp-storage-probe-20261101/syscalls.log": "ab2e6c74a35f75eda1c8037b9e9ca77083b3ed093f4f3e77c9c9b8080bad98cd",
+    "voice-mcp-storage-probe-20261101/mcp-storage-probe/mcp-35563.jsonl": "5a81028ed58f527323b28ac4e5759e16aa077d046905f79d0648d87f709ce76b",
+    "voice-mcp-storage-probe-20261101/mcp-storage-probe/pi-35555.jsonl": "e355dde386f612388698f9866d4016670396ed498f1a116c37c255d95f420cf7",
+    "summary.json": "1e274070b315795f6a75c969087c658f8fe097613d17da03f2d1c9faa6f98056"
+  }
+}

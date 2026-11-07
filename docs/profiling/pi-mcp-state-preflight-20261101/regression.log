@@ -1,0 +1,173 @@
+2026-11-01 20:28:29.992 | INFO     | pipecat:<module>:54 - ᓚᘏᗢ Pipecat 1.13.0 (Python 3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]) ᓚᘏᗢ
+test_clarification_is_spoken_without_tool (test_local_vcm.LocalVCMTests.test_clarification_is_spoken_without_tool) ... 2026-11-01 20:28:33.140 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'reply', 'model_s': 0.0009833079966483638}
+2026-11-01 20:28:33.141 | INFO     | local_vcm:record:145 - Local VCM route_local_reply: {'model_host': 'test', 'model_s': 0.0009833079966483638}
+ok
+test_compound_command_does_not_execute_partial_action (test_local_vcm.LocalVCMTests.test_compound_command_does_not_execute_partial_action) ... 2026-11-01 20:28:33.149 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'control_lights', 'model_s': 0.0005305520026013255}
+2026-11-01 20:28:33.151 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0017979309996007942}
+ok
+test_invalid_host_does_not_silently_select_a_model (test_local_vcm.LocalVCMTests.test_invalid_host_does_not_silently_select_a_model) ... ok
+test_music_search_cannot_be_misrouted_to_skip (test_local_vcm.LocalVCMTests.test_music_search_cannot_be_misrouted_to_skip) ... 2026-11-01 20:28:33.164 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'playback_control', 'model_s': 0.00047327399806817994}
+2026-11-01 20:28:33.166 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0022287059982772917}
+ok
+test_primary_transport_failure_never_contacts_secondary (test_local_vcm.LocalVCMTests.test_primary_transport_failure_never_contacts_secondary) ... Executing <Task finished name='Task-22' coro=<LocalVCMTests.test_primary_transport_failure_never_contacts_secondary() done, defined at /dev/shm/vcm-state-code-check-20261101/tests/test_local_vcm.py:58> result=None created at /usr/lib/python3.13/asyncio/runners.py:100> took 0.174 seconds
+ok
+test_radio_cannot_be_executed_as_music (test_local_vcm.LocalVCMTests.test_radio_cannot_be_executed_as_music) ... 2026-11-01 20:28:33.354 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'play_music', 'model_s': 0.0006575879961019382}
+2026-11-01 20:28:33.355 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0010377889993833378}
+ok
+test_reminder_preserves_user_case_after_model_capitalization (test_local_vcm.LocalVCMTests.test_reminder_preserves_user_case_after_model_capitalization) ... 2026-11-01 20:28:33.362 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'add_reminder', 'model_s': 0.0005883289995836094}
+2026-11-01 20:28:33.363 | INFO     | local_vcm:record:145 - Local VCM route_local_tool: {'model_host': 'test', 'tool': 'add_reminder', 'model_s': 0.0005883289995836094, 'mcp_s': 0.000532903999555856, 'total_s': 0.002107132997480221}
+ok
+test_remote_weather_is_not_silently_defaulted (test_local_vcm.LocalVCMTests.test_remote_weather_is_not_silently_defaulted) ... 2026-11-01 20:28:33.372 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'get_weather', 'model_s': 0.000776975997723639}
+2026-11-01 20:28:33.373 | INFO     | local_vcm:record:145 - Local VCM route_local_reply: {'model_host': 'test', 'reason': 'unsupported_weather', 'model_s': 0.000776975997723639}
+ok
+test_single_endpoint_and_conversation_reach_model (test_local_vcm.LocalVCMTests.test_single_endpoint_and_conversation_reach_model) ... ok
+test_tool_executes_once_without_second_model_call_or_context_forward (test_local_vcm.LocalVCMTests.test_tool_executes_once_without_second_model_call_or_context_forward) ... 2026-11-01 20:28:33.414 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'control_lights', 'model_s': 0.0005793660020572133}
+2026-11-01 20:28:33.419 | INFO     | local_vcm:record:145 - Local VCM route_local_tool: {'model_host': 'test', 'tool': 'control_lights', 'model_s': 0.0005793660020572133, 'mcp_s': 0.0007593650007038377, 'total_s': 0.005740160995628685}
+ok
+test_tool_failure_is_uncertain_and_never_retried (test_local_vcm.LocalVCMTests.test_tool_failure_is_uncertain_and_never_retried) ... 2026-11-01 20:28:33.427 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'set_timer', 'model_s': 0.00048427400179207325}
+2026-11-01 20:28:33.429 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'TimeoutError', 'tool_issued': True, 'total_s': 0.003135753999231383}
+ok
+test_unsupported_invalid_or_unavailable_model_never_executes (test_local_vcm.LocalVCMTests.test_unsupported_invalid_or_unavailable_model_never_executes) ... 2026-11-01 20:28:33.438 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0005091439961688593}
+2026-11-01 20:28:33.441 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'send_message', 'model_s': 0.00047958900540834293}
+2026-11-01 20:28:33.441 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0007440500048687682}
+2026-11-01 20:28:33.444 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'play_radio', 'model_s': 0.0005424589980975725}
+2026-11-01 20:28:33.445 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0008824749966152012}
+2026-11-01 20:28:33.448 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'set_thermostat', 'model_s': 0.0005258289966150187}
+2026-11-01 20:28:33.449 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0008359929997823201}
+ok
+test_vps_failure_never_uses_thinkpad (test_local_vcm.LocalVCMTests.test_vps_failure_never_uses_thinkpad) ... ok
+test_vps_only_uses_secondary_model_and_key (test_local_vcm.LocalVCMTests.test_vps_only_uses_secondary_model_and_key) ... ok
+test_wrong_but_schema_valid_light_action_is_not_executed (test_local_vcm.LocalVCMTests.test_wrong_but_schema_valid_light_action_is_not_executed) ... 2026-11-01 20:28:33.524 | INFO     | local_vcm:record:145 - Local VCM local_decision: {'model_host': 'test', 'tool': 'control_lights', 'model_s': 0.00048412600153824314}
+2026-11-01 20:28:33.525 | INFO     | local_vcm:record:145 - Local VCM route_local_failure: {'model_host': 'test', 'error': 'ValueError', 'tool_issued': False, 'total_s': 0.0009053819958353415}
+ok
+test_asr_filler_does_not_send_explicit_reminder_to_glm (test_orchestration.ProcessorTests.test_asr_filler_does_not_send_explicit_reminder_to_glm) ... 2026-11-01 20:28:33.533 | INFO     | orchestration:process_frame:395 - Fast route add_reminder: jev=0.000s direct=0.001s mcp=0.000s total=0.002s
+ok
+test_fallback_uses_vps_model_id (test_orchestration.ProcessorTests.test_fallback_uses_vps_model_id) ... ok
+test_fast_tool_speaks_without_glm_call (test_orchestration.ProcessorTests.test_fast_tool_speaks_without_glm_call) ... 2026-11-01 20:28:33.578 | INFO     | orchestration:process_frame:395 - Fast route get_time: jev=0.001s direct=0.000s mcp=0.000s total=0.002s
+ok
+test_forecast_cannot_be_fast_current_weather (test_orchestration.ProcessorTests.test_forecast_cannot_be_fast_current_weather) ... 2026-11-01 20:28:33.587 | INFO     | orchestration:process_frame:400 - Fast route get_weather lacked validated arguments; GLM after 0.001s
+ok
+test_leading_connective_keeps_single_thermostat_command_fast (test_orchestration.ProcessorTests.test_leading_connective_keeps_single_thermostat_command_fast) ... 2026-11-01 20:28:33.597 | INFO     | orchestration:process_frame:395 - Fast route set_thermostat: jev=0.001s direct=0.001s mcp=0.000s total=0.003s
+2026-11-01 20:28:33.599 | INFO     | orchestration:process_frame:395 - Fast route set_thermostat: jev=0.001s direct=0.000s mcp=0.000s total=0.001s
+2026-11-01 20:28:33.600 | INFO     | orchestration:process_frame:395 - Fast route set_thermostat: jev=0.001s direct=0.000s mcp=0.000s total=0.001s
+ok
+test_llama_cpp_schema_request (test_orchestration.ProcessorTests.test_llama_cpp_schema_request) ... ok
+test_multiple_actions_skip_fast_execution (test_orchestration.ProcessorTests.test_multiple_actions_skip_fast_execution) ... 2026-11-01 20:28:33.639 | INFO     | orchestration:process_frame:344 - Multiple actions routed to GLM
+ok
+test_small_talk_uses_small_brain (test_orchestration.ProcessorTests.test_small_talk_uses_small_brain) ... 2026-11-01 20:28:33.648 | INFO     | orchestration:process_frame:366 - Small-brain conversation: jev=0.001s llama=0.001s total=0.001s
+ok
+test_uncertain_route_reaches_glm (test_orchestration.ProcessorTests.test_uncertain_route_reaches_glm) ... 2026-11-01 20:28:33.658 | INFO     | orchestration:process_frame:402 - Route get_time sent to GLM after 0.001s confidence=0.600
+ok
+test_ambiguous_or_unsupported_stays_with_glm (test_orchestration.RouteTests.test_ambiguous_or_unsupported_stays_with_glm) ... ok
+test_argument_validation (test_orchestration.RouteTests.test_argument_validation) ... ok
+test_deterministic_extraction (test_orchestration.RouteTests.test_deterministic_extraction) ... ok
+test_high_probability_single_command (test_orchestration.RouteTests.test_high_probability_single_command) ... ok
+test_latest_user_turn (test_orchestration.RouteTests.test_latest_user_turn) ... ok
+test_blocked_writer_does_not_block_loop_and_flush_preserves_records (test_queued_logging.QueuedLoggingTests.test_blocked_writer_does_not_block_loop_and_flush_preserves_records) ... ok
+test_disabled_mode_keeps_existing_handlers (test_queued_logging.QueuedLoggingTests.test_disabled_mode_keeps_existing_handlers) ... ok
+test_event_loop_block_is_visible_without_normal_logging (test_stall_diagnostics.AsyncDiagnosticsTests.test_event_loop_block_is_visible_without_normal_logging) ... Executing <Task pending name='Task-132' coro=<AsyncDiagnosticsTests.test_event_loop_block_is_visible_without_normal_logging() running at /dev/shm/vcm-state-code-check-20261101/tests/test_stall_diagnostics.py:72> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.13/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /usr/lib/python3.13/asyncio/base_events.py:181] created at /usr/lib/python3.13/asyncio/runners.py:100> took 0.181 seconds
+ok
+test_real_stdio_correlates_client_server_sqlite_without_schema_or_result_changes (test_stall_diagnostics.AsyncDiagnosticsTests.test_real_stdio_correlates_client_server_sqlite_without_schema_or_result_changes) ... 2026-11-01 20:28:36.710 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:634 - Found 13 available tools
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: play_music
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Play music. Picks a track from an open-licensed music catalog (Jamendo; Internet Archive fallback) for the given free-form query (genre, mood, artist, or title). Returns track title and stream URL.
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'play_music'
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'play_music'
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: playback_control
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Control the currently playing music: pause, stop, resume, next, volume_up, volume_down. These are the ME2 PAUSE/STOP/NEXT/VOLUME_UP/VOLUME_DOWN commands.
+2026-11-01 20:28:36.711 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'playback_control'
+2026-11-01 20:28:36.712 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'playback_control'
+2026-11-01 20:28:36.712 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: get_weather
+2026-11-01 20:28:36.712 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Current weather for a place. Open-Meteo, no API key. Same provider as the ME2 weather service. Optionally pass place latitude/longitude.
+2026-11-01 20:28:36.712 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'get_weather'
+2026-11-01 20:28:36.713 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'get_weather'
+2026-11-01 20:28:36.713 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: get_time
+2026-11-01 20:28:36.713 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Current time (local timezone). No network needed.
+2026-11-01 20:28:36.713 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'get_time'
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'get_time'
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: set_timer
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Start a countdown timer. Pass the duration as a number of seconds (e.g. '30 seconds' -> 30). Returns when the timer ends.
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'set_timer'
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'set_timer'
+2026-11-01 20:28:36.714 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: set_alarm
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Set an alarm for a time like '6:00 AM' (next occurrence). Returns when it will ring.
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'set_alarm'
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'set_alarm'
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: add_reminder
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Create a reminder (e.g. 'Drink water'). Persistent.
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'add_reminder'
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'add_reminder'
+2026-11-01 20:28:36.715 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: list_reminders
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: List outstanding reminders.
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'list_reminders'
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'list_reminders'
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: set_thermostat
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Set the target temperature in degrees Celsius (e.g. 18, 22, 26). State is stored for the later dashboard UI.
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'set_thermostat'
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'set_thermostat'
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: control_lights
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Control the smart lights. action: 'on' | 'off' | 'brightness' | 'color'. value: 0-100 for brightness, or Red/Blue/Green for color.
+2026-11-01 20:28:36.716 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'control_lights'
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'control_lights'
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: send_message
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Send a text message via Telegram Bot API (open HTTP API, free). Requires TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID. Returns the Telegram message id.
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'send_message'
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'send_message'
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: send_email
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Send an email via SMTP (open standard; any provider). Requires SMTP_HOST/SMTP_USER/SMTP_PASSWORD env. Falls back to send_message via Telegram if SMTP is not configured.
+2026-11-01 20:28:36.717 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'send_email'
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'send_email'
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:652 - Processing tool: place_call
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:653 - Tool description: Place a voice call. Real telephony needs a carrier (no open-source carrier API exists), so this records the call request and returns a UI event the later dashboard can route to a SIP softphone or a webhook-based carrier. This mirrors the ME2 simulated CALL.
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_convert_mcp_schema_to_pipecat:522 - Converting schema for tool 'place_call'
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:664 - Successfully read tool 'place_call'
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_list_tools_helper:670 - Completed reading 13 tools
+2026-11-01 20:28:36.718 | DEBUG    | pipecat.services.mcp_service:_call_tool_text:562 - Calling mcp tool 'control_lights'
+2026-11-01 20:28:36.746 | DEBUG    | pipecat.services.mcp_service:_call_tool_text:592 - Tool response chunk 0: {
+  "ok": true,
+  "spoken": "Lights on.",
+  "lights": {
+    "power": true,
+    "brightness": "100",
+    "color": null
+  }
+}
+2026-11-01 20:28:36.747 | INFO     | pipecat.services.mcp_service:_call_tool_text:612 - Tool 'control_lights' completed successfully
+2026-11-01 20:28:36.747 | DEBUG    | pipecat.services.mcp_service:_call_tool_text:613 - Final response: {
+  "ok": true,
+  "spoken": "Lights on.",
+  "lights": {
+    "power": true,
+    "brightness": "100",
+    "color": null
+  }
+}
+ok
+test_locked_database_error_is_traced_and_propagated (test_stall_diagnostics.SQLiteDiagnosticsTests.test_locked_database_error_is_traced_and_propagated) ... ok
+test_sql_results_and_private_values_are_preserved_without_logging_them (test_stall_diagnostics.SQLiteDiagnosticsTests.test_sql_results_and_private_values_are_preserved_without_logging_them) ... ok
+test_endpointing_includes_vad_silence_once (test_turn_timing.TimingTests.test_endpointing_includes_vad_silence_once) ... ok
+test_greeting_has_no_user_latency (test_turn_timing.TimingTests.test_greeting_has_no_user_latency) ... ok
+test_local_same_clock_breakdown_remains_available (test_vcm_server_location.CrossHostTimingTests.test_local_same_clock_breakdown_remains_available) ... ok
+test_remote_clock_offset_never_becomes_transport_latency (test_vcm_server_location.CrossHostTimingTests.test_remote_clock_offset_never_becomes_transport_latency) ... ok
+test_default_stays_on_pi_without_forwarding_bot_credentials (test_vcm_server_location.PlacementTests.test_default_stays_on_pi_without_forwarding_bot_credentials) ... ok
+test_diagnostics_disabled_is_explicit_on_remote (test_vcm_server_location.PlacementTests.test_diagnostics_disabled_is_explicit_on_remote) ... ok
+test_jetson_is_pinned_ssh_with_allowlisted_settings_and_matching_run (test_vcm_server_location.PlacementTests.test_jetson_is_pinned_ssh_with_allowlisted_settings_and_matching_run) ... ok
+test_local_state_override_and_diagnostics_reach_only_local_process (test_vcm_server_location.PlacementTests.test_local_state_override_and_diagnostics_reach_only_local_process) ... ok
+test_pi_storage_connection_overrides_are_forwarded_without_bot_keys (test_vcm_server_location.PlacementTests.test_pi_storage_connection_overrides_are_forwarded_without_bot_keys) ... ok
+test_remote_rejects_shell_commands_credential_settings_and_bad_run_ids (test_vcm_server_location.PlacementTests.test_remote_rejects_shell_commands_credential_settings_and_bad_run_ids) ... ok
+test_remote_state_cannot_escape_root_including_through_symlink (test_vcm_server_location.PlacementTests.test_remote_state_cannot_escape_root_including_through_symlink) ... ok
+test_state_worker_request_selects_only_the_storage_entry_point (test_vcm_server_location.PlacementTests.test_state_worker_request_selects_only_the_storage_entry_point) ... ok
+test_unknown_location_and_option_injection_fail_without_local_fallback (test_vcm_server_location.PlacementTests.test_unknown_location_and_option_injection_fail_without_local_fallback) ... ok
+test_bad_requests_cannot_execute_sql_or_create_a_database (test_vcm_state.SQLiteStoreTests.test_bad_requests_cannot_execute_sql_or_create_a_database) ... ok
+test_commit_failure_rolls_back_both_change_and_success_receipt (test_vcm_state.SQLiteStoreTests.test_commit_failure_rolls_back_both_change_and_success_receipt) ... ok
+test_concurrent_patches_preserve_other_fields_and_return_committed_state (test_vcm_state.SQLiteStoreTests.test_concurrent_patches_preserve_other_fields_and_return_committed_state) ... ok
+test_durable_request_replay_never_duplicates_inserts_and_rejects_conflicting_reuse (test_vcm_state.SQLiteStoreTests.test_durable_request_replay_never_duplicates_inserts_and_rejects_conflicting_reuse) ... ok
+test_existing_schema_data_survives_and_all_entities_persist (test_vcm_state.SQLiteStoreTests.test_existing_schema_data_survives_and_all_entities_persist) ... ok
+test_non_durable_handshake_is_rejected (test_vcm_state.WorkerTransportTests.test_non_durable_handshake_is_rejected) ... ok
+test_real_worker_persists_and_reuses_one_process (test_vcm_state.WorkerTransportTests.test_real_worker_persists_and_reuses_one_process) ... ok
+test_reply_loss_after_commit_is_uncertain_and_not_automatically_retried (test_vcm_state.WorkerTransportTests.test_reply_loss_after_commit_is_uncertain_and_not_automatically_retried) ... ok
+test_timeout_does_not_claim_success_or_fall_back_to_local_storage (test_vcm_state.WorkerTransportTests.test_timeout_does_not_claim_success_or_fall_back_to_local_storage) ... ok
+
+----------------------------------------------------------------------
+Ran 57 tests in 7.245s
+
+OK

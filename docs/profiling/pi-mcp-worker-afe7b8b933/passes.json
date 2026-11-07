@@ -1,0 +1,954 @@
+{
+  "pass_bounds": [
+    [
+      1,
+      11
+    ],
+    [
+      12,
+      22
+    ]
+  ],
+  "passes": [
+    {
+      "native_latency_s": {
+        "count": 11,
+        "median": 5.3089094161987305,
+        "min": 4.295140027999878,
+        "max": 8.079244136810303
+      },
+      "first_playback_ms": {
+        "count": 11,
+        "median": 5305.67,
+        "min": 4292.31,
+        "max": 8073.67
+      },
+      "model_s": {
+        "count": 11,
+        "median": 3.51413026299997,
+        "min": 2.4949215879969415,
+        "max": 4.296201253993786
+      },
+      "endpoint_context_ms": {
+        "count": 11,
+        "median": 787.35,
+        "min": 727.79,
+        "max": 855.55
+      },
+      "smart_turn_ms": {
+        "count": 11,
+        "median": 426.4358500004164,
+        "min": 398.9389230046072,
+        "max": 453.5763070016401
+      },
+      "tts_ttfb_s": {
+        "count": 11,
+        "median": 1.01,
+        "min": 0.912,
+        "max": 1.126
+      },
+      "outcomes": {
+        "route_local_tool": 9,
+        "route_local_reply": 1,
+        "route_local_failure": 1
+      },
+      "unmeasured_turns": [],
+      "model_server": {
+        "prompt_ms": {
+          "count": 11,
+          "median": 1916.13,
+          "min": 998.83,
+          "max": 3168.4
+        },
+        "generation_ms": {
+          "count": 11,
+          "median": 1444.53,
+          "min": 970.29,
+          "max": 2000.48
+        },
+        "server_total_ms": {
+          "count": 11,
+          "median": 3486.34,
+          "min": 2463.87,
+          "max": 4262.31
+        },
+        "pi_minus_server_ms": {
+          "count": 11,
+          "median": 24.881466997831467,
+          "min": 20.83637400478574,
+          "max": 71.01438700169365
+        },
+        "prompt_evaluated_tokens": {
+          "count": 11,
+          "median": 91,
+          "min": 42,
+          "max": 103
+        },
+        "generation_tokens": {
+          "count": 11,
+          "median": 16,
+          "min": 11,
+          "max": 19
+        }
+      }
+    },
+    {
+      "native_latency_s": {
+        "count": 11,
+        "median": 5.691476821899414,
+        "min": 4.756073236465454,
+        "max": 8.451886653900146
+      },
+      "first_playback_ms": {
+        "count": 11,
+        "median": 5687.19,
+        "min": 4752.05,
+        "max": 8446.92
+      },
+      "model_s": {
+        "count": 11,
+        "median": 3.636564314001589,
+        "min": 3.1508278619949124,
+        "max": 4.4102699360009865
+      },
+      "endpoint_context_ms": {
+        "count": 11,
+        "median": 796.69,
+        "min": 714.07,
+        "max": 832.98
+      },
+      "smart_turn_ms": {
+        "count": 11,
+        "median": 408.6922409987892,
+        "min": 395.0753130047815,
+        "max": 450.99766999919666
+      },
+      "tts_ttfb_s": {
+        "count": 11,
+        "median": 1.051,
+        "min": 0.744,
+        "max": 1.146
+      },
+      "outcomes": {
+        "route_local_tool": 9,
+        "route_local_reply": 1,
+        "route_local_failure": 1
+      },
+      "unmeasured_turns": [],
+      "model_server": {
+        "prompt_ms": {
+          "count": 11,
+          "median": 2035.89,
+          "min": 1692.23,
+          "max": 3016.11
+        },
+        "generation_ms": {
+          "count": 11,
+          "median": 1564.17,
+          "min": 1097.17,
+          "max": 2351.43
+        },
+        "server_total_ms": {
+          "count": 11,
+          "median": 3614.55,
+          "min": 3126.42,
+          "max": 4388.74
+        },
+        "pi_minus_server_ms": {
+          "count": 11,
+          "median": 22.0143140015889,
+          "min": 18.968565000453964,
+          "max": 28.1902050024064
+        },
+        "prompt_evaluated_tokens": {
+          "count": 11,
+          "median": 92,
+          "min": 83,
+          "max": 111
+        },
+        "generation_tokens": {
+          "count": 11,
+          "median": 16,
+          "min": 11,
+          "max": 22
+        }
+      }
+    }
+  ],
+  "combined": {
+    "native_latency_s": {
+      "count": 22,
+      "median": 5.468451142311096,
+      "min": 4.295140027999878,
+      "max": 8.451886653900146
+    },
+    "first_playback_ms": {
+      "count": 22,
+      "median": 5463.615,
+      "min": 4292.31,
+      "max": 8446.92
+    },
+    "model_s": {
+      "count": 22,
+      "median": 3.517261596498429,
+      "min": 2.4949215879969415,
+      "max": 4.4102699360009865
+    },
+    "endpoint_context_ms": {
+      "count": 22,
+      "median": 793.24,
+      "min": 714.07,
+      "max": 855.55
+    },
+    "smart_turn_ms": {
+      "count": 22,
+      "median": 416.3064115018642,
+      "min": 395.0753130047815,
+      "max": 453.5763070016401
+    },
+    "tts_ttfb_s": {
+      "count": 22,
+      "median": 1.014,
+      "min": 0.744,
+      "max": 1.146
+    },
+    "outcomes": {
+      "route_local_tool": 18,
+      "route_local_reply": 2,
+      "route_local_failure": 2
+    },
+    "unmeasured_turns": [],
+    "model_server": {
+      "prompt_ms": {
+        "count": 22,
+        "median": 1956.245,
+        "min": 998.83,
+        "max": 3168.4
+      },
+      "generation_ms": {
+        "count": 22,
+        "median": 1470.205,
+        "min": 970.29,
+        "max": 2351.43
+      },
+      "server_total_ms": {
+        "count": 22,
+        "median": 3495.4,
+        "min": 2463.87,
+        "max": 4388.74
+      },
+      "pi_minus_server_ms": {
+        "count": 22,
+        "median": 22.681020000280114,
+        "min": 18.968565000453964,
+        "max": 71.01438700169365
+      },
+      "prompt_evaluated_tokens": {
+        "count": 22,
+        "median": 91.5,
+        "min": 42,
+        "max": 111
+      },
+      "generation_tokens": {
+        "count": 22,
+        "median": 16.0,
+        "min": 11,
+        "max": 22
+      }
+    }
+  },
+  "excluded_turns": [
+    0
+  ],
+  "turns": [
+    {
+      "turn": 0,
+      "start_at": 1793536535.0232525,
+      "transcript_frames": 0,
+      "native_latency_s": null,
+      "first_playback_ms": null,
+      "model_s": null,
+      "tool_decision": null,
+      "endpoint_context_ms": null,
+      "smart_turn_ms": null,
+      "outcome": null,
+      "outcome_metadata": null,
+      "tts_ttfb_s": 1.1,
+      "model_server": null
+    },
+    {
+      "turn": 1,
+      "start_at": 1793536658.3532875,
+      "transcript_frames": 1,
+      "native_latency_s": 6.05953574180603,
+      "first_playback_ms": 6053.07,
+      "model_s": 4.209704387001693,
+      "tool_decision": "get_time",
+      "endpoint_context_ms": 763.42,
+      "smart_turn_ms": 452.1572559970082,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "get_time",
+        "model_s": 4.209704387001693,
+        "mcp_s": 0.012659704996622168,
+        "total_s": 4.224408780995873
+      },
+      "tts_ttfb_s": 1.043,
+      "model_server": {
+        "task": "2491",
+        "turn": 1,
+        "model_s": 4.209704387001693,
+        "prompt_ms": 3168.4,
+        "prompt_evaluated_tokens": 56,
+        "generation_ms": 970.29,
+        "generation_tokens": 11,
+        "server_total_ms": 4138.69,
+        "pi_minus_server_ms": 71.01438700169365
+      }
+    },
+    {
+      "turn": 2,
+      "start_at": 1793536669.6181467,
+      "transcript_frames": 1,
+      "native_latency_s": 4.295140027999878,
+      "first_playback_ms": 4292.31,
+      "model_s": 2.4949215879969415,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 754.07,
+      "smart_turn_ms": 442.88526799937245,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 2.4949215879969415,
+        "mcp_s": 0.02053481600160012,
+        "total_s": 2.519116857998597
+      },
+      "tts_ttfb_s": 1.004,
+      "model_server": {
+        "task": "2503",
+        "turn": 2,
+        "model_s": 2.4949215879969415,
+        "prompt_ms": 998.83,
+        "prompt_evaluated_tokens": 42,
+        "generation_ms": 1465.04,
+        "generation_tokens": 17,
+        "server_total_ms": 2463.87,
+        "pi_minus_server_ms": 31.051587996941635
+      }
+    },
+    {
+      "turn": 3,
+      "start_at": 1793536677.3330317,
+      "transcript_frames": 1,
+      "native_latency_s": 6.127128839492798,
+      "first_playback_ms": 6124.29,
+      "model_s": 4.296201253993786,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 737.6,
+      "smart_turn_ms": 426.4358500004164,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 4.296201253993786,
+        "mcp_s": 0.020084208001208026,
+        "total_s": 4.3176112299988745
+      },
+      "tts_ttfb_s": 1.055,
+      "model_server": {
+        "task": "2521",
+        "turn": 3,
+        "model_s": 4.296201253993786,
+        "prompt_ms": 2381.25,
+        "prompt_evaluated_tokens": 89,
+        "generation_ms": 1881.06,
+        "generation_tokens": 18,
+        "server_total_ms": 4262.31,
+        "pi_minus_server_ms": 33.89125399378554
+      }
+    },
+    {
+      "turn": 4,
+      "start_at": 1793536689.167137,
+      "transcript_frames": 1,
+      "native_latency_s": 5.3089094161987305,
+      "first_playback_ms": 5305.67,
+      "model_s": 3.51413026299997,
+      "tool_decision": "set_thermostat",
+      "endpoint_context_ms": 741.14,
+      "smart_turn_ms": 429.7553469950799,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "set_thermostat",
+        "model_s": 3.51413026299997,
+        "mcp_s": 0.021287087998643983,
+        "total_s": 3.538094720999652
+      },
+      "tts_ttfb_s": 1.01,
+      "model_server": {
+        "task": "2540",
+        "turn": 4,
+        "model_s": 3.51413026299997,
+        "prompt_ms": 1964.12,
+        "prompt_evaluated_tokens": 97,
+        "generation_ms": 1522.22,
+        "generation_tokens": 15,
+        "server_total_ms": 3486.34,
+        "pi_minus_server_ms": 27.790262999969855
+      }
+    },
+    {
+      "turn": 5,
+      "start_at": 1793536702.6948886,
+      "transcript_frames": 1,
+      "native_latency_s": 5.142530918121338,
+      "first_playback_ms": 5138.34,
+      "model_s": 3.2257074150038534,
+      "tool_decision": "add_reminder",
+      "endpoint_context_ms": 855.55,
+      "smart_turn_ms": 453.5763070016401,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "add_reminder",
+        "model_s": 3.2257074150038534,
+        "mcp_s": 0.0210234969999874,
+        "total_s": 3.248707380000269
+      },
+      "tts_ttfb_s": 1.018,
+      "model_server": {
+        "task": "2556",
+        "turn": 5,
+        "model_s": 3.2257074150038534,
+        "prompt_ms": 1870.06,
+        "prompt_evaluated_tokens": 92,
+        "generation_ms": 1333.85,
+        "generation_tokens": 15,
+        "server_total_ms": 3203.91,
+        "pi_minus_server_ms": 21.79741500385353
+      }
+    },
+    {
+      "turn": 6,
+      "start_at": 1793536714.3666263,
+      "transcript_frames": 1,
+      "native_latency_s": 5.799666404724121,
+      "first_playback_ms": 5794.87,
+      "model_s": 3.9414914669978316,
+      "tool_decision": "reply",
+      "endpoint_context_ms": 838.93,
+      "smart_turn_ms": 431.76087200117763,
+      "outcome": "route_local_reply",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "model_s": 3.9414914669978316
+      },
+      "tts_ttfb_s": 0.994,
+      "model_server": {
+        "task": "2572",
+        "turn": 6,
+        "model_s": 3.9414914669978316,
+        "prompt_ms": 1916.13,
+        "prompt_evaluated_tokens": 93,
+        "generation_ms": 2000.48,
+        "generation_tokens": 19,
+        "server_total_ms": 3916.61,
+        "pi_minus_server_ms": 24.881466997831467
+      }
+    },
+    {
+      "turn": 7,
+      "start_at": 1793536725.1971116,
+      "transcript_frames": 1,
+      "native_latency_s": 4.624232769012451,
+      "first_playback_ms": 4619.28,
+      "model_s": 2.6813884240036714,
+      "tool_decision": "playback_control",
+      "endpoint_context_ms": 787.35,
+      "smart_turn_ms": 398.9389230046072,
+      "outcome": "route_local_failure",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "error": "ValueError",
+        "tool_issued": false,
+        "total_s": 2.6863797590049217
+      },
+      "tts_ttfb_s": 1.126,
+      "model_server": {
+        "task": "2592",
+        "turn": 7,
+        "model_s": 2.6813884240036714,
+        "prompt_ms": 1645.86,
+        "prompt_evaluated_tokens": 82,
+        "generation_ms": 1014.24,
+        "generation_tokens": 14,
+        "server_total_ms": 2660.09,
+        "pi_minus_server_ms": 21.298424003671244
+      }
+    },
+    {
+      "turn": 8,
+      "start_at": 1793536741.7142305,
+      "transcript_frames": 1,
+      "native_latency_s": 4.6728105545043945,
+      "first_playback_ms": 4669.67,
+      "model_s": 2.837406374004786,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 816.09,
+      "smart_turn_ms": 415.6870639999397,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 2.837406374004786,
+        "mcp_s": 0.021207237005000934,
+        "total_s": 2.8599273240033654
+      },
+      "tts_ttfb_s": 0.979,
+      "model_server": {
+        "task": "2607",
+        "turn": 8,
+        "model_s": 2.837406374004786,
+        "prompt_ms": 1586.67,
+        "prompt_evaluated_tokens": 78,
+        "generation_ms": 1229.9,
+        "generation_tokens": 18,
+        "server_total_ms": 2816.57,
+        "pi_minus_server_ms": 20.83637400478574
+      }
+    },
+    {
+      "turn": 9,
+      "start_at": 1793536752.6630437,
+      "transcript_frames": 1,
+      "native_latency_s": 8.079244136810303,
+      "first_playback_ms": 8073.67,
+      "model_s": 3.421344558002602,
+      "tool_decision": "get_weather",
+      "endpoint_context_ms": 727.79,
+      "smart_turn_ms": 416.9257590037887,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "get_weather",
+        "model_s": 3.421344558002602,
+        "mcp_s": 2.822304695000639,
+        "total_s": 6.245564609998837
+      },
+      "tts_ttfb_s": 1.073,
+      "model_server": {
+        "task": "2626",
+        "turn": 9,
+        "model_s": 3.421344558002602,
+        "prompt_ms": 2233.62,
+        "prompt_evaluated_tokens": 94,
+        "generation_ms": 1161.27,
+        "generation_tokens": 11,
+        "server_total_ms": 3394.89,
+        "pi_minus_server_ms": 26.45455800260197
+      }
+    },
+    {
+      "turn": 10,
+      "start_at": 1793536768.0266385,
+      "transcript_frames": 1,
+      "native_latency_s": 5.291983604431152,
+      "first_playback_ms": 5286.75,
+      "model_s": 3.5145546279964037,
+      "tool_decision": "get_time",
+      "endpoint_context_ms": 793.84,
+      "smart_turn_ms": 402.4251800001366,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "get_time",
+        "model_s": 3.5145546279964037,
+        "mcp_s": 0.011433807005232666,
+        "total_s": 3.527116481993289
+      },
+      "tts_ttfb_s": 0.945,
+      "model_server": {
+        "task": "2638",
+        "turn": 10,
+        "model_s": 3.5145546279964037,
+        "prompt_ms": 2045.28,
+        "prompt_evaluated_tokens": 103,
+        "generation_ms": 1444.53,
+        "generation_tokens": 16,
+        "server_total_ms": 3489.8,
+        "pi_minus_server_ms": 24.754627996403542
+      }
+    },
+    {
+      "turn": 11,
+      "start_at": 1793536779.292847,
+      "transcript_frames": 1,
+      "native_latency_s": 5.4215216636657715,
+      "first_playback_ms": 5416.49,
+      "model_s": 3.648607679999259,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 802.12,
+      "smart_turn_ms": 410.8336400022381,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 3.648607679999259,
+        "mcp_s": 0.028844683001807425,
+        "total_s": 3.6802464540014626
+      },
+      "tts_ttfb_s": 0.912,
+      "model_server": {
+        "task": "2655",
+        "turn": 11,
+        "model_s": 3.648607679999259,
+        "prompt_ms": 1872.46,
+        "prompt_evaluated_tokens": 91,
+        "generation_ms": 1754.42,
+        "generation_tokens": 17,
+        "server_total_ms": 3626.88,
+        "pi_minus_server_ms": 21.727679999258726
+      }
+    },
+    {
+      "turn": 12,
+      "start_at": 1793536793.1002681,
+      "transcript_frames": 1,
+      "native_latency_s": 4.756073236465454,
+      "first_playback_ms": 4752.05,
+      "model_s": 3.1509852630042587,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 802.77,
+      "smart_turn_ms": 407.75653300079284,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 3.1509852630042587,
+        "mcp_s": 0.030549745002645068,
+        "total_s": 3.1837774730011006
+      },
+      "tts_ttfb_s": 0.744,
+      "model_server": {
+        "task": "2673",
+        "turn": 12,
+        "model_s": 3.1509852630042587,
+        "prompt_ms": 1692.23,
+        "prompt_evaluated_tokens": 83,
+        "generation_ms": 1434.19,
+        "generation_tokens": 17,
+        "server_total_ms": 3126.42,
+        "pi_minus_server_ms": 24.565263004258668
+      }
+    },
+    {
+      "turn": 13,
+      "start_at": 1793536801.6306114,
+      "transcript_frames": 1,
+      "native_latency_s": 6.163064241409302,
+      "first_playback_ms": 6158.81,
+      "model_s": 4.299110537998786,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 761.02,
+      "smart_turn_ms": 450.99766999919666,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 4.299110537998786,
+        "mcp_s": 0.018828235995897558,
+        "total_s": 4.319378820000566
+      },
+      "tts_ttfb_s": 1.054,
+      "model_server": {
+        "task": "2691",
+        "turn": 13,
+        "model_s": 4.299110537998786,
+        "prompt_ms": 2262.41,
+        "prompt_evaluated_tokens": 87,
+        "generation_ms": 2009.84,
+        "generation_tokens": 18,
+        "server_total_ms": 4272.26,
+        "pi_minus_server_ms": 26.850537998785512
+      }
+    },
+    {
+      "turn": 14,
+      "start_at": 1793536812.0661583,
+      "transcript_frames": 2,
+      "native_latency_s": 5.515380620956421,
+      "first_playback_ms": 5510.74,
+      "model_s": 3.636564314001589,
+      "tool_decision": "set_thermostat",
+      "endpoint_context_ms": 714.07,
+      "smart_turn_ms": 405.6277540003066,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "set_thermostat",
+        "model_s": 3.636564314001589,
+        "mcp_s": 0.027949281997280195,
+        "total_s": 3.666956894005125
+      },
+      "tts_ttfb_s": 1.11,
+      "model_server": {
+        "task": "2710",
+        "turn": 14,
+        "model_s": 3.636564314001589,
+        "prompt_ms": 2035.89,
+        "prompt_evaluated_tokens": 92,
+        "generation_ms": 1578.67,
+        "generation_tokens": 15,
+        "server_total_ms": 3614.55,
+        "pi_minus_server_ms": 22.0143140015889
+      }
+    },
+    {
+      "turn": 15,
+      "start_at": 1793536825.5272794,
+      "transcript_frames": 1,
+      "native_latency_s": 6.219953775405884,
+      "first_playback_ms": 6215.03,
+      "model_s": 4.4102699360009865,
+      "tool_decision": "reply",
+      "endpoint_context_ms": 796.69,
+      "smart_turn_ms": 402.8259050028282,
+      "outcome": "route_local_reply",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "model_s": 4.4102699360009865
+      },
+      "tts_ttfb_s": 0.985,
+      "model_server": {
+        "task": "2726",
+        "turn": 15,
+        "model_s": 4.4102699360009865,
+        "prompt_ms": 2037.31,
+        "prompt_evaluated_tokens": 95,
+        "generation_ms": 2351.43,
+        "generation_tokens": 22,
+        "server_total_ms": 4388.74,
+        "pi_minus_server_ms": 21.52993600098671
+      }
+    },
+    {
+      "turn": 16,
+      "start_at": 1793536838.849785,
+      "transcript_frames": 1,
+      "native_latency_s": 5.4083802700042725,
+      "first_playback_ms": 5403.18,
+      "model_s": 3.445035773998825,
+      "tool_decision": "add_reminder",
+      "endpoint_context_ms": 786.0,
+      "smart_turn_ms": 395.0753130047815,
+      "outcome": "route_local_failure",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "error": "ValueError",
+        "tool_issued": false,
+        "total_s": 3.447097092997865
+      },
+      "tts_ttfb_s": 1.146,
+      "model_server": {
+        "task": "2749",
+        "turn": 16,
+        "model_s": 3.445035773998825,
+        "prompt_ms": 1948.37,
+        "prompt_evaluated_tokens": 95,
+        "generation_ms": 1475.37,
+        "generation_tokens": 15,
+        "server_total_ms": 3423.74,
+        "pi_minus_server_ms": 21.295773998825098
+      }
+    },
+    {
+      "turn": 17,
+      "start_at": 1793536853.036088,
+      "transcript_frames": 1,
+      "native_latency_s": 4.989363431930542,
+      "first_playback_ms": 4984.19,
+      "model_s": 3.1508278619949124,
+      "tool_decision": "add_reminder",
+      "endpoint_context_ms": 792.64,
+      "smart_turn_ms": 403.29949599981774,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "add_reminder",
+        "model_s": 3.1508278619949124,
+        "mcp_s": 0.0256613540041144,
+        "total_s": 3.178361443999165
+      },
+      "tts_ttfb_s": 0.991,
+      "model_server": {
+        "task": "2765",
+        "turn": 17,
+        "model_s": 3.1508278619949124,
+        "prompt_ms": 1719.83,
+        "prompt_evaluated_tokens": 86,
+        "generation_ms": 1411.84,
+        "generation_tokens": 15,
+        "server_total_ms": 3131.67,
+        "pi_minus_server_ms": 19.15786199491231
+      }
+    },
+    {
+      "turn": 18,
+      "start_at": 1793536864.4158309,
+      "transcript_frames": 1,
+      "native_latency_s": 8.451886653900146,
+      "first_playback_ms": 8446.92,
+      "model_s": 3.294189865999215,
+      "tool_decision": "play_music",
+      "endpoint_context_ms": 802.77,
+      "smart_turn_ms": 413.6054980044719,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "play_music",
+        "model_s": 3.294189865999215,
+        "mcp_s": 3.2487082289953833,
+        "total_s": 6.545584742001665
+      },
+      "tts_ttfb_s": 1.073,
+      "model_server": {
+        "task": "2781",
+        "turn": 18,
+        "model_s": 3.294189865999215,
+        "prompt_ms": 1932.95,
+        "prompt_evaluated_tokens": 90,
+        "generation_ms": 1338.87,
+        "generation_tokens": 13,
+        "server_total_ms": 3271.81,
+        "pi_minus_server_ms": 22.37986599921487
+      }
+    },
+    {
+      "turn": 19,
+      "start_at": 1793536880.1090732,
+      "transcript_frames": 1,
+      "native_latency_s": 5.691476821899414,
+      "first_playback_ms": 5687.19,
+      "model_s": 3.7076721740013454,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 832.72,
+      "smart_turn_ms": 433.062156997039,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 3.7076721740013454,
+        "mcp_s": 0.020868220999545883,
+        "total_s": 3.7299076820054324
+      },
+      "tts_ttfb_s": 1.106,
+      "model_server": {
+        "task": "2795",
+        "turn": 19,
+        "model_s": 3.7076721740013454,
+        "prompt_ms": 2120.52,
+        "prompt_evaluated_tokens": 109,
+        "generation_ms": 1564.17,
+        "generation_tokens": 18,
+        "server_total_ms": 3684.69,
+        "pi_minus_server_ms": 22.982174001345356
+      }
+    },
+    {
+      "turn": 20,
+      "start_at": 1793536891.8477268,
+      "transcript_frames": 1,
+      "native_latency_s": 7.278270721435547,
+      "first_playback_ms": 7273.98,
+      "model_s": 4.141470205002406,
+      "tool_decision": "get_weather",
+      "endpoint_context_ms": 730.01,
+      "smart_turn_ms": 418.74907499732217,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "get_weather",
+        "model_s": 4.141470205002406,
+        "mcp_s": 1.4234725710048224,
+        "total_s": 5.566081602002669
+      },
+      "tts_ttfb_s": 0.955,
+      "model_server": {
+        "task": "2814",
+        "turn": 20,
+        "model_s": 4.141470205002406,
+        "prompt_ms": 3016.11,
+        "prompt_evaluated_tokens": 111,
+        "generation_ms": 1097.17,
+        "generation_tokens": 11,
+        "server_total_ms": 4113.28,
+        "pi_minus_server_ms": 28.1902050024064
+      }
+    },
+    {
+      "turn": 21,
+      "start_at": 1793536906.414366,
+      "transcript_frames": 1,
+      "native_latency_s": 5.338812351226807,
+      "first_playback_ms": 5336.0,
+      "model_s": 3.519968565000454,
+      "tool_decision": "get_time",
+      "endpoint_context_ms": 832.98,
+      "smart_turn_ms": 428.0363989964826,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "get_time",
+        "model_s": 3.519968565000454,
+        "mcp_s": 0.00989109600050142,
+        "total_s": 3.53118398499646
+      },
+      "tts_ttfb_s": 0.959,
+      "model_server": {
+        "task": "2826",
+        "turn": 21,
+        "model_s": 3.519968565000454,
+        "prompt_ms": 1933.37,
+        "prompt_evaluated_tokens": 99,
+        "generation_ms": 1567.63,
+        "generation_tokens": 16,
+        "server_total_ms": 3501.0,
+        "pi_minus_server_ms": 18.968565000453964
+      }
+    },
+    {
+      "turn": 22,
+      "start_at": 1793536916.2012224,
+      "transcript_frames": 1,
+      "native_latency_s": 5.997689962387085,
+      "first_playback_ms": 5993.17,
+      "model_s": 4.093356862002111,
+      "tool_decision": "control_lights",
+      "endpoint_context_ms": 799.41,
+      "smart_turn_ms": 408.6922409987892,
+      "outcome": "route_local_tool",
+      "outcome_metadata": {
+        "model_host": "thinkpad",
+        "tool": "control_lights",
+        "model_s": 4.093356862002111,
+        "mcp_s": 0.023808905003534164,
+        "total_s": 4.119317363001755
+      },
+      "tts_ttfb_s": 1.051,
+      "model_server": {
+        "task": "2843",
+        "turn": 22,
+        "model_s": 4.093356862002111,
+        "prompt_ms": 2280.52,
+        "prompt_evaluated_tokens": 91,
+        "generation_ms": 1790.89,
+        "generation_tokens": 17,
+        "server_total_ms": 4071.41,
+        "pi_minus_server_ms": 21.94686200211072
+      }
+    }
+  ]
+}

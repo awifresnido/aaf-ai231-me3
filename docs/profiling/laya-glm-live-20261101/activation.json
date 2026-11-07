@@ -1,0 +1,50 @@
+{
+  "activated_at": "2026-11-01T22:47:40.026718+08:00",
+  "backup_dir": "/home/aldwinrpi4/voice-agent-backups/laya-glm-live-20261101-224739",
+  "backed_up_existing_source": [
+    "bot.py",
+    "orchestration.py",
+    "local_vcm.py"
+  ],
+  "source_sha256": {
+    "bot.py": "46535d7480f249ce1132b9e7b5c14851ca291b13d0d5718617d25704979630a6",
+    "orchestration.py": "97cd3363d88b262cd995c33d78f5730eac6f0da64d38d1bd34b9c33e29f207fa",
+    "local_vcm.py": "9f7dbea09bf3bc3e2f3fef5b27d3906f5e12ec76b1d30e0c9e3fda1b1d42e4b7",
+    "laya_classifier.py": "48da3840b4bb2254f4522d32888ab715336b10c588f18078f321199a23228acb",
+    "laya_contract.py": "b670547c96bea8addce6dd1de8ba4430f5591be4856f361d70ae3d8b9cfb5fcb",
+    "laya_questions.json": "7f04b4852e88876fd79e12c9300a92a9ca2de2edc83fb2a86d204b16d5843860",
+    "laya_router.py": "898c2318fb3181d1d4af0f11850eb81ae6d564dba51f9c18277c13557a97aecf"
+  },
+  "changed_settings": {
+    "ORCHESTRATION_MODE": "two_brain_plusjev",
+    "ROUTER_MODEL": "laya",
+    "LAYA_ROUTER_URL": "http://127.0.0.1:18082",
+    "LAYA_ROUTER_TIMEOUT_SECS": "2",
+    "SMALL_LLM_SECONDARY_URL": "",
+    "VAD_EXPERIMENT": "laya-glm-context-pi-mcp-nvme-20261101"
+  },
+  "glm_model": "z-ai/glm-5.3-flash",
+  "log_start_bytes": 3871303,
+  "state_directory": "/home/aldwin/voice-agent-vcm/state/trials/nvme-20261101",
+  "validation": "84 tests passed; four real resident-classifier controller preflights passed with no actual tool execution.",
+  "run": "26c376b1c3",
+  "pi_pid": 60029,
+  "pipeline_ready_at": "2026-11-01T22:47:53+08:00",
+  "first_greeting_playback_at": "2026-11-01T22:48:09+08:00",
+  "preflight_client_s": [
+    0.716801974,
+    0.693205803,
+    0.700410369,
+    0.775020596
+  ],
+  "preflight_server_s": [
+    0.708369487,
+    0.685781355,
+    0.693304881,
+    0.767740101
+  ],
+  "startup_note": "Greeting self-hearing occurred; exclude startup echo from human command accuracy and latency. One earlier idle preflight exceeded the two-second classifier deadline; warm preflight passed.",
+  "live_trial": "Completed direct turns 3-15 and contextual turns 16-26; 21 timed replies. See benchmark-summary.json.",
+  "benchmark_report": "../../runbooks/laya-glm-results-20261101.md",
+  "capacity_report": "../../runbooks/jetson-laya-capacity-20261101.md"
+}

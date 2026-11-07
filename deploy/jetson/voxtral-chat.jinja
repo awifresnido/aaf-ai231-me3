@@ -1,0 +1,28 @@
+{# Voxtral 2507 instruct chat. Preserve typed audio media markers, use Mistral
+   instruction framing, and do not inject the GGUF's unrelated Devstral prompt. #}
+{%- macro content_text(content) -%}
+    {%- if content is string -%}{{- content -}}
+    {%- else -%}
+        {%- for part in content -%}
+            {%- if part.type == 'text' or part.type == 'media_marker' -%}{{- part.text -}}{%- endif -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endmacro -%}
+{{- '<s>' -}}
+    {%- set system_message = '' -%}
+    {%- set loop_messages = messages -%}
+    {%- if messages and messages[0].role == 'system' -%}
+        {%- set system_message = content_text(messages[0].content) -%}
+        {%- set loop_messages = messages[1:] -%}
+    {%- endif -%}
+    {%- for message in loop_messages -%}
+        {%- if message.role == 'user' -%}
+            {{- '[INST]' -}}
+            {%- if loop.first and system_message -%}{{- system_message + '\n\n' -}}{%- endif -%}
+            {{- content_text(message.content) -}}{{- '[/INST]' -}}
+        {%- elif message.role == 'assistant' -%}
+            {{- content_text(message.content) -}}{{- '</s>' -}}
+        {%- else -%}
+            {{- raise_exception('Voxtral trial accepts user/assistant messages and one initial system instruction') -}}
+        {%- endif -%}
+    {%- endfor -%}

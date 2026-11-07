@@ -1,0 +1,97 @@
+{
+  "source": "Private Pi log, TTFB after synthesis-start; no speech text",
+  "measurements": [
+    {
+      "turn": 0,
+      "ttfb_s": 1.1
+    },
+    {
+      "turn": 1,
+      "ttfb_s": 1.043
+    },
+    {
+      "turn": 2,
+      "ttfb_s": 1.004
+    },
+    {
+      "turn": 3,
+      "ttfb_s": 1.055
+    },
+    {
+      "turn": 4,
+      "ttfb_s": 1.01
+    },
+    {
+      "turn": 5,
+      "ttfb_s": 1.018
+    },
+    {
+      "turn": 6,
+      "ttfb_s": 0.994
+    },
+    {
+      "turn": 7,
+      "ttfb_s": 1.126
+    },
+    {
+      "turn": 8,
+      "ttfb_s": 0.979
+    },
+    {
+      "turn": 9,
+      "ttfb_s": 1.073
+    },
+    {
+      "turn": 10,
+      "ttfb_s": 0.945
+    },
+    {
+      "turn": 11,
+      "ttfb_s": 0.912
+    },
+    {
+      "turn": 12,
+      "ttfb_s": 0.744
+    },
+    {
+      "turn": 13,
+      "ttfb_s": 1.054
+    },
+    {
+      "turn": 14,
+      "ttfb_s": 1.11
+    },
+    {
+      "turn": 15,
+      "ttfb_s": 0.985
+    },
+    {
+      "turn": 16,
+      "ttfb_s": 1.146
+    },
+    {
+      "turn": 17,
+      "ttfb_s": 0.991
+    },
+    {
+      "turn": 18,
+      "ttfb_s": 1.073
+    },
+    {
+      "turn": 19,
+      "ttfb_s": 1.106
+    },
+    {
+      "turn": 20,
+      "ttfb_s": 0.955
+    },
+    {
+      "turn": 21,
+      "ttfb_s": 0.959
+    },
+    {
+      "turn": 22,
+      "ttfb_s": 1.051
+    }
+  ]
+}

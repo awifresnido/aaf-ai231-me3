@@ -1,0 +1,10 @@
+Pi isolated review checkout: /tmp/qwen-tts-review-20261102
+Interpreter: /home/aldwinrpi4/pipecat-quickstart/server/.venv/bin/python
+Command: python -m unittest discover -s tests
+Ran 92 tests in 8.748s
+OK
+
+Covers streaming first audio before full completion, PCM/context preservation, failure/no retry, interruption/cancellation, credentials, direct speak frames and GLM text pipeline lifecycle.
+Real DGX endpoint verified exact model and 24kHz mono PCM16; real adapter pipeline yielded audio for both direct speech and GLM text with no speaker output.
+The settings language field was initialized to None after preflight exposed a validation warning; full 92-test regression rerun passed.
+Python compilation and git diff --check passed.

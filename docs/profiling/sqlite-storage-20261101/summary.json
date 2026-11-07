@@ -1,0 +1,357 @@
+{
+  "voice-sqlite-probe-20261101-1702": {
+    "slow_flush_syscalls": [],
+    "kernel_lock_failures": 0,
+    "summary": {
+      "disk:seed_fsync": {
+        "count": 1,
+        "median_ms": 23.018932,
+        "min_ms": 23.018932,
+        "max_ms": 23.018932
+      },
+      "ram:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.476925,
+        "min_ms": 0.476925,
+        "max_ms": 0.476925
+      },
+      "disk:sqlite_execute": {
+        "count": 4,
+        "median_ms": 1.6357455,
+        "min_ms": 1.46057,
+        "max_ms": 1.72242
+      },
+      "disk:sqlite_commit": {
+        "count": 4,
+        "median_ms": 23.328719,
+        "min_ms": 22.522934,
+        "max_ms": 27.044495
+      },
+      "ram:sqlite_execute": {
+        "count": 4,
+        "median_ms": 1.414848,
+        "min_ms": 1.282385,
+        "max_ms": 1.962383
+      },
+      "ram:sqlite_commit": {
+        "count": 4,
+        "median_ms": 1.4935145,
+        "min_ms": 1.409811,
+        "max_ms": 1.865235
+      },
+      "disk:raw_fdatasync": {
+        "count": 3,
+        "median_ms": 5.025615,
+        "min_ms": 4.946375,
+        "max_ms": 8.775122
+      },
+      "disk:raw_fsync": {
+        "count": 3,
+        "median_ms": 7.6452,
+        "min_ms": 7.5992,
+        "max_ms": 7.70857
+      },
+      "ram:raw_fdatasync": {
+        "count": 3,
+        "median_ms": 0.414129,
+        "min_ms": 0.382999,
+        "max_ms": 0.555425
+      },
+      "ram:raw_fsync": {
+        "count": 3,
+        "median_ms": 0.323925,
+        "min_ms": 0.281147,
+        "max_ms": 0.403536
+      },
+      "lock_control:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.29511,
+        "min_ms": 0.29511,
+        "max_ms": 0.29511
+      },
+      "lock_control:sqlite_commit": {
+        "count": 1,
+        "median_ms": 333.425505,
+        "min_ms": 333.425505,
+        "max_ms": 333.425505
+      }
+    }
+  },
+  "voice-sqlite-probe-20261101-spaced": {
+    "slow_flush_syscalls": [
+      "35118 1793524116.088764 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-rual4zu5/raw-flush.bin>) = 0 <1.117201>"
+    ],
+    "kernel_lock_failures": 0,
+    "summary": {
+      "disk:seed_fsync": {
+        "count": 1,
+        "median_ms": 23.35717,
+        "min_ms": 23.35717,
+        "max_ms": 23.35717
+      },
+      "ram:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.398777,
+        "min_ms": 0.398777,
+        "max_ms": 0.398777
+      },
+      "disk:sqlite_execute": {
+        "count": 4,
+        "median_ms": 2.2898085,
+        "min_ms": 1.462125,
+        "max_ms": 3.073435
+      },
+      "disk:sqlite_commit": {
+        "count": 4,
+        "median_ms": 26.1001245,
+        "min_ms": 23.623409,
+        "max_ms": 28.903801
+      },
+      "ram:sqlite_execute": {
+        "count": 4,
+        "median_ms": 2.3424,
+        "min_ms": 1.763791,
+        "max_ms": 2.604326
+      },
+      "ram:sqlite_commit": {
+        "count": 4,
+        "median_ms": 2.459539,
+        "min_ms": 1.99142,
+        "max_ms": 3.269009
+      },
+      "disk:raw_fdatasync": {
+        "count": 3,
+        "median_ms": 9.250213,
+        "min_ms": 2.592955,
+        "max_ms": 48.7085
+      },
+      "disk:raw_fsync": {
+        "count": 3,
+        "median_ms": 9.769285,
+        "min_ms": 5.177095,
+        "max_ms": 1117.661987
+      },
+      "ram:raw_fdatasync": {
+        "count": 3,
+        "median_ms": 0.396146,
+        "min_ms": 0.327592,
+        "max_ms": 0.756257
+      },
+      "ram:raw_fsync": {
+        "count": 3,
+        "median_ms": 0.478813,
+        "min_ms": 0.263295,
+        "max_ms": 0.520368
+      },
+      "lock_control:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.296239,
+        "min_ms": 0.296239,
+        "max_ms": 0.296239
+      },
+      "lock_control:sqlite_commit": {
+        "count": 1,
+        "median_ms": 333.321743,
+        "min_ms": 333.321743,
+        "max_ms": 333.321743
+      }
+    }
+  },
+  "voice-sqlite-probe-20261101-crosslock": {
+    "slow_flush_syscalls": [
+      "35723 1793524534.933546 fsync(4</home/aldwinrpi4/voice-agent-tools/voice-sqlite-probe-75010ysr/synthetic.sqlite>) = 0 <1.742052>"
+    ],
+    "kernel_lock_failures": 12,
+    "summary": {
+      "disk:seed_fsync": {
+        "count": 1,
+        "median_ms": 1742.538812,
+        "min_ms": 1742.538812,
+        "max_ms": 1742.538812
+      },
+      "ram:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.575269,
+        "min_ms": 0.575269,
+        "max_ms": 0.575269
+      },
+      "disk:sqlite_execute": {
+        "count": 1,
+        "median_ms": 1.626418,
+        "min_ms": 1.626418,
+        "max_ms": 1.626418
+      },
+      "disk:sqlite_commit": {
+        "count": 1,
+        "median_ms": 27.632335,
+        "min_ms": 27.632335,
+        "max_ms": 27.632335
+      },
+      "ram:sqlite_execute": {
+        "count": 1,
+        "median_ms": 2.122428,
+        "min_ms": 2.122428,
+        "max_ms": 2.122428
+      },
+      "ram:sqlite_commit": {
+        "count": 1,
+        "median_ms": 2.197353,
+        "min_ms": 2.197353,
+        "max_ms": 2.197353
+      },
+      "disk:raw_fdatasync": {
+        "count": 1,
+        "median_ms": 8.797822,
+        "min_ms": 8.797822,
+        "max_ms": 8.797822
+      },
+      "disk:raw_fsync": {
+        "count": 1,
+        "median_ms": 9.101669,
+        "min_ms": 9.101669,
+        "max_ms": 9.101669
+      },
+      "ram:raw_fdatasync": {
+        "count": 1,
+        "median_ms": 0.342476,
+        "min_ms": 0.342476,
+        "max_ms": 0.342476
+      },
+      "ram:raw_fsync": {
+        "count": 1,
+        "median_ms": 0.435308,
+        "min_ms": 0.435308,
+        "max_ms": 0.435308
+      },
+      "lock_control:seed_fsync": {
+        "count": 1,
+        "median_ms": 0.369939,
+        "min_ms": 0.369939,
+        "max_ms": 0.369939
+      },
+      "lock_control:sqlite_commit": {
+        "count": 1,
+        "median_ms": 337.182936,
+        "min_ms": 337.182936,
+        "max_ms": 337.182936
+      }
+    }
+  },
+  "voice-mcp-storage-probe-20261101": {
+    "slow_flush_syscalls": [
+      "35615 1793524450.258539 fdatasync(10</home/aldwinrpi4/voice-agent-tools/voice-mcp-storage-probe-qolgymlw/state.db-journal>) = 0 <3.099516>"
+    ],
+    "kernel_lock_failures": 0,
+    "mcp_summary": {
+      "run_ids": [
+        "mcp-storage-probe"
+      ],
+      "event_count": 180,
+      "incomplete_lines": 0,
+      "unfinished_spans": [],
+      "max_reported_dropped": 0,
+      "max_reported_write_errors": 0,
+      "model_ms": {
+        "count": 0,
+        "median": null
+      },
+      "event_loop": {
+        "pi": {
+          "count_over_50ms": 0,
+          "max_lag_ms": 0
+        },
+        "mcp": {
+          "count_over_50ms": 0,
+          "max_lag_ms": 0
+        }
+      },
+      "slowest_normal_logs": [],
+      "calls": [
+        {
+          "call_id": "c5084aaf23c44d38ae2a4b278cc454e9",
+          "tool": "control_lights",
+          "error": null,
+          "mcp_client_total_ms": 209.808,
+          "mcp_open_session_ms": 0.12,
+          "mcp_rpc_ms": 206.035,
+          "mcp_server_call_ms": 196.23,
+          "tool_execute_ms": 193.517,
+          "sqlite_connect_ms": 1.676,
+          "sqlite_execute_ms": 159.143,
+          "sqlite_fetchone_ms": 0.084,
+          "sqlite_fetchall_ms": null,
+          "sqlite_commit_ms": 24.795,
+          "sqlite_close_ms": 1.703,
+          "http_request_ms": null,
+          "client_before_rpc_ms": 1.289,
+          "client_after_rpc_ms": 2.415,
+          "rpc_to_server_entry_ms": 6.132,
+          "server_exit_to_rpc_return_ms": 3.791
+        },
+        {
+          "call_id": "70bbd8672b474bf7ae9b0535fcc7477b",
+          "tool": "control_lights",
+          "error": null,
+          "mcp_client_total_ms": 70.795,
+          "mcp_open_session_ms": 0.135,
+          "mcp_rpc_ms": 66.812,
+          "mcp_server_call_ms": 54.183,
+          "tool_execute_ms": 50.543,
+          "sqlite_connect_ms": 1.574,
+          "sqlite_execute_ms": 15.756,
+          "sqlite_fetchone_ms": 0.557,
+          "sqlite_fetchall_ms": null,
+          "sqlite_commit_ms": 25.507,
+          "sqlite_close_ms": 1.42,
+          "http_request_ms": null,
+          "client_before_rpc_ms": 1.902,
+          "client_after_rpc_ms": 2.084,
+          "rpc_to_server_entry_ms": 9.078,
+          "server_exit_to_rpc_return_ms": 3.538
+        },
+        {
+          "call_id": "17cf09f89f14498da66a8b6ff7f5eab1",
+          "tool": "set_thermostat",
+          "error": null,
+          "mcp_client_total_ms": 96.576,
+          "mcp_open_session_ms": 0.327,
+          "mcp_rpc_ms": 85.02,
+          "mcp_server_call_ms": 69.253,
+          "tool_execute_ms": 63.708,
+          "sqlite_connect_ms": 1.316,
+          "sqlite_execute_ms": 11.444,
+          "sqlite_fetchone_ms": null,
+          "sqlite_fetchall_ms": null,
+          "sqlite_commit_ms": 45.824,
+          "sqlite_close_ms": 1.067,
+          "http_request_ms": null,
+          "client_before_rpc_ms": 2.748,
+          "client_after_rpc_ms": 8.739,
+          "rpc_to_server_entry_ms": 9.749,
+          "server_exit_to_rpc_return_ms": 6.091
+        },
+        {
+          "call_id": "e015ff372f9146d9a3c7bc4e00a8e888",
+          "tool": "control_lights",
+          "error": null,
+          "mcp_client_total_ms": 3160.372,
+          "mcp_open_session_ms": 0.125,
+          "mcp_rpc_ms": 3155.32,
+          "mcp_server_call_ms": 3144.199,
+          "tool_execute_ms": 3141.011,
+          "sqlite_connect_ms": 1.45,
+          "sqlite_execute_ms": 12.74,
+          "sqlite_fetchone_ms": 1.653,
+          "sqlite_fetchall_ms": null,
+          "sqlite_commit_ms": 3118.905,
+          "sqlite_close_ms": 1.587,
+          "http_request_ms": null,
+          "client_before_rpc_ms": 1.433,
+          "client_after_rpc_ms": 3.627,
+          "rpc_to_server_entry_ms": 7.053,
+          "server_exit_to_rpc_return_ms": 4.112
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "run_ids": [
+    "jetson-preflight-20261101"
+  ],
+  "event_count": 178,
+  "incomplete_lines": 0,
+  "unfinished_spans": [],
+  "max_reported_dropped": 0,
+  "max_reported_write_errors": 0,
+  "model_ms": {
+    "count": 0,
+    "median": null
+  },
+  "event_loop": {
+    "pi": {
+      "count_over_50ms": 0,
+      "max_lag_ms": 0
+    },
+    "mcp": {
+      "count_over_50ms": 0,
+      "max_lag_ms": 0
+    }
+  },
+  "slowest_normal_logs": [],
+  "calls": [
+    {
+      "call_id": "3d1181acf84a4b7d86208078302608fd",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 29.006,
+      "mcp_open_session_ms": 0.055,
+      "mcp_rpc_ms": 26.924,
+      "mcp_server_call_ms": 19.254,
+      "tool_execute_ms": 18.249,
+      "sqlite_connect_ms": 0.665,
+      "sqlite_execute_ms": 13.882,
+      "sqlite_fetchone_ms": 0.02,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 1.802,
+      "sqlite_close_ms": 0.519,
+      "http_request_ms": null,
+      "client_before_rpc_ms": 0.63,
+      "client_after_rpc_ms": 1.422,
+      "same_clock_domain": false,
+      "rpc_outside_server_ms": 7.67
+    },
+    {
+      "call_id": "4aeec024157d435a9fddd8bf3e1846fc",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 20.959,
+      "mcp_open_session_ms": 0.07,
+      "mcp_rpc_ms": 17.139,
+      "mcp_server_call_ms": 11.098,
+      "tool_execute_ms": 10.117,
+      "sqlite_connect_ms": 0.42,
+      "sqlite_execute_ms": 1.861,
+      "sqlite_fetchone_ms": 0.091,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 6.359,
+      "sqlite_close_ms": 0.396,
+      "http_request_ms": null,
+      "client_before_rpc_ms": 1.017,
+      "client_after_rpc_ms": 2.762,
+      "same_clock_domain": false,
+      "rpc_outside_server_ms": 6.041
+    },
+    {
+      "call_id": "d9b2e71f42cc4bdea6c60c16ce2b6e06",
+      "tool": "set_thermostat",
+      "error": null,
+      "mcp_client_total_ms": 17.969,
+      "mcp_open_session_ms": 0.076,
+      "mcp_rpc_ms": 14.746,
+      "mcp_server_call_ms": 7.522,
+      "tool_execute_ms": 6.097,
+      "sqlite_connect_ms": 0.442,
+      "sqlite_execute_ms": 1.795,
+      "sqlite_fetchone_ms": null,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 2.665,
+      "sqlite_close_ms": 0.277,
+      "http_request_ms": null,
+      "client_before_rpc_ms": 1.121,
+      "client_after_rpc_ms": 2.065,
+      "same_clock_domain": false,
+      "rpc_outside_server_ms": 7.225
+    },
+    {
+      "call_id": "2dd3950e9a724ff589c1a71d70909ce4",
+      "tool": "control_lights",
+      "error": null,
+      "mcp_client_total_ms": 18.847,
+      "mcp_open_session_ms": 0.048,
+      "mcp_rpc_ms": 16.974,
+      "mcp_server_call_ms": 10.565,
+      "tool_execute_ms": 9.243,
+      "sqlite_connect_ms": 0.661,
+      "sqlite_execute_ms": 3.079,
+      "sqlite_fetchone_ms": 0.161,
+      "sqlite_fetchall_ms": null,
+      "sqlite_commit_ms": 3.158,
+      "sqlite_close_ms": 0.524,
+      "http_request_ms": null,
+      "client_before_rpc_ms": 0.686,
+      "client_after_rpc_ms": 1.151,
+      "same_clock_domain": false,
+      "rpc_outside_server_ms": 6.409
+    }
+  ]
+}

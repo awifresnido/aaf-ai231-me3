@@ -1,0 +1,52 @@
+{
+  "pi": {
+    "changed_setting_names": [
+      "VAD_EXPERIMENT",
+      "VCM_JETSON_DATA_DIR",
+      "VCM_TOOL_SERVER_HOST"
+    ],
+    "source_sha256": {
+      "bot.py": "1a503ea5930c9e8480c7bc3ef05adfbffe71c98b327a71d13ab8bf38c5e8d590",
+      "stall_diagnostics.py": "ddb66dd9cfeeb99621605bbe80befb262b7de758c585107f1f4a82a9a18b32a0",
+      "vcm_server_location.py": "17bdeafce4b41693508506346a64546a211677fdc789a0a4b43e47c7b6b30076",
+      "mcp_servers/voice_tools_mcp_server.py": "98b1544d07be8fa737ea17466fa6c2ef24841464499d1d5b4528a0d011209509"
+    }
+  },
+  "jetson": {
+    "source_sha256": {
+      "stall_diagnostics.py": "ddb66dd9cfeeb99621605bbe80befb262b7de758c585107f1f4a82a9a18b32a0",
+      "vcm_server_location.py": "17bdeafce4b41693508506346a64546a211677fdc789a0a4b43e47c7b6b30076",
+      "mcp_servers/voice_tools_mcp_server.py": "98b1544d07be8fa737ea17466fa6c2ef24841464499d1d5b4528a0d011209509"
+    },
+    "dependencies": {
+      "mcp": "2.3.0",
+      "pydantic": "2.14.1"
+    }
+  },
+  "startup_configuration": {
+    "run": "625b1e52a7",
+    "experiment": "vcm-jetson-nvme-20261101",
+    "turn": 0,
+    "event": "configuration",
+    "at": 1793528855.3964062,
+    "vad_stop_secs": 0.3,
+    "transport": "local",
+    "smart_turn_cpu_count": 2,
+    "orchestration_mode": "local_vcm",
+    "vcm_model_host": "thinkpad",
+    "diagnostics_dir": "/dev/shm/voice-agent-diagnostics/625b1e52a7",
+    "queued_logging": true,
+    "vcm_tool_server_host": "jetson",
+    "vcm_tool_transport": "ssh_stdio",
+    "pulse_source": "voice_agent_aec_source",
+    "pulse_sink": "voice_agent_aec_sink",
+    "pacat_latency_ms": 150
+  },
+  "seed_integrity_and_mode": {
+    "sha256": "1bcce1cc2e0fe5e670781a269106c94c4d673e1a154703a2c1dea1dcef25a398",
+    "mode": "0o600",
+    "journal_mode": "delete",
+    "synchronous": 2
+  },
+  "voice_results_status": "Awaiting user completion; preflight excludes model and audio"
+}

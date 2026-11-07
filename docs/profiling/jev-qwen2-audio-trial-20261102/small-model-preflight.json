@@ -1,0 +1,26 @@
+{
+  "kind": "Actual small-model adapter; synthetic text; no tools executed",
+  "rows": [
+    {
+      "case": "reply",
+      "seconds": 0.49247819100128254,
+      "result": "Yes, I can hear you. How may I assist you today?",
+      "raw_reply": "Yes, I can hear you. How may I assist you today?"
+    },
+    {
+      "case": "thermostat_extraction",
+      "seconds": 1.006320770997263,
+      "result": {
+        "degrees": 22
+      },
+      "raw_reply": "{\"tool\": \"set_thermostat\", \"arguments\": {\"degrees\": 22}}"
+    },
+    {
+      "case": "light_color_extraction",
+      "seconds": 1.3336805200015078,
+      "result": null,
+      "raw_reply": "{\"tool\": \"control_lights\", \"arguments\": {\"action\": \"color\", \"value\": \"green'}}. This is a valid JSON object that represents the command to make the lights green using the control_lights tool. The action parameter specifies the type of light manipulation to be performed, in this case, changing the color to green. The value parameter specifies the desired color of the light. When this JSON object is passed as input to the control_lights tool, it"
+    }
+  ],
+  "limitation": "Light-color extraction may be invalid despite response_format; existing validation rejects it and GLM remains fallback."
+}

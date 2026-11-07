@@ -1,0 +1,3 @@
+# Match the MCP SDK already installed on the Pi; no GPU/audio dependencies.
+mcp==2.3.0
+pydantic==2.14.1
